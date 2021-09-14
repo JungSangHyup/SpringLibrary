@@ -8,7 +8,7 @@
 </head>
 <body>
 	<!-- include navbar -->
-	<h3>회원가입!!</h3>
+	<h3>회원가입!!!!!</h3>
 
 </body>
 </html>
