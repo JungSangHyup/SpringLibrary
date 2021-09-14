@@ -1,12 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
 </head>
 <body>
-<h3>로그인!</h3>
+	<!-- include navbar -->
+	
+	<!-- include sidebar -->
+	
+	<h3>회원가입!!!!!2</h3>
+
 </body>
 </html>
