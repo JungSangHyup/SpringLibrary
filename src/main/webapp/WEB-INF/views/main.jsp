@@ -2,12 +2,9 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <%-- include head.jsp --%>
-    <jsp:include page="/WEB-INF/views/include/head.jsp"/>
 </head>
 <body>
-<%-- include topNavbar.jsp --%>
-<jsp:include page="/WEB-INF/views/include/topNavbar.jsp"/>
+
 <!-- Carousel -->
 <div id="carouselExampleControls" class="carousel slide container" data-ride="carousel">
     <div class="carousel-inner">
