@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,45 +21,45 @@
           </div>
           <div class="col-md-8">
             <div class="card-body">
-              <h5 class="card-title">ÇÏ¹öµå È¸º¹Åº·Â¼º ¼ö¾÷</h5>
-              <p class="card-text">°ÔÀÏ°¡Á©</p>
-              <p class="card-text">¿ì¿ï, ºÒ¾È, ¹ø¾Æ¿ô, ½ºÆ®·¹½º¿¡ ¹«³ÊÁöÁö ¾Ê´Â ¸àÅ»°ü¸® ÇÁ·ÎÁ§Æ®! Áö±Ý ¹Ù·Î ½ÃÀÛÇÏÀÚ</p>
-              <button type="button" class="btn btn-primary">´ë¿©</button>
-              <button type="button" class="btn btn-primary">ÂòÇÏ±â</button>
+              <h5 class="card-title">í•˜ë²„ë“œ íšŒë³µíƒ„ë ¥ì„± ìˆ˜ì—…</h5>
+              <p class="card-text">ê²Œì¼ê°€ì ¤</p>
+              <p class="card-text">ìš°ìš¸, ë¶ˆì•ˆ, ë²ˆì•„ì›ƒ, ìŠ¤íŠ¸ë ˆìŠ¤ì— ë¬´ë„ˆì§€ì§€ ì•ŠëŠ” ë©˜íƒˆê´€ë¦¬ í”„ë¡œì íŠ¸! ì§€ê¸ˆ ë°”ë¡œ ì‹œìž‘í•˜ìž</p>
+              <button type="button" class="btn btn-primary">ëŒ€ì—¬</button>
+              <button type="button" class="btn btn-primary">ì°œí•˜ê¸°</button>
             </div>
           </div>
         </div>
       </div>
     <div class="description">
-      <h5>¡°±×·¡¼­ È¸º¹Åº·Â¼ºÀº ¾î¶»°Ô Å°¿ì´Â °ÅÁÒ?¡±</h5>
-    Áö±Ý ¹Ù·Î ½ÃÀÛÇÏ´Â 18°¡Áö È¸º¹Åº·Â¼º ÈÆ·Ã
-    ¡°ÇÏ¹öµå ÃÖ°íÀÇ È¸º¹Åº·Â¼º Àü¹®°¡ÀÎ °ÔÀÏ °¡Á© ¹Ú»ç´Â ´ç½ÅÀÌ ¾î¶² ÀÎ»ýÀ» »ì¾Æ¿Ôµç »ó°ü¾øÀÌ È¸º¹Åº·Â¼ºÀ» ³ôÀÌ´Â µ¥ ÇÊ¿äÇÑ °¡Àå ÀûÈ®ÇÑ ¹æ¹ýÀ» ¾Ë·ÁÁØ´Ù.¡±
-    - ¸¶¼È °ñµå½º¹Ì½º(¼¼°è ÃÖ°íÀÇ °æ¿µ ÄÁ¼³ÅÏÆ®, ¡ºÆ®¸®°Å¡», ¡º¸ðÁ¶¡» ÀúÀÚ)
+      <h5>â€œê·¸ëž˜ì„œ íšŒë³µíƒ„ë ¥ì„±ì€ ì–´ë–»ê²Œ í‚¤ìš°ëŠ” ê±°ì£ ?â€</h5>
+    ì§€ê¸ˆ ë°”ë¡œ ì‹œìž‘í•˜ëŠ” 18ê°€ì§€ íšŒë³µíƒ„ë ¥ì„± í›ˆë ¨
+    â€œí•˜ë²„ë“œ ìµœê³ ì˜ íšŒë³µíƒ„ë ¥ì„± ì „ë¬¸ê°€ì¸ ê²Œì¼ ê°€ì ¤ ë°•ì‚¬ëŠ” ë‹¹ì‹ ì´ ì–´ë–¤ ì¸ìƒì„ ì‚´ì•„ì™”ë“  ìƒê´€ì—†ì´ íšŒë³µíƒ„ë ¥ì„±ì„ ë†’ì´ëŠ” ë° í•„ìš”í•œ ê°€ìž¥ ì í™•í•œ ë°©ë²•ì„ ì•Œë ¤ì¤€ë‹¤.â€
+    - ë§ˆì…œ ê³¨ë“œìŠ¤ë¯¸ìŠ¤(ì„¸ê³„ ìµœê³ ì˜ ê²½ì˜ ì»¨ì„¤í„´íŠ¸, ã€ŽíŠ¸ë¦¬ê±°ã€, ã€Žëª¨ì¡°ã€ ì €ìž)
     
-    ÀÌ¸¥¹Ù ¡®Á¶¿ëÇÑ ÇÐ»ì¡¯ÀÌ ½ÃÀÛµÆ´Ù. ÄÚ·Î³ª19 ÀÌÈÄ À§±â¿¡ ³»¸ô¸° »ç¶÷µéÀÌ Á¶¿ëÈ÷ ¼³ ÀÚ¸®¸¦ ÀÒ¾î°£´Ù. Æ¯È÷ ½º½º·Î ¸ñ¼ûÀ» ²÷´Â Ã»³âµéÀÌ ´Ã°í ÀÖ´Ù. ÃÖ±Ù Åë°è¿¡ µû¸£¸é 20~30´ë ¿©¼ºÀÇ ÀÚ»ì½ÃµµÀÚ ºñÀ²ÀÌ °¡Àå Å«
-    Áõ°¡¼¼¸¦ º¸ÀÎ´Ù. °í¿ë À§±â¿Í °æÁ¦Àû ºÎ´ã, Æø·Â°ú ¹üÁË, Áúº´°ú »ç°í µîÀÌ ÇÏ·ç ÀÌÆ² ¹®Á¦´Â ¾Æ´ÏÁö¸¸, ÄÚ·Î³ª19 ÀÌÈÄ »ç»ó ÃÖ´ë·Î ½É°¢ÇÑ ¼öÁØ¿¡ ÀÌ¸£·¶´Ù. ±×·¡¼­ ¡®ÄÚ·Î³ªºí·ç¡¯¿¡ ÀÌ¾î ¡®ÄÚ·Î³ªºí·¢¡¯ÀÌ¶ó´Â ½ÅÁ¶¾î°¡
-    ³ª¿Ã ¸¸Å­ ¿ì¿ïÁõ, °øÈ²Àå¾Ö, ¼ö¸éÀå¾Ö µî Á¤½Å°Ç°­ÀÇ Àû½ÅÈ£¸¦ µå·¯³»´Â »ç¶÷µéÀÌ ¸¹¾ÆÁ³´Ù.
+    ì´ë¥¸ë°” â€˜ì¡°ìš©í•œ í•™ì‚´â€™ì´ ì‹œìž‘ëë‹¤. ì½”ë¡œë‚˜19 ì´í›„ ìœ„ê¸°ì— ë‚´ëª°ë¦° ì‚¬ëžŒë“¤ì´ ì¡°ìš©ížˆ ì„¤ ìžë¦¬ë¥¼ ìžƒì–´ê°„ë‹¤. íŠ¹ížˆ ìŠ¤ìŠ¤ë¡œ ëª©ìˆ¨ì„ ëŠëŠ” ì²­ë…„ë“¤ì´ ëŠ˜ê³  ìžˆë‹¤. ìµœê·¼ í†µê³„ì— ë”°ë¥´ë©´ 20~30ëŒ€ ì—¬ì„±ì˜ ìžì‚´ì‹œë„ìž ë¹„ìœ¨ì´ ê°€ìž¥ í°
+    ì¦ê°€ì„¸ë¥¼ ë³´ì¸ë‹¤. ê³ ìš© ìœ„ê¸°ì™€ ê²½ì œì  ë¶€ë‹´, í­ë ¥ê³¼ ë²”ì£„, ì§ˆë³‘ê³¼ ì‚¬ê³  ë“±ì´ í•˜ë£¨ ì´í‹€ ë¬¸ì œëŠ” ì•„ë‹ˆì§€ë§Œ, ì½”ë¡œë‚˜19 ì´í›„ ì‚¬ìƒ ìµœëŒ€ë¡œ ì‹¬ê°í•œ ìˆ˜ì¤€ì— ì´ë¥´ë €ë‹¤. ê·¸ëž˜ì„œ â€˜ì½”ë¡œë‚˜ë¸”ë£¨â€™ì— ì´ì–´ â€˜ì½”ë¡œë‚˜ë¸”ëž™â€™ì´ë¼ëŠ” ì‹ ì¡°ì–´ê°€
+    ë‚˜ì˜¬ ë§Œí¼ ìš°ìš¸ì¦, ê³µí™©ìž¥ì• , ìˆ˜ë©´ìž¥ì•  ë“± ì •ì‹ ê±´ê°•ì˜ ì ì‹ í˜¸ë¥¼ ë“œëŸ¬ë‚´ëŠ” ì‚¬ëžŒë“¤ì´ ë§Žì•„ì¡Œë‹¤.
     
-    Áö±ÝÀº ±× ¾î´À ¶§º¸´Ù »îÀÇ ¹æ¿ªÀ» À§ÇÑ ¡®¸¶À½¹é½Å¡¯ÀÌ ÇÊ¿äÇÑ ½Ã±â´Ù. ÄÚ·Î³ª19 »óÈ²ÀÌ³ª »çÈ¸±¸Á¶Àû È¯°æÀ» ´çÀå ¹Ù²Ü ¼ö´Â ¾ø°ÚÁö¸¸, ±× È¯°æÀ» ¹Ù¶óº¸´Â ³»¸éÀÇ ÅÂµµ³ª °üÁ¡Àº ÃæºÐÈ÷ ¹Ù²Ü ¼ö ÀÖ´Ù. ÀÌÃ³·³ ¿ÜºÎ
-    È¯°æ¿¡ µû¸¥ ¿ì¿ï°ú ºÒ¾È, ½ºÆ®·¹½º¿¡ ¹«³ÊÁöÁö ¾Ê°í ¿ª°æ°ú ½Ã·ÃÀ» ±Øº¹ÇÏ´Â ¸àÅ»ÀÇ ÈûÀ» ¡®È¸º¹Åº·Â¼º¡¯ÀÌ¶ó ÇÑ´Ù. È¸º¹Åº·Â¼ºÀº ºñ¹üÇÑ Æ¯Á¤ÀÎÀÌ ¾Æ´Ñ ´©±¸¿¡°Ô³ª ÀáÀçµÇ¾î ÀÖ´Â ´É·ÂÀÌ´Ù. ´Ù¸¸ ¿ì¸®°¡ ±× ÈûÀ» ²¨³» ¾²´Â
-    ¹æ¹ý¿¡ °üÇØ µû·Î ¹è¿ìÁö ¾Ê¾ÒÀ» »ÓÀÌ´Ù.
+    ì§€ê¸ˆì€ ê·¸ ì–´ëŠ ë•Œë³´ë‹¤ ì‚¶ì˜ ë°©ì—­ì„ ìœ„í•œ â€˜ë§ˆìŒë°±ì‹ â€™ì´ í•„ìš”í•œ ì‹œê¸°ë‹¤. ì½”ë¡œë‚˜19 ìƒí™©ì´ë‚˜ ì‚¬íšŒêµ¬ì¡°ì  í™˜ê²½ì„ ë‹¹ìž¥ ë°”ê¿€ ìˆ˜ëŠ” ì—†ê² ì§€ë§Œ, ê·¸ í™˜ê²½ì„ ë°”ë¼ë³´ëŠ” ë‚´ë©´ì˜ íƒœë„ë‚˜ ê´€ì ì€ ì¶©ë¶„ížˆ ë°”ê¿€ ìˆ˜ ìžˆë‹¤. ì´ì²˜ëŸ¼ ì™¸ë¶€
+    í™˜ê²½ì— ë”°ë¥¸ ìš°ìš¸ê³¼ ë¶ˆì•ˆ, ìŠ¤íŠ¸ë ˆìŠ¤ì— ë¬´ë„ˆì§€ì§€ ì•Šê³  ì—­ê²½ê³¼ ì‹œë ¨ì„ ê·¹ë³µí•˜ëŠ” ë©˜íƒˆì˜ íž˜ì„ â€˜íšŒë³µíƒ„ë ¥ì„±â€™ì´ë¼ í•œë‹¤. íšŒë³µíƒ„ë ¥ì„±ì€ ë¹„ë²”í•œ íŠ¹ì •ì¸ì´ ì•„ë‹Œ ëˆ„êµ¬ì—ê²Œë‚˜ ìž ìž¬ë˜ì–´ ìžˆëŠ” ëŠ¥ë ¥ì´ë‹¤. ë‹¤ë§Œ ìš°ë¦¬ê°€ ê·¸ íž˜ì„ êº¼ë‚´ ì“°ëŠ”
+    ë°©ë²•ì— ê´€í•´ ë”°ë¡œ ë°°ìš°ì§€ ì•Šì•˜ì„ ë¿ì´ë‹¤.
     
-    ÇÏ¹öµå ÃÖ°íÀÇ È¸º¹Åº·Â¼º Àü¹®°¡ÀÎ °ÔÀÏ °¡Á© ¹Ú»ç´Â °­µµ ³ôÀº ¾÷¹« È¯°æ¿¡¼­ ±Ø½ÉÇÑ ½ºÆ®·¹½º¿Í ¿ì¿ïÁõ, ¹ø¾Æ¿ô¿¡ ºüÁø ÀÇ»çµéÀ» »ó´ë·Î ÀÌ È¸º¹Åº·Â¼º ¿ø¸®¸¦ Àû¿ëÇØ ³î¶ó¿î È¿°ú¸¦ °ÅµÎ¾ú´Ù. Áö±Ý±îÁö 500¸íÀÌ ³Ñ´Â
-    ÀÇ»çµéÀÌ ±×ÀÇ µµ¿òÀ» ¹Þ°í ³»¸éÀÇ À§±â¸¦ ±Øº¹ÇØ ÀÚÅ¸°øÀÎ ¡®ÀÇ»çµéÀÇ ÀÇ»ç¡¯·Î ºÒ¸°´Ù. ±×µµ ¾î¸° ½ÃÀý °¡Á¤ Æø·ÂÀÇ ÇÇÇØÀÚ·Î Èûµç ½Ã±â¸¦ º¸³ÂÁö¸¸ È¸º¹Åº·Â¼º ÈÆ·ÃÀ¸·Î °íÅëÀ» ±Øº¹ÇØ³Â°í, ÀÌ¸¦ °è±â·Î Èû°Ü¿î ½Ã°£À»
-    º¸³»´Â »ç¶÷µéÀÇ ¸¶À½¿¡ ¡®ÆòÁ¤½É¡¯À» ¼±¹°ÇÏ°í ÀÖ´Ù.
+    í•˜ë²„ë“œ ìµœê³ ì˜ íšŒë³µíƒ„ë ¥ì„± ì „ë¬¸ê°€ì¸ ê²Œì¼ ê°€ì ¤ ë°•ì‚¬ëŠ” ê°•ë„ ë†’ì€ ì—…ë¬´ í™˜ê²½ì—ì„œ ê·¹ì‹¬í•œ ìŠ¤íŠ¸ë ˆìŠ¤ì™€ ìš°ìš¸ì¦, ë²ˆì•„ì›ƒì— ë¹ ì§„ ì˜ì‚¬ë“¤ì„ ìƒëŒ€ë¡œ ì´ íšŒë³µíƒ„ë ¥ì„± ì›ë¦¬ë¥¼ ì ìš©í•´ ë†€ë¼ìš´ íš¨ê³¼ë¥¼ ê±°ë‘ì—ˆë‹¤. ì§€ê¸ˆê¹Œì§€ 500ëª…ì´ ë„˜ëŠ”
+    ì˜ì‚¬ë“¤ì´ ê·¸ì˜ ë„ì›€ì„ ë°›ê³  ë‚´ë©´ì˜ ìœ„ê¸°ë¥¼ ê·¹ë³µí•´ ìžíƒ€ê³µì¸ â€˜ì˜ì‚¬ë“¤ì˜ ì˜ì‚¬â€™ë¡œ ë¶ˆë¦°ë‹¤. ê·¸ë„ ì–´ë¦° ì‹œì ˆ ê°€ì • í­ë ¥ì˜ í”¼í•´ìžë¡œ íž˜ë“  ì‹œê¸°ë¥¼ ë³´ëƒˆì§€ë§Œ íšŒë³µíƒ„ë ¥ì„± í›ˆë ¨ìœ¼ë¡œ ê³ í†µì„ ê·¹ë³µí•´ëƒˆê³ , ì´ë¥¼ ê³„ê¸°ë¡œ íž˜ê²¨ìš´ ì‹œê°„ì„
+    ë³´ë‚´ëŠ” ì‚¬ëžŒë“¤ì˜ ë§ˆìŒì— â€˜í‰ì •ì‹¬â€™ì„ ì„ ë¬¼í•˜ê³  ìžˆë‹¤.
     
-    ÀÌ Ã¥¿¡¼­ °¡Á© ¹Ú»ç´Â Ç³ºÎÇÑ °æÇè°ú Áö½ÄÀ» ¹ÙÅÁÀ¸·Î È¸º¹Åº·Â¼ºÀÇ ¿ø¸®¸¦ ¾Ë±â ½±°Ô ¼³¸íÇÑ´Ù. È¸º¹Åº·Â¼ºÀ» À§ÇØ ÇÊ¿äÇÑ ¸¶À½ ±ÙÀ°À» 6°¡Áö Å°¿öµå(´ëÀÎ°ü°è, À¯¿¬¼º, ²ö±â, ÀÚ±âÁ¶Àý, ±àÁ¤¼º, ÀÚ±âµ¹º½)·Î ¸íÄèÇÏ°Ô
-    Á¤¸®Çß´Ù. Á÷Á¢ »ó´ãÇÑ ´Ù¾çÇÑ »ç·Ê¸¦ ¼Ò°³ÇÏ¸ç µ¶ÀÚ°¡ ÀÚ±â »óÈ²¿¡ Á÷Á¢ Àû¿ëÇÏµµ·Ï µ½´Â´Ù. ÇÐ¼ú¿ë¾î »ç¿ëÀº ÃÖ¼ÒÈ­ÇÏµÇ ÀÇÇÐ, ½É¸®ÇÐÀÇ ÃÖ½Å ¿¬±¸ °á°ú¸¦ ÅëÇØ È¸º¹Åº·Â¼ºÀÇ ½ÇÁ¦ÀûÀÎ ÈûÀ» ´À²¸º¸µµ·Ï Çß´Ù. ¹«¾ùº¸´Ù ÀÌ
-    Ã¥Àº ½Ç¿ëÀûÀÌ´Ù. ¸í»ó, ³ú°úÇÐ, ±àÁ¤½É¸®ÇÐ, °¨¼ºÁö´É µîÀ» È°¿ëÇÑ ¡°18°¡Áö È¸º¹Åº·Â¼º ÈÆ·Ã¹ý¡±Àº Áö±Ý ¹Ù·Î °¢ÀÚ »î¿¡ Àû¿ëÇØº¼ ¼ö ÀÖ´Ù.
+    ì´ ì±…ì—ì„œ ê°€ì ¤ ë°•ì‚¬ëŠ” í’ë¶€í•œ ê²½í—˜ê³¼ ì§€ì‹ì„ ë°”íƒ•ìœ¼ë¡œ íšŒë³µíƒ„ë ¥ì„±ì˜ ì›ë¦¬ë¥¼ ì•Œê¸° ì‰½ê²Œ ì„¤ëª…í•œë‹¤. íšŒë³µíƒ„ë ¥ì„±ì„ ìœ„í•´ í•„ìš”í•œ ë§ˆìŒ ê·¼ìœ¡ì„ 6ê°€ì§€ í‚¤ì›Œë“œ(ëŒ€ì¸ê´€ê³„, ìœ ì—°ì„±, ëˆê¸°, ìžê¸°ì¡°ì ˆ, ê¸ì •ì„±, ìžê¸°ëŒë´„)ë¡œ ëª…ì¾Œí•˜ê²Œ
+    ì •ë¦¬í–ˆë‹¤. ì§ì ‘ ìƒë‹´í•œ ë‹¤ì–‘í•œ ì‚¬ë¡€ë¥¼ ì†Œê°œí•˜ë©° ë…ìžê°€ ìžê¸° ìƒí™©ì— ì§ì ‘ ì ìš©í•˜ë„ë¡ ë•ëŠ”ë‹¤. í•™ìˆ ìš©ì–´ ì‚¬ìš©ì€ ìµœì†Œí™”í•˜ë˜ ì˜í•™, ì‹¬ë¦¬í•™ì˜ ìµœì‹  ì—°êµ¬ ê²°ê³¼ë¥¼ í†µí•´ íšŒë³µíƒ„ë ¥ì„±ì˜ ì‹¤ì œì ì¸ íž˜ì„ ëŠê»´ë³´ë„ë¡ í–ˆë‹¤. ë¬´ì—‡ë³´ë‹¤ ì´
+    ì±…ì€ ì‹¤ìš©ì ì´ë‹¤. ëª…ìƒ, ë‡Œê³¼í•™, ê¸ì •ì‹¬ë¦¬í•™, ê°ì„±ì§€ëŠ¥ ë“±ì„ í™œìš©í•œ â€œ18ê°€ì§€ íšŒë³µíƒ„ë ¥ì„± í›ˆë ¨ë²•â€ì€ ì§€ê¸ˆ ë°”ë¡œ ê°ìž ì‚¶ì— ì ìš©í•´ë³¼ ìˆ˜ ìžˆë‹¤.
     </div>
     <hr>
     <div class="detail-img">
-      <h4>»ó¼¼ ÀÌ¹ÌÁö</h4>
+      <h4>ìƒì„¸ ì´ë¯¸ì§€</h4>
       <img src="images/l9791166815782.jpg" alt="">
     </div>
     <hr>
     <div class="review">
-      <h4>¸®ºä</h4>
+      <h4>ë¦¬ë·°</h4>
     </div>
     <div class="container">
       <div class="row">
@@ -76,7 +75,7 @@
                   </span><span class="glyphicon glyphicon-star-empty"></span>
                 </div>
                 <div>
-                  <span class="glyphicon glyphicon-user"></span>1,001 Æò°¡
+                  <span class="glyphicon glyphicon-user"></span>1,001 í‰ê°€
                 </div>
               </div>
               <div class="col-xs-6 col-md-6">
@@ -149,7 +148,7 @@
     
         </div>
       </div>
-        <h2 class="text-left">»ç¿ëÀÚ Æò°¡</h2>
+        <h2 class="text-left">ì‚¬ìš©ìž í‰ê°€</h2>
     
         <div class="card">
           <div class="card-body">
@@ -168,9 +167,9 @@
                   <span class="float-right"><i class="text-warning fa fa-star"></i></span>
                 </p>
                 <div class="clearfix"></div>
-                <p>Ã¥ÀÌ Á¤¸» À¯ÀÍÇØ¿ä</p>
+                <p>ì±…ì´ ì •ë§ ìœ ìµí•´ìš”</p>
                 <p>
-                  <a class="float-right btn text-white btn-danger"> <i class="fa fa-heart"></i>ÁÁ¾Æ¿ä</a>
+                  <a class="float-right btn text-white btn-danger"> <i class="fa fa-heart"></i>ì¢‹ì•„ìš”</a>
                 </p>
               </div>
             </div>
@@ -194,9 +193,9 @@
                   <span class="float-right"><i class="text-warning fa fa-star"></i></span>
                 </p>
                 <div class="clearfix"></div>
-                <p>Ã¥ÀÌ Á¤¸» À¯ÀÍÇØ¿ä</p>
+                <p>ì±…ì´ ì •ë§ ìœ ìµí•´ìš”</p>
                 <p>
-                  <a class="float-right btn text-white btn-danger"> <i class="fa fa-heart"></i>ÁÁ¾Æ¿ä</a>
+                  <a class="float-right btn text-white btn-danger"> <i class="fa fa-heart"></i>ì¢‹ì•„ìš”</a>
                 </p>
               </div>
             </div>
@@ -205,6 +204,6 @@
     </div>
   </div>
 
-  <!-- ¸®ºä -->
+  <!-- ë¦¬ë·° -->
 </body>
 </html>
