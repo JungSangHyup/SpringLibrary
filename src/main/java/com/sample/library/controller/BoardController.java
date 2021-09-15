@@ -5,14 +5,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-@RequestMapping("/qnaboard/*")
+@RequestMapping("/board/*")
 public class BoardController {
 
 	@GetMapping("/list")
 	public String list() {
-		System.out.println("list 호출...");
+		System.out.println("list �샇異�...");
 		
-		return "qnaboard/boardList";
+		return "board/boardList";
+	}
+	
+	@GetMapping("/content")
+	public String content() {
+		System.out.println("content");
+		return 
 	}
 	
 }
