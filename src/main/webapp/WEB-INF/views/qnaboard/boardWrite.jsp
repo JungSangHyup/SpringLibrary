@@ -39,11 +39,7 @@
                 <input type="submit" class="sub_btn" value="글쓰기">
                 <input type="button" class="list_btn" value="글목록">
                 </div>
-                </div>
-			
-
-			
-            
+                </div> 
 		</form>
 	</section>
     
