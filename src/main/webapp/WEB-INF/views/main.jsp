@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html;charset=UTF-8" charset="UTF-8"pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -20,19 +20,19 @@
     </ol>
     <div class="carousel-inner ">
       <div class="carousel-item active text-center">
-        <img src="images/newbooks1.jpg" class="d-block rounded mx-auto d-block" alt="..." style="width: 580px;">
+        <img src="/resources/images/newbooks1.jpg" class="d-block rounded mx-auto d-block" alt="..." style="width: 580px;">
       </div>
       <div class="carousel-item">
-        <img src="images/l9791188331796.jpg" class="d-block w-100" alt="...">
+        <img src="/resources/images/l9791188331796.jpg" class="d-block w-100" alt="...">
       </div>
       <div class="carousel-item">
         <img src="..." class="d-block w-100" alt="...">
       </div>
       <div class="carousel-item">
-        <img src="images/newbooks1.jpg" class="d-block w-100" alt="...">
+        <img src="/resources/images/newbooks1.jpg" class="d-block w-100" alt="...">
       </div>
       <div class="carousel-item">
-        <img src="images/newbooks1.jpg" class="d-block w-100" alt="...">
+        <img src="/resources/images/newbooks1.jpg" class="d-block w-100" alt="...">
       </div>
     </div>
     <a class="carousel-control-prev " href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -81,27 +81,27 @@
           <h5 class="m-2">새로나온 책</h5>
           <div class="card-group">
             <div class="card">
-              <img src="./images/l9791191360196.jpg" class="card-img-top">
+              <img src="/resources/images/l9791191360196.jpg" class="card-img-top">
               <div class="card-body">
                 <h5 class="card-title">미래의부</h5>
                 <p class="card-text">이 책을 읽게 되면 당장 해외 주식 앱을 다운로드중인 자신을 발견하게 될 것이다.</p>
               </div>
             </div>
             <div class="card">
-              <img src="./images/l9791166815782.jpg" class="card-img-top">
+              <img src="/resources/images/l9791166815782.jpg" class="card-img-top">
               <div class="card-body">
                 <h5 class="card-title">하버드 회복탄력성 수업</h5>
                 <p class="card-text">우울, 불안, 번아웃, 스트레스에 무너지지 않는 멘탈관리 프로젝트! 지금 바로 시작하자</p>
               </div>
             </div>
             <div class="card">
-              <img src="./images/l9791188331796.jpg" class="card-img-top">
+              <img src="/resources/images/l9791188331796.jpg" class="card-img-top">
               <div class="card-body">
                 <h5 class="card-title">Card title</h5>
               </div>
             </div>
             <div class="card">
-              <img src="./images/l9791188331796.jpg" class="card-img-top">
+              <img src="/resources/images/l9791188331796.jpg" class="card-img-top">
               <div class="card-body">
                 <h5 class="card-title">Card title</h5>
               </div>
@@ -115,27 +115,27 @@
           <h5 class="m-2">요즘 이 책</h5>
           <div class="card-group">
             <div class="card">
-              <img src="./images/l9791191360196.jpg" class="card-img-top">
+              <img src="/resources/images/l9791191360196.jpg" class="card-img-top">
               <div class="card-body">
                 <h5 class="card-title">미래의부</h5>
                 <p class="card-text">이 책을 읽게 되면 당장 해외 주식 앱을 다운로드중인 자신을 발견하게 될 것이다.</p>
               </div>
             </div>
             <div class="card">
-              <img src="./images/l9791166815782.jpg" class="card-img-top">
+              <img src="/resources/images/l9791166815782.jpg" class="card-img-top">
               <div class="card-body">
                 <h5 class="card-title">하버드 회복탄력성 수업</h5>
                 <p class="card-text">우울, 불안, 번아웃, 스트레스에 무너지지 않는 멘탈관리 프로젝트! 지금 바로 시작하자</p>
               </div>
             </div>
             <div class="card">
-              <img src="./images/l9791188331796.jpg" class="card-img-top">
+              <img src="/resources/images/l9791188331796.jpg" class="card-img-top">
               <div class="card-body">
                 <h5 class="card-title">Card title</h5>
               </div>
             </div>
             <div class="card">
-              <img src="./images/l9791188331796.jpg" class="card-img-top">
+              <img src="/resources/images/l9791188331796.jpg" class="card-img-top">
               <div class="card-body">
                 <h5 class="card-title">Card title</h5>
               </div>
