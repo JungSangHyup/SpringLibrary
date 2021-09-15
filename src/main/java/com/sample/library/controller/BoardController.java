@@ -14,11 +14,4 @@ public class BoardController {
 		
 		return "board/boardList";
 	}
-	
-	@GetMapping("/content")
-	public String content() {
-		System.out.println("content");
-		return 
-	}
-	
 }
