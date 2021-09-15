@@ -17,7 +17,7 @@
       <div class="card mb-3">
         <div class="row no-gutters">
           <div class="col-md-4">
-            <img src="images/l9791166815782.jpg" alt="...">
+            <img src="/resources/images/l9791166815782.jpg" alt="...">
           </div>
           <div class="col-md-8">
             <div class="card-body">
@@ -55,7 +55,7 @@
     <hr>
     <div class="detail-img">
       <h4>상세 이미지</h4>
-      <img src="images/l9791166815782.jpg" alt="">
+      <img src="/resources/images/l9791166815782.jpg" alt="">
     </div>
     <hr>
     <div class="review">

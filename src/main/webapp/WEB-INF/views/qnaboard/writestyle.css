@@ -1,0 +1,97 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "montserrat", sans-serif;
+}
+
+body {
+    background: white;
+}
+
+.container {
+    background: url(library.jpg) no-repeat center;
+    background-size: cover;
+    padding:80px 30px;
+    text-align: center;
+    color: white;
+}
+
+.form-subject {
+    text-align: center; 
+    width: 420px;
+    height: 36px;
+    border: none;
+    background: #ededed;
+    border-radius: 4px;
+    font-size: 18px;
+}
+
+.subject, .content {
+    justify-content: center;
+    display: flex;
+}
+
+.form-content {
+    text-align: center;
+    width: 600px;
+    height: 400px;
+    border: none;
+    background: #ededed;
+    border-radius: 4px;
+    font-size: 18px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+
+.t1 {
+    margin: 20px; 
+    text-align: center; 
+    font-size: 18px;
+}
+
+.btn_box {
+    align-items: center; 
+    justify-content: center;
+    display: flex;
+}
+
+.sub_btn {
+    margin-top: 10px;
+    margin-right: 440px;
+    width: 80px;
+    height: 38px;
+    background: #2f3542;
+    color: white;
+    padding: 0 10px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.list_btn {
+    margin-top: 7px;
+    width: 72px;
+    height: 32px;
+    background: #d3d3d3;
+    color: black;
+    padding: 0 10px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+}
+
+.form-content::-webkit-scrollbar {
+    width: 20px;
+    
+  }
+  .form-content::-webkit-scrollbar-thumb {
+    background-color: #2f3542;
+    border-radius: 10px;
+  }
+  .form-content::-webkit-scrollbar-track {
+    background-color: grey;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px white;
+  }
