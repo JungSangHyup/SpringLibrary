@@ -1,0 +1,137 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "montserrat", sans-serif;
+}
+
+body {
+    background: white;
+}
+
+.container {
+    background: url(library.jpg) no-repeat center;
+    background-size: cover;
+    padding:80px 30px;
+    text-align: center;
+    color: white;
+}
+
+.form-subject {
+    text-align: center; 
+    width: 420px;
+    height: 36px;
+    border: none;
+    background: #ededed;
+    border-radius: 4px;
+    font-size: 18px;
+}
+
+.subject, .content {
+    justify-content: center;
+    display: flex;
+}
+
+.form-content {
+    text-align: center;
+    width: 600px;
+    height: 400px;
+    border: none;
+    background: #ededed;
+    border-radius: 4px;
+    font-size: 18px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+
+.t1 {
+    margin: 20px; 
+    text-align: center; 
+    font-size: 18px;
+}
+
+.btn_box {
+    align-items: center; 
+    justify-content: center;
+    display: flex;
+}
+
+.list_btn {
+    margin-top: 7px;
+    margin-left: 480px;
+    width: 72px;
+    height: 32px;
+    background: #d3d3d3;
+    color: black;
+    padding: 0 10px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+}
+
+.m-4 {
+  margin: 1.5rem !important;
+}
+
+.hrtag {
+  padding: 1rem 0.5rem;
+  border-radius: 0.3rem;
+}
+
+@media (min-width: 576px) {
+  .hrtag {
+    padding: 2rem 1rem;
+  }
+}
+
+.form-content::-webkit-scrollbar {
+    width: 20px;
+    
+  }
+  .form-content::-webkit-scrollbar-thumb {
+    background-color: #2f3542;
+    border-radius: 10px;
+  }
+  .form-content::-webkit-scrollbar-track {
+    background-color: grey;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px white;
+  }
+
+.media {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: start;
+  align-items: flex-start;
+    background: #ededed;
+    margin: 10px;
+    margin-left: 10%; 
+    margin-right: 10%;
+}
+
+.media-body {
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.mr-3,
+.mx-3 {
+  margin-right: 1rem !important;
+}
+
+.mt-0,
+.my-0 {
+  margin-top: 0 !important;
+}
+
+h3 {
+    margin-left: 5%;
+    margin-bottom: 10px;
+}
+
+i {
+    margin: 10px;
+    line-height: 40px;
+    font-size: 50px;
+}
