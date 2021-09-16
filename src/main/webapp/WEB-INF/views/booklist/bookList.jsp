@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  	<link rel="stylesheet" href="/resources/css/mainstyle.css">
-	 <link rel="stylesheet" href="/resources/css/bootstrap.css">
+    <link rel="stylesheet" href="/resources/css/mainstyle.css">
+    <link rel="stylesheet" href="/resources/css/bootstrap.css">
 </head>
 <body class="wrap">
 <jsp:include page="/WEB-INF/views/include/navbar.jsp"/>
@@ -43,10 +43,12 @@
             <input type="checkbox" class="custom-control-input" id="rental_btn">
             <label class="custom-control-label m-2 " for="rental_btn">대여 가능만</label>
           </div>
-          <div class="custom-control custom-switch text-right">
+          <div class="custom-control custom-switch text-right col-3">
             <input type="checkbox" class="custom-control-input" id="image_btn">
             <label class="custom-control-label m-2 " for="image_btn">펼쳐보기</label>
           </div>
+          <!-- // 관리자만 보임 -->
+          <button class="btn-primary text-right mt-3 mb-3" onclick="location.href='/book/write'">책 추가</button>
         </div>
 
 
