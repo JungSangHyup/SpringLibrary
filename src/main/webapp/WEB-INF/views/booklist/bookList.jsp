@@ -6,16 +6,17 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  	<link rel="stylesheet" href="/resources/css/mainstyle.css">
 	 <link rel="stylesheet" href="/resources/css/bootstrap.css">
 </head>
-<body>
+<body class="wrap">
 <jsp:include page="/WEB-INF/views/include/navbar.jsp"/>
 
 <div class="container">
   <div class="row">
     
-    <div class="col-3 ">
-      <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+    <div class="col-3" >
+      <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical" style="background: #ECE6CC;">
         <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
           aria-controls="v-pills-home" aria-selected="true">신간</a>
         <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
@@ -36,7 +37,7 @@
     </div>
 
 
-      <div class="col-9 bg-light">
+      <div class="col-9" style="background: #ECE6CC;">
         <div class="row">
           <div class="custom-control custom-switch col-3">
             <input type="checkbox" class="custom-control-input" id="rental_btn">
