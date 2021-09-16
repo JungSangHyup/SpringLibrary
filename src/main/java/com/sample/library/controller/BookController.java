@@ -9,19 +9,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class BookController {
 	@GetMapping(value = {"/", "/list"})
 	public String list() {
-		System.out.println("content");
 		return "booklist/bookList";
 	}
 	
 	@GetMapping("/content")
 	public String content() {
-		System.out.println("content");
 		return "booklist/bookContent";
 	}
 	
 	@GetMapping("/gallery")
 	public String gallery() {
-		System.out.println("content");
 		return "booklist/bookGallery";
+	}
+	
+	@GetMapping("/write")
+	public String write() {
+		return "booklist/bookWrite";
 	}
 }
