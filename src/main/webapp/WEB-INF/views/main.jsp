@@ -48,98 +48,118 @@
   </div>
   <!-- end of Carousel -->
 
-<div class="container bg-light">
+<div class="container">
   <div class="row">
-    <div class="col-3">
-      <div class="dropdown-menu"></div>
-        <form class="px-4 py-3">
-          <div class="form-group">
-            <label for="exampleDropdownFormEmail1">아이디</label>
-            <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="이메일">
-          </div>
-          <div class="form-group">
-            <label for="exampleDropdownFormPassword1">비밀번호</label>
-            <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="비밀번호">
-          </div>
-          <div class="form-group">
-            <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="dropdownCheck">
-              <label class="form-check-label" for="dropdownCheck">
-                로그인 유지
-              </label>
-            </div>
-          </div>
-          <button type="submit" class="btn btn-primary">로그인</button>
-        </form>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="#">회원가입</a>
-      <a class="dropdown-item" href="#">비밀번호 찾기</a>
+    <div class="col-3 bg-light">
+      <div class=" modal-dialog modal-sm text-center mt-5 ">
+        <button type="submit" class="btn btn-primary ">로그인</button>
+        <button type="submit" class="btn btn-primary">회원가입</button>
+      </div>
+      <div class="jumbotron mt-5">
+        <h1 class="display-4">Hello, world!</h1>
+        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured
+          content or information.</p>
+        <hr class="my-4">
+        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+        <p class="lead">
+          <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+        </p>
+      </div>
     </div>
 
-    <div class="container col-9 ">
-      <div class="row">
+     <div class="container col-9 ">
+      <div class="row text-center text-lg-start">
         <div class="d-flex flex-wrap align-bottom">
           <span class="badge badge-primary m-2">NEW</span>
           <h5 class="m-2">새로나온 책</h5>
+
           <div class="card-group">
-            <div class="card">
-              <img src="/resources/images/l9791191360196.jpg" class="card-img-top">
+            <div class="card col-lg-3 col-md-4 col-6">
+              <a href="#" class="">
+                <img class="card-img-top" src="/resources/images/l9791191360196.jpg" alt="Card image cap" style="max-width: 170px;">
+              </a>
               <div class="card-body">
                 <h5 class="card-title">미래의부</h5>
                 <p class="card-text">이 책을 읽게 되면 당장 해외 주식 앱을 다운로드중인 자신을 발견하게 될 것이다.</p>
               </div>
             </div>
-            <div class="card">
-              <img src="/resources/images/l9791166815782.jpg" class="card-img-top">
+            <div class="card col-lg-3 col-md-4 col-6">
+              <a href="#" class="">
+                <img class="card-img-top" src="/resources/images/l9791166815782.jpg" alt="Card image cap" style="max-width: 170px;">
+              </a>
               <div class="card-body">
-                <h5 class="card-title">하버드 회복탄력성 수업</h5>
-                <p class="card-text">우울, 불안, 번아웃, 스트레스에 무너지지 않는 멘탈관리 프로젝트! 지금 바로 시작하자</p>
+                <h5 class="card-title">미래의부</h5>
+                <p class="card-text">이 책을 읽게 되면 당장 해외 주식 앱을 다운로드중인 자신을 발견하게 될 것이다.</p>
               </div>
             </div>
-            <div class="card">
-              <img src="/resources/images/l9791188331796.jpg" class="card-img-top">
+            <div class="card col-lg-3 col-md-4 col-6">
+              <a href="#" class="">
+                <img class="card-img-top" src="/resources/images/l9791197413025.jpg" alt="Card image cap" style="max-width: 170px;">
+              </a>
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+                <h5 class="card-title">미래의부</h5>
+                <p class="card-text">이 책을 읽게 되면 당장 해외 주식 앱을 다운로드중인 자신을 발견하게 될 것이다.</p>
               </div>
             </div>
-            <div class="card">
-              <img src="/resources/images/l9791188331796.jpg" class="card-img-top">
+            <div class="card col-lg-3 col-md-4 col-6">
+              <a href="#" class="">
+                <img class="card-img-top" src="/resources/images/l9791197413025.jpg" alt="Card image cap" style="max-width: 170px;">
+              </a>
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+                <h5 class="card-title">미래의부</h5>
+                <p class="card-text">이 책을 읽게 되면 당장 해외 주식 앱을 다운로드중인 자신을 발견하게 될 것이다.</p>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="d-flex flex-wrap">
-          <span class="badge badge-primary m-2">BEST</span>
+      
+      
+      
+<div class="row text-center text-lg-start">
+        <div class="d-flex flex-wrap align-bottom">
+          <span class="badge badge-primary m-2">NEW</span>
           <h5 class="m-2">요즘 이 책</h5>
+      
           <div class="card-group">
-            <div class="card">
-              <img src="/resources/images/l9791191360196.jpg" class="card-img-top">
+            <div class="card col-lg-3 col-md-4 col-6">
+              <a href="#" class="">
+                <img class="card-img-top" src="/resources/images/l9791191360196.jpg" alt="Card image cap"
+                  style="max-width: 170px;">
+              </a>
               <div class="card-body">
                 <h5 class="card-title">미래의부</h5>
                 <p class="card-text">이 책을 읽게 되면 당장 해외 주식 앱을 다운로드중인 자신을 발견하게 될 것이다.</p>
               </div>
             </div>
-            <div class="card">
-              <img src="/resources/images/l9791166815782.jpg" class="card-img-top">
+            <div class="card col-lg-3 col-md-4 col-6">
+              <a href="#" class="">
+                <img class="card-img-top" src="/resources/images/l9791166815782.jpg" alt="Card image cap"
+                  style="max-width: 170px;">
+              </a>
               <div class="card-body">
-                <h5 class="card-title">하버드 회복탄력성 수업</h5>
-                <p class="card-text">우울, 불안, 번아웃, 스트레스에 무너지지 않는 멘탈관리 프로젝트! 지금 바로 시작하자</p>
+                <h5 class="card-title">미래의부</h5>
+                <p class="card-text">이 책을 읽게 되면 당장 해외 주식 앱을 다운로드중인 자신을 발견하게 될 것이다.</p>
               </div>
             </div>
-            <div class="card">
-              <img src="/resources/images/l9791188331796.jpg" class="card-img-top">
+            <div class="card col-lg-3 col-md-4 col-6">
+              <a href="#" class="">
+                <img class="card-img-top" src="/resources/images/l9791197413025.jpg" alt="Card image cap"
+                  style="max-width: 170px;">
+              </a>
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+                <h5 class="card-title">미래의부</h5>
+                <p class="card-text">이 책을 읽게 되면 당장 해외 주식 앱을 다운로드중인 자신을 발견하게 될 것이다.</p>
               </div>
             </div>
-            <div class="card">
-              <img src="/resources/images/l9791188331796.jpg" class="card-img-top">
+            <div class="card col-lg-3 col-md-4 col-6">
+              <a href="#" class="">
+                <img class="card-img-top" src="/resources/images/l9791197413025.jpg" alt="Card image cap"
+                  style="max-width: 170px;">
+              </a>
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+                <h5 class="card-title">미래의부</h5>
+                <p class="card-text">이 책을 읽게 되면 당장 해외 주식 앱을 다운로드중인 자신을 발견하게 될 것이다.</p>
               </div>
             </div>
           </div>
