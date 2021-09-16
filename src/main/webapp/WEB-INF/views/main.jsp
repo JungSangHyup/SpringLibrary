@@ -20,10 +20,10 @@
     </ol>
     <div class="carousel-inner ">
       <div class="carousel-item active text-center">
-        <img src="/resources/images/newbooks1.jpg" class="d-block rounded mx-auto d-block" alt="..." style="width: 580px;">
+        <img src="/resources/images/newbooks1.jpg" class="d-block rounded mx-auto d-block w-75" alt="..." style="max-height: 480px;">
       </div>
       <div class="carousel-item">
-        <img src="/resources/images/l9791188331796.jpg" class="d-block w-100" alt="..." style="width: 580px;">
+        <img src="/resources/images/l9791188331796.jpg" class="d-block rounded mx-auto d-block w-75" alt="..." style="max-height: 480px;">
       </div>
     </div>
     <a class="carousel-control-prev " href="#carouselExampleIndicators" role="button" data-slide="prev">

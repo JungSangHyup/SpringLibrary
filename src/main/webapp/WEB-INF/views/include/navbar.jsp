@@ -23,43 +23,19 @@
 
 
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 도서목록 
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="/board/list">게시판</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="/board/gallery">갤러리</a>
-          </div>
-        </li>
-        
-        
-
-        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 도서대여 </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">심플 채팅</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">채팅방 목록</a>
-          </div>
+          <a class="nav-link  dropdown-toggle" href="#" data-bs-toggle="dropdown"> 도서목록 </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/book/list">책장</a></li>
+            <li><a class="dropdown-item" href="/book/gallery">갤러리</a></li>
+          </ul>
         </li>
 
-        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 게시판 </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">심플 채팅</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">채팅방 목록</a>
-          </div>
+        <li class="nav-item"><a class="nav-link" href="/qnaboard/list">게시판</a>
         </li>
 
         <li class="nav-item"><a class="nav-link" href="/">문의사항</a>
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="검색" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button>
-      </form>
     </div>
   </div>
 </nav>
@@ -68,3 +44,39 @@
 <script src="/resources/js/bootstrap.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
   integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(){
+	// make it as accordion for smaller screens
+	  if (window.innerWidth > 992) {
+
+	  	document.querySelectorAll('.navbar .nav-item').forEach(function(everyitem){
+
+	  		everyitem.addEventListener('mouseover', function(e){
+
+	  			let el_link = this.querySelector('a[data-bs-toggle]');
+
+	  			if(el_link != null){
+	  				let nextEl = el_link.nextElementSibling;
+	  				el_link.classList.add('show');
+	  				nextEl.classList.add('show');
+	  			}
+
+	  		});
+	  		everyitem.addEventListener('mouseleave', function(e){
+	  			let el_link = this.querySelector('a[data-bs-toggle]');
+
+	  			if(el_link != null){
+	  				let nextEl = el_link.nextElementSibling;
+	  				el_link.classList.remove('show');
+	  				nextEl.classList.remove('show');
+	  			}
+
+
+	  		})
+	  	});
+
+	  }
+	  // end if innerWidth
+	  }); 
+	  // DOMContentLoaded  end
+</script>
