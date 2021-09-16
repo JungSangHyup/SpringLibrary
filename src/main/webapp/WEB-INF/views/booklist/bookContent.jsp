@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 	  <link rel="stylesheet" href="/resources/css/bootstrap.css">
-
   </head>
 <body>
+<jsp:include page="/WEB-INF/views/include/navbar.jsp"/>
   <div class="container" style="max-width: 720px;">
       <div class="card mb-3">
         <div class="row no-gutters">
@@ -145,6 +145,7 @@
     
         </div>
       </div>
+      <!-- 리뷰 -->
         <h2 class="text-left">사용자 평가</h2>
     
         <div class="card">
@@ -200,8 +201,9 @@
       </div>
     </div>
   </div>
+	<jsp:include page="/WEB-INF/views/include/bottomFooter.jsp"/>
 	<script src="/resources/js/bootstrap.js"></script>
-	<script src="/resources/js/jquery-3.6.0.js"></script>
-  <!-- 리뷰 -->
+    <script src="/resources/js/jquery-3.6.0.js"></script>
+
 </body>
 </html>

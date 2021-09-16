@@ -7,11 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 	 <link rel="stylesheet" href="/resources/css/bootstrap.css">
-	 <script src="/resources/js/bootstrap.js"></script>
-	 <script src="/resources/js/jquery-3.6.0.js"></script>
 </head>
 <body>
-
+<jsp:include page="/WEB-INF/views/include/navbar.jsp"/>
 
 <div class="container">
   <div class="row">
@@ -137,7 +135,9 @@
       </div>
     </div>
 </div>
-  
+	<jsp:include page="/WEB-INF/views/include/bottomFooter.jsp"/>
+	<script src="/resources/js/bootstrap.js"></script>
+    <script src="/resources/js/jquery-3.6.0.js"></script>
   
 </body>
 </html>
