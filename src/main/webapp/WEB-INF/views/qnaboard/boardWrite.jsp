@@ -10,6 +10,8 @@
 <body>
 
 <!-- Navbar -->
+<jsp:include page="/WEB-INF/views/include/navbar.jsp" />
+
     <div class="boardform">
     <h1>Board Form</h1>
 </div>

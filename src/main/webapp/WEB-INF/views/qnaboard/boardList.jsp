@@ -9,7 +9,7 @@
 </head>
 <body>
     <!-- navbar  -->
-    
+    <jsp:include page="/WEB-INF/views/include/navbar.jsp" />
     
 <div class="boardform">
     <h1>Book Search</h1>

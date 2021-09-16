@@ -12,6 +12,8 @@
 <body>
 
     <!-- Navbar -->
+    <jsp:include page="/WEB-INF/views/include/navbar.jsp" />
+    
     <div class="boardform">
         <h1>Board Form</h1>
     </div>
@@ -19,7 +21,7 @@
 
     <!-- Post -->
     <section class="post" id="post" style="margin-top: 30px;">
-        <h2 style="text-align: center;"> 게시글 </h2>
+        <h4 style="text-align: center;"> 게시글 </h4>
 
         <div class="hrtag">
             <hr class="my-1" style="height: 2px; background: #ECE6CC; border-radius: 10px;">
