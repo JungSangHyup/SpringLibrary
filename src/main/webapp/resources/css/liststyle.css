@@ -9,7 +9,7 @@ body {
 }
 
 .boardform {
-    background: url(./images/library.jpg) no-repeat center;
+    background: url(/resources/images/library.jpg) no-repeat center;
     background-size: cover;
     padding: 100px 40px;
     text-align: center;
