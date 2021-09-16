@@ -11,7 +11,7 @@
     <!-- navbar  -->
     
     
-<div class="container">
+<div class="boardform">
     <h1>Book Search</h1>
     <form action="#">
      <div class="search_box">
@@ -80,7 +80,7 @@
   </ul>
 </nav>
 <!-- footer -->
-
+<jsp:include page="/WEB-INF/views/include/bottomFooter.jsp" />
 </body>
 </html>
 

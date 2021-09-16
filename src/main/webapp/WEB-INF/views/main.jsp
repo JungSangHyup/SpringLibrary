@@ -3,7 +3,8 @@
 <html lang="ko">
 
 <head>
-  <script src="/resources/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="/resources/css/bootstrap.css">
+
 </head>
 
 <body>
@@ -11,8 +12,6 @@
 	<jsp:include page="/WEB-INF/views/include/navbar.jsp"/>
 
   <!-- Carousel -->
-
-
   <div id="carouselExampleIndicators" class="carousel slide container" data-ride="carousel">
     <ol class="carousel-indicators ">
       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active bg-dark"></li>
@@ -24,16 +23,7 @@
         <img src="/resources/images/newbooks1.jpg" class="d-block rounded mx-auto d-block" alt="..." style="width: 580px;">
       </div>
       <div class="carousel-item">
-        <img src="/resources/images/l9791188331796.jpg" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="..." class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="/resources/images/newbooks1.jpg" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="/resources/images/newbooks1.jpg" class="d-block w-100" alt="...">
+        <img src="/resources/images/l9791188331796.jpg" class="d-block w-100" alt="..." style="width: 580px;">
       </div>
     </div>
     <a class="carousel-control-prev " href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -167,6 +157,8 @@
     </div>
 	  <%--    include bottomFooter.jsp--%>
 	<jsp:include page="/WEB-INF/views/include/bottomFooter.jsp"/>
+	<script src="/resources/js/bootstrap.js"></script>
+    <script src="/resources/js/jquery-3.6.0.js"></script>
 </body>
 
 </html>

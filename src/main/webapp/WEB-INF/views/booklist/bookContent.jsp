@@ -6,10 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <script src="/resources/js/bootstrap.min.js"></script>
-  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
-    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	  <link rel="stylesheet" href="/resources/css/bootstrap.css">
+
   </head>
 <body>
   <div class="container" style="max-width: 720px;">
@@ -202,7 +200,8 @@
       </div>
     </div>
   </div>
-
+	<script src="/resources/js/bootstrap.js"></script>
+	<script src="/resources/js/jquery-3.6.0.js"></script>
   <!-- 리뷰 -->
 </body>
 </html>
