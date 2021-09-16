@@ -10,7 +10,7 @@
 <body>
 
 <!-- Navbar -->
-    <div class="container">
+    <div class="boardform">
     <h1>Board Form</h1>
 </div>
     <p></p>
@@ -44,5 +44,6 @@
 	</section>
     
     <!-- footer -->
+    <jsp:include page="/WEB-INF/views/include/bottomFooter.jsp" />
 </body>
 </html>

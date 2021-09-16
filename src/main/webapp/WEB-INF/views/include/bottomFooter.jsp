@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+    <link rel="stylesheet" type="text/css" href="${path}/resources/css/bootstrap.css">
     <!-- FOOTER -->
-    <footer class="mt-5 py-5 bg-warning">
+    <footer class="mt-5 py-5 bg-warning w-100">
       <div class="container">
         <div class="row">
           <div class="col-12 col-md">
@@ -42,5 +42,3 @@
       </div>
     </footer>
     <!-- end of FOOTER -->
-    
-    

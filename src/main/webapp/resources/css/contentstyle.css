@@ -8,7 +8,7 @@ body {
     background: white;
 }
 
-.container {
+.boardform {
     background: url(./images/library.jpg) no-repeat center;
     background-size: cover;
     padding:80px 30px;
