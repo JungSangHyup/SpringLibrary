@@ -9,7 +9,7 @@ body {
 }
 
 .container {
-    background: url(library.jpg) no-repeat center;
+    background: url(./images/library.jpg) no-repeat center;
     background-size: cover;
     padding:80px 30px;
     text-align: center;
