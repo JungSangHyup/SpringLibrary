@@ -15,14 +15,18 @@ import lombok.ToString;
 @ToString
 public class MemberVO {
 
-	private String id;
-	private String passwd;
-	private String name;
+	private String userid;
+	private String userpass;
+	private String username;
+	private String userphone;
+	private String useremail;
+	private String useraddr1;
+	private String useraddr2;
 	private String birthday;
-	private String gender;
-	private String email;
-	private String recvEmail;
-	private Date regDate;
+	private Date regdate;
+	private String profile;
+	private String grade;
+	private Integer mileage;
 }
 
 
