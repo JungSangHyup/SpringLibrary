@@ -12,25 +12,25 @@ import com.sample.library.domain.MemberVO;
 
 public interface MemberMapper {
 
-	@Insert("INSERT INTO member (id, passwd, name, birthday, gender, email, recv_email, reg_date) "
-			+ " VALUES (#{id}, #{passwd}, #{name}, #{birthday}, #{gender}, #{email}, #{recvEmail}, #{regDate}) ")
+	@Insert("INSERT INTO users (userid, userpass, username, userphone, useraddr1, useraddr2, birthday, regdate, profile, grade, mileage) "
+			+ " VALUES (#{userid}, #{userpass}, #{username}, #{userphone}, #{useraddr1}, #{useraddr2}, #{birthday}, #{regdate}, #{profile}, #{grade}, #{mileage}) ")
 	int insert(MemberVO memberVO);
 	
-	@Select("SELECT * FROM member WHERE id = #{id}")
+	@Select("SELECT * FROM users WHERE id = #{userid}")
 	MemberVO getMemberById(String id);
 	
-	@Select("SELECT * FROM member ORDER BY id")
-	List<MemberVO> getMembers();
+	@Select("SELECT * FROM users ORDER BY userid")
+	List<MemberVO> getUsers();
 	
-	@Select("SELECT COUNT(*) FROM member WHERE id = #{id}")
+	@Select("SELECT COUNT(*) FROM users WHERE userid = #{userid}")
 	int getCountById(String id);
 	
-	@Delete("DELETE FROM member WHERE id = #{id}")
+	@Delete("DELETE FROM users WHERE userid = #{userid}")
 	int deleteMemberById(String id);
 	
 	
-	@Update(" UPDATE member "
-			+ " SET passwd = #{passwd}, name = #{name}, birthday = #{birthday}, gender = #{gender}, email = #{email}, recv_email = #{recvEmail} "
+	@Update(" UPDATE users "
+			+ " SET passwd = #{userpass}, name = #{username}, userphone = #{userphone}, useraddr1 = #{useraddr1}, useraddr2 = #{useraddr2}, birthday = #{birthday}, regdate = #{regdate}, profile = #{profile}, grade = #{grade}, mileage = #{mileage}"
 			+ " WHERE id = #{id} ")
 	void updateMember(MemberVO memberVO);
 	
