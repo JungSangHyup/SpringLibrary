@@ -106,7 +106,7 @@
       
       
       
-	<div class="row text-center text-lg-start">
+   <div class="row text-center text-lg-start">
         <div class="d-flex flex-wrap align-bottom">
           <span class="badge badge-primary m-2">BEST</span>
           <h5 class="m-2">요즘 이 책</h5>

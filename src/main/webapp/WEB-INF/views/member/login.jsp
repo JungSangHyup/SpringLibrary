@@ -8,13 +8,12 @@
 <link rel="stylesheet" href="${path}/resources/css/style.css">
 </head>
 <body>
-
 	<div class="wrap">
 		<div class="form-wrap">
 			<div class="container">
 				<h3>LOGIN</h3>
 			</div>
-			<form id="login" action="/" class="input-group">
+			<form action="/" class="input-group">
 				<input type="text" class="input-field"
 					placeholder="User name or Email" required> <input
 					type="password" class="input-field" placeholder="Enter Password"
@@ -29,5 +28,9 @@
 			</form>
 		</div>
 	</div>
+	<!-- JavaScript -->
+   
+    
+    
 </body>
 </html>
