@@ -12,8 +12,9 @@
   <!-- Bootstrap CSS -->
   <!-- <link rel="stylesheet" href="/resources/css/bootstrap.css"> -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="/resources/css/modify.css">
 </head>
-<body>
+<body class="wrap">
     <!-- include navbar -->
 	
 	<!-- include sidebar -->
@@ -25,24 +26,25 @@
         <!-- left area -->
         <div class="col-sm-3">
             <!-- Vertical Nav -->
-          <ul class="nav flex-column nav-pills" style="white-space:nowrap;">
-            <li>
-              <h3>마이페이지</h3>
+            <nav class="navbar" style="background: #ECE6CC;">
+              <span class="navbar-brand mb-0 h1" style="white-space:nowrap; margin: auto;">마이페이지</span>
+            </nav>
+            <ul class="nav flex-column nav-pills" style="background: #ECE6CC; white-space:nowrap;">
+              <li class="nav-item">
+                <a class="nav-link" href="member/myRental" style="color: black;">대여도서관리</a>
+              </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/member/myWish" style="color: black;">찜목록</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">대여도서목록</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/member/myWish">찜목록</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active">회원정보수정</a>
+              <a class="nav-link active" style="background-color: rgb(207, 136, 86);">회원정보수정</a>
             </li>
             <li class="nav-item">
               <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">회원탈퇴</a>
             </li>
           </ul>
           <!-- end of Vertical Nav -->
+
         </div>
         <!-- left area end -->
 
@@ -50,7 +52,7 @@
         <!-- right area -->
         <div class="col-sm-9">
             <!-- Contents area -->
-          <div class="border border-info p-4 rounded">
+          <div class="border border p-4" style="background: #ECE6CC;">
             <form action="/member/modify" method="POST">
               <div class="form-group row mb-2">
                 <label for="id" class="col-sm-3 col-form-label" style="white-space:nowrap;">
@@ -112,11 +114,11 @@
                 <div class="col-sm-9">
                   <div class="custom-control custom-radio custom-control-inline mt-2">
                     <input class="custom-control-input" type="radio" name="genderRadio" id="genderRadio1" value="M" checked>
-                    <label class="custom-control-label" for="inlineRadio1">남자</label>
+                    <label class="custom-control-label" for="genderRadio1">남자</label>
                   </div>
                   <div class="custom-control custom-radio custom-control-inline">
                     <input class="custom-control-input" type="radio" name="genderRadio" id="genderRadio2" value="F">
-                    <label class="custom-control-label" for="inlineRadio2">여자</label>
+                    <label class="custom-control-label" for="genderRadio2">여자</label>
                   </div>
                 </div>
               </div>
@@ -181,12 +183,12 @@
                 </label>
                 <div class="col-sm-9 mt-2">
                   <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="customRadioInline1" name="recvEmail" class="custom-control-input" value="Y" checked>
-                    <label class="custom-control-label" for="customRadioInline1">동의함</label>
+                    <input type="radio" id="recvRadio1" name="recvEmail" class="custom-control-input" value="Y" checked>
+                    <label class="custom-control-label" for="recvRadio1">동의함</label>
                   </div>
                   <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="customRadioInline2" name="recvEmail" class="custom-control-input" value="N">
-                    <label class="custom-control-label" for="customRadioInline2">동의 안함</label>
+                    <input type="radio" id="recvRadio2" name="recvEmail" class="custom-control-input" value="N">
+                    <label class="custom-control-label" for="recvRadio2">동의 안함</label>
                   </div>
                 </div>
               </div>
@@ -207,7 +209,7 @@
 
               
               <div class="my-3 text-right">
-                <button type="submit" class="btn btn-primary">변경하기</button>
+                <button type="submit" class="btn btn-secondary">변경하기</button>
                 <button type="reset" class="btn btn-secondary ml-3">취소</button>
               </div>
             </form>

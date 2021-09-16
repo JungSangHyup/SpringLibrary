@@ -50,6 +50,13 @@ public class MemberController {
 		System.out.println("myWish 호둘됨...");
 		return "member/myWish";
 	}
+	
+	@GetMapping("/myRental")
+	public String myRental() {
+		System.out.println("myRental 호둘됨...");
+		return "member/myRental";
+	}
+	
 }
 
 

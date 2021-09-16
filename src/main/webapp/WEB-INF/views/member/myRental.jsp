@@ -12,7 +12,7 @@
   <!-- Bootstrap CSS -->
   <!-- <link rel="stylesheet" href="/resources/css/bootstrap.css"> -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="/resources/css/myWishlist.css">
+  <link rel="stylesheet" type="text/css" href="/resources/css/myRental.css">
 </head>
 <body class="wrap">
     <!-- include navbar -->
@@ -31,11 +31,10 @@
             </nav>
           <ul class="nav flex-column nav-pills" style="background: #ECE6CC; white-space:nowrap;">
             <li class="nav-item">
-              <a class="nav-link" href="/member/myRental" style="color: black;">대여도서관리</a>
+              <a class="nav-link active" style="background-color: rgb(207, 136, 86);">대여도서관리</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" style="background-color: rgb(207, 136, 86);">
-                찜목록</a>
+              <a class="nav-link" href="/member/myWish" style="color: black;">찜목록</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/member/modify" style="color: black;">회원정보수정</a>
@@ -129,8 +128,8 @@
                 </tbody>
               </table>
               <div class="my-3 text-right">
-                <button type="submit" class="btn btn-secondary">대여신청</button>
-                <button type="reset" class="btn btn-secondary ml-3">삭제</button>
+                <button type="submit" class="btn btn-secondary">연장신청</button>
+                <button type="reset" class="btn btn-secondary ml-3">반납하기</button>
               </div>
             </form>
           </div>
