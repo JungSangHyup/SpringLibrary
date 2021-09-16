@@ -23,7 +23,7 @@ public class MemberController {
 	
 	@GetMapping("/join") // /member/join
 	public String join() {
-		System.out.println("join 호출됨...");
+		System.out.println("join...");
 		return "member/join";
 	}
 	
@@ -37,6 +37,11 @@ public class MemberController {
 	public String logout() {
 		System.out.println("logout...");
 		return "member/logout";
+	}
+	@GetMapping("/modify")
+	public String modify() {
+		System.out.println("logout...");
+		return "member/modify";
 	}
 }
 
