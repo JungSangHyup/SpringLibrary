@@ -8,6 +8,8 @@
 </head>
 
 <body>
+	<%-- include topNavbar.jsp --%>
+	<jsp:include page="/WEB-INF/views/include/navbar.jsp"/>
 
   <!-- Carousel -->
 
@@ -144,6 +146,8 @@
         </div>
       </div>
     </div>
+	  <%--    include bottomFooter.jsp--%>
+	<jsp:include page="/WEB-INF/views/include/bottomFooter.jsp"/>
 </body>
 
 </html>
