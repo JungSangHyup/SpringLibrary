@@ -70,9 +70,21 @@ body {
     display: flex;
 }
 
+.sub_btn {
+    margin-top: 10px;
+    margin-right: 440px;
+    width: 80px;
+    height: 38px;
+    background: #2f3542;
+    color: white;
+    padding: 0 10px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
 .list_btn {
     margin-top: 7px;
-    margin-left: 480px;
     width: 72px;
     height: 32px;
     background: #d3d3d3;
