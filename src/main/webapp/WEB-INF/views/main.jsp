@@ -3,8 +3,7 @@
 <html lang="ko">
 
 <head>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
-    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+  <script src="/resources/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -51,7 +50,7 @@
 <div class="container">
   <div class="row">
     <div class="col-3 bg-light">
-      <div class=" modal-dialog modal-sm text-center mt-5 ">
+      <div class=" modal-dialog modal-sm text-center mt-5 login-form">
         <button type="submit" class="btn btn-primary ">로그인</button>
         <button type="submit" class="btn btn-primary">회원가입</button>
       </div>
@@ -73,7 +72,7 @@
           <span class="badge badge-primary m-2">NEW</span>
           <h5 class="m-2">새로나온 책</h5>
 
-          <div class="card-group">
+          <div class="card-group best-seller">
             <div class="card col-lg-3 col-md-4 col-6">
               <a href="#" class="">
                 <img class="card-img-top" src="/resources/images/l9791191360196.jpg" alt="Card image cap" style="max-width: 170px;">
@@ -116,12 +115,12 @@
       
       
       
-<div class="row text-center text-lg-start">
+	<div class="row text-center text-lg-start">
         <div class="d-flex flex-wrap align-bottom">
           <span class="badge badge-primary m-2">NEW</span>
           <h5 class="m-2">요즘 이 책</h5>
       
-          <div class="card-group">
+          <div class="card-group new-book">
             <div class="card col-lg-3 col-md-4 col-6">
               <a href="#" class="">
                 <img class="card-img-top" src="/resources/images/l9791191360196.jpg" alt="Card image cap"
