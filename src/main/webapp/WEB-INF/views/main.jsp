@@ -8,8 +8,8 @@
 </head>
 
 <body>
-	<%-- include topNavbar.jsp --%>
-	<jsp:include page="/WEB-INF/views/include/navbar.jsp"/>
+   <%-- include topNavbar.jsp --%>
+   <jsp:include page="/WEB-INF/views/include/navbar.jsp"/>
 
   <!-- Carousel -->
   <div id="carouselExampleIndicators" class="carousel slide container" data-ride="carousel">
@@ -105,7 +105,7 @@
       
       
       
-	<div class="row text-center text-lg-start">
+   <div class="row text-center text-lg-start">
         <div class="d-flex flex-wrap align-bottom">
           <span class="badge badge-primary m-2">NEW</span>
           <h5 class="m-2">요즘 이 책</h5>
@@ -155,9 +155,9 @@
         </div>
       </div>
     </div>
-	  <%--    include bottomFooter.jsp--%>
-	<jsp:include page="/WEB-INF/views/include/bottomFooter.jsp"/>
-	<script src="/resources/js/bootstrap.js"></script>
+     <%--    include bottomFooter.jsp--%>
+   <jsp:include page="/WEB-INF/views/include/bottomFooter.jsp"/>
+   <script src="/resources/js/bootstrap.js"></script>
     <script src="/resources/js/jquery-3.6.0.js"></script>
 </body>
 
