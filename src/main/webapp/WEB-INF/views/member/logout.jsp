@@ -14,7 +14,7 @@
                 <br/>
 				<h4>로그아웃되었습니다!</h4>
 			</div>
-			<form id="logout" action="/" class="input-group">
+			<form action="/" class="input-group">
                 <br/><br/><br/><br/>
 				<button class="logout" >HOME으로 가기</button>
 			</form>

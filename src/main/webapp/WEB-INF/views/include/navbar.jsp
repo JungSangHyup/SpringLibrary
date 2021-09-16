@@ -44,39 +44,39 @@
 <script src="/resources/js/bootstrap.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
   integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script>
-  document.addEventListener("DOMContentLoaded", function(){
-	// make it as accordion for smaller screens
-	  if (window.innerWidth > 992) {
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // make it as accordion for smaller screens
+      if (window.innerWidth > 992) {
 
-	  	document.querySelectorAll('.navbar .nav-item').forEach(function(everyitem){
+        document.querySelectorAll('.navbar .nav-item').forEach(function (everyitem) {
 
-	  		everyitem.addEventListener('mouseover', function(e){
+          everyitem.addEventListener('mouseover', function (e) {
 
-	  			let el_link = this.querySelector('a[data-bs-toggle]');
+            let el_link = this.querySelector('a[data-bs-toggle]');
 
-	  			if(el_link != null){
-	  				let nextEl = el_link.nextElementSibling;
-	  				el_link.classList.add('show');
-	  				nextEl.classList.add('show');
-	  			}
+            if (el_link != null) {
+              let nextEl = el_link.nextElementSibling;
+              el_link.classList.add('show');
+              nextEl.classList.add('show');
+            }
 
-	  		});
-	  		everyitem.addEventListener('mouseleave', function(e){
-	  			let el_link = this.querySelector('a[data-bs-toggle]');
+          });
+          everyitem.addEventListener('mouseleave', function (e) {
+            let el_link = this.querySelector('a[data-bs-toggle]');
 
-	  			if(el_link != null){
-	  				let nextEl = el_link.nextElementSibling;
-	  				el_link.classList.remove('show');
-	  				nextEl.classList.remove('show');
-	  			}
+            if (el_link != null) {
+              setTimeout(() => {
+                let nextEl = el_link.nextElementSibling;
+                el_link.classList.remove('show');
+                nextEl.classList.remove('show');
+              }, 1000);
+            }
+          })
+        });
 
-
-	  		})
-	  	});
-
-	  }
-	  // end if innerWidth
-	  }); 
+      }
+      // end if innerWidth
+    });
 	  // DOMContentLoaded  end
-</script>
+  </script>

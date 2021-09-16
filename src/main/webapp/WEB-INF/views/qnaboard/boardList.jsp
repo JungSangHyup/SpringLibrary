@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,74 +11,90 @@
 </head>
 <body>
     <!-- navbar  -->
-    
+    <jsp:include page="/WEB-INF/views/include/navbar.jsp" />
     
 <div class="boardform">
     <h1>Book Search</h1>
-    <form action="#">
+    <form action="/qnaboard/list?#qnaboard" method="get">
      <div class="search_box">
          
 	<select name="keyword" id="keyword-select">
-        <option value="subject">제목</option>
-        <option value="user">글쓴이</option>
-        <option value="content">내용</option>
+        <option value="T" ${ (pageMaker.cri.type eq 'T') ? 'selected' : '' }>제목</option>
+        <option value="W" ${ (pageMaker.cri.type eq 'W') ? 'selected' : '' }>글쓴이</option>
+        <option value="C" ${ (pageMaker.cri.type eq 'C') ? 'selected' : '' }>내용</option>
     </select>
          <i class="fa fa-search"></i>
-    <input class="search" type="text" id="search" name="search">
-    <button class="search_btn" type="button" name="search_btn">검색</button>
+    <input class="search" type="text" id="search" name="search" value="${ pageMaker.cri.keyword }">
+    <button class="search_btn" type="button" name="search_btn" >검색</button>
     </div>
     </form>
 </div>
     
 	<table class="table">
-		<thead class="thead-dark">
+		<thead class="thead-dark" id="board">
 			<tr>
-				<th scope="col">#</th>
-				<th scope="col">First</th>
-				<th scope="col">Last</th>
-				<th scope="col">Handle</th>
+				<th scope="col">글번호</th>
+				<th scope="col">작성자</th>
+				<th scope="col">제목</th>
+				<th scope="col">작성일자</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<th scope="row">1</th>
-				<td>Mark</td>
-				<td>Otto</td>
-				<td>@mdo</td>
-			</tr>
-			<tr>
-				<th scope="row">2</th>
-				<td>Jacob</td>
-				<td>Thornton</td>
-				<td>@fat</td>
-			</tr>
-			<tr>
-				<th scope="row">3</th>
-				<td>Larry</td>
-				<td>the Bird</td>
-				<td>@twitter</td>
-			</tr>
+			<c:choose>
+              	<c:when test="${ pageMaker.totalCount gt 0 }">
+              	
+              		<c:forEach var="board" items="${ boardList }">
+              			<tr>
+		                  <td class="text-center">${ board.board_id }</td>
+		                  <td class="text-center">${ board.userid }</td>
+		                  <td>
+		                    <c:if test="${ board.reLev gt 0 }"><%-- 답글이면 --%>
+		                    	<span style="display: inline-block; width: ${ board.reLev * 15 }px"></span>
+		                    	<i class="material-icons align-middle">subdirectory_arrow_right</i>
+		                    </c:if>
+		                    <a class="align-middle" href="/qnaboard/content?board_id=${ board.board_id }&pageNum=${ pageMaker.cri.pageNum }">${ board.subject }</a>
+		                  </td>
+		                  <td class="text-center"><fmt:formatDate value="${ board.regdate }" pattern="yyyy.MM.dd" /></td>
+		                </tr>
+              		</c:forEach>
+              	
+              	</c:when>
+              	<c:otherwise>
+              		<tr>
+	                  <td colspan="4" class="text-center">게시판 글이 없습니다.</td>
+	                </tr>
+              	</c:otherwise>
+              </c:choose>
 		</tbody>
 	</table>
     
-    <button class="write_btn" type="button" name="write_btn">글쓰기</button>
+    <button class="write_btn" type="button" name="write_btn" onclick="location.href = '/qnaboard/write?pageNum=${ pageMaker.cri.pageNum }';">글쓰기</button>
 
     
     <nav aria-label="Page navigation example">
   <ul class="pagination">
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Previous">
+  <%-- 이전 --%>
+    <li class="page-item ${ (pageMaker.prev) ? '' : 'disabled' }">
+      <a class="page-link" href="${ (pageMaker.prev) ? '/qnaboard/list?pageNum=' += (pageMaker.startPage - 1) += '&type=' += pageMaker.cri.type += '&keyword=' += pageMaker.cri.keyword : '' }#qnaboard" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
       </a>
     </li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Next">
+    
+    <%-- 시반페이지 번호 ~ 끝페이지 번호 --%>
+    <c:forEach var="i" begin="${ pageMaker.startPage }" end="${ pageMaker.endPage }" step="1">
+    
+    </c:forEach>
+    <li class="page-item ${ (pageMaker.cri.pageNum eq i) ? 'active' : '' }">
+    	<a class="page-link" href="/qnaboard/list?pageNum=${ i }&type=${ pageMaker.cri.type }&keyword=${ pageMaker.cri.keyword }#qnaboard">${ i }</a>
+    </li>
+  
+  	<%-- 다음 --%>
+    <li class="page-item ${ (pageMaker.next) ? '' : 'disabled' }">
+      <a class="page-link" href="${ (pageMaker.next) ? '/qnaboard/list?pageNum=' += (pageMaker.endPage + 1) += '&type=' += pageMaker.cri.type += '&keyword=' += pageMaker.cri.keyword : '' }#qnaboard" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
       </a>
     </li>
+    
   </ul>
 </nav>
 <!-- footer -->

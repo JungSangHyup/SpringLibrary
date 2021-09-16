@@ -6,16 +6,17 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-	 <link rel="stylesheet" href="/resources/css/bootstrap.css">
+    <link rel="stylesheet" href="/resources/css/mainstyle.css">
+    <link rel="stylesheet" href="/resources/css/bootstrap.css">
 </head>
-<body>
+<body class="wrap">
 <jsp:include page="/WEB-INF/views/include/navbar.jsp"/>
 
 <div class="container">
   <div class="row">
     
-    <div class="col-3 ">
-      <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+    <div class="col-3" >
+      <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical" style="background: #ECE6CC;">
         <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
           aria-controls="v-pills-home" aria-selected="true">신간</a>
         <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
@@ -36,23 +37,27 @@
     </div>
 
 
-      <div class="col-9 bg-light">
+      <div class="col-9" style="background: #ECE6CC;">
         <div class="row">
           <div class="custom-control custom-switch col-3">
             <input type="checkbox" class="custom-control-input" id="rental_btn">
             <label class="custom-control-label m-2 " for="rental_btn">대여 가능만</label>
           </div>
-          <div class="custom-control custom-switch text-right">
+          <div class="custom-control custom-switch text-right col-3">
             <input type="checkbox" class="custom-control-input" id="image_btn">
             <label class="custom-control-label m-2 " for="image_btn">펼쳐보기</label>
           </div>
+          <!-- // 관리자만 보임 -->
+          <button class="btn-primary text-right mt-3 mb-3" onclick="location.href='/book/write'">책 추가</button>
         </div>
 
 
         <div class="card mb-3">
           <div class="row no-gutters">
             <div class="col-md-4">
-              <img src="/resources/images/l9791166815782.jpg" alt="..." style="max-width: 180px;">
+              <a href="/book/content">
+                <img src="/resources/images/l9791166815782.jpg" alt="..." style="max-width: 180px;">
+              </a>
             </div>
             <div class="col-md-8">
               <div class="card-body float-left">
@@ -61,12 +66,15 @@
                 <p class="card-text">우울, 불안, 번아웃, 스트레스에 무너지지 않는 멘탈관리 프로젝트! 지금 바로 시작하자</p>
               </div>
             </div>
+      
           </div>
         </div>
         <div class="card mb-3">
           <div class="row no-gutters">
             <div class="col-md-4">
-              <img src="/resources/images/l9791166815782.jpg" alt="..." style="max-width: 180px;">
+              <a href="/book/content">
+                <img src="/resources/images/l9791166815782.jpg" alt="..." style="max-width: 180px;">
+              </a>
             </div>
             <div class="col-md-8 ">
               <div class="card-body ">
@@ -82,7 +90,9 @@
         <div class="card mb-3">
           <div class="row no-gutters">
             <div class="col-md-4">
-              <img src="/resources/images/l9791166815782.jpg" alt="..." style="max-width: 180px;">
+              <a href="/book/content">
+                <img src="/resources/images/l9791166815782.jpg" alt="..." style="max-width: 180px;">
+              </a>
             </div>
             <div class="col-md-8">
               <div class="card-body">
@@ -97,9 +107,9 @@
 
         <div class="card mb-3">
           <div class="row no-gutters">
-            <div class="col-md-4">
-              <img src="/resources/images/l9791166815782.jpg" alt="..." style="max-width: 180px;">
-            </div>
+              <a href="/book/content">
+                <img src="/resources/images/l9791166815782.jpg" alt="..." style="max-width: 180px;">
+              </a>
             <div class="col-md-8">
               <div class="card-body">
                 <h5 class="card-title">하버드 회복탄력성 수업</h5>

@@ -6,15 +6,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  	<link rel="stylesheet" href="/resources/css/mainstyle.css">
 	  <link rel="stylesheet" href="/resources/css/bootstrap.css">
   </head>
-<body>
+<body class="wrap">
 <jsp:include page="/WEB-INF/views/include/navbar.jsp"/>
-  <div class="container" style="max-width: 720px;">
+  <div class="container" style="max-width: 720px; background: #ECE6CC;" >
       <div class="card mb-3">
         <div class="row no-gutters">
           <div class="col-md-4">
-            <img src="/resources/images/l9791166815782.jpg" alt="...">
+            <img src="/resources/images/l9791166815782.jpg" alt="..." class="m-2">
           </div>
           <div class="col-md-8">
             <div class="card-body">
