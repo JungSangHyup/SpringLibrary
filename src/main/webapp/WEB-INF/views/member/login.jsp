@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>LOGIN</title>
-<link rel="stylesheet" href="href="${path}/resources/css/style.css">
+<link rel="stylesheet" href="${path}/resources/css/style.css">
 </head>
 <body>
 
@@ -14,7 +14,7 @@
 			<div class="container">
 				<h3>LOGIN</h3>
 			</div>
-			<form id="login" action="" class="input-group">
+			<form id="login" action="/" class="input-group">
 				<input type="text" class="input-field"
 					placeholder="User name or Email" required> <input
 					type="password" class="input-field" placeholder="Enter Password"
