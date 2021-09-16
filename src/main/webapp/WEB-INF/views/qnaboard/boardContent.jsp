@@ -19,15 +19,26 @@
 
     <!-- Post -->
     <section class="post" id="post" style="margin-top: 30px;">
-        <form method="post" action="#">
+        <h2 style="text-align: center;"> 게시글 </h2>
 
+        <div class="hrtag">
+            <hr class="my-1" style="height: 2px; background: #ECE6CC; border-radius: 10px;">
+        </div>
+
+        <form method="post" action="#">
             <!-- 제목 -->
-            <div class="t1">제목</div>
+
+            <div style="text-align: center;"><i class="fa fa-user fa-2x"></i></div>
+            <div style="text-align: center; margin-bottom: 5px;">작성자</div>
+            <div class="userid">
+                <div class="form-userid">{ 게시글 작성자 }</div>
+            </div>
+            <div style="text-align: center; margin-bottom: 5px;">제목</div>
             <div class="subject">
                 <div class="form-subject">{게시글 제목}</div>
             </div>
             <!-- 내용 -->
-            <div class="t1">내용</div>
+            <div style="text-align: center; margin-bottom: 10px; margin-top: 10px;">내용</div>
             <div class="content_box">
                 <div class="content">
                     <div class="form-content">{게시글 내용}</div>
@@ -46,19 +57,19 @@
     <div class="hrtag">
         <hr class="my-4">
     </div>
-    
+
     <h3> 댓글 </h3>
 
     <div class="media">
-        <i class="fa fa-user fa-5x"></i>
+        <i class="fa fa-user fa-5x" style="margin: 10px; line-height: 90px; font-size: 80px;"></i>
         <div class="media-body">
             <h4 class="mt-0">Media heading</h4>
             <p>Will you do the same for me? It's time to face the music I'm no longer your muse. Heard it's beautiful, be the judge and my girls gonna take a vote. I can feel a phoenix inside of me. Heaven is jealous of our love, angels are crying from up above. Yeah, you take me to utopia.</p>
         </div>
     </div>
-    
+
     <div class="media">
-        <i class="fa fa-user fa-5x"></i>
+        <i class="fa fa-user fa-5x" style="margin: 10px; line-height: 90px; font-size: 80px;"></i>
         <div class="media-body">
             <h4 class="mt-0">Media heading</h4>
             <p>Will you do the same for me? It's time to face the music I'm no longer your muse. Heard it's beautiful, be the judge and my girls gonna take a vote. I can feel a phoenix inside of me. Heaven is jealous of our love, angels are crying from up above. Yeah, you take me to utopia.</p>
