@@ -10,7 +10,7 @@ public class BoardController {
 
 	@GetMapping("/list")
 	public String list() {
-		System.out.println("list �샇異�...");
+		System.out.println("list");
 		
 		return "qnaboard/boardList";
 	}
