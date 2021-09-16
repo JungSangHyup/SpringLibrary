@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
     <link rel="stylesheet" type="text/css" href="${path}/resources/css/bootstrap.css">
     <!-- FOOTER -->
-    <footer class="mt-5 py-5 bg-warning w-100">
-      <div class="container">
+    <footer class="mt-5 py-5 w-100" style="background: #ECE6CC;">
+      <div class="container" style="background: #ECE6CC;">
         <div class="row">
           <div class="col-12 col-md">
             <i class="material-icons">android</i>
