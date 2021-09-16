@@ -38,10 +38,17 @@ public class MemberController {
 		System.out.println("logout...");
 		return "member/logout";
 	}
+	
 	@GetMapping("/modify")
 	public String modify() {
-		System.out.println("logout...");
+		System.out.println("modify 호둘됨...");
 		return "member/modify";
+	}
+	
+	@GetMapping("/myWish")
+	public String myWish() {
+		System.out.println("myWish 호둘됨...");
+		return "member/myWish";
 	}
 }
 

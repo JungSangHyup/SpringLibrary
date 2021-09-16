@@ -4,7 +4,7 @@
 	
 
 <nav class="navbar navbar-expand-lg navbar-light ">
-  <div class="container bg-light">
+  <div class="container"  style="background: #ECE6CC;">
     <a class="navbar-brand" href="/"> <i class="material-icons"></i>
       LIBRARY
     </a>

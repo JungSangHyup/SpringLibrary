@@ -3,16 +3,17 @@
 <html lang="ko">
 
 <head>
+	<link rel="stylesheet" href="resources/css/mainstyle.css">
   <link rel="stylesheet" href="/resources/css/bootstrap.css">
 
 </head>
 
-<body>
-   <%-- include topNavbar.jsp --%>
-   <jsp:include page="/WEB-INF/views/include/navbar.jsp"/>
+<body class="wrap">
+	<%-- include topNavbar.jsp --%>
+	<jsp:include page="/WEB-INF/views/include/navbar.jsp"/>
 
   <!-- Carousel -->
-  <div id="carouselExampleIndicators" class="carousel slide container bg-light" data-ride="carousel">
+  <div id="carouselExampleIndicators" class="carousel slide container" data-ride="carousel" style="background: #ECE6CC;">
     <ol class="carousel-indicators ">
       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active bg-dark"></li>
       <li data-target="#carouselExampleIndicators" data-slide-to="1" class="bg-dark"></li>
@@ -37,9 +38,9 @@
   </div>
   <!-- end of Carousel -->
 
-<div class="container bg-light">
+<div class="container" style="background: #ECE6CC;">
   <div class="row">
-    <div class="col-3 bg-light">
+    <div class="col-3">
       <div class="text-center mt-5 login-form">
         <button type="submit" class="btn btn-primary " onclick="location.href='/member/login'">로그인</button>
         <button type="submit" class="btn btn-primary" onclick="location.href='/member/join'">회원가입</button>
@@ -155,9 +156,11 @@
         </div>
       </div>
     </div>
-     <%--    include bottomFooter.jsp--%>
-   <jsp:include page="/WEB-INF/views/include/bottomFooter.jsp"/>
-   <script src="/resources/js/bootstrap.js"></script>
+   </div>
+  </div>
+	  <%--    include bottomFooter.jsp--%>
+	<jsp:include page="/WEB-INF/views/include/bottomFooter.jsp"/>
+	<script src="/resources/js/bootstrap.js"></script>
     <script src="/resources/js/jquery-3.6.0.js"></script>
 </body>
 
