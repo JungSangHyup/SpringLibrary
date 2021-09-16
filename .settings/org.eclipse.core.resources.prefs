@@ -1,5 +1,7 @@
 eclipse.preferences.version=1
 encoding//src/main/java/com/sample/library/controller=UTF-8
 encoding//src/main/java/com/sample/library/controller/BoardController.java=UTF-8
+encoding//src/main/webapp/WEB-INF/views/include/navbar.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/main.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/qnaboard/boardList.jsp=UTF-8
 separateDerivedEncodings=true
