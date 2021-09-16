@@ -30,7 +30,7 @@
 
             <form action="/member/join" method="POST">
               <div class="form-group row mb-2">
-                <label for="id" class="col-sm-2 col-form-label" style="white-space:nowrap;">
+                <label for="id" class="col-sm-3 col-form-label" style="white-space:nowrap;">
                   <i class="material-icons align-middle">account_box</i>
                   <span class="align-middle">아이디</span>
                 </label>
@@ -41,7 +41,7 @@
               </div>
 
               <div class="form-group row mb-2">
-                <label for="password" class="col-sm-2 col-form-label" style="white-space:nowrap;">
+                <label for="password" class="col-sm-3 col-form-label" style="white-space:nowrap;">
                   <i class="material-icons align-middle">lock</i>
                   <span class="align-middle">비밀번호</span>
                 </label>
@@ -51,7 +51,7 @@
                 </div>
               </div>
               <div class="form-group row mb-2">
-                <label for="password2" class="col-sm-2 col-form-label" style="white-space:nowrap;">
+                <label for="password2" class="col-sm-3 col-form-label" style="white-space:nowrap;">
                   <i class="material-icons align-middle">check</i>
                   <span class="align-middle">비밀번호 재확인</span>
                 </label>
@@ -62,7 +62,7 @@
               </div>
 
               <div class="form-group row mb-3">
-                <label for="name" class="col-sm-2 col-form-label" style="white-space:nowrap;">
+                <label for="name" class="col-sm-3 col-form-label" style="white-space:nowrap;">
                   <i class="material-icons align-middle">person</i>
                   <span class="align-middle">이름</span>
                 </label>
@@ -72,11 +72,11 @@
               </div>
               
               <div class="form-group row">
-                <label for="gender" class="col-sm-2 col-form-label" style="white-space:nowrap;">
+                <label for="gender" class="col-sm-3 col-form-label" style="white-space:nowrap;">
                   <i class="material-icons align-middle">wc</i>
                   <span class="align-middle">성별</span>
                 </label>
-                <div class="col-sm-10">
+                <div class="col-sm-9">
                   <div class="custom-control custom-radio custom-control-inline mt-2">
                     <input class="custom-control-input" type="radio" name="genderRadio" id="genderRadio1" value="M" checked>
                     <label class="custom-control-label" for="inlineRadio1">남자</label>
@@ -89,7 +89,7 @@
               </div>
 
               <div class="form-group row">
-                <label for="birthday" class="col-sm-2 col-form-label" style="white-space:nowrap;">
+                <label for="birthday" class="col-sm-3 col-form-label" style="white-space:nowrap;">
                   <i class="material-icons align-middle">event</i>
                   <span class="align-middle">생년월일</span>
                 </label>
@@ -99,11 +99,11 @@
               </div>
 
               <div class="form-group row mb-3">
-                <label for="name" class="col-sm-2 col-form-label" style="white-space:nowrap;">
+                <label for="phNum" class="col-sm-3 col-form-label" style="white-space:nowrap;">
                   <i class="material-icons align-middle">stay_current_portrait</i>
                   <span class="align-middle">연락처</span>
                 </label>
-                <div class="form-inline col-auto mt-1">
+                <div class="form-inline col-9 mt-1" id="phNum">
                   <select id="phNum1" class="form-control" name="phNum1" required>
                     <option selected disabled>선택</option>
                     <option>010</option>
@@ -119,7 +119,7 @@
               </div>
 
               <div class="form-group row mb-3">
-                <label for="name" class="col-sm-2 col-form-label" style="white-space:nowrap;">
+                <label for="address" class="col-sm-3 col-form-label" style="white-space:nowrap;">
                   <i class="material-icons align-middle">home</i>
                   <span class="align-middle">주소</span>
                 </label>
@@ -132,7 +132,7 @@
               
 
               <div class="form-group row">
-                <label for="email" class="col-sm-2 col-form-label" style="white-space:nowrap;">
+                <label for="email" class="col-sm-3 col-form-label" style="white-space:nowrap;">
                   <i class="material-icons align-middle">mail</i>
                   <span class="align-middle">이메일 주소</span>
                 </label>
@@ -142,11 +142,11 @@
               </div>
 
               <div class="form-group row">
-                <label for="email" class="col-sm-2 col-form-label" style="white-space:nowrap;">
+                <label for="email" class="col-sm-3 col-form-label" style="white-space:nowrap;">
                   <i class="material-icons align-middle">mark_as_unread</i>
                   <span class="align-middle">SMS 수신동의</span>
                 </label>
-                <div class="col-sm-10 mt-2">
+                <div class="col-sm-9 mt-2">
                   <div class="custom-control custom-radio custom-control-inline">
                     <input type="radio" id="customRadioInline1" name="recvEmail" class="custom-control-input" value="Y" checked>
                     <label class="custom-control-label" for="customRadioInline1">동의함</label>
@@ -154,6 +154,20 @@
                   <div class="custom-control custom-radio custom-control-inline">
                     <input type="radio" id="customRadioInline2" name="recvEmail" class="custom-control-input" value="N">
                     <label class="custom-control-label" for="customRadioInline2">동의 안함</label>
+                  </div>
+                </div>
+              </div>
+
+              <!--프로필등록-->
+              <div class="form-group row">
+                <label for="profile" class="col-sm-3 col-form-label" style="white-space:nowrap;">
+                  <i class="material-icons align-middle">account_circle</i>
+                  <span class="align-middle">프로필 사진</span>
+                </label>
+                <div class="col-auto mt-2">
+                  <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="customFileLangHTML">
+                    <label class="custom-file-label" for="customFileLangHTML" data-browse="찾아보기">프로필 사진 등록</label>
                   </div>
                 </div>
               </div>
