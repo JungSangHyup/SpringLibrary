@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <title>Insert title here</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" type="text/css" href="contentstyle.css">
+    <link rel="stylesheet" type="text/css" href="./css/contentstyle.css">
 </head>
 
 <body>
@@ -24,13 +24,13 @@
             <!-- 제목 -->
             <div class="t1">제목</div>
             <div class="subject">
-                <input type="text" class="form-subject" placeholder="게시글 제목" name="boTitle" maxlength="50" required>
+                <div class="form-subject">{게시글 제목}</div>
             </div>
             <!-- 내용 -->
             <div class="t1">내용</div>
             <div class="content_box">
                 <div class="content">
-                    <textarea class="form-content" id="textarea" name="textarea" maxlength="2048" rows="6" placeholder="게시글 내용"></textarea>
+                    <div class="form-content">{게시글 내용}</div>
                 </div>
 
                 <!-- 글목록 버튼 생성 -->
@@ -66,4 +66,5 @@
     </div>
     
     <!-- footer -->
-</body></html>
+</body>
+</html>
