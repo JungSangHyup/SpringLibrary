@@ -7,12 +7,12 @@
 
 </head>
 
-<body>
+<body style="background-image: url(/resources/images/library.jpg);">
 	<%-- include topNavbar.jsp --%>
 	<jsp:include page="/WEB-INF/views/include/navbar.jsp"/>
 
   <!-- Carousel -->
-  <div id="carouselExampleIndicators" class="carousel slide container" data-ride="carousel">
+  <div id="carouselExampleIndicators" class="carousel slide container bg-light" data-ride="carousel">
     <ol class="carousel-indicators ">
       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active bg-dark"></li>
       <li data-target="#carouselExampleIndicators" data-slide-to="1" class="bg-dark"></li>
@@ -37,12 +37,12 @@
   </div>
   <!-- end of Carousel -->
 
-<div class="container">
+<div class="container bg-light">
   <div class="row">
     <div class="col-3 bg-light">
-      <div class=" modal-dialog modal-sm text-center mt-5 login-form">
-        <button type="submit" class="btn btn-primary ">로그인</button>
-        <button type="submit" class="btn btn-primary">회원가입</button>
+      <div class="text-center mt-5 login-form">
+        <button type="submit" class="btn btn-primary " onclick="location.href='/member/login'">로그인</button>
+        <button type="submit" class="btn btn-primary" onclick="location.href='/member/join'">회원가입</button>
       </div>
       <div class="jumbotron mt-5">
         <h1 class="display-4">Hello, world!</h1>
@@ -107,7 +107,7 @@
       
 	<div class="row text-center text-lg-start">
         <div class="d-flex flex-wrap align-bottom">
-          <span class="badge badge-primary m-2">NEW</span>
+          <span class="badge badge-primary m-2">BEST</span>
           <h5 class="m-2">요즘 이 책</h5>
       
           <div class="card-group new-book">
