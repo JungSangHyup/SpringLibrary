@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
     
     <!-- FOOTER -->
-    <footer class="mt-5 py-5 bg-warning">
+    <footer class="mt-5 py-5 bg-warning w-100">
       <div class="container">
         <div class="row">
           <div class="col-12 col-md">
