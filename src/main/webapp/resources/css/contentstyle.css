@@ -9,7 +9,7 @@ body {
 }
 
 .boardform {
-    background: url(./images/library.jpg) no-repeat center;
+    background: url(/resources/images/library.jpg) no-repeat center;
     background-size: cover;
     padding:80px 30px;
     text-align: center;
@@ -41,6 +41,20 @@ body {
     font-size: 18px;
     overflow-y: scroll;
     overflow-x: hidden;
+}
+
+
+.form-userid {
+    text-align: center; 
+    margin-bottom: 17px;
+    height: 28px;
+    background: #ededed;
+    width: 230px;
+}
+
+.userid {
+    justify-content: center;
+    display: flex;
 }
 
 
@@ -108,6 +122,7 @@ body {
     margin: 10px;
     margin-left: 10%; 
     margin-right: 10%;
+    border-radius: 10px;
 }
 
 .media-body {
@@ -128,10 +143,4 @@ body {
 h3 {
     margin-left: 5%;
     margin-bottom: 10px;
-}
-
-i {
-    margin: 10px;
-    line-height: 40px;
-    font-size: 50px;
 }

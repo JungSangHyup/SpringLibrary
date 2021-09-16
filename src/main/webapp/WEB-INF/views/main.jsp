@@ -3,16 +3,17 @@
 <html lang="ko">
 
 <head>
+	<link rel="stylesheet" href="resources/css/mainstyle.css">
   <link rel="stylesheet" href="/resources/css/bootstrap.css">
 
 </head>
 
-<body>
+<body class="wrap">
 	<%-- include topNavbar.jsp --%>
 	<jsp:include page="/WEB-INF/views/include/navbar.jsp"/>
 
   <!-- Carousel -->
-  <div id="carouselExampleIndicators" class="carousel slide container" data-ride="carousel">
+  <div id="carouselExampleIndicators" class="carousel slide container" data-ride="carousel" style="background: #ECE6CC;">
     <ol class="carousel-indicators ">
       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active bg-dark"></li>
       <li data-target="#carouselExampleIndicators" data-slide-to="1" class="bg-dark"></li>
@@ -20,10 +21,10 @@
     </ol>
     <div class="carousel-inner ">
       <div class="carousel-item active text-center">
-        <img src="/resources/images/newbooks1.jpg" class="d-block rounded mx-auto d-block w-75" alt="..." style="max-height: 480px;">
+        <img src="/resources/images/newbooks1.jpg" class="d-block rounded mx-auto d-block" alt="..." style="height: 480px;">
       </div>
       <div class="carousel-item">
-        <img src="/resources/images/l9791188331796.jpg" class="d-block rounded mx-auto d-block w-75" alt="..." style="max-height: 480px;">
+        <img src="/resources/images/l9791188331796.jpg" class="d-block rounded mx-auto d-block" alt="..." style="height: 480px;">
       </div>
     </div>
     <a class="carousel-control-prev " href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -37,12 +38,12 @@
   </div>
   <!-- end of Carousel -->
 
-<div class="container">
+<div class="container" style="background: #ECE6CC;">
   <div class="row">
-    <div class="col-3 bg-light">
-      <div class=" modal-dialog modal-sm text-center mt-5 login-form">
-        <button type="submit" class="btn btn-primary ">로그인</button>
-        <button type="submit" class="btn btn-primary">회원가입</button>
+    <div class="col-3">
+      <div class="text-center mt-5 login-form">
+        <button type="submit" class="btn btn-primary " onclick="location.href='/member/login'">로그인</button>
+        <button type="submit" class="btn btn-primary" onclick="location.href='/member/join'">회원가입</button>
       </div>
       <div class="jumbotron mt-5">
         <h1 class="display-4">Hello, world!</h1>
@@ -107,7 +108,7 @@
       
 	<div class="row text-center text-lg-start">
         <div class="d-flex flex-wrap align-bottom">
-          <span class="badge badge-primary m-2">NEW</span>
+          <span class="badge badge-primary m-2">BEST</span>
           <h5 class="m-2">요즘 이 책</h5>
       
           <div class="card-group new-book">
@@ -155,6 +156,8 @@
         </div>
       </div>
     </div>
+   </div>
+  </div>
 	  <%--    include bottomFooter.jsp--%>
 	<jsp:include page="/WEB-INF/views/include/bottomFooter.jsp"/>
 	<script src="/resources/js/bootstrap.js"></script>
