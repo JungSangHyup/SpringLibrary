@@ -53,7 +53,9 @@
         <div class="card mb-3">
           <div class="row no-gutters">
             <div class="col-md-4">
-              <img src="/resources/images/l9791166815782.jpg" alt="..." style="max-width: 180px;">
+              <a href="/book/content">
+                <img src="/resources/images/l9791166815782.jpg" alt="..." style="max-width: 180px;">
+              </a>
             </div>
             <div class="col-md-8">
               <div class="card-body float-left">
@@ -62,12 +64,15 @@
                 <p class="card-text">우울, 불안, 번아웃, 스트레스에 무너지지 않는 멘탈관리 프로젝트! 지금 바로 시작하자</p>
               </div>
             </div>
+      
           </div>
         </div>
         <div class="card mb-3">
           <div class="row no-gutters">
             <div class="col-md-4">
-              <img src="/resources/images/l9791166815782.jpg" alt="..." style="max-width: 180px;">
+              <a href="/book/content">
+                <img src="/resources/images/l9791166815782.jpg" alt="..." style="max-width: 180px;">
+              </a>
             </div>
             <div class="col-md-8 ">
               <div class="card-body ">
@@ -83,7 +88,9 @@
         <div class="card mb-3">
           <div class="row no-gutters">
             <div class="col-md-4">
-              <img src="/resources/images/l9791166815782.jpg" alt="..." style="max-width: 180px;">
+              <a href="/book/content">
+                <img src="/resources/images/l9791166815782.jpg" alt="..." style="max-width: 180px;">
+              </a>
             </div>
             <div class="col-md-8">
               <div class="card-body">
@@ -98,9 +105,9 @@
 
         <div class="card mb-3">
           <div class="row no-gutters">
-            <div class="col-md-4">
-              <img src="/resources/images/l9791166815782.jpg" alt="..." style="max-width: 180px;">
-            </div>
+              <a href="/book/content">
+                <img src="/resources/images/l9791166815782.jpg" alt="..." style="max-width: 180px;">
+              </a>
             <div class="col-md-8">
               <div class="card-body">
                 <h5 class="card-title">하버드 회복탄력성 수업</h5>
