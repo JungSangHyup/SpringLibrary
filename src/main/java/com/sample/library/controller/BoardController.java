@@ -45,10 +45,10 @@ public class BoardController {
 	}
 	
 	@GetMapping("/content")
-	public String content(int num, @ModelAttribute("pageNum") String pageNum, Model model) {
+	public String content(int boardId, @ModelAttribute("pageNum") String pageNum, Model model) {
 		System.out.println("content");
 		
-		BoardVO boardVO = boardService.getBoard(num);
+		BoardVO boardVO = boardService.getBoard(boardId);
 		
 		model.addAttribute("boardVO", boardVO);
 		
@@ -71,7 +71,7 @@ public class BoardController {
 			
 			
 			// ===== insert할 BoardVO 객체 데이터 설정 ======
-			boardVO.setBoard_id(num);
+			boardVO.setBoardId(num);
 			boardVO.setRegdate(new Date());
 			
 			
@@ -79,7 +79,7 @@ public class BoardController {
 			//===============================================
 			
 			// 리다이렉트시 서버에 전달할 데이터를 저장하면 스프링이 자동으로 쿼리스트링으로 변환하여 처리해줌
-			rttr.addAttribute("num", boardVO.getBoard_id());
+			rttr.addAttribute("boardId", boardVO.getBoardId());
 			rttr.addAttribute("pageNum", 1);
 			
 			return "redirect:/qnaboard/content";

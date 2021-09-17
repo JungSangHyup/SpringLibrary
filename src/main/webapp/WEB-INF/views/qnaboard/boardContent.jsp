@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <title>Insert title here</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" type="text/css" href="${path}/resources/css/contentstyle.css">
+   
 </head>
 
 <body>
@@ -30,7 +30,7 @@
             <hr class="my-1" style="height: 2px; background: #ECE6CC; border-radius: 10px;">
         </div>
 
-        <form method="post" action="#">
+        
             <!-- 제목 -->
 
             <div style="text-align: center;"><i class="fa fa-user fa-2x"></i></div>
@@ -50,13 +50,14 @@
                 </div>
 
                 <!-- 글목록 버튼 생성 -->
+                <form method="post" action="#">
                 <div class="btn_box">
                 	<input type="button" class="sub_btn" value="글수정">
                     <input type="button" class="list_btn" value="글목록">
                 </div>
-
+  				</form>
             </div>
-        </form>
+     
 
     </section>
 
@@ -84,5 +85,6 @@
     
     <!-- footer -->
 <jsp:include page="/WEB-INF/views/include/bottomFooter.jsp" />
+ <link rel="stylesheet" type="text/css" href="${path}/resources/css/contentstyle.css">
 </body>
 </html>
