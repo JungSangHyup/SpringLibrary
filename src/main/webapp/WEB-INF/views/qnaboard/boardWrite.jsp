@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-     <link rel="stylesheet" type="text/css" href="${path}/resources/css/writestyle.css">
+     
 </head>
 <body>
 
@@ -47,5 +47,6 @@
     
     <!-- footer -->
     <jsp:include page="/WEB-INF/views/include/bottomFooter.jsp" />
+    <link rel="stylesheet" type="text/css" href="${path}/resources/css/writestyle.css">
 </body>
 </html>

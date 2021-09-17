@@ -15,7 +15,7 @@ import lombok.ToString;
 @ToString
 public class BoardVO {
 
-	private int board_id;
+	private int boardId;
 	private String userid;
 	private String subject;
 	private String content;
