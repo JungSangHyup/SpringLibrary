@@ -30,7 +30,7 @@
         </div>
         <div class="mb-3">
           <label for="content">내용</label>
-          <textarea class="form-control" rows="5" name="content" id="content" placeholder="내용을 입력해 주세요"></textarea>
+          <textarea class="form-control" rows="5" name="des" id="des" placeholder="내용을 입력해 주세요"></textarea>
         </div>
         <div class="mb-3">
           <label for="page">페이지 수</label>
