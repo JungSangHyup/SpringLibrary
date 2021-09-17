@@ -41,16 +41,14 @@
           <input type="text" class="form-control" name="category_code" id="category" placeholder="카테고리 코드를 입력하세요">
         </div>
         <div class="my-2 profilePic">
-              <h5>표지 이미지</h5>
-              <input type="file" class="form-control-file" id="book_file" name="book_file">
+          <h5>표지 이미지</h5>
+          <input type="file" class="form-control-file" id="book_file" name="book_file">
         </div>
-		      <div>
+
         <button type="submit" class="btn btn-sm btn-primary" id="btnSave">저장</button>
         <button type="reset" class="btn btn-sm btn-primary">초기화</button>
         <button type="button" class="btn btn-sm btn-primary" id="btnList" onclick="history.back();">목록</button>
-      </div>
       </form>
-
     </div>
   </article>
   	<jsp:include page="/WEB-INF/views/include/bottomFooter.jsp"/>
@@ -75,7 +73,6 @@
                 photoFrame.className = "photoFrame";
                 document.querySelector('.profilePic').appendChild(photoFrame);
             }
-            e.target.value = "";
         }
     });
 </script>

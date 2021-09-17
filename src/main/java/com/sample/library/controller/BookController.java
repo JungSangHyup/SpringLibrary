@@ -12,8 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.sample.library.domain.BookVO;
@@ -67,8 +69,8 @@ public class BookController {
 	}
 	
 	@PostMapping("/write")
-	public String register(MultipartFile book_file, BookVO bookVO,
-            HttpServletRequest request, RedirectAttributes rttr) throws IllegalStateException, IOException {
+	public String register(@RequestParam("book_file") MultipartFile book_file, BookVO bookVO,
+            HttpServletRequest request, RedirectAttributes rttr) throws IOException {
 		System.out.println(bookVO.getBook_name());
 		System.out.println(bookVO.getBook_des());
 		System.out.println(bookVO.getBook_writer());
@@ -77,17 +79,27 @@ public class BookController {
 		// insert할 새 글번호 가져오기
         int num = bookService.nextNum();
         
-        String uploadFolder = "C:/book/upload";  // 업로드 기준경로
+        String uploadFolder = "C:/upload/books";  // 업로드 기준경로
         File uploadPath = new File(uploadFolder, getFolder()); // C:/upload/2021/08/31
         
+        if (uploadPath.exists() == false) {  // !uploadPath.exists()
+            uploadPath.mkdirs();
+        }
+        
         if(!book_file.isEmpty()) {
+        	
         	String originalFilename = book_file.getOriginalFilename();
         	System.out.println(originalFilename);
         	UUID uuid = UUID.randomUUID();
         	String uploadFilename = uuid.toString() + "_" + originalFilename;
+        	
         	File file = new File(uploadPath, uploadFilename); // 생성할 파일이름 정보
         	
-        	if (checkImageType(file)) {
+        	// 현재 업로드한 파일이 이미지 파일이면 썸네일 이미지를 추가로 생성하기
+            boolean isImage = checkImageType(file); // 이미지 파일여부 확인
+            
+            
+        	if (isImage) {
             	// 파일1개 업로드(파일 생성) 완료
                 book_file.transferTo(file);
                 
@@ -95,8 +107,8 @@ public class BookController {
                 Thumbnailator.createThumbnail(file, outFile, 197, 282);  // 썸네일 이미지 파일 생성하기
         	}
         	
-        	bookVO.setBook_img(uploadPath + "/" + uploadFilename);
-        	System.out.println(uploadPath + "/" + uploadFilename);
+        	bookVO.setBook_img(file.getPath());
+        	System.out.println(file.getPath());
         }
         
         bookVO.setBook_id(num);
