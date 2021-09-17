@@ -48,6 +48,8 @@ public class MemberController {
 		String birthday = memberVO.getBirthday(); // "2021-08-25"
 		birthday = birthday.replace("-", ""); // "20210825"
 		memberVO.setBirthday(birthday);
+		String userphone = memberVO.getUserphone1()+"-"+memberVO.getUserphone2()+"-"+memberVO.getUserphone3();
+		memberVO.setUserphone(userphone);
 		
 		// 현재시점 날짜 객체 설정
 		memberVO.setRegdate(new Date());
@@ -113,10 +115,23 @@ public class MemberController {
 	} // login
 	
 	@GetMapping("/logout")
-	public String logout() {
-		System.out.println("logout...");
+	public String logout(HttpSession session, HttpServletRequest request, HttpServletResponse response) {
+		session.invalidate();
+		
+		Cookie[] cookies = request.getCookies();
+		
+		if (cookies != null) {
+			for (Cookie cookie : cookies) {
+				if (cookie.getName().equals("id")) {
+					cookie.setMaxAge(0); 
+					cookie.setPath("/");
+					response.addCookie(cookie);
+				}
+			} 
+		}
 		return "member/logout";
 	}
+	
 	
 	@GetMapping("/modify")
 	public String modify() {
