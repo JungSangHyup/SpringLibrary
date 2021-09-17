@@ -19,7 +19,7 @@
     background-color: black;
   }
   tbody.text-center::-webkit-scrollbar-thumb{
-    background-color: rgb(207, 136, 86);
+    background-color: #2f3542;
     border-radius: 10px;
   }
   tbody.text-center::-webkit-scrollbar-track{
