@@ -25,7 +25,7 @@ public class BookMapperTests {
         for (int i = 1; i <= 127; i++) {
             BookVO bookVO = new BookVO();
             int num = bookMapper.nextNum();
-            bookVO.setBook_id(num + i);
+            bookVO.setBook_id(i);
             bookVO.setBook_name("hello");
             bookVO.setBook_price(random.nextInt(200) * 10);
             bookVO.setBook_pages(String.valueOf(random.nextInt(200)));
