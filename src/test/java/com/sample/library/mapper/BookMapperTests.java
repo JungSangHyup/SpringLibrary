@@ -1,5 +1,7 @@
 package com.sample.library.mapper;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Random;
 
 import org.junit.Test;
@@ -22,7 +24,7 @@ public class BookMapperTests {
 		bookMapper.deleteAll();
         Random random = new Random();
 
-        for (int i = 1; i <= 127; i++) {
+        for (int i = 1; i <= 20; i++) {
             BookVO bookVO = new BookVO();
             int num = bookMapper.nextNum();
             bookVO.setBook_id(i);
@@ -31,9 +33,12 @@ public class BookMapperTests {
             bookVO.setBook_pages(String.valueOf(random.nextInt(200)));
             bookVO.setBook_des("test");
             bookVO.setBook_isbn("N");
-            bookVO.setBook_img("C:/upload/books");
             bookVO.setBook_writer("testwriter");
             bookVO.setCategory_code("history");
+            
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+            String curr_time = sdf.format(new Date());
+            bookVO.setBook_regdate(curr_time);
             
             bookMapper.save(bookVO);
         }
