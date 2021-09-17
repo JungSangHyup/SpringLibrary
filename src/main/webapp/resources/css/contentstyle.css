@@ -72,7 +72,20 @@ body {
 
 .sub_btn {
     margin-top: 10px;
-    margin-right: 440px;
+    margin-right: 10px;
+    width: 80px;
+    height: 38px;
+    background: #2f3542;
+    color: white;
+    padding: 0 10px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.remove_btn {
+    margin-top: 10px;
+    margin-right: 340px;
     width: 80px;
     height: 38px;
     background: #2f3542;
