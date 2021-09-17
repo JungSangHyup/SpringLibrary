@@ -18,11 +18,22 @@
             <param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
+
+        <!--파일 업로드 관련 설정-->
+        <multipart-config>
+            <location>C:/upload/temp</location> <!--임시 경로 -->
+            <file-size-threshold>10485760</file-size-threshold><!--임시파일 사용 크기 -->
+            <max-file-size>20971520</max-file-size><!--한 개 파일당 최대 업로드 크기-->
+            <max-request-size>104857600</max-request-size><!--모든 파일 합쳐서 총 업로드 허용 크기-->
+        </multipart-config>
+
     </servlet>
     <servlet-mapping>
         <servlet-name>appServlet</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+    
+    
     <!--Filter-->
     <filter>
         <filter-name>CharacterEncodingFilter</filter-name>
