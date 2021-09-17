@@ -12,8 +12,8 @@ import com.sample.library.domain.MemberVO;
 
 public interface MemberMapper {
 
-	@Insert("INSERT INTO users (userid, userpass, username, userphone, useraddr1, useraddr2, birthday, regdate, profile, grade, mileage) "
-			+ " VALUES (#{userid}, #{userpass}, #{username}, #{userphone}, #{useraddr1}, #{useraddr2}, #{birthday}, #{regdate}, #{profile}, #{grade}, #{mileage}) ")
+	@Insert("INSERT INTO users (userid, userpass, username,gender,birthday, userphone, useraddr1, useraddr2, useremail, recvemail, profile, regdate, grade, mileage) "
+			+ " VALUES (#{userid}, #{userpass}, #{username},#{gender}, #{birthday}, #{userphone}, #{useraddr1}, #{useraddr2}, #{useremail}, #{recvemail}, #{profile}, #{regdate}, #{grade}, #{mileage}) ")
 	int insert(MemberVO memberVO);
 	
 	@Select("SELECT * FROM users WHERE id = #{userid}")
@@ -30,7 +30,7 @@ public interface MemberMapper {
 	
 	
 	@Update(" UPDATE users "
-			+ " SET passwd = #{userpass}, name = #{username}, userphone = #{userphone}, useraddr1 = #{useraddr1}, useraddr2 = #{useraddr2}, birthday = #{birthday}, regdate = #{regdate}, profile = #{profile}, grade = #{grade}, mileage = #{mileage}"
+			+ " SET passwd = #{userpass}, name = #{username}, birthday = #{birthday}, userphone = #{userphone}, useraddr1 = #{useraddr1}, useraddr2 = #{useraddr2},  regdate = #{regdate}, profile = #{profile}, grade = #{grade}, mileage = #{mileage}"
 			+ " WHERE id = #{id} ")
 	void updateMember(MemberVO memberVO);
 	

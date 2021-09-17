@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sample.library.mapper.BookMapper">
+
+    <select id="nextNum" resultType="int">
+	<![CDATA[
+        SELECT IFNULL(MAX(book_id), 0) + 1 AS book_id
+        FROM book_list
+        ]]>
+	</select>
+	
+	
+	<insert id="save">
+	<![CDATA[
+            INSERT INTO book_list (book_id, book_name, book_price, book_des, book_img, book_pages, book_isbn, book_writer, sales, category_code)
+    		VALUES(#{book_id}, #{book_name}, #{book_price}, #{book_des}, "", #{book_pages}, "N", #{book_writer}, 0, #{category_code});
+        ]]>
+	</insert>
+	
+	
+	<delete id="deleteAll">
+	<![CDATA[
+        DELETE
+        FROM book_list
+        ]]>
+	</delete>
+</mapper>

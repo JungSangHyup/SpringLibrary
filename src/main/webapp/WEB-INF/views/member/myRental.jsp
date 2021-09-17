@@ -15,7 +15,8 @@
   <link rel="stylesheet" type="text/css" href="/resources/css/myRental.css">
 </head>
 <body class="wrap">
-    <!-- include navbar -->
+    <!-- navbar  -->
+    <jsp:include page="/WEB-INF/views/include/navbar.jsp" />
 	
 	<!-- include sidebar -->
 
@@ -31,16 +32,20 @@
             </nav>
           <ul class="nav flex-column nav-pills" style="background: #ECE6CC; white-space:nowrap;">
             <li class="nav-item">
-              <a class="nav-link active" style="background-color: rgb(207, 136, 86);">대여도서관리</a>
+              <a class="nav-link active" style="background-color: #2f3542;"">
+                <i class="material-icons align-middle">menu_book</i> 대여도서관리</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/member/myWish" style="color: black;">찜목록</a>
+              <a class="nav-link" href="/member/myWish" style="color: black;">
+                <i class="material-icons align-middle">bookmarks</i> 찜목록</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/member/modify" style="color: black;">회원정보수정</a>
+              <a class="nav-link" href="/member/modify" style="color: black;">
+                <i class="material-icons align-middle">build_circle</i> 회원정보수정</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">회원탈퇴</a>
+              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">
+                <i class="material-icons align-middle">clear</i> 회원탈퇴</a>
             </li>
           </ul>
           <!-- end of Vertical Nav -->
@@ -54,13 +59,15 @@
           <div class="border border p-4" style="background: #ECE6CC;">
             <form action="/member/myWishlist" method="POST">
             <table class="table table-hover table-borderless">
-                <thead class="text-center" style="background-color: rgb(207, 136, 86); color: white;">
+                <thead class="text-center" style="background-color: #2f3542; color: white;">
                   <tr>
                     <th scope="col" style="width: 10%;"></th>
                     <th scope="col" style="width: 15%;"></th>
                     <th scope="col" >도서 제목</th>
+                    <th scope="col" style="width: 15%;">대여일자</th>
+                    <th scope="col" style="width: 15%; white-space: nowrap;">남은 대여일 수</th>
                     <th scope="col" style="width: 15%;">상태</th>
-                    <th scope="col" style="width: 15%;">신청 가능일</th>
+                    
                   </tr>
                 </thead>
                 <tbody class="text-center">
@@ -73,8 +80,9 @@
                     </td>
                     <td class="align-middle" style="width: 15%;"><img src="/resources/images/s_l9791166815782.jpg" alt="썸네일"></td>
                     <td class="align-middle">책제목1</td>
-                    <td class="align-middle" style="width: 15%; color: red;">대여불가</td>
-                    <td class="align-middle" style="width: 15%;">2019.09.30</td>
+                    <td class="align-middle" style="width: 15%;">2019.07.01</td>
+                    <td class="align-middle" style="width: 15%; color: red;">0일</td>
+                    <td class="align-middle" style="width: 15%; color: red;">연체</td>
                   </tr>
                   <tr>
                     <td class="align-middle" style="width: 10%;">
@@ -85,8 +93,9 @@
                     </td>
                     <td class="align-middle" style="width: 15%;"><img src="/resources/images/s_l9791166815782.jpg" alt="썸네일"></td>
                     <td class="align-middle">책제목2</td>
-                    <td class="align-middle" style="width: 15%; color: blue;">대여가능</td>
-                    <td class="align-middle" style="width: 15%;">-</td>
+                    <td class="align-middle" style="width: 15%;">2021.09.10</td>
+                    <td class="align-middle" style="width: 15%;">9일</td>
+                    <td class="align-middle" style="width: 15%;">대여중</td>
                   </tr>
                   <tr>
                     <td class="align-middle" style="width: 10%;">
@@ -97,8 +106,9 @@
                     </td>
                     <td class="align-middle" style="width: 15%;"><img src="/resources/images/s_l9791166815782.jpg" alt="썸네일"></td>
                     <td class="align-middle">책제목3</td>
-                    <td class="align-middle" style="width: 15%; color: blue;">대여가능</td>
-                    <td class="align-middle" style="width: 15%;">-</td>
+                    <td class="align-middle" style="width: 15%;">2021.09.03</td>
+                    <td class="align-middle" style="width: 15%;">5일</td>
+                    <td class="align-middle" style="width: 15%; color: blue;">대여중<br>(연장1회)</td>
                   </tr>
                   <tr>
                     <td class="align-middle" style="width: 10%;">
@@ -109,8 +119,9 @@
                     </td>
                     <td class="align-middle" style="width: 15%;"><img src="/resources/images/s_l9791166815782.jpg" alt="썸네일"></td>
                     <td class="align-middle">책제목4</td>
-                    <td class="align-middle" style="width: 15%; color: blue;">대여가능</td>
-                    <td class="align-middle" style="width: 15%;">-</td>
+                    <td class="align-middle" style="width: 15%;">2021.09.10</td>
+                    <td class="align-middle" style="width: 15%;">9일</td>
+                    <td class="align-middle" style="width: 15%;">대여중</td>
                   </tr>
                   <tr>
                     <td class="align-middle" style="width: 10%;">
@@ -121,8 +132,9 @@
                     </td>
                     <td class="align-middle" style="width: 15%;"><img src="/resources/images/s_l9791166815782.jpg" alt="썸네일"></td>
                     <td class="align-middle">책제목5</td>
-                    <td class="align-middle" style="width: 15%; color: blue;">대여가능</td>
-                    <td class="align-middle" style="width: 15%;">-</td>
+                    <td class="align-middle" style="width: 15%;">2021.09.10</td>
+                    <td class="align-middle" style="width: 15%;">9일</td>
+                    <td class="align-middle" style="width: 15%;">대여중</td>
                   </tr>
 
                 </tbody>
@@ -139,6 +151,9 @@
     </div>
     </div>
     <!-- middle container end -->
+    
+    <!-- footer -->
+	<jsp:include page="/WEB-INF/views/include/bottomFooter.jsp" />
 
     
 
