@@ -8,4 +8,6 @@ public interface BookMapper {
 	int nextNum(); 
 	
 	int save(BookVO bookVO); 
+	
+	int deleteAll();
 }
