@@ -8,7 +8,7 @@
 	<insert id="insert">
 	<![CDATA[
 		INSERT INTO qnaboard (board_id, userid, subject, content, regdate, status)
-		VALUES (#{boardId}, #{userid}, #{subject}, #{content}, #{regdate}, #{status})
+		VALUES (#{boardId}, #{userid}, #{subject}, #{content}, #{regdate}, '답변 대기')
 	]]>
 	</insert>
 
