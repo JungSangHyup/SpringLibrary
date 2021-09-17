@@ -79,7 +79,7 @@ public class BoardController {
 			//===============================================
 			
 			// 리다이렉트시 서버에 전달할 데이터를 저장하면 스프링이 자동으로 쿼리스트링으로 변환하여 처리해줌
-			rttr.addAttribute("num", boardVO.getBoard_id());
+			rttr.addAttribute("board_id", boardVO.getBoard_id());
 			rttr.addAttribute("pageNum", 1);
 			
 			return "redirect:/qnaboard/content";
