@@ -56,8 +56,8 @@ public class BoardService {
 		return boardMapper.getTotalCountBySearch(cri);
 	}
 	
-	public BoardVO getBoard(int num) {
-		return boardMapper.getBoard(num);
+	public BoardVO getBoard(int board_id) {
+		return boardMapper.getBoard(board_id);
 	}
 	
 }

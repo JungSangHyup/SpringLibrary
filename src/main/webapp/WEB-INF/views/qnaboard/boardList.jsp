@@ -5,7 +5,7 @@
 <html>
 <head>
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" type="text/css" href="${path}/resources/css/liststyle.css">
+   
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -37,6 +37,7 @@
 				<th scope="col">작성자</th>
 				<th scope="col">제목</th>
 				<th scope="col">작성일자</th>
+				<th scope="col">답변</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -45,16 +46,11 @@
               	
               		<c:forEach var="board" items="${ boardList }">
               			<tr>
-		                  <td class="text-center">${ board.board_id }</td>
+		                  <td class="text-center">${ board.boardId }</td>
 		                  <td class="text-center">${ board.userid }</td>
-		                  <td>
-		                    <c:if test="${ board.reLev gt 0 }"><%-- 답글이면 --%>
-		                    	<span style="display: inline-block; width: ${ board.reLev * 15 }px"></span>
-		                    	<i class="material-icons align-middle">subdirectory_arrow_right</i>
-		                    </c:if>
-		                    <a class="align-middle" href="/qnaboard/content?board_id=${ board.board_id }&pageNum=${ pageMaker.cri.pageNum }">${ board.subject }</a>
-		                  </td>
+		                  <td class="text-center"><a class="align-middle" href="/qnaboard/content?boardId=${ board.boardId }&pageNum=${ pageMaker.cri.pageNum }">${ board.subject }</a></td>
 		                  <td class="text-center"><fmt:formatDate value="${ board.regdate }" pattern="yyyy.MM.dd" /></td>
+		               	  <td class="text-center">${ board.status }</td>
 		                </tr>
               		</c:forEach>
               	
@@ -68,7 +64,7 @@
 		</tbody>
 	</table>
     
-    <button class="write_btn" type="button" name="write_btn" onclick="location.href = '/qnaboard/write?pageNum=${ pageMaker.cri.pageNum }';">글쓰기</button>
+    <button style="width: 80px;" class="write_btn" type="button" name="write_btn" onclick="location.href = '/qnaboard/write?pageNum=${ pageMaker.cri.pageNum }';">글쓰기</button>
 
     
     <nav aria-label="Page navigation example">
@@ -82,11 +78,11 @@
     
     <%-- 시반페이지 번호 ~ 끝페이지 번호 --%>
     <c:forEach var="i" begin="${ pageMaker.startPage }" end="${ pageMaker.endPage }" step="1">
-    
-    </c:forEach>
     <li class="page-item ${ (pageMaker.cri.pageNum eq i) ? 'active' : '' }">
     	<a class="page-link" href="/qnaboard/list?pageNum=${ i }&type=${ pageMaker.cri.type }&keyword=${ pageMaker.cri.keyword }#qnaboard">${ i }</a>
     </li>
+    </c:forEach>
+    
   
   	<%-- 다음 --%>
     <li class="page-item ${ (pageMaker.next) ? '' : 'disabled' }">
@@ -99,6 +95,7 @@
 </nav>
 <!-- footer -->
 <jsp:include page="/WEB-INF/views/include/bottomFooter.jsp" />
+ <link rel="stylesheet" type="text/css" href="${path}/resources/css/liststyle.css">
 </body>
 </html>
 
