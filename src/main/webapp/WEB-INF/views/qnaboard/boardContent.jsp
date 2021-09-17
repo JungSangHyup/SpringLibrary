@@ -30,7 +30,7 @@
             <hr class="my-1" style="height: 2px; background: #ECE6CC; border-radius: 10px;">
         </div>
 
-        <form method="post" action="#">
+        
             <!-- 제목 -->
 
             <div style="text-align: center;"><i class="fa fa-user fa-2x"></i></div>
@@ -50,13 +50,14 @@
                 </div>
 
                 <!-- 글목록 버튼 생성 -->
+                <form method="post" action="#">
                 <div class="btn_box">
                 	<input type="button" class="sub_btn" value="글수정">
                     <input type="button" class="list_btn" value="글목록">
                 </div>
-
+  				</form>
             </div>
-        </form>
+     
 
     </section>
 
