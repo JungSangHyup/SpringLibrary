@@ -12,9 +12,11 @@
   <!-- Bootstrap CSS -->
   <!-- <link rel="stylesheet" href="/resources/css/bootstrap.css"> -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="/resources/css/join.css">
 </head>
-<body>
-	<!-- include navbar -->
+<body class="wrap">
+	<!-- navbar  -->
+    <jsp:include page="/WEB-INF/views/include/navbar.jsp" />
 	
 	<!-- include sidebar -->
 	
@@ -23,7 +25,7 @@
 		
 		
 		<!-- Contents area -->
-          <div class="border border-info p-4 rounded">
+          <div class="border border p-4" style="background: #ECE6CC;">
             <h5>회원 가입</h5>
 
             <hr class="featurette-divider">
@@ -79,11 +81,11 @@
                 <div class="col-sm-9">
                   <div class="custom-control custom-radio custom-control-inline mt-2">
                     <input class="custom-control-input" type="radio" name="genderRadio" id="genderRadio1" value="M" checked>
-                    <label class="custom-control-label" for="inlineRadio1">남자</label>
+                    <label class="custom-control-label" for="genderRadio1">남자</label>
                   </div>
                   <div class="custom-control custom-radio custom-control-inline">
                     <input class="custom-control-input" type="radio" name="genderRadio" id="genderRadio2" value="F">
-                    <label class="custom-control-label" for="inlineRadio2">여자</label>
+                    <label class="custom-control-label" for="genderRadio2">여자</label>
                   </div>
                 </div>
               </div>
@@ -137,7 +139,7 @@
                   <span class="align-middle">이메일 주소</span>
                 </label>
                 <div class="col-auto mt-1">
-                  <input type="email" class="form-control" id="email" name="email" required>
+                  <input type="email" class="form-control" id="email" name="email">
                 </div>
               </div>
 
@@ -148,12 +150,12 @@
                 </label>
                 <div class="col-sm-9 mt-2">
                   <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="customRadioInline1" name="recvEmail" class="custom-control-input" value="Y" checked>
-                    <label class="custom-control-label" for="customRadioInline1">동의함</label>
+                    <input type="radio" id="recvRadio1" name="recvEmail" class="custom-control-input" value="Y" checked>
+                    <label class="custom-control-label" for="recvRadio1">동의함</label>
                   </div>
                   <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="customRadioInline2" name="recvEmail" class="custom-control-input" value="N">
-                    <label class="custom-control-label" for="customRadioInline2">동의 안함</label>
+                    <input type="radio" id="recvRadio2" name="recvEmail" class="custom-control-input" value="N">
+                    <label class="custom-control-label" for="recvRadio2">동의 안함</label>
                   </div>
                 </div>
               </div>
@@ -174,7 +176,7 @@
 
               
               <div class="my-3 text-right">
-                <button type="submit" class="btn btn-primary">회원가입</button>
+                <button type="submit" class="btn btn-secondary">회원가입</button>
                 <button type="reset" class="btn btn-secondary ml-3">다시입력</button>
                 <button type="reset" class="btn btn-secondary ml-3">취소</button>
               </div>
@@ -185,6 +187,9 @@
 		
 		
 	</div>
+	
+	<!-- footer -->
+	<jsp:include page="/WEB-INF/views/include/bottomFooter.jsp" />
 
 </body>
 </html>
