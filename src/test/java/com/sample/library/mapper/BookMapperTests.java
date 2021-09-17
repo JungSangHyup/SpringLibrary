@@ -31,6 +31,7 @@ public class BookMapperTests {
             bookVO.setBook_pages(String.valueOf(random.nextInt(200)));
             bookVO.setBook_des("test");
             bookVO.setBook_isbn("N");
+            bookVO.setBook_img("C:/upload/books");
             bookVO.setBook_writer("testwriter");
             bookVO.setCategory_code("history");
             
