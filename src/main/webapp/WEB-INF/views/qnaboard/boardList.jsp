@@ -46,11 +46,11 @@
               	
               		<c:forEach var="board" items="${ boardList }">
               			<tr>
-		                  <td class="text-center">${ board.boardId }</td>
-		                  <td class="text-center">${ board.userid }</td>
-		                  <td class="text-center"><a class="align-middle" href="/qnaboard/content?boardId=${ board.boardId }&pageNum=${ pageMaker.cri.pageNum }">${ board.subject }</a></td>
-		                  <td class="text-center"><fmt:formatDate value="${ board.regdate }" pattern="yyyy.MM.dd" /></td>
-		               	  <td class="text-center">${ board.status }</td>
+		                  <th>${ board.boardId }</th>
+		                  <td>${ board.userid }</td>
+		                  <td><a class="align-middle" href="/qnaboard/content?boardId=${ board.boardId }&pageNum=${ pageMaker.cri.pageNum }">${ board.subject }</a></td>
+		                  <td><fmt:formatDate value="${ board.regdate }" pattern="yyyy.MM.dd" /></td>
+		               	  <td>${ board.status }</td>
 		                </tr>
               		</c:forEach>
               	
