@@ -15,7 +15,8 @@
   <link rel="stylesheet" type="text/css" href="/resources/css/modify.css">
 </head>
 <body class="wrap">
-    <!-- include navbar -->
+    <!-- navbar  -->
+    <jsp:include page="/WEB-INF/views/include/navbar.jsp" />
 	
 	<!-- include sidebar -->
 
@@ -31,16 +32,20 @@
             </nav>
             <ul class="nav flex-column nav-pills" style="background: #ECE6CC; white-space:nowrap;">
               <li class="nav-item">
-                <a class="nav-link" href="member/myRental" style="color: black;">대여도서관리</a>
+                <a class="nav-link" href="/member/myRental" style="color: black;">
+                  <i class="material-icons align-middle">menu_book</i> 대여도서관리</a>
               </li>
             <li class="nav-item">
-              <a class="nav-link" href="/member/myWish" style="color: black;">찜목록</a>
+              <a class="nav-link" href="/member/myWish" style="color: black;">
+                <i class="material-icons align-middle">bookmarks</i> 찜목록</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" style="background-color: rgb(207, 136, 86);">회원정보수정</a>
+              <a class="nav-link active" style="background-color: #2f3542;">
+                <i class="material-icons align-middle">build_circle</i> 회원정보수정</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">회원탈퇴</a>
+              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">
+                <i class="material-icons align-middle">clear</i> 회원탈퇴</a>
             </li>
           </ul>
           <!-- end of Vertical Nav -->
@@ -221,6 +226,9 @@
     </div>
     </div>
     <!-- middle container end -->
+    
+    <!-- footer -->
+	<jsp:include page="/WEB-INF/views/include/bottomFooter.jsp" />
 
     
 
