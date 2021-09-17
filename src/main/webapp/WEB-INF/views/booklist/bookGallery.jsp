@@ -46,6 +46,8 @@
           <input type="checkbox" class="custom-control-input" id="image_btn">
           <label class="custom-control-label m-2 " for="image_btn">펼쳐보기</label>
         </div>
+        <!-- // 관리자만 보임 -->
+          <button class="btn-primary text-right mt-3 mb-3 rounded" onclick="location.href='/book/write'">책 추가</button>
       </div>
       <!-- Page Content -->
       <div class="container">

@@ -48,7 +48,7 @@
             <label class="custom-control-label m-2 " for="image_btn">펼쳐보기</label>
           </div>
           <!-- // 관리자만 보임 -->
-          <button class="btn-primary text-right mt-3 mb-3" onclick="location.href='/book/write'">책 추가</button>
+          <button class="btn-primary text-right mt-3 mb-3 rounded" onclick="location.href='/book/write'">책 추가</button>
         </div>
 
 
