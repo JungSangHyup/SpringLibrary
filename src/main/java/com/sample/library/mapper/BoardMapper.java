@@ -14,7 +14,7 @@ public interface BoardMapper {
 	
 	int deleteAll(); // 전체 행 삭제
 	
-	int deleteBoardByNum(int num); // 글번호에 해당하는 글 한개 삭제하기
+	int deleteBoardByNum(int boardId); // 글번호에 해당하는 글 한개 삭제하기
 	
 	List<BoardVO> getBoards();  // 전체 게시글 내용 가져오기
 	

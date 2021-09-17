@@ -23,6 +23,6 @@ public class BookVO {
 	private String book_pages;
 	private String book_isbn;
 	private String book_writer;
-	private int sales;
+	private String book_regdate;
 	private String category_code;
 }

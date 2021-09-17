@@ -1,5 +1,7 @@
 package com.sample.library.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,10 @@ public class BookService {
 	
     public int nextNum() {
         return bookMapper.nextNum();
+    }
+    
+    public List<BookVO> getAllbook() {
+    	return bookMapper.getAllbook();
     }
 	
 	public int save(BookVO bookVO) {
