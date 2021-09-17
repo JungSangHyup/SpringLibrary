@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,7 +37,7 @@
                   <span class="align-middle">아이디</span>
                 </label>
                 <div class="col-auto">
-                  <input type="text" class="form-control" id="id" aria-describedby="idHelp" name="id" required autofocus>
+                  <input type="text" class="form-control" id="userid" aria-describedby="idHelp" name="userid" required autofocus>
                   <small id="idHelp" class="form-text text-muted">아이디는 필수 입력 요소입니다.</small>
                 </div>
               </div>
@@ -48,7 +48,7 @@
                   <span class="align-middle">비밀번호</span>
                 </label>
                 <div class="col-auto">
-                  <input type="password" class="form-control" id="password" aria-describedby="pwdHelp" name="passwd" required>
+                  <input type="password" class="form-control" id="userpass" aria-describedby="pwdHelp" name="userapss" required>
                   <small id="pwdHelp" class="form-text text-muted">비밀번호는 필수 입력 요소입니다.</small>
                 </div>
               </div>
@@ -69,7 +69,7 @@
                   <span class="align-middle">이름</span>
                 </label>
                 <div class="col-auto mt-1">
-                  <input type="text" class="form-control" id="name" name="name" required>
+                  <input type="text" class="form-control" id="username" name="username" required>
                 </div>
               </div>
               
@@ -80,11 +80,11 @@
                 </label>
                 <div class="col-sm-9">
                   <div class="custom-control custom-radio custom-control-inline mt-2">
-                    <input class="custom-control-input" type="radio" name="genderRadio" id="genderRadio1" value="M" checked>
+                    <input class="custom-control-input" type="radio" name="gender" id="genderRadio1" value="M" checked>
                     <label class="custom-control-label" for="genderRadio1">남자</label>
                   </div>
                   <div class="custom-control custom-radio custom-control-inline">
-                    <input class="custom-control-input" type="radio" name="genderRadio" id="genderRadio2" value="F">
+                    <input class="custom-control-input" type="radio" name="gender" id="genderRadio2" value="F">
                     <label class="custom-control-label" for="genderRadio2">여자</label>
                   </div>
                 </div>
@@ -106,7 +106,7 @@
                   <span class="align-middle">연락처</span>
                 </label>
                 <div class="form-inline col-9 mt-1" id="phNum">
-                  <select id="phNum1" class="form-control" name="phNum1" required>
+                  <select id="phNum1" class="form-control" name="userphone1" required>
                     <option selected disabled>선택</option>
                     <option>010</option>
                     <option>011</option>
@@ -115,8 +115,8 @@
                     <option>018</option>
                     <option>019</option>
                   </select>
-                   - <input type="text" class="form-control col-2" id="phNum2" name="phNum2" required>
-                   - <input type="text" class="form-control col-2" id="phNum3" name="phNum3" required>
+                   - <input type="text" class="form-control col-2" id="phNum2" name="userphone2" required>
+                   - <input type="text" class="form-control col-2" id="phNum3" name="userphone3" required>
                 </div>
               </div>
 
@@ -126,8 +126,8 @@
                   <span class="align-middle">주소</span>
                 </label>
                 <div class="col-sm-7 mt-1">
-                  <input type="text" class="form-control mb-2" id="address" name="address">
-                  <input type="text" class="form-control" id="addressDetail" name="addressDetail" placeholder="상세주소 입력">
+                  <input type="text" class="form-control mb-2" id="useraddr1" name="useraddr1">
+                  <input type="text" class="form-control" id="useraddr2" name="useraddr2" placeholder="상세주소 입력">
                 </div>
               </div>
 
@@ -139,7 +139,7 @@
                   <span class="align-middle">이메일 주소</span>
                 </label>
                 <div class="col-auto mt-1">
-                  <input type="email" class="form-control" id="email" name="email">
+                  <input type="email" class="form-control" id="useremail" name="useremail">
                 </div>
               </div>
 
@@ -150,11 +150,11 @@
                 </label>
                 <div class="col-sm-9 mt-2">
                   <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="recvRadio1" name="recvEmail" class="custom-control-input" value="Y" checked>
+                    <input type="radio" id="recvRadio1" name="recvemail" class="custom-control-input" value="Y" checked>
                     <label class="custom-control-label" for="recvRadio1">동의함</label>
                   </div>
                   <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="recvRadio2" name="recvEmail" class="custom-control-input" value="N">
+                    <input type="radio" id="recvRadio2" name="recvemail" class="custom-control-input" value="N">
                     <label class="custom-control-label" for="recvRadio2">동의 안함</label>
                   </div>
                 </div>
