@@ -35,13 +35,6 @@
 	</delete>
 	
 	
-	<select id="getBoards" resultType="boardVO">
-	<![CDATA[
-		SELECT * 
-		FROM qnaboard
-		ORDER BY board_id DESC
-	]]>
-	</select>
 	
 	
 	<select id="getBoardsWithPaging" resultType="boardVO">

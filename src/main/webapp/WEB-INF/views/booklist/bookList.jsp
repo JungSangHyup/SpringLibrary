@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false" %>
+<%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>  
@@ -58,8 +58,9 @@
         
         <c:choose>
         	<c:when test="${ bookCnt gt 0 }">
-        		<c:forEach items="${ bookList }" var="book">
-        			${book}      		     		
+        	<% System.out.println(pageContext.findAttribute("bookList") ); %>	
+        		<c:forEach items="${ bookList }" var="book">   
+        			     		
         		       <div class="card mb-3">
 				         <div class="row no-gutters">
 				           <div class="col-md-4">
@@ -69,10 +70,10 @@
 				           </div>
 				           <div class="col-md-8">
 				             <div class="card-body float-left">
-				               <h5 class="card-title">${ book.book_name }</h5>				              
-				               		<c:if test="${ book.book_isbn eq 'N' }"><p class="text-right text-danger">대여 중</p></c:if>
-				               		<c:if test="${ book.book_isbn eq 'Y' }"><p class="text-right text-danger">대여 가능</p></c:if>
-				               <p class="card-text">${book.book_des}</p>
+				               <h5 class="card-title">${ book.bookName }</h5>				              
+				               		<c:if test="${ book.bookIsbn eq 'N' }"><p class="text-right text-danger">대여 중</p></c:if>
+				               		<c:if test="${ book.bookIsbn eq 'Y' }"><p class="text-right text-danger">대여 가능</p></c:if>
+				               <p class="card-text">${book.bookDes}</p>
 				             </div>
 				           </div>
 				         </div>
