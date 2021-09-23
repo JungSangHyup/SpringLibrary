@@ -3,11 +3,13 @@ package com.sample.library.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.sample.library.domain.BoardVO;
 import com.sample.library.domain.CommentVO;
 import com.sample.library.mapper.CommentMapper;
 
+@Service
 public class CommentService {
 	
 	@Autowired

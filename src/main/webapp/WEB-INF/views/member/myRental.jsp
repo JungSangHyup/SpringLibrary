@@ -44,7 +44,11 @@
                 <i class="material-icons align-middle">build_circle</i> 회원정보수정</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">
+              <a class="nav-link" href="/member/changePw" style="color: black;">
+                <i class="material-icons align-middle">vpn_key</i> 비밀번호 변경</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/member/remove" style="color: black;">
                 <i class="material-icons align-middle">clear</i> 회원탈퇴</a>
             </li>
           </ul>
@@ -58,6 +62,8 @@
             <!-- Contents area -->
           <div class="border border p-4" style="background: #ECE6CC;">
             <form action="/member/myWishlist" method="POST">
+            <h3>대여도서관리</h3>
+              <hr>
             <table class="table table-hover table-borderless">
                 <thead class="text-center" style="background-color: #2f3542; color: white;">
                   <tr>
