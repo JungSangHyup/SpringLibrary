@@ -1,5 +1,7 @@
 package com.sample.library.domain;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,4 +24,6 @@ public class BookVO {
 	private String bookWriter;
 	private String bookRegdate;
 	private String categoryCode;
+	
+	private List<BookAttachVO> bookAttachList;
 }

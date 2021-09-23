@@ -108,3 +108,7 @@ hs_err_pid*
 
 # End of https://www.toptal.com/developers/gitignore/api/eclipse,java
 *.MF
+*.MF
+target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
+*.properties
+target/m2e-wtp/web-resources/META-INF/maven/com.example/myapp/pom.properties

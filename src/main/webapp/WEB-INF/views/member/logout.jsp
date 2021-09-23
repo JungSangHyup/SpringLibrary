@@ -13,10 +13,11 @@
 			<div class="container">
                 <br/>
 				<h4>로그아웃되었습니다!</h4>
+				<h5>안녕히가세요</h5>
 			</div>
 			<form action="/" class="input-group">
                 <br/><br/><br/><br/>
-				<button class="logout" >HOME으로 가기</button>
+				<button class="logout">HOME으로 가기</button>
 			</form>
 		</div>
 	</div>

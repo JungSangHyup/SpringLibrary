@@ -48,7 +48,7 @@
                   <span class="align-middle">비밀번호</span>
                 </label>
                 <div class="col-auto">
-                  <input type="password" class="form-control" id="userpass" aria-describedby="pwdHelp" name="userapss" required>
+                  <input type="password" class="form-control" id="userpass" aria-describedby="pwdHelp" name="userpass" required>
                   <small id="pwdHelp" class="form-text text-muted">비밀번호는 필수 입력 요소입니다.</small>
                 </div>
               </div>

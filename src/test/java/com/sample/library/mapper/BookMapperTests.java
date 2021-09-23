@@ -50,23 +50,29 @@ public class BookMapperTests {
 //	}
 	
 	@Test
-	public void getAllbook() {
-		List<BookVO> bookList = bookService.getAllbook();
-		
-		for(BookVO book : bookList) {
-			if(book != null) {
-				System.out.println(book.getBookId());
-			}
-			
-		}
-		System.out.println(bookList.size());
+	public void getBookAndAttaches() {
+		BookVO bookVO = bookService.getBookAndAttaches(22);
+		System.out.println(bookVO.toString());
 	}
 	
-	
-	@Test
-	public void getBook() {
-		BookVO book = bookMapper.getBook(1);
-		System.out.println(book.getBookName());
-	}
+//	@Test
+//	public void getAllbook() {
+//		List<BookVO> bookList = bookService.getAllbook();
+//		
+//		for(BookVO book : bookList) {
+//			if(book != null) {
+//				System.out.println(book.getBookId());
+//			}
+//			
+//		}
+//		System.out.println(bookList.size());
+//	}
+//	
+//	
+//	@Test
+//	public void getBook() {
+//		BookVO book = bookMapper.getBook(1);
+//		System.out.println(book.getBookName());
+//	}
 
 }

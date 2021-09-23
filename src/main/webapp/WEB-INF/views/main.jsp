@@ -55,15 +55,18 @@
 					<c:choose>
 						<c:when test="${ not empty sessionScope.userid }">
 							<!-- 로그인 했을때 -->
-							<span>${ sessionScope.userid } 님</span>
-							<button type="submit" class="btn btn-primary "
+							<span>LIBRARY에 오신걸 환영합니다!</span><br/>
+							<span>${ sessionScope.userid } 님</span><br/>
+							<button type="submit" class="btn btn-link btn-sm pt-1"
+								onclick="location.href='/member/modify'">내정보수정</button><br/>
+							<button type="submit" class="btn btn-danger btn-sm mt-1"
 								onclick="location.href='/member/logout'">로그아웃</button>
 						</c:when>
 						<c:otherwise>
 							<!-- 로그인 안했을때 -->
-							<button type="submit" class="btn btn-primary "
+							<button type="submit" class="btn btn-secondary btn-lg"
 								onclick="location.href='/member/login'">로그인</button><br/>
-							<button type="submit" class="btn btn-primary mt-2"
+							<button type="submit" class="btn btn-secondary btn-sm mt-2"
 								onclick="location.href='/member/join'">회원가입</button>
 						</c:otherwise>
 					</c:choose>
