@@ -24,49 +24,49 @@ public class BookMapperTests {
 	@Autowired
 	private BookService bookService;
 	
+	@Test
+	public void insertBook() {
+		bookService.deleteAll();
+        Random random = new Random();
+
+        for (int i = 1; i <= 20; i++) {
+            BookVO bookVO = new BookVO();
+            int num = bookService.nextNum();
+            bookVO.setBookId(i);
+            bookVO.setBookName("hello");
+            bookVO.setBookPrice(random.nextInt(200) * 10);
+            bookVO.setBookPages(String.valueOf(random.nextInt(200)));
+            bookVO.setBookDes("test");
+            bookVO.setBookIsbn("N");
+            bookVO.setBookWriter("testwriter");
+            bookVO.setCategoryCode("history");
+            
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+            String curr_time = sdf.format(new Date());
+            bookVO.setBookRegdate(curr_time);
+            
+            bookService.save(bookVO);
+        }
+	}
+	
 //	@Test
-//	public void insertBook() {
-//		bookService.deleteAll();
-//        Random random = new Random();
-//
-//        for (int i = 1; i <= 20; i++) {
-//            BookVO bookVO = new BookVO();
-//            int num = bookService.nextNum();
-//            bookVO.setBookId(i);
-//            bookVO.setBookName("hello");
-//            bookVO.setBookPrice(random.nextInt(200) * 10);
-//            bookVO.setBookPages(String.valueOf(random.nextInt(200)));
-//            bookVO.setBookDes("test");
-//            bookVO.setBookIsbn("N");
-//            bookVO.setBookWriter("testwriter");
-//            bookVO.setCategoryCode("history");
-//            
-//            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-//            String curr_time = sdf.format(new Date());
-//            bookVO.setBookRegdate(curr_time);
-//            
-//            bookService.save(bookVO);
-//        }
+//	public void getAllbook() {
+//		List<BookVO> bookList = bookService.getAllbook();
+//		
+//		for(BookVO book : bookList) {
+//			if(book != null) {
+//				System.out.println(book.getBookId());
+//			}
+//			
+//		}
+//		System.out.println(bookList.size());
 //	}
-	
-	@Test
-	public void getAllbook() {
-		List<BookVO> bookList = bookService.getAllbook();
-		
-		for(BookVO book : bookList) {
-			if(book != null) {
-				System.out.println(book.getBookId());
-			}
-			
-		}
-		System.out.println(bookList.size());
-	}
-	
-	
-	@Test
-	public void getBook() {
-		BookVO book = bookMapper.getBook(1);
-		System.out.println(book.getBookName());
-	}
+//	
+//	
+//	@Test
+//	public void getBook() {
+//		BookVO book = bookMapper.getBook(1);
+//		System.out.println(book.getBookName());
+//	}
 
 }

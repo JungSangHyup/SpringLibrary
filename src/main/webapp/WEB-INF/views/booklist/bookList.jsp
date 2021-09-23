@@ -65,7 +65,11 @@
 				         <div class="row no-gutters">
 				           <div class="col-md-4">
 				             <a href="/book/content">
-				               <img src="/resources/images/l9791166815782.jpg" alt="..." style="max-width: 180px;">
+				             <c:set var="fileCallPath"
+                                    value="${ bookImg }"/>
+                             <c:set var="originPath"
+                                    value="${ bookImg }"/>
+				               <img src="/display?fileName=${ fileCallPath }" alt="..." style="max-width: 180px;">
 				             </a>
 				           </div>
 				           <div class="col-md-8">

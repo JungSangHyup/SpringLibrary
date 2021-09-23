@@ -81,11 +81,11 @@ public class BookController {
 	@PostMapping("/write")
 	public String register(@RequestParam("book_file") MultipartFile book_file, BookVO bookVO,
             HttpServletRequest request, RedirectAttributes rttr) throws IOException {
-		System.out.println(bookVO.getBook_name());
-		System.out.println(bookVO.getBook_des());
-		System.out.println(bookVO.getBook_writer());
-		System.out.println(bookVO.getBook_price());
-		System.out.println(bookVO.getCategory_code());
+		System.out.println(bookVO.getBookName());
+		System.out.println(bookVO.getBookDes());
+		System.out.println(bookVO.getBookWriter());
+		System.out.println(bookVO.getBookPrice());
+		System.out.println(bookVO.getCategoryCode());
 		// insert할 새 글번호 가져오기
         int num = bookService.nextNum();
         
@@ -117,16 +117,17 @@ public class BookController {
                 Thumbnailator.createThumbnail(file, outFile, 197, 282);  // 썸네일 이미지 파일 생성하기
         	}
         	
-        	bookVO.setBook_img(file.getPath());
+        	bookVO.setBookImg(file.getPath());
         	System.out.println(file.getPath());
         }else {
-        	bookVO.setBook_img("default_image");
+        	bookVO.setBookImg("default");
         }
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
         String curr_time = sdf.format(new Date());
         
-        bookVO.setBook_id(num);
-        bookVO.setBook_regdate(curr_time);
+        
+        bookVO.setBookId(num);
+        bookVO.setBookRegdate(curr_time);
         
         bookService.save(bookVO);
      
