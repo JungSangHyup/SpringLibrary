@@ -19,7 +19,7 @@
     
 	<!-- Post -->
 	<section class="post" id="post" style="margin-top: 30px;">
-		<form method="post" action="/qnabaord/modify">
+		<form method="post" action="/qnaboard/modify">
 		<input type="hidden" name="pageNum" value="${ pageNum }">
               <input type="hidden" name="boardId" value="${ board.boardId }">
 			

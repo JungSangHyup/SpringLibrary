@@ -43,7 +43,6 @@ body {
     overflow-x: hidden;
 }
 
-
 .form-userid {
     text-align: center; 
     margin-bottom: 17px;
@@ -52,12 +51,20 @@ body {
     width: 230px;
 }
 
+.comment {
+    margin: 10px;
+    width: 95%;
+    height: 90px;
+    border-style: none;
+    background: #ededed;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
 .userid {
     justify-content: center;
     display: flex;
 }
-
-
 .t1 {
     margin: 20px; 
     text-align: center; 
@@ -109,6 +116,20 @@ body {
     border-radius: 4px;
 }
 
+.com_btn {
+    margin-top: 10px;
+    margin-left: 70%;
+    margin-bottom: 4%;
+    width: 80px;
+    height: 38px;
+    background: #2f3542;
+    color: white;
+    padding: 0 10px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
 .m-4 {
   margin: 1.5rem !important;
 }
@@ -133,6 +154,21 @@ body {
     border-radius: 10px;
   }
   .form-content::-webkit-scrollbar-track {
+    background-color: grey;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px white;
+  }
+
+
+.comment::-webkit-scrollbar {
+    width: 20px;
+    
+  }
+  .comment::-webkit-scrollbar-thumb {
+    background-color: #2f3542;
+    border-radius: 10px;
+  }
+  .comment::-webkit-scrollbar-track {
     background-color: grey;
     border-radius: 10px;
     box-shadow: inset 0px 0px 5px white;
@@ -169,3 +205,4 @@ h3 {
     margin-left: 5%;
     margin-bottom: 10px;
 }
+

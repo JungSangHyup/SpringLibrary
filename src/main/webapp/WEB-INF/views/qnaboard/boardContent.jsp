@@ -60,10 +60,11 @@
 			<div class="btn_box">
 				<input type="button" class="sub_btn"
 					onclick="location.href = '/qnaboard/modify?boardId=${ boardVO.boardId }&pageNum=${ pageNum }';"
-					value="글수정"> <input type="button" class="remove_btn"
-					onclick="remove(event);" value="글삭제"> <input type="button"
-					class="list_btn"
-					onclick="location.href = '/qnaboard/list?pageNum=${ pageNum }';"
+					value="글수정"> 
+					
+					<input type="button" class="remove_btn" onclick="remove(event);" value="글삭제"> 
+					
+					<input type="button" class="list_btn" onclick="location.href = '/qnaboard/list?pageNum=${ pageNum }';"
 					value="글목록">
 			</div>
 		</div>
@@ -76,6 +77,32 @@
 	</div>
 
 	<h3>댓글</h3>
+
+	<div class="media">
+		<i class="fa fa-user fa-5x"
+			style="margin: 10px; line-height: 90px; font-size: 80px;"></i>
+		<div class="media-body">
+
+			<textarea class="comment" placeholder="댓글 작성하기"></textarea>
+
+		</div>
+	</div>
+	<div class="btn_box">
+		<input type="button" class="com_btn" value="댓글달기">
+	</div>
+	
+	<div class="media">
+		<i class="fa fa-user fa-5x"
+			style="margin: 10px; line-height: 90px; font-size: 80px;"></i>
+		<div class="media-body">
+			<h4 class="mt-0">Media heading</h4>
+			<p>Will you do the same for me? It's time to face the music I'm
+				no longer your muse. Heard it's beautiful, be the judge and my girls
+				gonna take a vote. I can feel a phoenix inside of me. Heaven is
+				jealous of our love, angels are crying from up above. Yeah, you take
+				me to utopia.</p>
+		</div>
+	</div>
 
 	<div class="media">
 		<i class="fa fa-user fa-5x"
@@ -105,7 +132,8 @@
 
 	<!-- footer -->
 	<jsp:include page="/WEB-INF/views/include/bottomFooter.jsp" />
-	<link rel="stylesheet" type="text/css" href="${path}/resources/css/contentstyle.css">
+	<link rel="stylesheet" type="text/css"
+		href="${path}/resources/css/contentstyle.css">
 	<script>
 		//글삭제 버튼을 클릭했을 때 호출되는 함수
 		function remove(event) {

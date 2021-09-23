@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sample.library.domain.BoardVO;
+import com.sample.library.domain.CommentVO;
 import com.sample.library.domain.Criteria;
 import com.sample.library.domain.PageDTO;
 import com.sample.library.service.BoardService;
+import com.sample.library.service.CommentService;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -27,6 +29,9 @@ public class BoardController {
 
 	@Autowired
 	private BoardService boardService;
+	
+	@Autowired
+	private CommentService commentService;
 
 	@GetMapping("/list")
 	public String list(Criteria cri, Model model) {
@@ -49,7 +54,7 @@ public class BoardController {
 		System.out.println("content");
 
 		BoardVO boardVO = boardService.getBoard(boardId);
-
+		
 		model.addAttribute("boardVO", boardVO);
 
 		return "qnaboard/boardContent";
