@@ -3,13 +3,11 @@ package com.sample.library.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import com.sample.library.domain.BoardVO;
 import com.sample.library.domain.CommentVO;
 import com.sample.library.mapper.CommentMapper;
 
-@Service
 public class CommentService {
 	
 	@Autowired
@@ -23,20 +21,20 @@ public class CommentService {
 		return commentMapper.nextNum();
 	}
 	
-	public int deleteCommentByNum(int commentId) {
+	int deleteCommentByNum(int commentId) {
 		return commentMapper.deleteCommentByNum(commentId);
 	}
 	
-	public List<CommentVO> getComments(int boardId) {
-		return commentMapper.getComments(boardId);
+	List<CommentVO> getComments() {
+		return commentMapper.getComments();
 	}
 	
 	public CommentVO getComment(int board_id) {
 		return commentMapper.getComment(board_id);
 	}
 	
-	public int updateComment(CommentVO commentVO) {
-		return commentMapper.updateComment(commentVO);
+	void updateComment(CommentVO commentVO) {
+		commentMapper.updateComment(commentVO);
 	}
 	
 	

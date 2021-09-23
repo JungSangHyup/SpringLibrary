@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,6 +16,7 @@
 </head>
 
 <body>
+
 	<!-- Navbar -->
 	<jsp:include page="/WEB-INF/views/include/navbar.jsp" />
 
@@ -60,10 +60,11 @@
 			<div class="btn_box">
 				<input type="button" class="sub_btn"
 					onclick="location.href = '/qnaboard/modify?boardId=${ boardVO.boardId }&pageNum=${ pageNum }';"
-					value="글수정"> <input type="button" class="remove_btn"
-					onclick="remove(event);" value="글삭제"> <input type="button"
-					class="list_btn"
-					onclick="location.href = '/qnaboard/list?pageNum=${ pageNum }';"
+					value="글수정"> 
+					
+					<input type="button" class="remove_btn" onclick="remove(event);" value="글삭제"> 
+					
+					<input type="button" class="list_btn" onclick="location.href = '/qnaboard/list?pageNum=${ pageNum }';"
 					value="글목록">
 			</div>
 		</div>
@@ -77,33 +78,18 @@
 
 	<h3>댓글</h3>
 
-	<form name="commentForm" method="post" action="/comment/write">
-		<input type="hidden" id="boardId" name="boardId" value="${boardVO.boardId}"/>
 	<div class="media">
 		<i class="fa fa-user fa-5x"
 			style="margin: 10px; line-height: 90px; font-size: 80px;"></i>
 		<div class="media-body">
-			<h4 class="mt-0">${boardVO.userid}</h4>
-			<input class="comment" placeholder="댓글 작성하기" id="content" name="content">
+
+			<textarea class="comment" placeholder="댓글 작성하기"></textarea>
+
 		</div>
 	</div>
 	<div class="btn_box">
-		<input type="submit" class="com_btn" value="댓글달기">
+		<input type="button" class="com_btn" value="댓글달기">
 	</div>
-</form>
-
-	<ol class="commentList">
-	<c:forEach var="commentList" items="${ commentList }">
-			<div class="media">
-				<i class="fa fa-user fa-5x"
-					style="margin: 10px; line-height: 90px; font-size: 80px;"></i>
-				<div class="media-body">
-				<h4 class="mt-0">${commentList.commentId}</h4>
-					<p>${ commentList.content }</p>
-				</div>
-			</div>
-	</c:forEach>
-	</ol>
 	
 	<div class="media">
 		<i class="fa fa-user fa-5x"
@@ -130,13 +116,25 @@
 				me to utopia.</p>
 		</div>
 	</div>
-	
+
+	<div class="media">
+		<i class="fa fa-user fa-5x"
+			style="margin: 10px; line-height: 90px; font-size: 80px;"></i>
+		<div class="media-body">
+			<h4 class="mt-0">Media heading</h4>
+			<p>Will you do the same for me? It's time to face the music I'm
+				no longer your muse. Heard it's beautiful, be the judge and my girls
+				gonna take a vote. I can feel a phoenix inside of me. Heaven is
+				jealous of our love, angels are crying from up above. Yeah, you take
+				me to utopia.</p>
+		</div>
+	</div>
+
 	<!-- footer -->
 	<jsp:include page="/WEB-INF/views/include/bottomFooter.jsp" />
 	<link rel="stylesheet" type="text/css"
 		href="${path}/resources/css/contentstyle.css">
 	<script>
-	
 		//글삭제 버튼을 클릭했을 때 호출되는 함수
 		function remove(event) {
 			// 이벤트 소스(이벤트가 발생한 오브젝트)의 기본동작을 못하게 만듬
@@ -148,11 +146,8 @@
 				location.href = '/qnaboard/remove?boardId=${ boardVO.boardId }&pageNum=${ pageNum }';
 			}
 		}
-		
 	</script>
 
+
 </body>
-
-
-
 </html>
