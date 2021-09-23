@@ -5,5 +5,4 @@ encoding//src/main/java/com/sample/library/service/BoardService.java=UTF-8
 encoding//src/main/webapp/WEB-INF/views/include/navbar.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/main.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/qnaboard/boardList.jsp=UTF-8
-encoding/<project>=UTF-8
 separateDerivedEncodings=true

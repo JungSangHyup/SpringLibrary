@@ -1,4 +1,8 @@
-<%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>  
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +18,6 @@
 
 <div class="container">
   <div class="row">
-    
     <div class="col-3" >
       <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical" style="background: #ECE6CC;">
         <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
@@ -50,76 +53,34 @@
           <!-- // 관리자만 보임 -->
           <button class="btn-primary text-right mt-3 mb-3 rounded" onclick="location.href='/book/write'">책 추가</button>
         </div>
-
-
-        <div class="card mb-3">
-          <div class="row no-gutters">
-            <div class="col-md-4">
-              <a href="/book/content">
-                <img src="/resources/images/l9791166815782.jpg" alt="..." style="max-width: 180px;">
-              </a>
-            </div>
-            <div class="col-md-8">
-              <div class="card-body float-left">
-                <h5 class="card-title ">하버드 회복탄력성 수업</h5>
-                <p class="text-right text-primary">대여가능</p>
-                <p class="card-text">우울, 불안, 번아웃, 스트레스에 무너지지 않는 멘탈관리 프로젝트! 지금 바로 시작하자</p>
-              </div>
-            </div>
-      
-          </div>
-        </div>
-        <div class="card mb-3">
-          <div class="row no-gutters">
-            <div class="col-md-4">
-              <a href="/book/content">
-                <img src="/resources/images/l9791166815782.jpg" alt="..." style="max-width: 180px;">
-              </a>
-            </div>
-            <div class="col-md-8 ">
-              <div class="card-body ">
-                <h5 class="card-title ">하버드 회복탄력성 수업</h5>
-                <p class="text-right text-primary">대여가능</p>
-                <p class="card-text">우울, 불안, 번아웃, 스트레스에 무너지지 않는 멘탈관리 프로젝트! 지금 바로 시작하자</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      
-      
-        <div class="card mb-3">
-          <div class="row no-gutters">
-            <div class="col-md-4">
-              <a href="/book/content">
-                <img src="/resources/images/l9791166815782.jpg" alt="..." style="max-width: 180px;">
-              </a>
-            </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <h5 class="card-title">하버드 회복탄력성 수업</h5>
-                <p class="text-right text-danger">대여중</p>
-                <p class="card-text">우울, 불안, 번아웃, 스트레스에 무너지지 않는 멘탈관리 프로젝트! 지금 바로 시작하자</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-        <div class="card mb-3">
-          <div class="row no-gutters">
-              <a href="/book/content">
-                <img src="/resources/images/l9791166815782.jpg" alt="..." style="max-width: 180px;">
-              </a>
-            <div class="col-md-8">
-              <div class="card-body">
-                <h5 class="card-title">하버드 회복탄력성 수업</h5>
-                <p class="text-right text-danger">대여중</p>
-                <p class="card-text">우울, 불안, 번아웃, 스트레스에 무너지지 않는 멘탈관리 프로젝트! 지금 바로 시작하자</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
+        
+        
+        
+        <c:choose>
+        	<c:when test="${ bookCnt gt 0 }">
+        	<% System.out.println(pageContext.findAttribute("bookList") ); %>	
+        		<c:forEach items="${ bookList }" var="book">   
+        			     		
+        		       <div class="card mb-3">
+				         <div class="row no-gutters">
+				           <div class="col-md-4">
+				             <a href="/book/content">
+				               <img src="/resources/images/l9791166815782.jpg" alt="..." style="max-width: 180px;">
+				             </a>
+				           </div>
+				           <div class="col-md-8">
+				             <div class="card-body float-left">
+				               <h5 class="card-title">${ book.bookName }</h5>				              
+				               		<c:if test="${ book.bookIsbn eq 'N' }"><p class="text-right text-danger">대여 중</p></c:if>
+				               		<c:if test="${ book.bookIsbn eq 'Y' }"><p class="text-right text-danger">대여 가능</p></c:if>
+				               <p class="card-text">${book.bookDes}</p>
+				             </div>
+				           </div>
+				         </div>
+				       </div>
+        		</c:forEach>
+        	</c:when>  
+        </c:choose>
 
         <nav aria-label="..." class="row" style="float: none; margin:100 auto;">
           <div class="col-md-6" style="margin:0 auto;">

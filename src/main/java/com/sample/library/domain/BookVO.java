@@ -1,9 +1,6 @@
 package com.sample.library.domain;
 
-import java.util.Date;
-
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,14 +12,14 @@ import lombok.ToString;
 @Setter
 @ToString
 public class BookVO {
-	private int book_id;
-	private String book_name;
-	private int book_price;
-	private String book_des;
-	private String book_img;
-	private String book_pages;
-	private String book_isbn;
-	private String book_writer;
-	private int sales;
-	private String category_code;
+	private int bookId;
+	private String bookName;
+	private int bookPrice;
+	private String bookDes;
+	private String bookImg;
+	private String bookPages;
+	private String bookIsbn;
+	private String bookWriter;
+	private String bookRegdate;
+	private String categoryCode;
 }

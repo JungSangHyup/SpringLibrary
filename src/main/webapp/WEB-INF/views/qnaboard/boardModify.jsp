@@ -19,7 +19,9 @@
     
 	<!-- Post -->
 	<section class="post" id="post" style="margin-top: 30px;">
-		<form method="post" action="/qnaboard/write">
+		<form method="post" action="/qnaboard/modify">
+		<input type="hidden" name="pageNum" value="${ pageNum }">
+              <input type="hidden" name="boardId" value="${ board.boardId }">
 			
 			 <!-- 제목 작성 -->
 				<div class="t1">제목 작성</div>

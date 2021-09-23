@@ -48,6 +48,7 @@ public class MemberController {
 		String birthday = memberVO.getBirthday(); // "2021-08-25"
 		birthday = birthday.replace("-", ""); // "20210825"
 		memberVO.setBirthday(birthday);
+		// 전화번호 등록
 		String userphone = memberVO.getUserphone1()+"-"+memberVO.getUserphone2()+"-"+memberVO.getUserphone3();
 		memberVO.setUserphone(userphone);
 		
@@ -70,16 +71,16 @@ public class MemberController {
 		return "member/login";
 	}
 	@PostMapping("/login")
-	public ResponseEntity<String> login(String id, String passwd, String rememberMe, 
+	public ResponseEntity<String> login(String userid, String userpass, String rememberMe, 
 			HttpSession session, HttpServletResponse response) {
 		
-		MemberVO memberVO = memberService.getMemberById(id);
+		MemberVO memberVO = memberService.getMemberById(userid);
 		
 		boolean isPasswdSame = false;
 		String message = "";
 		
 		if (memberVO != null) {
-			isPasswdSame = BCrypt.checkpw(passwd, memberVO.getUserpass());
+			isPasswdSame = BCrypt.checkpw(userpass, memberVO.getUserpass());
 			
 			if (isPasswdSame == false) { // 비밀번호 일치하지 않음
 				message = "비밀번호가 일치하지 않습니다.";
@@ -99,13 +100,10 @@ public class MemberController {
 		}
 		
 		// 로그인 성공시, 로그인 인증하기
-		session.setAttribute("id", id);
-		
-		System.out.println(session.getAttribute(id));
-		
+		session.setAttribute("userid", userid);
 		// 로그인 상태유지가 체크되었으면
 		if (rememberMe != null) {
-			Cookie cookie = new Cookie("id", id); // 로그인 아이디로 쿠키정보 생성
+			Cookie cookie = new Cookie("userid", userid); // 로그인 아이디로 쿠키정보 생성
 			cookie.setPath("/");
 			cookie.setMaxAge(60 * 10); // 초단위. 60초 * 10 -> 10분
 			response.addCookie(cookie); // 응답객체에 쿠키를 추가해놓으면 최종응답시 쿠키를 클라이언트에게 전송해줌
@@ -125,7 +123,7 @@ public class MemberController {
 		
 		if (cookies != null) {
 			for (Cookie cookie : cookies) {
-				if (cookie.getName().equals("id")) {
+				if (cookie.getName().equals("userid")) {
 					cookie.setMaxAge(0); 
 					cookie.setPath("/");
 					response.addCookie(cookie);
@@ -140,53 +138,6 @@ public class MemberController {
 	public String modify() {
 		System.out.println("modify 호둘됨...");
 		return "member/modify";
-	}
-	
-	@PostMapping("/modify")
-	public ResponseEntity<String> changePw(MemberVO memberVO, String oldPasswd, String newPasswd, HttpSession session) {
-		
-		
-		boolean isPasswdSame = false;
-		String message = "";
-		
-		isPasswdSame = BCrypt.checkpw(oldPasswd, memberVO.getUserpass());
-		
-		// 현재 비밀번호가 틀렸을때
-		if (isPasswdSame == false) { // 비밀번호 일치하지 않음
-			message = "현재 비밀번호가 일치하지 않습니다.";
-			
-			HttpHeaders headers = new HttpHeaders();
-			headers.add("Content-Type", "text/html; charset=UTF-8");
-			
-			String str = Script.back(message);
-			
-			return new ResponseEntity<String>(str, headers, HttpStatus.OK);
-		}
-		
-		// 현재 비밀번호가 일치할때
-		String hashedPw = BCrypt.hashpw(newPasswd, BCrypt.gensalt());	// 새 비밀번호 암호화
-		memberVO.setUserpass(hashedPw);		// 암호화된 비밀번호로 재설정
-		
-		
-		// 연월일 구분문자("-") 제거하기
-		String birthday = memberVO.getBirthday(); // "2021-08-25"
-		birthday = birthday.replace("-", ""); // "20210825"
-		memberVO.setBirthday(birthday);
-		
-		
-		String id = (String) session.getAttribute("id");
-		memberVO.setUserid(id);
-		
-		memberService.updateMember(memberVO); // 회원정보 update 처리
-		System.out.println(memberVO);
-		
-		
-		HttpHeaders headers = new HttpHeaders();
-		headers.add("Content-Type", "text/html; charset=UTF-8");
-		
-		String str = Script.href("회원정보 수정 완료!", "/");
-		
-		return new ResponseEntity<String>(str, headers, HttpStatus.OK);
 	}
 	
 	@GetMapping("/myWish")

@@ -8,7 +8,7 @@
 	<insert id="insert">
 	<![CDATA[
 		INSERT INTO qnaboard (board_id, userid, subject, content, regdate, status)
-		VALUES (#{board_id}, #{userid}, #{subject}, #{content}, #{regdate}, #{status})
+		VALUES (#{boardId}, #{userid}, #{subject}, #{content}, #{regdate}, '답변 대기')
 	]]>
 	</insert>
 
@@ -30,18 +30,11 @@
 	
 	<delete id="deleteBoardByNum">
 	<![CDATA[
-		DELETE FROM qnaboard WHERE board_id = #{board_id}
+		DELETE FROM qnaboard WHERE board_id = #{boardId}
 	]]>
 	</delete>
 	
 	
-	<select id="getBoards" resultType="boardVO">
-	<![CDATA[
-		SELECT * 
-		FROM qnaboard
-		ORDER BY board_id ASC
-	]]>
-	</select>
 	
 	
 	<select id="getBoardsWithPaging" resultType="boardVO">
@@ -61,7 +54,7 @@
 			</if>
 		</where>
 	<![CDATA[
-		ORDER BY board_id ASC
+		ORDER BY board_id DESC
 		LIMIT #{startRow}, #{amount}
 	]]>
 	</select>
@@ -98,15 +91,15 @@
 	<![CDATA[
 		SELECT * 
 		FROM qnaboard
-		WHERE board_id = #{board_id}
+		WHERE board_id = #{boardId}
 	]]>
 	</select>
 	
 	<update id="updateBoard">
 	<![CDATA[
 		UPDATE qnaboard
-		SET subject = #{subject}, content = #{content}, regdate = #{regdate}, status = #{status}
-		WHERE board_id = #{board_id}
+		SET subject = #{subject}, content = #{content}, regdate = #{regdate}, status = '답변 대기'
+		WHERE board_id = #{boardId}
 	]]>
 	</update>
 	

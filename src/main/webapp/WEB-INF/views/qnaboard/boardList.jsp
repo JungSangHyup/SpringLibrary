@@ -18,14 +18,14 @@
     <form action="/qnaboard/list?#qnaboard" method="get">
      <div class="search_box">
          
-	<select name="keyword" id="keyword-select">
+	<select name="type" id="keyword-select">
         <option value="T" ${ (pageMaker.cri.type eq 'T') ? 'selected' : '' }>제목</option>
         <option value="W" ${ (pageMaker.cri.type eq 'W') ? 'selected' : '' }>글쓴이</option>
         <option value="C" ${ (pageMaker.cri.type eq 'C') ? 'selected' : '' }>내용</option>
     </select>
          <i class="fa fa-search"></i>
     <input class="search" type="text" id="search" name="search" value="${ pageMaker.cri.keyword }">
-    <button class="search_btn" type="button" name="search_btn" >검색</button>
+    <button class="search_btn" type="submit" name="search_btn" >검색</button>
     </div>
     </form>
 </div>
@@ -46,11 +46,11 @@
               	
               		<c:forEach var="board" items="${ boardList }">
               			<tr>
-		                  <td class="text-center">${ board.boardId }</td>
-		                  <td class="text-center">${ board.userid }</td>
-		                  <td class="text-center"><a class="align-middle" href="/qnaboard/content?boardId=${ board.boardId }&pageNum=${ pageMaker.cri.pageNum }">${ board.subject }</a></td>
-		                  <td class="text-center"><fmt:formatDate value="${ board.regdate }" pattern="yyyy.MM.dd" /></td>
-		               	  <td class="text-center">${ board.status }</td>
+		                  <th>${ board.boardId }</th>
+		                  <td>${ board.userid }</td>
+		                  <td><a class="align-middle" href="/qnaboard/content?boardId=${ board.boardId }&pageNum=${ pageMaker.cri.pageNum }">${ board.subject }</a></td>
+		                  <td><fmt:formatDate value="${ board.regdate }" pattern="yyyy.MM.dd" /></td>
+		               	  <td>${ board.status }</td>
 		                </tr>
               		</c:forEach>
               	

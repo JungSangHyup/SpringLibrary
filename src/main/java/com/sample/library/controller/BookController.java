@@ -5,12 +5,14 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.sample.library.domain.BoardVO;
 import com.sample.library.domain.BookVO;
 import com.sample.library.service.BookService;
 
@@ -28,6 +32,7 @@ import net.coobird.thumbnailator.Thumbnailator;
 public class BookController {
 	@Autowired
 	private BookService bookService;
+
 	
     // 년/월/일 형식의 폴더명 리턴하는 메소드
     private String getFolder() {
@@ -49,7 +54,12 @@ public class BookController {
     }
 	
 	@GetMapping(value = {"/", "/list"})
-	public String list() {
+	public String list(Model model) {
+		List<BookVO> bookList = bookService.getAllbook();
+		
+		model.addAttribute("bookList", bookList);
+		model.addAttribute("bookCnt", bookList.size());
+		
 		return "booklist/bookList";
 	}
 	
@@ -109,10 +119,14 @@ public class BookController {
         	
         	bookVO.setBook_img(file.getPath());
         	System.out.println(file.getPath());
+        }else {
+        	bookVO.setBook_img("default_image");
         }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+        String curr_time = sdf.format(new Date());
         
         bookVO.setBook_id(num);
-        
+        bookVO.setBook_regdate(curr_time);
         
         bookService.save(bookVO);
      
