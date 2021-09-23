@@ -140,6 +140,77 @@ public class MemberController {
 		return "member/modify";
 	}
 	
+	@PostMapping("/modify")
+	public ResponseEntity<String> modify(MemberVO memberVO, HttpSession session){
+		
+		String id = (String) session.getAttribute("userid");
+		memberVO.setUserid(id);
+		
+		// 연월일 구분문자("-") 제거하기
+		String birthday = memberVO.getBirthday(); // "2021-08-25"
+		birthday = birthday.replace("-", ""); // "20210825"
+		memberVO.setBirthday(birthday);
+		// 전화번호 등록
+		String userphone = memberVO.getUserphone1()+"-"+memberVO.getUserphone2()+"-"+memberVO.getUserphone3();
+		memberVO.setUserphone(userphone);
+			
+		memberService.updateMember(memberVO); // 회원정보 update 처리
+		System.out.println(memberVO);
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Type", "text/html; charset=UTF-8");
+		String str = null;
+		
+		str = Script.href("회원정보 수정완료!", "/");
+		
+		return new ResponseEntity<String>(str, headers, HttpStatus.OK);
+	}
+	
+	@GetMapping("/changePw")
+	public String changePw() {
+		System.out.println("changePw 호둘됨...");
+		return "member/changePw";
+	}
+	
+	@PostMapping("/changePw")
+	public ResponseEntity<String> changePw(String newPw1, String newPw2, String oldPw,
+			 HttpSession session){
+		
+		String id = (String) session.getAttribute("userid");
+		
+		MemberVO memberVO = memberService.getMemberById(id);
+				
+		boolean isPasswdSame = false;
+		String message = "";
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Type", "text/html; charset=UTF-8");
+		String str = null;
+		
+		isPasswdSame = BCrypt.checkpw(oldPw, memberVO.getUserpass());
+		if (isPasswdSame == false) { // 비밀번호 일치하지 않을때
+			message = "현재 비밀번호가 일치하지 않습니다.";
+			
+			str = Script.back(message);
+			return new ResponseEntity<String>(str, headers, HttpStatus.OK);
+		}
+		
+		if (newPw1.equals(newPw2) == false) {	//새 비밀번호 확인이 일치하지 않을때
+			message = "새 비밀번호 확인이 일치하지 않습니다.";
+			
+			str = Script.back(message);
+			return new ResponseEntity<String>(str, headers, HttpStatus.OK);
+		}
+		
+		String hashedPw = BCrypt.hashpw(newPw1, BCrypt.gensalt());
+		memberVO.setUserpass(hashedPw);
+		memberService.updatePw(memberVO);
+		
+		str = Script.href("비밀번호 변경 완료!", "/");
+		
+		return new ResponseEntity<String>(str, headers, HttpStatus.OK);
+	}
+	
 	@GetMapping("/myWish")
 	public String myWish() {
 		System.out.println("myWish 호둘됨...");
@@ -150,6 +221,44 @@ public class MemberController {
 	public String myRental() {
 		System.out.println("myRental 호둘됨...");
 		return "member/myRental";
+	}
+	
+	@GetMapping("/remove")
+	public String remove() {
+		System.out.println("remove 호출...");
+		return "member/remove";
+	}
+	
+	@PostMapping("/remove")
+	public ResponseEntity<String> remove(String passwd,
+			HttpSession session, HttpServletResponse response){
+		
+		
+		String id = (String) session.getAttribute("userid");
+		MemberVO memberVO = memberService.getMemberById(id);
+		
+		boolean isPasswdSame = false;
+		String message = "";
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Type", "text/html; charset=UTF-8");
+		String str = null;
+		
+		isPasswdSame = BCrypt.checkpw(passwd, memberVO.getUserpass());
+		if (isPasswdSame == false) { // 비밀번호 일치하지 않을때
+			message = "비밀번호가 일치하지 않습니다.";
+			
+			str = Script.back(message);
+			return new ResponseEntity<String>(str, headers, HttpStatus.OK);
+		}
+		
+		memberService.deleteMemberById(id);
+		
+		
+		str = Script.href("회원 탈퇴 완료", "/");
+		session.invalidate();
+		
+		return new ResponseEntity<String>(str, headers, HttpStatus.OK);
 	}
 	
 }

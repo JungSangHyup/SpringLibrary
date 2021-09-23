@@ -45,7 +45,11 @@
                 <i class="material-icons align-middle">build_circle</i> 회원정보수정</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">
+              <a class="nav-link" href="/member/changePw" style="color: black;">
+                <i class="material-icons align-middle">vpn_key</i> 비밀번호 변경</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/member/remove" style="color: black;">
                 <i class="material-icons align-middle">clear</i> 회원탈퇴</a>
             </li>
           </ul>
@@ -60,55 +64,27 @@
             <!-- Contents area -->
           <div class="border border p-4" style="background: #ECE6CC;">
             <form action="/member/modify" method="POST">
+            <h3>회원정보수정</h3>
+              <hr>
               <div class="form-group row mb-2">
                 <label for="id" class="col-sm-3 col-form-label" style="white-space:nowrap;">
                   <i class="material-icons align-middle">account_box</i>
                   <span class="align-middle">아이디</span>
                 </label>
                 <div class="col-auto">
-                  <input type="text" class="form-control" id="id" aria-describedby="idHelp" name="id" value="${sessionScope.id }" disabled>
+                  <input type="text" class="form-control" id="id" aria-describedby="idHelp" name="id" value="${sessionScope.userid}" disabled>
                   <small id="idHelp" class="form-text text-muted">아이디는 변경할 수 없습니다.</small>
                 </div>
               </div>
 
-              <div class="form-group row mb-2">
-                <label for="password" class="col-sm-3 col-form-label" style="white-space:nowrap;">
-                  <i class="material-icons align-middle">lock</i>
-                  <span class="align-middle">현재 비밀번호</span>
-                </label>
-                <div class="col-auto">
-                  <input type="password" class="form-control" id="password" aria-describedby="pwdHelp" name="passwd" required>
-                  <small id="pwdHelp" class="form-text text-muted">현재 비밀번호는 필수 입력 요소입니다.</small>
-                </div>
-              </div>
-              <div class="form-group row mb-2">
-                <label for="password" class="col-sm-3 col-form-label" style="white-space:nowrap;">
-                  <i class="material-icons align-middle">lock</i>
-                  <span class="align-middle">새 비밀번호</span>
-                </label>
-                <div class="col-auto">
-                  <input type="password" class="form-control" id="password" aria-describedby="pwdHelp" name="passwd">
-                  <small id="pwdHelp" class="form-text text-muted">새로 변경할 비밀번호를 입력해주세요.</small>
-                </div>
-              </div>
-              <div class="form-group row mb-2">
-                <label for="password2" class="col-sm-3 col-form-label" style="white-space:nowrap;">
-                  <i class="material-icons align-middle">check</i>
-                  <span class="align-middle">새 비밀번호 확인</span>
-                </label>
-                <div class="col-auto">
-                  <input type="password" class="form-control" id="password2" aria-describedby="pwdHelp2" name="passwd2">
-                  <small id="pwdHelp2" class="form-text text-muted">새 비밀번호 확인을 위해 다시 입력해주세요</small>
-                </div>
-              </div>
 
               <div class="form-group row mb-3">
-                <label for="name" class="col-sm-3 col-form-label" style="white-space:nowrap;">
+                <label for="name" class="col-sm-3 col-form-label"style="white-space:nowrap;">
                   <i class="material-icons align-middle">person</i>
                   <span class="align-middle">이름</span>
                 </label>
                 <div class="col-auto mt-1">
-                  <input type="text" class="form-control" id="name" name="name">
+                  <input type="text" class="form-control" id="username" name="username">
                 </div>
               </div>
               
@@ -119,11 +95,11 @@
                 </label>
                 <div class="col-sm-9">
                   <div class="custom-control custom-radio custom-control-inline mt-2">
-                    <input class="custom-control-input" type="radio" name="genderRadio" id="genderRadio1" value="M" checked>
+                    <input class="custom-control-input" type="radio" name="gender" id="genderRadio1" value="M" checked>
                     <label class="custom-control-label" for="genderRadio1">남자</label>
                   </div>
                   <div class="custom-control custom-radio custom-control-inline">
-                    <input class="custom-control-input" type="radio" name="genderRadio" id="genderRadio2" value="F">
+                    <input class="custom-control-input" type="radio" name="gender" id="genderRadio2" value="F">
                     <label class="custom-control-label" for="genderRadio2">여자</label>
                   </div>
                 </div>
@@ -140,12 +116,12 @@
               </div>
 
               <div class="form-group row mb-3">
-                <label for="phNum" class="col-sm-3 col-form-label" style="white-space:nowrap;">
+                <label for="userphone" class="col-sm-3 col-form-label" style="white-space:nowrap;">
                   <i class="material-icons align-middle">stay_current_portrait</i>
                   <span class="align-middle">연락처</span>
                 </label>
-                <div class="form-inline col-sm-9 mt-1" id="phNum">
-                  <select id="phNum1" class="form-control" name="phNum1">
+                <div class="form-inline col-sm-9 mt-1" id="userphone">
+                  <select id="userphone1" class="form-control" name="userphone1">
                     <option selected disabled>선택</option>
                     <option>010</option>
                     <option>011</option>
@@ -154,8 +130,8 @@
                     <option>018</option>
                     <option>019</option>
                   </select>
-                   - <input type="text" class="form-control col-2" id="phNum2" name="phNum2">
-                   - <input type="text" class="form-control col-2" id="phNum3" name="phNum3">
+                   - <input type="text" class="form-control col-2" id="userphone2" name="userphone2">
+                   - <input type="text" class="form-control col-2" id="userphone3" name="userphone3">
                 </div>
               </div>
 
@@ -165,8 +141,8 @@
                   <span class="align-middle">주소</span>
                 </label>
                 <div class="col-sm-7 mt-1">
-                  <input type="text" class="form-control mb-2" id="address" name="address">
-                  <input type="text" class="form-control" id="addressDetail" name="addressDetail" placeholder="상세주소 입력">
+                  <input type="text" class="form-control mb-2" id="useraddr1" name="useraddr1">
+                  <input type="text" class="form-control" id="useraddr2" name="useraddr2" placeholder="상세주소 입력">
                 </div>
               </div>
 
@@ -178,7 +154,7 @@
                   <span class="align-middle">이메일 주소</span>
                 </label>
                 <div class="col-auto mt-1">
-                  <input type="email" class="form-control" id="email" name="email">
+                  <input type="email" class="form-control" id="useremail" name="useremail">
                 </div>
               </div>
 
@@ -189,11 +165,11 @@
                 </label>
                 <div class="col-sm-9 mt-2">
                   <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="recvRadio1" name="recvEmail" class="custom-control-input" value="Y" checked>
+                    <input type="radio" id="recvRadio1" name="recvemail" class="custom-control-input" value="Y" checked>
                     <label class="custom-control-label" for="recvRadio1">동의함</label>
                   </div>
                   <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="recvRadio2" name="recvEmail" class="custom-control-input" value="N">
+                    <input type="radio" id="recvRadio2" name="recvemail" class="custom-control-input" value="N">
                     <label class="custom-control-label" for="recvRadio2">동의 안함</label>
                   </div>
                 </div>
