@@ -18,27 +18,27 @@
       <form name="form" id="book_form" method="post" action="/book/write" enctype="multipart/form-data">
         <div class="mb-3">
           <label for="name">이름</label>
-          <input type="text" class="form-control" name="book_name" id="name" placeholder="제목을 입력해 주세요">
+          <input type="text" class="form-control" name="bookName" id="name" placeholder="제목을 입력해 주세요">
         </div>
         <div class="mb-3">
           <label for="writer">저작자</label>
-          <input type="text" class="form-control" name="book_writer" id="writer" placeholder="이름을 입력해 주세요">
+          <input type="text" class="form-control" name="bookWriter" id="writer" placeholder="이름을 입력해 주세요">
         </div>
         <div class="mb-3">
           <label for="price">가격</label>
-          <input type="number" class="form-control" name="book_price" id="price" placeholder="0">
+          <input type="number" class="form-control" name="bookPrice" id="price" placeholder="0">
         </div>
         <div class="mb-3">
           <label for="content">내용</label>
-          <textarea class="form-control" rows="5" name="book_des" id="des" placeholder="내용을 입력해 주세요"></textarea>
+          <textarea class="form-control" rows="5" name="bookDes" id="des" placeholder="내용을 입력해 주세요"></textarea>
         </div>
         <div class="mb-3">
           <label for="page">페이지 수</label>
-          <input type="number" class="form-control" name="book_page" id="page" placeholder="0">
+          <input type="number" class="form-control" name="bookPage" id="page" placeholder="0">
         </div>
         <div class="mb-3">
           <label for="category">카테고리</label>
-          <input type="text" class="form-control" name="category_code" id="category" placeholder="카테고리 코드를 입력하세요">
+          <input type="text" class="form-control" name="categoryCode" id="category" placeholder="카테고리 코드를 입력하세요">
         </div>
         <div class="my-2 profilePic">
           <h5>표지 이미지</h5>

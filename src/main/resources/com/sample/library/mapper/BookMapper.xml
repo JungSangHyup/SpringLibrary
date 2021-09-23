@@ -44,4 +44,48 @@
         FROM book_list
         ]]>
 	</delete>
+	
+
+	<select id="getBookAndAttaches" resultMap="bookAndAttaches">
+	<![CDATA[
+        SELECT b.book_id,
+               b.book_name,
+               b.book_price,
+               b.book_des,
+               b.book_img,
+               b.book_pages,
+               b.book_isbn,
+               b.book_writer,
+               b.book_regdate,
+               b.category_code,
+               a.uuid,
+               a.uploadpath,
+               a.filename,
+               a.filetype,
+               a.bno
+        FROM book_list b
+                 LEFT OUTER JOIN book_attach a
+                                 ON b.book_id = a.bno
+        WHERE book_id = #{book_id}
+        ]]>
+	</select>
+    <resultMap type="bookVO" id="bookAndAttaches">
+        <id column="book_id" property="bookId"/>
+        <result column="book_name" property="bookName"/>
+        <result column="book_price" property="bookPrice"/>
+        <result column="book_des" property="bookDes"/>
+        <result column="book_img" property="bookImg"/>
+        <result column="book_pages" property="bookPages"/>
+        <result column="book_isbn" property="bookIsbn"/>
+        <result column="book_writer" property="bookWriter"/>
+        <result column="book_regdate" property="bookRegdate"/>
+        <result column="category_code" property="categoryCode"/>
+        <collection property="bookAttachList" javaType="list" ofType="BookAttachVO">
+            <id column="uuid" property="uuid"/>
+            <result column="uploadpath" property="uploadpath"/>
+            <result column="filename" property="filename"/>
+            <result column="filetype" property="filetype"/>
+            <result column="bno" property="bno"/>
+        </collection>
+    </resultMap>
 </mapper>

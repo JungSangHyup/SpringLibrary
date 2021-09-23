@@ -22,7 +22,9 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sample.library.domain.BoardVO;
+import com.sample.library.domain.BookAttachVO;
 import com.sample.library.domain.BookVO;
+import com.sample.library.service.BookAttachService;
 import com.sample.library.service.BookService;
 
 import net.coobird.thumbnailator.Thumbnailator;
@@ -32,6 +34,9 @@ import net.coobird.thumbnailator.Thumbnailator;
 public class BookController {
 	@Autowired
 	private BookService bookService;
+	
+	@Autowired
+	private BookAttachService bookAttachService;
 
 	
     // 년/월/일 형식의 폴더명 리턴하는 메소드
@@ -57,6 +62,7 @@ public class BookController {
 	public String list(Model model) {
 		List<BookVO> bookList = bookService.getAllbook();
 		
+		
 		model.addAttribute("bookList", bookList);
 		model.addAttribute("bookCnt", bookList.size());
 		
@@ -81,11 +87,6 @@ public class BookController {
 	@PostMapping("/write")
 	public String register(@RequestParam("book_file") MultipartFile book_file, BookVO bookVO,
             HttpServletRequest request, RedirectAttributes rttr) throws IOException {
-		System.out.println(bookVO.getBook_name());
-		System.out.println(bookVO.getBook_des());
-		System.out.println(bookVO.getBook_writer());
-		System.out.println(bookVO.getBook_price());
-		System.out.println(bookVO.getCategory_code());
 		// insert할 새 글번호 가져오기
         int num = bookService.nextNum();
         
@@ -117,16 +118,26 @@ public class BookController {
                 Thumbnailator.createThumbnail(file, outFile, 197, 282);  // 썸네일 이미지 파일 생성하기
         	}
         	
-        	bookVO.setBook_img(file.getPath());
+            BookAttachVO attachVO = new BookAttachVO();
+            attachVO.setUuid(uuid.toString());
+            attachVO.setUploadpath(getFolder());
+            attachVO.setFilename(originalFilename);
+            attachVO.setFiletype((isImage == true) ? "I" : "O");
+            attachVO.setBno(num);
+            
+            bookVO.setBookImg(getFolder() + "/s_" + uploadFilename);
+        	bookAttachService.insertAttach(attachVO);
+        	
         	System.out.println(file.getPath());
         }else {
-        	bookVO.setBook_img("default_image");
+        	bookVO.setBookImg("default");
         }
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
         String curr_time = sdf.format(new Date());
         
-        bookVO.setBook_id(num);
-        bookVO.setBook_regdate(curr_time);
+        
+        bookVO.setBookId(num);
+        bookVO.setBookRegdate(curr_time);
         
         bookService.save(bookVO);
      
