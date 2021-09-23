@@ -23,10 +23,10 @@ public class HomeController {
     
     @GetMapping("/display")
     @ResponseBody
-    public ResponseEntity<byte[]> getImageFile(String fileName) throws IOException {
-        System.out.println("fileName : " + fileName);
+    public ResponseEntity<byte[]> getImageFile(String sign) throws IOException {
+        System.out.println("fileName : " + sign);
 
-        File file = new File("C:/upload/books", fileName);
+        File file = new File("C:/upload/books", sign);
 
         System.out.println("filePath : " + file.getPath());
 

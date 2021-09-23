@@ -13,5 +13,4 @@ public class BookAttachMapperTests {
 	
 	@Autowired 
 	private BookAttachMapper bookAttachMapper;
-
 }

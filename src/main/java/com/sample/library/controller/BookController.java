@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -57,20 +58,28 @@ public class BookController {
         isImage = contentType.startsWith("image");
         return isImage;
     }
-	
+   
+    
 	@GetMapping(value = {"/", "/list"})
-	public String list(Model model) {
-		List<BookVO> bookList = bookService.getAllbook();
-		
+	public String list(RedirectAttributes rttr, String category, Model model) {
+		List<BookVO> bookList = null;
+		if(category != null) {
+			rttr.addAttribute("category", category);
+			bookList = bookService.getBookbyCategory(category);
+		}
+			
+		else 
+			bookList = bookService.getAllbook();
 		
 		model.addAttribute("bookList", bookList);
-		model.addAttribute("bookCnt", bookList.size());
-		
 		return "booklist/bookList";
 	}
 	
 	@GetMapping("/content")
-	public String content() {
+	public String content(int num, Model model) {
+		BookVO bookVO = bookService.getBook(num);
+		model.addAttribute("bookVO", bookVO);
+		
 		return "booklist/bookContent";
 	}
 	

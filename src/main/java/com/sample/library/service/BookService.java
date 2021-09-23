@@ -37,4 +37,9 @@ public class BookService implements BookMapper{
 	public BookVO getBookAndAttaches(int num) {
 		return bookMapper.getBookAndAttaches(num);
 	}
+
+	@Override
+	public List<BookVO> getBookbyCategory(String category) {
+		return bookMapper.getBookbyCategory(category);
+	}
 }
