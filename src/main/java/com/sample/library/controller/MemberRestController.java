@@ -38,7 +38,7 @@ public class MemberRestController {
 		int count = memberService.getCountById(userid);
 		
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("member", memberVO);
+		map.put("users", memberVO);
 		map.put("count", count);
 		
 		return new ResponseEntity<Map<String,Object>>(map, HttpStatus.OK);
@@ -68,6 +68,7 @@ public class MemberRestController {
 		String birthday = memberVO.getBirthday(); // "2021-09-07"
 		birthday = birthday.replace("-", "");
 		memberVO.setBirthday(birthday);
+	
 		
 		// 현재날짜 설정
 		memberVO.setRegdate(new Date());
@@ -81,10 +82,10 @@ public class MemberRestController {
 	} // create
 	
 	
-	@DeleteMapping(value = "/members/{id}", produces = MediaType.TEXT_PLAIN_VALUE)
-	public ResponseEntity<String> remove(@PathVariable("id") String id) {
+	@DeleteMapping(value = "/users/{userid}", produces = MediaType.TEXT_PLAIN_VALUE)
+	public ResponseEntity<String> remove(@PathVariable("userid") String userid) {
 		
-		int count = memberService.deleteMemberById(id);
+		int count = memberService.deleteMemberById(userid);
 		
 		// BAD_GATEWAY (502) : 외부에서 전달받은 값이 잘못되어 오류가 발생한 경우
 		// INTERNAL_SERVER_ERROR (500) : 서버 내부 로직 문제로 오류가 발생한 경우

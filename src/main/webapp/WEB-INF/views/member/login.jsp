@@ -13,9 +13,9 @@
 			<div class="container">
 				<h3>LOGIN</h3>
 			</div>
-			<form action="/" class="input-group">
-				 <input type="text" name="id" id="inputID" class="input-field" placeholder="User name or Email" required autofocus> 
-                 <input type="password" name="passwd" id="inputPassword" class="input-field" placeholder="Enter Password" required>
+			<form action="/member/login" class="input-group" method="post">
+				 <input type="text" name="userid" id="userid" class="input-field" placeholder="User name or Email" required autofocus> 
+                 <input type="password" name="userpass" id="userpass" class="input-field" placeholder="Enter Password" required>
                  <input type="checkbox" class="checkbox" id="customCheck1" name="rememberMe" value="remember-me"><span>로그인	유지</span>
 				<button class="submit" type="submit">Login</button>
 				<div class="join">
