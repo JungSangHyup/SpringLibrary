@@ -16,22 +16,22 @@ public interface MemberMapper {
 			+ " VALUES (#{userid}, #{userpass}, #{username},#{gender}, #{birthday}, #{userphone}, #{useraddr1}, #{useraddr2}, #{useremail}, #{recvemail}, #{profile}, #{regdate}, #{grade}, #{mileage}) ")
 	int insert(MemberVO memberVO);
 	
-	@Select("SELECT * FROM users WHERE id = #{userid}")
-	MemberVO getMemberById(String id);
+	@Select("SELECT * FROM users WHERE userid = #{userid}")
+	MemberVO getMemberById(String userid);
 	
 	@Select("SELECT * FROM users ORDER BY userid")
 	List<MemberVO> getUsers();
 	
 	@Select("SELECT COUNT(*) FROM users WHERE userid = #{userid}")
-	int getCountById(String id);
+	int getCountById(String userid);
 	
 	@Delete("DELETE FROM users WHERE userid = #{userid}")
-	int deleteMemberById(String id);
+	int deleteMemberById(String userid);
 	
 	
 	@Update(" UPDATE users "
 			+ " SET passwd = #{userpass}, name = #{username}, birthday = #{birthday}, userphone = #{userphone}, useraddr1 = #{useraddr1}, useraddr2 = #{useraddr2},  regdate = #{regdate}, profile = #{profile}, grade = #{grade}, mileage = #{mileage}"
-			+ " WHERE id = #{id} ")
+			+ " WHERE userid = #{userid} ")
 	void updateMember(MemberVO memberVO);
 	
 }
