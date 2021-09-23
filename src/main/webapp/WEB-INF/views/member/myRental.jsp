@@ -40,7 +40,7 @@
                 <i class="material-icons align-middle">bookmarks</i> 찜목록</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/member/modify" style="color: black;">
+              <a class="nav-link" href="/member/beforeModify" style="color: black;">
                 <i class="material-icons align-middle">build_circle</i> 회원정보수정</a>
             </li>
             <li class="nav-item">

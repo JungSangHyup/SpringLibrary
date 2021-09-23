@@ -58,7 +58,7 @@
 							<span>LIBRARY에 오신걸 환영합니다!</span><br/>
 							<span>${ sessionScope.userid } 님</span><br/>
 							<button type="submit" class="btn btn-link btn-sm pt-1"
-								onclick="location.href='/member/modify'">내정보수정</button><br/>
+								onclick="location.href='/member/beforeModify'">내정보수정</button><br/>
 							<button type="submit" class="btn btn-danger btn-sm mt-1"
 								onclick="location.href='/member/logout'">로그아웃</button>
 						</c:when>
