@@ -24,29 +24,35 @@ public class BookMapperTests {
 	@Autowired
 	private BookService bookService;
 	
+//	@Test
+//	public void insertBook() {
+//		bookService.deleteAll();
+//        Random random = new Random();
+//
+//        for (int i = 1; i <= 20; i++) {
+//            BookVO bookVO = new BookVO();
+//            int num = bookService.nextNum();
+//            bookVO.setBookId(i);
+//            bookVO.setBookName("hello");
+//            bookVO.setBookPrice(random.nextInt(200) * 10);
+//            bookVO.setBookPages(String.valueOf(random.nextInt(200)));
+//            bookVO.setBookDes("test");
+//            bookVO.setBookIsbn("N");
+//            bookVO.setBookWriter("testwriter");
+//            bookVO.setCategoryCode("history");
+//            
+//            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+//            String curr_time = sdf.format(new Date());
+//            bookVO.setBookRegdate(curr_time);
+//            
+//            bookService.save(bookVO);
+//        }
+//	}
+	
 	@Test
-	public void insertBook() {
-		bookService.deleteAll();
-        Random random = new Random();
-
-        for (int i = 1; i <= 20; i++) {
-            BookVO bookVO = new BookVO();
-            int num = bookService.nextNum();
-            bookVO.setBookId(i);
-            bookVO.setBookName("hello");
-            bookVO.setBookPrice(random.nextInt(200) * 10);
-            bookVO.setBookPages(String.valueOf(random.nextInt(200)));
-            bookVO.setBookDes("test");
-            bookVO.setBookIsbn("N");
-            bookVO.setBookWriter("testwriter");
-            bookVO.setCategoryCode("history");
-            
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-            String curr_time = sdf.format(new Date());
-            bookVO.setBookRegdate(curr_time);
-            
-            bookService.save(bookVO);
-        }
+	public void getBookAndAttaches() {
+		BookVO bookVO = bookService.getBookAndAttaches(22);
+		System.out.println(bookVO.toString());
 	}
 	
 //	@Test

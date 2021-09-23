@@ -17,4 +17,6 @@ public interface BookMapper {
 	List<BookVO> getAllbook();
 	
 	BookVO getBook(int num);
+	
+	BookVO getBookAndAttaches(int num); // 글번호에 해당하는 글 한개와 첨부파일 모두 가져오기
 }
