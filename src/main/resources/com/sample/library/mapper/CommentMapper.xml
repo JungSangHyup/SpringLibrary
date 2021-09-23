@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sample.library.mapper.CommentMapper">
+
+
+	<insert id="insert">
+	<![CDATA[
+		INSERT INTO qna_comment (comment_id, content, regdate, board_id)
+		VALUES (#{commentId}, #{content}, #{regdate}, #{boardId})
+	]]>
+	</insert>
+
+	<delete id="deleteCommentByNum">
+	<![CDATA[
+		DELETE FROM qna_comment WHERE comment_id = #{commentId}
+	]]>
+	</delete>
+
+
+	<select id="getComments" resultType="commentVO">
+	<![CDATA[
+		SELECT * 
+		FROM qna_comment
+		ORDER BY comment_id ASC
+	]]>
+	</select>
+
+
+	<update id="updateComment">
+	<![CDATA[
+		UPDATE qna_comment
+		SET content = #{content}, regdate = #{regdate}, board_id = #{boardId}
+		WHERE comment_id = #{commentId}
+	]]>
+	</update>
+	
+	<select id="getComment" resultType="commentVO">
+	<![CDATA[
+		SELECT * 
+		FROM qna_comment
+		WHERE board_id = #{boardId}
+	]]>
+	</select>
+
+
+
+</mapper>
