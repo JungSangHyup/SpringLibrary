@@ -51,6 +51,11 @@ public class MemberService {
 	}
 
 	public void updateMember(MemberVO memberVO) {
+		String userid = memberVO.getUserid();
 		memberMapper.updateMember(memberVO);
+	}
+	
+	public void updatePw(MemberVO memberVO) {
+		memberMapper.updatePw(memberVO);
 	}
 }
