@@ -14,11 +14,11 @@ public interface CommentMapper {
 	
 	int deleteCommentByNum(int commentId); // 글번호에 해당하는 글 한개 삭제하기
 	
-	List<CommentVO> getComments();  // 전체 게시글 내용 가져오기
+	List<CommentVO> getComments(int boardId);  // 전체 게시글 내용 가져오기
 	
 	CommentVO getComment(int boardId); // 글번호에 해당하는 글 한개 가져오기
 		
 	int getTotalCount();  // 전체 글개수 가져오기
 	
-	void updateComment(CommentVO commentVO); // 글번호에 해당하는 글의 글제목, 글내용, 날짜, IP주소 수정하기
+	int updateComment(CommentVO commentVO); // 글번호에 해당하는 글의 글제목, 글내용, 날짜, IP주소 수정하기
 }
