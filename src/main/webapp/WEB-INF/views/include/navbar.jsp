@@ -25,7 +25,7 @@
         <li class="nav-item dropdown">
           <a class="nav-link  dropdown-toggle" href="#" data-bs-toggle="dropdown"> 도서목록 </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/book/list">책장</a></li>
+            <li><a class="dropdown-item" href="/book/list?category=new">책장</a></li>
             <li><a class="dropdown-item" href="/book/gallery">갤러리</a></li>
           </ul>
         </li>

@@ -29,6 +29,15 @@
         ]]>
 	</select>
 	
+	<select id="getBookbyCategory" resultType="bookVO">
+	<![CDATA[
+        SELECT *
+        FROM book_list
+        WHERE category_code = #{category}
+        ORDER BY book_id DESC
+        ]]>
+	</select>
+	
 	
 	<insert id="save">
 	<![CDATA[

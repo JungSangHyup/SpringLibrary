@@ -15,13 +15,13 @@
       <div class="card mb-3">
         <div class="row no-gutters">
           <div class="col-md-4">
-            <img src="/resources/images/l9791166815782.jpg" alt="..." class="m-2">
+            <img src="/display?fileName=${ bookVO.bookImg }" alt="..." class="m-2">
           </div>
           <div class="col-md-8">
             <div class="card-body">
-              <h5 class="card-title">하버드 회복탄력성 수업</h5>
-              <p class="card-text">게일가젤</p>
-              <p class="card-text">우울, 불안, 번아웃, 스트레스에 무너지지 않는 멘탈관리 프로젝트! 지금 바로 시작하자</p>
+              <h5 class="card-title">${bookVO.bookName}</h5>
+              <p class="card-text">${bookVO.bookWriter}</p>
+              <p class="card-text">${bookVO.bookDes}</p>
               <button type="button" class="btn btn-primary">대여</button>
               <button type="button" class="btn btn-primary">찜하기</button>
             </div>
@@ -53,7 +53,7 @@
     <hr>
     <div class="detail-img">
       <h4>상세 이미지</h4>
-      <img src="/resources/images/l9791166815782.jpg" alt="">
+      <img src="/display?fileName=${ bookVO.bookImg }" alt="">
     </div>
     <hr>
     <div class="review">
