@@ -20,6 +20,10 @@ public class BookService {
     public List<BookVO> getAllbook() {
     	return bookMapper.getAllbook();
     }
+    
+    public BookVO getBook(int num) {
+    	return bookMapper.getBook(num);
+    }
 	
 	public int save(BookVO bookVO) {
 		return bookMapper.save(bookVO);
