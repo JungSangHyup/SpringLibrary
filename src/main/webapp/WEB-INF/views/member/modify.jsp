@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -65,7 +66,7 @@
                   <span class="align-middle">아이디</span>
                 </label>
                 <div class="col-auto">
-                  <input type="text" class="form-control" id="id" aria-describedby="idHelp" name="id" placeholder="id받아오기" disabled>
+                  <input type="text" class="form-control" id="id" aria-describedby="idHelp" name="id" value="${sessionScope.id }" disabled>
                   <small id="idHelp" class="form-text text-muted">아이디는 변경할 수 없습니다.</small>
                 </div>
               </div>
