@@ -16,6 +16,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +24,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.ctc.wstx.util.StringUtil;
 import com.mchange.lang.StringUtils;
 import com.sample.library.domain.MemberVO;
+import com.sample.library.domain.RentalVO;
 import com.sample.library.service.MemberService;
+import com.sample.library.service.RentalService;
 import com.sample.library.util.Script;
 
 
@@ -35,6 +38,9 @@ public class MemberController {
 	public MemberController(MemberService memberService) {
 		this.memberService = memberService;
 	}
+	
+	@Autowired
+	private RentalService rentalService;
 	
 	@GetMapping("/join") // /member/join
 	public String join() {
@@ -295,9 +301,13 @@ public class MemberController {
 		return "member/myWish";
 	}
 	
-	@GetMapping("/myRental")
-	public String myRental() {
-		System.out.println("myRental 호둘됨...");
+	@GetMapping("/rental")
+	public String rental(HttpSession session, Model model) {
+		String userid = (String) session.getAttribute("userid");
+		
+		List<RentalVO> rentalList = rentalService.getRentalListbyId(userid);
+		model.addAttribute("rentalList", rentalList);
+		
 		return "member/myRental";
 	}
 	

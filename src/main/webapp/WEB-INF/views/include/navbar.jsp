@@ -41,7 +41,7 @@
 	                마이페이지
 	              </a>
 	              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-	                <a class="dropdown-item" href="/member/myRental">대여도서관리</a>
+	                <a class="dropdown-item" href="/member/rental">대여도서관리</a>
 	                <a class="dropdown-item" href="/member/myWish">찜목록</a>
 	                <div class="dropdown-divider"></div>
 	                <a class="dropdown-item" href="/member/beforeModify">내정보수정</a>
