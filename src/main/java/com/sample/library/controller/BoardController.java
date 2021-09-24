@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -67,6 +68,7 @@ public class BoardController {
 	@GetMapping("/write")
 	public String write(@ModelAttribute("pageNum") String pageNum) {
 		System.out.println("write");
+		
 		return "qnaboard/boardWrite";
 	}
 

@@ -20,7 +20,7 @@
 	<!-- Post -->
 	<section class="post" id="post" style="margin-top: 30px;">
 		<form method="post" action="/qnaboard/write">
-			
+		<input type="hidden" id="userid" name="userid" value="${sessionScope.userid}">
 			 <!-- 제목 작성 -->
 				<div class="t1">제목 작성</div>
 				<div class="subject">
