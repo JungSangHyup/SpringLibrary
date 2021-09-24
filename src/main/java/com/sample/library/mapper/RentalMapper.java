@@ -11,4 +11,6 @@ public interface RentalMapper {
 	int rentalBookbyId(RentalVO rentalVO);
 	
 	List<RentalVO> getRentalListbyId(String userid);
+	
+	int returnBook(int num);
 }
