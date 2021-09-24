@@ -1,6 +1,9 @@
 package com.sample.library.controller;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +20,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.ctc.wstx.util.StringUtil;
+import com.mchange.lang.StringUtils;
 import com.sample.library.domain.MemberVO;
 import com.sample.library.service.MemberService;
 import com.sample.library.util.Script;
@@ -169,7 +174,39 @@ public class MemberController {
 	
 	
 	@GetMapping("/modify")
-	public String modify() {
+	public String modify(HttpSession session) {
+		String id = (String) session.getAttribute("userid");
+		MemberVO memberVO = memberService.getMemberById(id);
+		
+		session.setAttribute("username", memberVO.getUsername());
+		session.setAttribute("gender", memberVO.getGender());
+		
+		session.setAttribute("useraddr1", memberVO.getUseraddr1());
+		session.setAttribute("useraddr2", memberVO.getUseraddr2());
+		session.setAttribute("useremail", memberVO.getUseremail());
+		session.setAttribute("recvemail", memberVO.getRecvemail());
+		
+		//전화번호 분리하기
+		String userPhone = memberVO.getUserphone();
+		String[] phoneArr = userPhone.split("-");
+		
+		memberVO.setUserphone1(phoneArr[0]);
+		memberVO.setUserphone2(phoneArr[1]);
+		memberVO.setUserphone3(phoneArr[2]);
+		
+		session.setAttribute("userphone1", memberVO.getUserphone1());
+		session.setAttribute("userphone2", memberVO.getUserphone2());
+		session.setAttribute("userphone3", memberVO.getUserphone3());
+		
+		//생년월일 구분자 추가하기
+		String birthday = memberVO.getBirthday();	//20210825
+		
+		String birthdayBar = birthday.substring(0, 4) + "-" + birthday.substring(4, 6) + "-" + birthday.substring(6);
+		
+		session.setAttribute("birthday", birthdayBar);
+	
+		System.out.println(memberVO);
+		
 		System.out.println("modify 호둘됨...");
 		return "member/modify";
 	}
