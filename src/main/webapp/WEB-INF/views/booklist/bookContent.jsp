@@ -18,8 +18,8 @@
               <h5 class="card-title">${bookVO.bookName}</h5>
               <p class="card-text">${bookVO.bookWriter}</p>
               <p class="card-text">${bookVO.bookDes}</p>
-              <button type="button" class="btn btn-primary">대여</button>
-              <button type="button" class="btn btn-primary">찜하기</button>
+              <button type="button" class="btn btn-primary rental">대여</button>
+              <button type="button" class="btn btn-primary wish">찜하기</button>
             </div>
           </div>
         </div>
@@ -182,6 +182,14 @@
 	<jsp:include page="/WEB-INF/views/include/bottomFooter.jsp"/>
 	<script src="/resources/js/bootstrap.js"></script>
     <script src="/resources/js/jquery-3.6.0.js"></script>
-
+	<script>
+		document.querySelector('.rental').addEventListener('click', (e) => {
+		  e.preventDefault();
+		  let rent = confirm(`대여하시겠습니까?`);
+		  if(rent){
+            location.href='/book/rental?num=${ bookVO.bookId }';
+          }
+        })
+	</script>
 </body>
 </html>
