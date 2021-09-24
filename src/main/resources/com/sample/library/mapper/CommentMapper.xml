@@ -8,7 +8,7 @@
 	<insert id="insert">
 	<![CDATA[
 		INSERT INTO qna_comment (comment_id, content, regdate, board_id)
-		VALUES (#{commentId}, #{content}, #{regdate}, #{boardId})
+		VALUES (#{commentId}, #{content}, now(), #{boardId})
 	]]>
 	</insert>
 	
@@ -48,8 +48,8 @@
 	<![CDATA[
 		SELECT * 
 		FROM qna_comment
-		WHERE board_id = #{boardId}
-		ORDER BY regdate DSEC
+		WHERE comment_id = #{commentId}
+		ORDER BY regdate DESC
 	]]>
 	</select>
 

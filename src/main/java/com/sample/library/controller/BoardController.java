@@ -137,4 +137,48 @@ public class BoardController {
 		return "redirect:/qnaboard/content";
 	} // modify
 
+	
+	@RequestMapping(value="/commentUpdateView", method = RequestMethod.GET)
+	public String commentUpdateView(CommentVO commentVO, String pageNum, Model model) throws Exception {
+		
+		CommentVO comment = commentService.getComment(commentVO.getCommentId());
+		
+		model.addAttribute("commentUpdate", commentService.getComment(commentVO.getCommentId()));
+		model.addAttribute("pageNum", pageNum);
+		
+		return "/qnaboard/commentUpdateView";
+		
+	}
+	
+	@RequestMapping(value="/commentUpdate", method = RequestMethod.POST)
+	public String replyUpdate(CommentVO commentVO, String pageNum, RedirectAttributes ra) throws Exception {
+		
+		commentService.updateComment(commentVO);
+		
+		ra.addAttribute("boardId", commentVO.getBoardId());
+		ra.addAttribute("pageNum", pageNum);
+			
+		return "redirect:/qnaboard/content?boardId=" + commentVO.getBoardId() + "&pageNum=" + pageNum;
+	}
+	
+	@RequestMapping(value="commentDeleteView", method = RequestMethod.GET)
+	public String commentDeleteView(CommentVO commentVO, String pageNum, Model model) throws Exception {
+		
+		model.addAttribute("commentDelete", commentService.getComment(commentVO.getCommentId()));
+		model.addAttribute("pageNum", pageNum);
+		
+		return "/qnaboard/commentDeleteView";
+	}
+	
+	@RequestMapping(value="commentDelete", method = RequestMethod.POST)
+	public String commentDelete(CommentVO commentVO, String pageNum, RedirectAttributes ra) throws Exception {
+		
+		commentService.deleteCommentByNum(commentVO.getCommentId());
+		
+		ra.addAttribute("boardId", commentVO.getBoardId());
+		ra.addAttribute("pageNum", pageNum);
+		
+		return "redirect:/qnaboard/content?boardId=" + commentVO.getBoardId() + "&pageNum=" + pageNum;
+	}
+	
 }
