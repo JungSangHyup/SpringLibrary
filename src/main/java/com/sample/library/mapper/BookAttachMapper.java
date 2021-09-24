@@ -18,6 +18,4 @@ public interface BookAttachMapper {
 	
 	@Delete("DELETE FROM book_attach WHERE bno = #{bno}")
 	int deleteAttachesByBno(int bno);
-	
-	List<BookAttachVO> getAttachesByUuids(List<String> uuidList);
 }

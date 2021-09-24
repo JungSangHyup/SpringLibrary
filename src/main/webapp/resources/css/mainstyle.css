@@ -1,5 +1,12 @@
 .wrap {
-  background-image: url(/resources/images/library.jpg);
-  background-position: center;
-  background-size: cover;
+	height: 100%;
+	width: 100%;
+	background-image: url(/resources/images/library.jpg);
+	background-position: center;
+	background-size: cover;
+	position: absolute;
+}
+
+.bg_color{
+	background-color: #ECE6CC;
 }

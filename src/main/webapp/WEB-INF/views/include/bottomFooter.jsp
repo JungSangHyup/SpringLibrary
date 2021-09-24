@@ -1,9 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <link rel="stylesheet" type="text/css" href="${path}/resources/css/bootstrap.css">
     <!-- FOOTER -->
-    <footer class="mt-5 py-5 w-100" style="background: #ECE6CC;">
-      <div class="container" style="background: #ECE6CC;">
+    <footer class="mt-5 py-5 w-100 bg_color navbar navbar-fixed-bottom" >
+      <div class="container bg_color" >
         <div class="row">
           <div class="col-12 col-md">
             <i class="material-icons">android</i>
