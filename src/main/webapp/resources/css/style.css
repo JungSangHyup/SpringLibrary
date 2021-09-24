@@ -107,6 +107,21 @@
 	font-size: 20px;
 	color: aliceblue;
 }
+.toback {
+	width: 45%;
+	padding: 10px 30px;
+	cursor: pointer;
+	display: block;
+	margin: 10px 75px;
+	background: linear-gradient(to right, #ec1b0c, #e47a33);
+	border: 0;
+	outline: none;
+	border-radius: 30px;
+	position: relative;
+	font-size: 15px;
+	color: aliceblue;
+	
+}
 
 .checkbox {
 	margin: 20px 10px 23px 0;
