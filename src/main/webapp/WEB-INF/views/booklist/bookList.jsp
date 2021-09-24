@@ -5,7 +5,6 @@
 <head>
 <jsp:include page="/WEB-INF/views/include/head.jsp"/>
   <title>Document</title>
-    <link rel="stylesheet" href="/resources/css/mainstyle.css">
 </head>
 <body class="wrap">
 <jsp:include page="/WEB-INF/views/include/navbar.jsp"/>
@@ -42,20 +41,25 @@
           </div>
           <!-- // 관리자만 보임 -->
           <button class="btn-primary text-right mt-3 mb-3 rounded" onclick="location.href='/book/write'">책 추가</button>
+
+
+			<!-- Page Content -->
           <div id="book_content" class="container">
 
           </div>
         </div>
-
+		
+		
+		<!-- pagination -->
         <nav aria-label="..." class="row" style="float: none; margin:100 auto;">
           <div class="col-md-6" style="margin:0 auto;">
               <ul class="pagination">
                 <li class="page-item disabled">
                   <a class="page-link" href="#" tabindex="-1" aria-disabled="true">이전</a>
                 </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
                 <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item active" aria-current="page">
+                <li class="page-item" aria-current="page">
                   <a class="page-link" href="#">3</a>
                 </li>
                 <li class="page-item"><a class="page-link" href="#">4</a></li>
@@ -70,8 +74,6 @@
     </div>
 </div>
   <jsp:include page="/WEB-INF/views/include/bottomFooter.jsp"/>
-  <script src="/resources/js/bootstrap.js"></script>
-  <script src="/resources/js/jquery-3.6.0.js"></script>
   <script>
 	  fetch('/api/book/list/new')
 		.then((response) => {
@@ -80,25 +82,57 @@
 		.then((data) => {
 			let content = document.querySelector('#book_content');
 			let newcon = document.createElement('div');
-			data.forEach((value) => {
-				newcon.innerHTML += `
-				  <div class="card mb-3">
-	               <div class="row no-gutters">
-	                 <div class="col-md-4">
-	                   <a href="/book/content?num=${ value.bookId }">
-	                     <img src="/display?sign=${ value.bookImg }" alt="..." style="max-width: 180px;">
-	                   </a>
-	                 </div>
-	                 <div class="col-md-8">
-	                   <div class="card-body">
-	                     <h5 class="card-title">${ value.bookName }</h5>                     
-	                     <p class="card-text">${value.bookDes}</p>
+			
+			if(data.length != 0){
+	  				data.forEach((value) => {
+					newcon.innerHTML += 
+						`
+						  <div class="card mb-3">
+			               <div class="row no-gutters">
+			                 <div class="col-md-4">
+			                   <a href="/book/content?num=${ value.bookId }">
+			                     <img src="/display?sign=${ value.bookImg }" alt="..." style="max-width: 180px;">
+			                   </a>
+			                 </div>
+			                 <div class="col-md-8">
+			                   <div class="card-body">
+			                     <h5 class="card-title">${ value.bookName }</h5>   
+								 <p class="card-text">${value.bookDes}</p>                                
+			                   
+						`;
+						if(value.bookIsbn === 'N'){
+							newcon.innerHTML += `
+									<button class="m-2 btn btn-danger disabled">대여 불가능</button>
+				                 </div>
+				               </div>
+				             </div>
+							</div>`
+						}else {
+							newcon.innerHTML += `
+										<button class="m-2 btn btn-primary">대여 가능</button>
+									</div>
+								  </div>
+							    </div>
+						      </div>`
+						}
+					})
+				}else {
+					newcon.innerHTML = `
+					    <div class="card mb-3">
+	                     <div class="row no-gutters">
+	                       <div class="col-md-4">
+	                           <img src="/resources/images/default_book.jpg" alt="..." style="max-width: 180px;">
+	                       </div>
+	                       <div class="col-md-8">
+	                         <div class="card-body">
+	                           <h5 class="card-title">책이 없습니다.</h5>   
+	                           <p class="card-text"></p>
+	                         </div>
+	                       </div>
+	                     </div>
 	                   </div>
-	                 </div>
-	               </div>
-	             </div>
-				`;
-			})
+					`;            
+				}
 			content.innerHTML = newcon.innerHTML;
 		})
   
@@ -114,27 +148,39 @@
 				let content = document.querySelector('#book_content');
 				let newcon = document.createElement('div');
 				
-				console.log(data);
 				if(data.length != 0){
 	  				data.forEach((value) => {
-						newcon.innerHTML += `
-							<div class="card mb-3">
-		                     <div class="row no-gutters">
-		                       <div class="col-md-4">
-		                         <a href="/book/content?num=${ value.bookId }">
-		                           <img src="/display?sign=${ value.bookImg }" alt="..." style="max-width: 180px;">
-		                         </a>
-		                       </div>
-		                       <div class="col-md-8">
-		                         <div class="card-body">
-		                           <h5 class="card-title">${ value.bookName }</h5>                     
-		                           <p class="card-text">${value.bookDes}</p>
-		                         </div>
-		                       </div>
-		                     </div>
-		                   </div>
+					newcon.innerHTML += 
+						`
+						  <div class="card mb-3">
+			               <div class="row no-gutters">
+			                 <div class="col-md-4">
+			                   <a href="/book/content?num=${ value.bookId }">
+			                     <img src="/display?sign=${ value.bookImg }" alt="..." style="max-width: 180px;">
+			                   </a>
+			                 </div>
+			                 <div class="col-md-8">
+			                   <div class="card-body">
+			                     <h5 class="card-title">${ value.bookName }</h5>   
+								 <p class="card-text">${value.bookDes}</p>                                
+			                   
 						`;
-	  				})
+						if(value.bookIsbn === 'N'){
+							newcon.innerHTML += `
+									<button class="m-2 btn btn-danger disabled">대여 불가능</button>
+				                 </div>
+				               </div>
+				             </div>
+							</div>`
+						}else {
+							newcon.innerHTML += `
+										<button class="m-2 btn btn-primary">대여 가능</button>
+									</div>
+								  </div>
+							    </div>
+						      </div>`
+						}
+					})
 				}else {
 					newcon.innerHTML = `
 					    <div class="card mb-3">
@@ -154,7 +200,6 @@
 				}
 				content.innerHTML = newcon.innerHTML;
   			})
-
   		})
   	})
   </script>

@@ -61,20 +61,14 @@ public class BookController {
    
     
 	@GetMapping(value = {"/", "/list"})
-	public String list(String category, Model model, RedirectAttributes rttr) {
-		List<BookVO> bookList = bookService.getBookbyCategory(category);
-
+	public String list(String category, RedirectAttributes rttr) {
 		rttr.addAttribute(category);
-
-		model.addAttribute("bookList", bookList);
-		model.addAttribute("bookCnt", bookList.size());
-		
 		return "booklist/bookList";
 	}
 	
 	@GetMapping("/content")
 	public String content(int num, Model model) {
-		BookVO bookVO = bookService.getBook(num);
+		BookVO bookVO = bookService.getBookAndAttaches(num);
 		model.addAttribute("bookVO", bookVO);
 		
 		return "booklist/bookContent";
@@ -130,6 +124,7 @@ public class BookController {
             attachVO.setFilename(originalFilename);
             attachVO.setFiletype((isImage == true) ? "I" : "O");
             attachVO.setBno(num);
+            
             
             bookVO.setBookImg(getFolder() + "/s_" + uploadFilename);
         	bookAttachService.insertAttach(attachVO);

@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-	<link rel="stylesheet" href="/resources/css/bootstrap.css">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<link rel="stylesheet" href="/resources/css/bootstrap.css">
 <link rel="stylesheet" href="/resources/css/mainstyle.css">	
+
 <nav class="navbar navbar-expand-lg navbar-light ">
   <div class="container bg_color" >
     <a class="navbar-brand" href="/"> <i class="material-icons"></i>
@@ -57,6 +59,7 @@
 </nav>
 
 <script src="/resources/js/jquery-3.6.0.js"></script>
+<script src="/resources/js/bootstrap.js"></script>
 <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -64,27 +67,28 @@
 
         document.querySelectorAll('.navbar .nav-item').forEach(function (everyitem) {
 
-          everyitem.addEventListener('mouseover', function (e) {
+          everyitem.addEventListener('mouseover', function(e){
 
-            let el_link = this.querySelector('a[data-bs-toggle]');
+			let el_link = this.querySelector('a[data-bs-toggle]');
 
-            if (el_link != null) {
-              let nextEl = el_link.nextElementSibling;
-              el_link.classList.add('show');
-              nextEl.classList.add('show');
-            }
-          });
-          everyitem.addEventListener('mouseleave', function (e) {
-            let el_link = this.querySelector('a[data-bs-toggle]');
+			if(el_link != null){
+				let nextEl = el_link.nextElementSibling;
+				el_link.classList.add('show');
+				nextEl.classList.add('show');
+			}
 
-            if (el_link != null) {
-              setTimeout(() => {
-                let nextEl = el_link.nextElementSibling;
-                el_link.classList.remove('show');
-                nextEl.classList.remove('show');
-              }, 2000);
-            }
-          })
+			});
+			everyitem.addEventListener('mouseleave', function(e){
+				let el_link = this.querySelector('a[data-bs-toggle]');
+	
+				if(el_link != null){
+					let nextEl = el_link.nextElementSibling;
+					el_link.classList.remove('show');
+					nextEl.classList.remove('show');
+				}
+	
+	
+			})
         });
 
       // end if innerWidth
