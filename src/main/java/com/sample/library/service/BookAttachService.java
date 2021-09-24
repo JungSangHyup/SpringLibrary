@@ -24,10 +24,6 @@ public class BookAttachService implements BookAttachMapper{
 		return bookAttachMapper.getAttachesByBno(bno);
 	}
 	
-    public List<BookAttachVO> getAttachesByUuids(List<String> uuidList) {
-        return bookAttachMapper.getAttachesByUuids(uuidList);
-    }
-	
 	public int deleteAttachesByBno(int bno) {
 		return bookAttachMapper.deleteAttachesByBno(bno);
 		
