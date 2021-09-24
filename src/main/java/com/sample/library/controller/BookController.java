@@ -4,13 +4,20 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,8 +32,13 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.sample.library.domain.BoardVO;
 import com.sample.library.domain.BookAttachVO;
 import com.sample.library.domain.BookVO;
+import com.sample.library.domain.MemberVO;
+import com.sample.library.domain.RentalVO;
 import com.sample.library.service.BookAttachService;
 import com.sample.library.service.BookService;
+import com.sample.library.service.MemberService;
+import com.sample.library.service.RentalService;
+import com.sample.library.util.Script;
 
 import net.coobird.thumbnailator.Thumbnailator;
 
@@ -38,6 +50,12 @@ public class BookController {
 	
 	@Autowired
 	private BookAttachService bookAttachService;
+	
+	@Autowired
+	private MemberService memberService;
+	
+	@Autowired
+	private RentalService rentalService;
 
 	
     // 년/월/일 형식의 폴더명 리턴하는 메소드
@@ -61,23 +79,14 @@ public class BookController {
    
     
 	@GetMapping(value = {"/", "/list"})
-	public String list(RedirectAttributes rttr, String category, Model model) {
-		List<BookVO> bookList = null;
-		if(category != null) {
-			rttr.addAttribute("category", category);
-			bookList = bookService.getBookbyCategory(category);
-		}
-			
-		else 
-			bookList = bookService.getAllbook();
-		
-		model.addAttribute("bookList", bookList);
+	public String list(String category, RedirectAttributes rttr) {
+		rttr.addAttribute(category);
 		return "booklist/bookList";
 	}
 	
 	@GetMapping("/content")
 	public String content(int num, Model model) {
-		BookVO bookVO = bookService.getBook(num);
+		BookVO bookVO = bookService.getBookAndAttaches(num);
 		model.addAttribute("bookVO", bookVO);
 		
 		return "booklist/bookContent";
@@ -134,6 +143,7 @@ public class BookController {
             attachVO.setFiletype((isImage == true) ? "I" : "O");
             attachVO.setBno(num);
             
+            
             bookVO.setBookImg(getFolder() + "/s_" + uploadFilename);
         	bookAttachService.insertAttach(attachVO);
         	
@@ -151,6 +161,55 @@ public class BookController {
         bookService.save(bookVO);
      
         return "redirect:/book/list";
+	}
+	
+	
+	@GetMapping("rental")
+	public ResponseEntity<String> rental(int num, HttpSession session, HttpServletResponse response) {
+		RentalVO rentalVO = new RentalVO();
+		
+		
+		BookVO bookVO = bookService.getBook(num);
+		String bookname = bookVO.getBookName();
+		
+		String id = (String) session.getAttribute("userid");
+		MemberVO memberVO = memberService.getMemberById(id);
+		
+		String message = "";
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Type", "text/html; charset=UTF-8");
+		String str = null;
+		
+		if (id == null) { // 비밀번호 일치하지 않을때
+			message = "로그인 정보가 없습니다.";
+			
+			str = Script.back(message);
+			return new ResponseEntity<String>(str, headers, HttpStatus.OK);
+		}
+		
+		int nextNum = rentalService.nextNum();
+		rentalVO.setRentalId(String.valueOf(nextNum));
+		rentalVO.setUserid(id);
+		rentalVO.setStatus("rental");
+		rentalVO.setRentalName(bookname);
+		rentalVO.setRentalAddr(memberVO.getUseraddr1());
+		rentalVO.setRentalAddr2(memberVO.getUseraddr2());
+		rentalVO.setRentalPhone(memberVO.getUserphone());
+		
+		//빌리는 날짜
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+		String curr_time = sdf.format(new Date());
+        
+		rentalVO.setRentalDate(curr_time);
+		rentalVO.setRentalTitle(String.valueOf(num));
+		rentalVO.setTracking(id);
+		
+		rentalService.rentalBookbyId(rentalVO);
+		
+		message = bookname + " 책을 대여하였습니다!";
+		str = Script.href(message, "/member/myRental");
+		return new ResponseEntity<String>(str, headers, HttpStatus.OK);
 	}
 	
 }

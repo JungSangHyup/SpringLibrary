@@ -84,7 +84,7 @@
                   <span class="align-middle">이름</span>
                 </label>
                 <div class="col-auto mt-1">
-                  <input type="text" class="form-control" id="username" name="username">
+                  <input type="text" class="form-control" id="username" name="username" value="${sessionScope.username}" required>
                 </div>
               </div>
               
@@ -94,6 +94,7 @@
                   <span class="align-middle">성별</span>
                 </label>
                 <div class="col-sm-9">
+                  <c:if test="${sessionScope.gender eq 'M'}">
                   <div class="custom-control custom-radio custom-control-inline mt-2">
                     <input class="custom-control-input" type="radio" name="gender" id="genderRadio1" value="M" checked>
                     <label class="custom-control-label" for="genderRadio1">남자</label>
@@ -102,6 +103,17 @@
                     <input class="custom-control-input" type="radio" name="gender" id="genderRadio2" value="F">
                     <label class="custom-control-label" for="genderRadio2">여자</label>
                   </div>
+                  </c:if>
+                  <c:if test="${sessionScope.gender eq 'F'}">
+                  <div class="custom-control custom-radio custom-control-inline mt-2">
+                    <input class="custom-control-input" type="radio" name="gender" id="genderRadio1" value="M">
+                    <label class="custom-control-label" for="genderRadio1">남자</label>
+                  </div>
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input class="custom-control-input" type="radio" name="gender" id="genderRadio2" value="F" checked>
+                    <label class="custom-control-label" for="genderRadio2">여자</label>
+                  </div>
+                  </c:if>
                 </div>
               </div>
 
@@ -111,7 +123,7 @@
                   <span class="align-middle">생년월일</span>
                 </label>
                 <div class="col-auto mt-1">
-                  <input type="date" class="form-control" id="birthday" name="birthday">
+                  <input type="date" class="form-control" id="birthday" name="birthday" value="${sessionScope.birthday}" required>
                 </div>
               </div>
 
@@ -122,16 +134,68 @@
                 </label>
                 <div class="form-inline col-sm-9 mt-1" id="userphone">
                   <select id="userphone1" class="form-control" name="userphone1">
-                    <option selected disabled>선택</option>
-                    <option>010</option>
-                    <option>011</option>
-                    <option>016</option>
-                    <option>017</option>
-                    <option>018</option>
-                    <option>019</option>
+                  <c:choose>
+                  	<c:when test="${sessionScope.userphone1 eq '010'}">
+                  		<option selected>010</option>
+	                    <option>011</option>
+	                    <option>016</option>
+	                    <option>017</option>
+	                    <option>018</option>
+	                    <option>019</option>
+                  	</c:when>
+                  	<c:when test="${sessionScope.userphone1 eq '011'}">
+                  		<option>010</option>
+	                    <option selected>011</option>
+	                    <option>016</option>
+	                    <option>017</option>
+	                    <option>018</option>
+	                    <option>019</option>
+                  	</c:when>
+                  	<c:when test="${sessionScope.userphone1 eq '016'}">
+                  		<option>010</option>
+	                    <option>011</option>
+	                    <option selected>016</option>
+	                    <option>017</option>
+	                    <option>018</option>
+	                    <option>019</option>
+                  	</c:when>
+                  	<c:when test="${sessionScope.userphone1 eq '017'}">
+                  		<option>010</option>
+	                    <option>011</option>
+	                    <option>016</option>
+	                    <option selected>017</option>
+	                    <option>018</option>
+	                    <option>019</option>
+                  	</c:when>
+                  	<c:when test="${sessionScope.userphone1 eq '018'}">
+                  		<option>010</option>
+	                    <option>011</option>
+	                    <option>016</option>
+	                    <option>017</option>
+	                    <option selected>018</option>
+	                    <option>019</option>
+                  	</c:when>
+                  	<c:when test="${sessionScope.userphone1 eq '019'}">
+                  		<option>010</option>
+	                    <option>011</option>
+	                    <option>016</option>
+	                    <option>017</option>
+	                    <option>018</option>
+	                    <option selected>019</option>
+                  	</c:when>
+                  	<c:otherwise>
+                  		<option selected disabled>선택</option>
+	                    <option>010</option>
+	                    <option>011</option>
+	                    <option>016</option>
+	                    <option>017</option>
+	                    <option>018</option>
+	                    <option>019</option>
+                  	</c:otherwise>
+                  </c:choose>
                   </select>
-                   - <input type="text" class="form-control col-2" id="userphone2" name="userphone2">
-                   - <input type="text" class="form-control col-2" id="userphone3" name="userphone3">
+                   - <input type="text" class="form-control col-2" id="userphone2" name="userphone2" value="${sessionScope.userphone2}">
+                   - <input type="text" class="form-control col-2" id="userphone3" name="userphone3" value="${sessionScope.userphone3}">
                 </div>
               </div>
 
@@ -141,8 +205,8 @@
                   <span class="align-middle">주소</span>
                 </label>
                 <div class="col-sm-7 mt-1">
-                  <input type="text" class="form-control mb-2" id="useraddr1" name="useraddr1">
-                  <input type="text" class="form-control" id="useraddr2" name="useraddr2" placeholder="상세주소 입력">
+                  <input type="text" class="form-control mb-2" id="useraddr1" name="useraddr1" value="${sessionScope.useraddr1}">
+                  <input type="text" class="form-control" id="useraddr2" name="useraddr2" placeholder="상세주소 입력" value="${sessionScope.useraddr2}">
                 </div>
               </div>
 
@@ -154,7 +218,7 @@
                   <span class="align-middle">이메일 주소</span>
                 </label>
                 <div class="col-auto mt-1">
-                  <input type="email" class="form-control" id="useremail" name="useremail">
+                  <input type="email" class="form-control" id="useremail" name="useremail" value="${sessionScope.useremail}">
                 </div>
               </div>
 
@@ -164,6 +228,7 @@
                   <span class="align-middle">SMS 수신동의</span>
                 </label>
                 <div class="col-sm-9 mt-2">
+                  <c:if test="${sessionScope.recvemail eq 'Y'}">
                   <div class="custom-control custom-radio custom-control-inline">
                     <input type="radio" id="recvRadio1" name="recvemail" class="custom-control-input" value="Y" checked>
                     <label class="custom-control-label" for="recvRadio1">동의함</label>
@@ -172,6 +237,17 @@
                     <input type="radio" id="recvRadio2" name="recvemail" class="custom-control-input" value="N">
                     <label class="custom-control-label" for="recvRadio2">동의 안함</label>
                   </div>
+                  </c:if>
+                  <c:if test="${sessionScope.recvemail eq 'N'}">
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="recvRadio1" name="recvemail" class="custom-control-input" value="Y">
+                    <label class="custom-control-label" for="recvRadio1">동의함</label>
+                  </div>
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="recvRadio2" name="recvemail" class="custom-control-input" value="N" checked>
+                    <label class="custom-control-label" for="recvRadio2">동의 안함</label>
+                  </div>
+                  </c:if>
                 </div>
               </div>
 

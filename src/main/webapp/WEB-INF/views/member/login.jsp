@@ -19,7 +19,7 @@
                  <input type="checkbox" class="checkbox" id="customCheck1" name="rememberMe" value="remember-me"><span>로그인	유지</span>
 				<button class="submit" type="submit">Login</button>
 				<div class="join">
-					<a href="#!"> ID찾기</a>
+					<a href="/member/findUser"> ID찾기</a>
 					<a href="#!">| PW찾기 |</a>
 					<a href="/member/join">회원가입</a><br />
 					<br />

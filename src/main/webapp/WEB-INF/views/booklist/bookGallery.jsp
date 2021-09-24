@@ -1,42 +1,37 @@
-<%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" isELIgnored="true"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<jsp:include page="/WEB-INF/views/include/head.jsp"/>
   <title>Document</title>
-  	<link rel="stylesheet" href="/resources/css/mainstyle.css">
-       <link rel="stylesheet" href="/resources/css/bootstrap.css">
+
 </head>
 <body class="wrap">
 <jsp:include page="/WEB-INF/views/include/navbar.jsp"/>
 <div class="container">
   <div class="row">
 
-    <div class="col-3">
-      <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical" style="background: #ECE6CC;">
-        <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
-          aria-controls="v-pills-home" aria-selected="true">신간</a>
-        <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
-          aria-controls="v-pills-profile" aria-selected="false">건강/취미</a>
-        <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab"
-          aria-controls="v-pills-messages" aria-selected="false">경제/경영</a>
-        <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab"
-          aria-controls="v-pills-settings" aria-selected="false">사회/정치</a>
-        <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab"
-          aria-controls="v-pills-settings" aria-selected="false">소설/시</a>
-        <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab"
-          aria-controls="v-pills-messages" aria-selected="false">여행/예술</a>
-        <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab"
-          aria-controls="v-pills-settings" aria-selected="false">IT모바일</a>
-        <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab"
-          aria-controls="v-pills-settings" aria-selected="false">유아</a>
-      </div>
+    <div class="col-3 nav flex-column nav-pills bg_color" id="v-pills-tab" role="tablist" aria-orientation="vertical" >
+	    <a class="nav-link" id="tab_new" data-toggle="pill"  role="tab" data-value="new"
+	      aria-controls="v-pills-messages" aria-selected="false">신간</a>
+	    <a class="nav-link" id="tab_health" data-toggle="pill"  role="tab" data-value="health"
+	      aria-controls="v-pills-messages" aria-selected="false">건강/취미</a>
+	    <a class="nav-link" id="tab_eco" data-toggle="pill"  role="tab" data-value="eco"
+	      aria-controls="v-pills-messages" aria-selected="false" >경제/경영</a>
+	    <a class="nav-link" id="tab_social" data-toggle="pill"  role="tab" data-value="social"
+	      aria-controls="v-pills-settings" aria-selected="false" >사회/정치</a>
+	    <a class="nav-link" id="tab_novel" data-toggle="pill"  role="tab" data-value="novel"
+	      aria-controls="v-pills-settings" aria-selected="false" >소설/시</a>
+	    <a class="nav-link" id="tab_art" data-toggle="pill"  role="tab" data-value="art"
+	      aria-controls="v-pills-messages" aria-selected="false" >여행/예술</a>
+	    <a class="nav-link" id="tab_it" data-toggle="pill" role="tab" data-value="it"
+	      aria-controls="v-pills-settings" aria-selected="false" >IT모바일</a>
+	    <a class="nav-link" id="tab_kids" data-toggle="pill" role="tab" data-value="kids"
+	      aria-controls="v-pills-settings" aria-selected="false">유아</a>
     </div>
 
 
-    <div class="col-9" style="background: #ECE6CC;">
+    <div class="col-9 bg_color" >
       <div class="row">
         <div class="custom-control custom-switch col-3">
           <input type="checkbox" class="custom-control-input" id="rental_btn">
@@ -51,98 +46,96 @@
       </div>
       <!-- Page Content -->
       <div class="container">
-        <div class="row text-center text-lg-start">
-      
-          <div class="col-lg-3 col-md-4 col-6">
-            <a href="#" class="d-block mb-4 h-100">
-              <img class="img-fluid img-thumbnail" src="/resources/images/l9791166815782.jpg" alt="">
-            </a>
-          </div>
-          <div class="col-lg-3 col-md-4 col-6">
-            <a href="#" class="d-block mb-4 h-100">
-              <img class="img-fluid img-thumbnail" src="/resources/images/l9791188331796.jpg" alt="">
-            </a>
-          </div>
-          <div class="col-lg-3 col-md-4 col-6">
-            <a href="#" class="d-block mb-4 h-100">
-              <img class="img-fluid img-thumbnail" src="/resources/images/l9791191360196.jpg" alt="">
-            </a>
-          </div>
-          <div class="col-lg-3 col-md-4 col-6">
-            <a href="#" class="d-block mb-4 h-100">
-              <img class="img-fluid img-thumbnail" src="/resources/images/l9791197413025.jpg" alt="">
-            </a>
-          </div>
-          <div class="col-lg-3 col-md-4 col-6">
-            <a href="#" class="d-block mb-4 h-100">
-              <img class="img-fluid img-thumbnail" src="/resources/images/l9791166815782.jpg" alt="">
-            </a>
-          </div>
-          <div class="col-lg-3 col-md-4 col-6">
-            <a href="#" class="d-block mb-4 h-100">
-              <img class="img-fluid img-thumbnail" src="/resources/images/l9791188331796.jpg" alt="">
-            </a>
-          </div>
-          <div class="col-lg-3 col-md-4 col-6">
-            <a href="#" class="d-block mb-4 h-100">
-              <img class="img-fluid img-thumbnail" src="/resources/images/l9791191360196.jpg" alt="">
-            </a>
-          </div>
-          <div class="col-lg-3 col-md-4 col-6">
-            <a href="#" class="d-block mb-4 h-100">
-              <img class="img-fluid img-thumbnail" src="/resources/images/l9791197413025.jpg" alt="">
-            </a>
-          </div>
-          <div class="col-lg-3 col-md-4 col-6">
-            <a href="#" class="d-block mb-4 h-100">
-              <img class="img-fluid img-thumbnail" src="/resources/images/l9791166815782.jpg" alt="">
-            </a>
-          </div>
-          <div class="col-lg-3 col-md-4 col-6">
-            <a href="#" class="d-block mb-4 h-100">
-              <img class="img-fluid img-thumbnail" src="/resources/images/l9791188331796.jpg" alt="">
-            </a>
-          </div>
-          <div class="col-lg-3 col-md-4 col-6">
-            <a href="#" class="d-block mb-4 h-100">
-              <img class="img-fluid img-thumbnail" src="/resources/images/l9791191360196.jpg" alt="">
-            </a>
-          </div>
-          <div class="col-lg-3 col-md-4 col-6">
-            <a href="#" class="d-block mb-4 h-100">
-              <img class="img-fluid img-thumbnail" src="/resources/images/l9791197413025.jpg" alt="">
-            </a>
-          </div>
+		<div class="gallery row text-center text-lg-start">
         </div>
       </div>
+	
 
-
-      <nav aria-label="..." class="row" style="float: none; margin:100 auto;">
-        <div class="col-md-6" style="margin:0 auto;">
-          <ul class="pagination">
-            <li class="page-item disabled">
-              <a class="page-link" href="#" tabindex="-1" aria-disabled="true">이전</a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item active" aria-current="page">
-              <a class="page-link" href="#">3</a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">4</a></li>
-            <li class="page-item"><a class="page-link" href="#">5</a></li>
-            <li class="page-item">
-              <a class="page-link" href="#">다음</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
+		<!-- pagination -->
+		<nav aria-label="..." class="row" style="float: none; margin:100 auto;">
+          <div class="col-md-6" style="margin:0 auto;">
+              <ul class="pagination">
+                <li class="page-item disabled">
+                  <a class="page-link" href="#" tabindex="-1" aria-disabled="true">이전</a>
+                </li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item" aria-current="page">
+                  <a class="page-link" href="#">3</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                <li class="page-item"><a class="page-link" href="#">5</a></li>
+                <li class="page-item">
+                  <a class="page-link" href="#">다음</a>
+                </li>
+              </ul>
+          </div>
+        </nav>
 
 
     </div>
   </div>
 </div>
 	<jsp:include page="/WEB-INF/views/include/bottomFooter.jsp"/>
-	<script src="/resources/js/bootstrap.js"></script>
-    <script src="/resources/js/jquery-3.6.0.js"></script>
+	<script>
+		  fetch('/api/book/list/new')
+			.then((response) => {
+				return response.json();
+			})
+			.then((data) => {
+				let content = document.querySelector('.gallery');
+				let newcon = document.createElement('div');
+				data.forEach((value) => {
+					newcon.innerHTML += `
+					  <div class="col-lg-3 col-md-4 col-6">
+			            <a href="#">
+						  <img class="img-fluid img-thumbnail" src="/display?sign=${ value.bookImg }" alt="">
+			            </a>
+			          </div>
+					`;
+				})
+				content.innerHTML = newcon.innerHTML;
+			})
+	  
+	  	document.querySelectorAll('#v-pills-tab a').forEach((e) => {
+	  		e.addEventListener('click', (a) => {
+	  			let category = a.target.dataset.value;
+	  			
+	  			fetch('/api/book/list/' + category)
+	  			.then((response) => {
+	  				return response.json();
+	  			})
+	  			.then((data) => {
+					let content = document.querySelector('.gallery');
+					let newcon = document.createElement('div');
+					
+					console.log(data);
+					if(data.length != 0){
+		  				data.forEach((value) => {
+							newcon.innerHTML += 
+							`
+							  <div class="col-lg-3 col-md-4 col-6">
+					            <a href="#" class="d-block mb-4 h-100">
+					              <img class="img-fluid" src="/display?sign=${ value.bookImg }" alt="">
+					            </a>
+					          </div>
+							`;
+		  				})
+					}else {
+						newcon.innerHTML = 
+						`
+							  <div class="col-lg-3 col-md-4 col-6">
+					            <a href="#" class="d-block mb-4 h-100">
+					              <img class="img-fluid" src="/resources/images/default_book.jpg" alt="">
+					            </a>
+					          </div>
+						`;            
+					}
+					content.innerHTML = newcon.innerHTML;
+	  			})
+	
+	  		})
+	  	})
+	  </script>
 </body>
 </html>

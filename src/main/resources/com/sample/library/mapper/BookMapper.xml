@@ -14,7 +14,7 @@
 	
 	<select id="getAllbook" resultType="bookVO">
 	<![CDATA[
-        SELECT *
+        SELECT book_id, book_name, book_price, book_des, book_img, book_pages, book_isbn, book_writer, book_regdate, category_code
         FROM book_list
         ORDER BY book_id DESC
         ]]>
@@ -23,7 +23,7 @@
 	
 	<select id="getBook" resultType="bookVO">
 	<![CDATA[
-        SELECT *
+        SELECT book_id, book_name, book_price, book_des, book_img, book_pages, book_isbn, book_writer, book_regdate, category_code
         FROM book_list
         WHERE book_id = #{num}
         ]]>
@@ -31,7 +31,7 @@
 	
 	<select id="getBookbyCategory" resultType="bookVO">
 	<![CDATA[
-        SELECT *
+        SELECT book_id, book_name, book_price, book_des, book_img, book_pages, book_isbn, book_writer, book_regdate, category_code
         FROM book_list
         WHERE category_code = #{category}
         ORDER BY book_id DESC
@@ -67,6 +67,7 @@
                b.book_writer,
                b.book_regdate,
                b.category_code,
+               b.book_detail,
                a.uuid,
                a.uploadpath,
                a.filename,
@@ -89,6 +90,7 @@
         <result column="book_writer" property="bookWriter"/>
         <result column="book_regdate" property="bookRegdate"/>
         <result column="category_code" property="categoryCode"/>
+        <result column="book_detail" property="bookDetail"/>
         <collection property="bookAttachList" javaType="list" ofType="BookAttachVO">
             <id column="uuid" property="uuid"/>
             <result column="uploadpath" property="uploadpath"/>

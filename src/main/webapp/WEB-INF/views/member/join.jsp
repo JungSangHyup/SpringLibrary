@@ -96,7 +96,7 @@
                   <span class="align-middle">생년월일</span>
                 </label>
                 <div class="col-auto mt-1">
-                  <input type="date" class="form-control" id="birthday" name="birthday">
+                  <input type="date" class="form-control" id="birthday" name="birthday" required>
                 </div>
               </div>
 
@@ -178,7 +178,7 @@
               <div class="my-3 text-right">
                 <button type="submit" class="btn btn-secondary">회원가입</button>
                 <button type="reset" class="btn btn-secondary ml-3">다시입력</button>
-                <button type="reset" class="btn btn-secondary ml-3">취소</button>
+                <button type="reset" class="btn btn-secondary ml-3" onclick="history.back()">취소</button>
               </div>
             </form>
 
@@ -190,6 +190,41 @@
 	
 	<!-- footer -->
 	<jsp:include page="/WEB-INF/views/include/bottomFooter.jsp" />
+<script>
+	$('input#userid').on('focusout', function () {
+		
+		let userid = $(this).val();
+		if (userid.length == 0) {
+			return;
+		}
+		
+		// ajax 함수 호출
+		$.ajax({
+			url: '/api/users/' + userid + '.json',
+			method: 'GET',
+			success: function (data) {
+				console.log(typeof data);  // object
+				console.log(data);  // {}
+				
+				if (data.count == 0) {
+					$('small#idHelp').html('사용가능한 아이디 입니다.')
+						.removeClass('text-muted').removeClass('text-danger')
+						.addClass('text-success');
+				} else { // data.count == 1
+					$('small#idHelp').html('이미 사용중인 아이디 입니다.')
+						.removeClass('text-muted').removeClass('text-success')
+						.addClass('text-danger');
+				}
+			},
+			error: function (request, status, error) {
+				alert('code: ' + request.status + '\n message: ' + request.responseText + '\n error: ' + error);
+			}
+		});
+		
+		
+	});
 
+
+</script>
 </body>
 </html>
