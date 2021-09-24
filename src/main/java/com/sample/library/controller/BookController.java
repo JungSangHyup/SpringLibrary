@@ -61,17 +61,14 @@ public class BookController {
    
     
 	@GetMapping(value = {"/", "/list"})
-	public String list(RedirectAttributes rttr, String category, Model model) {
-		List<BookVO> bookList = null;
-		if(category != null) {
-			rttr.addAttribute("category", category);
-			bookList = bookService.getBookbyCategory(category);
-		}
-			
-		else 
-			bookList = bookService.getAllbook();
-		
+	public String list(String category, Model model, RedirectAttributes rttr) {
+		List<BookVO> bookList = bookService.getBookbyCategory(category);
+
+		rttr.addAttribute(category);
+
 		model.addAttribute("bookList", bookList);
+		model.addAttribute("bookCnt", bookList.size());
+		
 		return "booklist/bookList";
 	}
 	
