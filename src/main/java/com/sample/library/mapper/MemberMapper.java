@@ -30,7 +30,7 @@ public interface MemberMapper {
 	
 	
 	@Update(" UPDATE users "
-			+ " SET username = #{username}, gender = #{gender}, birthday = #{birthday}, userphone = #{userphone}, useraddr1 = #{useraddr1}, useraddr2 = #{useraddr2}, profile = #{profile}"
+			+ " SET username = #{username}, gender = #{gender}, birthday = #{birthday}, userphone = #{userphone}, useraddr1 = #{useraddr1}, useraddr2 = #{useraddr2}, recvemail = #{recvemail}, profile = #{profile}"
 			+ " WHERE userid = #{userid} ")
 	void updateMember(MemberVO memberVO);
 	

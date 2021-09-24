@@ -96,7 +96,7 @@
                   <span class="align-middle">생년월일</span>
                 </label>
                 <div class="col-auto mt-1">
-                  <input type="date" class="form-control" id="birthday" name="birthday">
+                  <input type="date" class="form-control" id="birthday" name="birthday" required>
                 </div>
               </div>
 
