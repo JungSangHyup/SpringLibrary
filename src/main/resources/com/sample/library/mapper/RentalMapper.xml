@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sample.library.mapper.RentalMapper">
+	<insert id="rentalBookbyId">
+	<![CDATA[
+		INSERT INTO rental_list(rental_id, userid, status, rental_name, rental_addr, rental_addr2, rental_phone, rental_date, rental_title, tracking)
+		VALUES(#{rentalId}, #{userid}, #{status}, #{rentalName}, #{rentalAddr}, #{rentalAddr2}, #{rentalPhone}, #{rentalDate}, #{rentalTitle}, #{tracking})
+	]]>
+	</insert>
+	
+	<select id="nextNum" resultType="int">
+	<![CDATA[
+		SELECT IFNULL(MAX(rental_id), 0) + 1 AS book_id 
+		FROM rental_list
+	]]>
+	</select>
+	
+	<select id="getRentalListbyId" resultType="rentalVO">
+	<![CDATA[
+		SELECT a.*, b.book_img
+		FROM rental_list a, book_list b
+		WHERE a.rental_title = b.book_id
+		AND userid = #{userid};
+	]]>
+	</select>
+</mapper>
