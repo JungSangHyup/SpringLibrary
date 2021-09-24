@@ -99,11 +99,17 @@
 					style="margin: 10px; line-height: 90px; font-size: 80px;"></i>
 				<div class="media-body">
 				<h4 class="mt-0">${commentList.commentId}</h4>
+				<input type="hidden" id="${commentList.commentId }">
 					<p>${ commentList.content }</p>
 				</div>
 			</div>
+			<div class="btn_box">
+				<button type="button" class="commentUpdateBtn" data-commentId="${commentList.commentId}">수정</button> 
+				<button type="button" class="commentDeleteBtn" data-commentId="${commentList.commentId}">삭제</button>
+			</div>
 	</c:forEach>
 	</ol>
+	
 	
 	<div class="media">
 		<i class="fa fa-user fa-5x"
@@ -135,7 +141,9 @@
 	<jsp:include page="/WEB-INF/views/include/bottomFooter.jsp" />
 	<link rel="stylesheet" type="text/css"
 		href="${path}/resources/css/contentstyle.css">
+		<script src="/resources/js/jquery-3.6.0.js"></script>
 	<script>
+	
 	
 		//글삭제 버튼을 클릭했을 때 호출되는 함수
 		function remove(event) {
@@ -148,6 +156,31 @@
 				location.href = '/qnaboard/remove?boardId=${ boardVO.boardId }&pageNum=${ pageNum }';
 			}
 		}
+		
+		
+		$(function() {
+			updateComment();
+			deleteComment();
+		})
+		
+		function updateComment() {
+			$(".commentUpdateBtn").on("click", function(){
+				location.href = "/qnaboard/commentUpdateView?boardId=${boardVO.boardId}"
+						+ "&pageNum=${pageNum}"
+						+ "&commentId=" + $(this).attr("data-commentId");
+				
+			});
+		}
+	
+		function deleteComment() {
+			$(".commentDeleteBtn").on("click", function(){
+				location.href = "/qnaboard/commentDeleteView?boardId=${boardVO.boardId}"
+						+ "&pageNum=${pageNum}"
+						+ "&commentId=" + $(this).attr("data-commentId");
+				
+			});
+		}
+		
 		
 	</script>
 </body>

@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.sample.library.domain.BoardVO;
+
 import com.sample.library.domain.CommentVO;
 import com.sample.library.mapper.CommentMapper;
 
@@ -31,8 +31,8 @@ public class CommentService {
 		return commentMapper.getComments(boardId);
 	}
 	
-	public CommentVO getComment(int board_id) {
-		return commentMapper.getComment(board_id);
+	public CommentVO getComment(int commentId) {
+		return commentMapper.getComment(commentId);
 	}
 	
 	public int updateComment(CommentVO commentVO) {
