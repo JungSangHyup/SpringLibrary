@@ -11,6 +11,13 @@
 		VALUES (#{commentId}, #{content}, #{regdate}, #{boardId})
 	]]>
 	</insert>
+	
+	<select id="nextNum" resultType="int">
+	<![CDATA[
+		SELECT IFNULL(MAX(comment_id), 0) + 1 AS cnum
+		FROM qna_comment
+	]]>
+	</select>
 
 	<delete id="deleteCommentByNum">
 	<![CDATA[
@@ -23,6 +30,7 @@
 	<![CDATA[
 		SELECT * 
 		FROM qna_comment
+		WHERE board_id = #{boardId}
 		ORDER BY comment_id ASC
 	]]>
 	</select>
@@ -41,6 +49,7 @@
 		SELECT * 
 		FROM qna_comment
 		WHERE board_id = #{boardId}
+		ORDER BY regdate DSEC
 	]]>
 	</select>
 
