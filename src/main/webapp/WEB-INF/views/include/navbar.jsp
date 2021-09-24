@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 	<link rel="stylesheet" href="/resources/css/bootstrap.css">
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 	
 
 <nav class="navbar navbar-expand-lg navbar-light ">
@@ -23,15 +23,32 @@
 
 
         <li class="nav-item dropdown">
-          <a class="nav-link  dropdown-toggle" href="#" data-bs-toggle="dropdown"> 도서목록 </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/book/list?category=new">책장</a></li>
-            <li><a class="dropdown-item" href="/book/gallery">갤러리</a></li>
-          </ul>
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           도서목록 </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/book/list?category=new">책장</a>
+            <a class="dropdown-item" href="/book/gallery">갤러리</a>
+          </div>
         </li>
 
         <li class="nav-item"><a class="nav-link" href="/qnaboard/list">게시판</a>
         </li>
+        
+        <c:if test="${ not empty sessionScope.userid }"><%-- 로그인 했을때 --%>
+				<li class="nav-item dropdown">
+	              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	                마이페이지
+	              </a>
+	              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+	                <a class="dropdown-item" href="/member/myRental">대여도서관리</a>
+	                <a class="dropdown-item" href="/member/myWish">찜목록</a>
+	                <div class="dropdown-divider"></div>
+	                <a class="dropdown-item" href="/member/beforeModify">내정보수정</a>
+	                <a class="dropdown-item" href="/member/changePw">비밀번호 변경</a>
+	                <a class="dropdown-item" href="/member/remove" style="color: red;">회원탈퇴</a>
+	              </div>
+	            </li>
+			</c:if>
 
         <li class="nav-item"><a class="nav-link" href="/">문의사항</a>
         </li>

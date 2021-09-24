@@ -133,12 +133,48 @@ public class MemberController {
 		return "member/logout";
 	}
 	
+	@GetMapping("/beforeModify")
+	public String beforeModify() {
+		System.out.println("beforeModify 호둘됨...");
+		return "member/beforeModify";
+	}
+	@PostMapping("/beforeModify")
+	public ResponseEntity<String> beforeModify(String passwd,
+			HttpSession session, HttpServletResponse response){
+		
+		String id = (String) session.getAttribute("userid");
+		
+		MemberVO memberVO = memberService.getMemberById(id);
+				
+		boolean isPasswdSame = false;
+		String message = "";
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Type", "text/html; charset=UTF-8");
+		String str = null;
+		
+		isPasswdSame = BCrypt.checkpw(passwd, memberVO.getUserpass());
+		if (isPasswdSame == false) { // 비밀번호 일치하지 않을때
+			message = "비밀번호가 일치하지 않습니다.";
+			
+			str = Script.back(message);
+			return new ResponseEntity<String>(str, headers, HttpStatus.OK);
+		}
+		
+		str = Script.href("본인 인증 완료!", "/member/modify");
+		
+		return new ResponseEntity<String>(str, headers, HttpStatus.OK);
+	}
+	
+	
 	
 	@GetMapping("/modify")
 	public String modify() {
 		System.out.println("modify 호둘됨...");
 		return "member/modify";
 	}
+	
+	
 	
 	@PostMapping("/modify")
 	public ResponseEntity<String> modify(MemberVO memberVO, HttpSession session){
