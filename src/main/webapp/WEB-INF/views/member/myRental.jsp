@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -73,76 +75,24 @@
                     <th scope="col" style="width: 15%;">대여일자</th>
                     <th scope="col" style="width: 15%; white-space: nowrap;">남은 대여일 수</th>
                     <th scope="col" style="width: 15%;">상태</th>
-                    
                   </tr>
                 </thead>
                 <tbody class="text-center">
-                  <tr>
-                    <td class="align-middle" style="width: 10%;">
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customCheck1">
-                            <label class="custom-control-label" for="customCheck1"></label>
-                          </div>
-                    </td>
-                    <td class="align-middle" style="width: 15%;"><img src="/resources/images/s_l9791166815782.jpg" alt="썸네일"></td>
-                    <td class="align-middle">책제목1</td>
-                    <td class="align-middle" style="width: 15%;">2019.07.01</td>
-                    <td class="align-middle" style="width: 15%; color: red;">0일</td>
-                    <td class="align-middle" style="width: 15%; color: red;">연체</td>
-                  </tr>
-                  <tr>
-                    <td class="align-middle" style="width: 10%;">
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customCheck2">
-                            <label class="custom-control-label" for="customCheck2"></label>
-                          </div>
-                    </td>
-                    <td class="align-middle" style="width: 15%;"><img src="/resources/images/s_l9791166815782.jpg" alt="썸네일"></td>
-                    <td class="align-middle">책제목2</td>
-                    <td class="align-middle" style="width: 15%;">2021.09.10</td>
-                    <td class="align-middle" style="width: 15%;">9일</td>
-                    <td class="align-middle" style="width: 15%;">대여중</td>
-                  </tr>
-                  <tr>
-                    <td class="align-middle" style="width: 10%;">
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customCheck3">
-                            <label class="custom-control-label" for="customCheck3"></label>
-                          </div>
-                    </td>
-                    <td class="align-middle" style="width: 15%;"><img src="/resources/images/s_l9791166815782.jpg" alt="썸네일"></td>
-                    <td class="align-middle">책제목3</td>
-                    <td class="align-middle" style="width: 15%;">2021.09.03</td>
-                    <td class="align-middle" style="width: 15%;">5일</td>
-                    <td class="align-middle" style="width: 15%; color: blue;">대여중<br>(연장1회)</td>
-                  </tr>
-                  <tr>
-                    <td class="align-middle" style="width: 10%;">
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customCheck4">
-                            <label class="custom-control-label" for="customCheck4"></label>
-                          </div>
-                    </td>
-                    <td class="align-middle" style="width: 15%;"><img src="/resources/images/s_l9791166815782.jpg" alt="썸네일"></td>
-                    <td class="align-middle">책제목4</td>
-                    <td class="align-middle" style="width: 15%;">2021.09.10</td>
-                    <td class="align-middle" style="width: 15%;">9일</td>
-                    <td class="align-middle" style="width: 15%;">대여중</td>
-                  </tr>
-                  <tr>
-                    <td class="align-middle" style="width: 10%;">
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customCheck5">
-                            <label class="custom-control-label" for="customCheck5"></label>
-                          </div>
-                    </td>
-                    <td class="align-middle" style="width: 15%;"><img src="/resources/images/s_l9791166815782.jpg" alt="썸네일"></td>
-                    <td class="align-middle">책제목5</td>
-                    <td class="align-middle" style="width: 15%;">2021.09.10</td>
-                    <td class="align-middle" style="width: 15%;">9일</td>
-                    <td class="align-middle" style="width: 15%;">대여중</td>
-                  </tr>
-
+					<c:forEach var="rental" items="${rentalList}">
+						 <tr>
+		                    <td class="align-middle" style="width: 10%;">
+		                        <div class="custom-control custom-checkbox">
+		                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+		                            <label class="custom-control-label" for="customCheck1"></label>
+		                          </div>
+		                    </td>
+		                    <td class="align-middle" style="max-width: 15%;"><img src="/display?sign=${ rental.bookImg }" alt="..." class="img-thumbnail"></td>
+		                    <td class="align-middle">${rental.rentalName}</td>
+		                    <td class="align-middle" style="width: 15%;">${rental.rentalDate}</td>
+		                    <td class="align-middle" style="width: 15%;">0일</td>
+		                    <td class="align-middle" style="width: 15%;">${rental.status}</td>
+		                 </tr>
+					</c:forEach>
                 </tbody>
               </table>
               <div class="my-3 text-right">

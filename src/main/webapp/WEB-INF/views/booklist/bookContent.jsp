@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +19,8 @@
               <h5 class="card-title">${bookVO.bookName}</h5>
               <p class="card-text">${bookVO.bookWriter}</p>
               <p class="card-text">${bookVO.bookDes}</p>
-              <button type="button" class="btn btn-primary rental">대여</button>
+				<c:if test="${bookVO.bookIsbn eq 'T'}"><button type="button" class="btn btn-primary rental">대여</button></c:if>
+				<c:if test="${bookVO.bookIsbn eq 'N'}"><button type="button" class="btn btn-danger rental disabled">대여 중</button></c:if>
               <button type="button" class="btn btn-primary wish">찜하기</button>
             </div>
           </div>

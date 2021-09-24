@@ -1,5 +1,7 @@
 package com.sample.library.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.annotation.SessionScope;
@@ -16,10 +18,15 @@ public class RentalService implements RentalMapper{
 	public int rentalBookbyId(RentalVO rentalVO) {
 		return rentalMapper.rentalBookbyId(rentalVO);	
 	}
-
+	
 	@Override
 	public int nextNum() {
 		return rentalMapper.nextNum();
+	}
+
+	@Override
+	public List<RentalVO> getRentalListbyId(String userid) {
+		return rentalMapper.getRentalListbyId(userid);
 	}
 
 

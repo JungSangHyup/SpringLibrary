@@ -25,4 +25,6 @@ public class RentalVO {
 	private String rentalDate;
 	private String rentalTitle;
 	private String tracking;
+	
+	private String bookImg;
 }

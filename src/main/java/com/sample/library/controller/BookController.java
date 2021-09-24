@@ -191,7 +191,7 @@ public class BookController {
 		int nextNum = rentalService.nextNum();
 		rentalVO.setRentalId(String.valueOf(nextNum));
 		rentalVO.setUserid(id);
-		rentalVO.setStatus("rental");
+		rentalVO.setStatus("대여 중");
 		rentalVO.setRentalName(bookname);
 		rentalVO.setRentalAddr(memberVO.getUseraddr1());
 		rentalVO.setRentalAddr2(memberVO.getUseraddr2());
@@ -208,7 +208,7 @@ public class BookController {
 		rentalService.rentalBookbyId(rentalVO);
 		
 		message = bookname + " 책을 대여하였습니다!";
-		str = Script.href(message, "/member/myRental");
+		str = Script.href(message, "/member/rental");
 		return new ResponseEntity<String>(str, headers, HttpStatus.OK);
 	}
 	
