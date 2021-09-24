@@ -16,7 +16,7 @@ public interface CommentMapper {
 	
 	List<CommentVO> getComments(int boardId);  // 전체 게시글 내용 가져오기
 	
-	CommentVO getComment(int boardId); // 글번호에 해당하는 글 한개 가져오기
+	CommentVO getComment(int commentId); // 글번호에 해당하는 글 한개 가져오기
 		
 	int getTotalCount();  // 전체 글개수 가져오기
 	
