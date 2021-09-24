@@ -58,13 +58,16 @@
 
 			<!-- 글목록 버튼 생성 -->
 			<div class="btn_box">
+			<c:if test="${ not empty sessionScope.userid }">
+			<c:if test="${ sessionScope.userid eq boardVO.userid }">
 				<input type="button" class="sub_btn"
 					onclick="location.href = '/qnaboard/modify?boardId=${ boardVO.boardId }&pageNum=${ pageNum }';"
-					value="글수정"> <input type="button" class="remove_btn"
-					onclick="remove(event);" value="글삭제"> <input type="button"
-					class="list_btn"
-					onclick="location.href = '/qnaboard/list?pageNum=${ pageNum }';"
-					value="글목록">
+					value="글수정"> 
+					<input type="button" class="remove_btn" onclick="remove(event);" value="글삭제">
+			</c:if>
+			</c:if>
+			<c:if test="${sessionScope.userid eq 'admin' }"></c:if>
+					<input type="button" class="list_btn" onclick="location.href = '/qnaboard/list?pageNum=${ pageNum }';" value="글목록">
 			</div>
 		</div>
 

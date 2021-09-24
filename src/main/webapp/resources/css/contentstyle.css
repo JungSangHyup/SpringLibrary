@@ -77,6 +77,74 @@ body {
     display: flex;
 }
 
+.commentUpdateBtn {
+    margin-right: 10px;
+    width: 60px;
+    height: 30px;
+    background: #2f3542;
+    color: white;
+    padding: 0 10px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-left: 65%;
+}
+
+.commentDeleteBtn {
+    margin-right: 10px;
+    width: 60px;
+    height: 30px;
+    background: #2f3542;
+    color: white;
+    padding: 0 10px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.update_btn {
+    margin-right: 10px;
+    width: 60px;
+    height: 30px;
+    background: #2f3542;
+    color: white;
+    padding: 0 10px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-left: 65%;
+}
+
+.delete_btn {
+    margin-right: 10px;
+    width: 60px;
+    height: 30px;
+    background: #2f3542;
+    color: white;
+    padding: 0 10px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-left: 65%;
+}
+
+.cancel_btn {
+    margin-right: 10px;
+    width: 60px;
+    height: 30px;
+    background: #2f3542;
+    color: white;
+    padding: 0 10px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
 .sub_btn {
     margin-top: 10px;
     margin-right: 10px;
