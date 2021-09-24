@@ -25,4 +25,13 @@
 		AND userid = #{userid};
 	]]>
 	</select>
+	
+	
+	<delete id="returnBook">
+	<![CDATA[
+        DELETE
+        FROM book_list
+        WHERE rental_title IN #{num}
+        ]]>
+	</delete>
 </mapper>

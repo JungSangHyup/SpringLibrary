@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -13,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -21,15 +19,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.sample.library.domain.BoardVO;
 import com.sample.library.domain.BookAttachVO;
 import com.sample.library.domain.BookVO;
 import com.sample.library.domain.MemberVO;
@@ -164,7 +159,7 @@ public class BookController {
 	}
 	
 	
-	@GetMapping("rental")
+	@GetMapping("/rental")
 	public ResponseEntity<String> rental(int num, HttpSession session, HttpServletResponse response) {
 		RentalVO rentalVO = new RentalVO();
 		
@@ -212,4 +207,21 @@ public class BookController {
 		return new ResponseEntity<String>(str, headers, HttpStatus.OK);
 	}
 	
+	@PostMapping("/rental")
+	public ResponseEntity<String> returnBook(String state, HttpSession session, HttpServletResponse response, HttpServletRequest request) {
+		
+		String[] nums = request.getParameterValues("num");
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Type", "text/html; charset=UTF-8");
+		
+		System.out.println(state);
+		
+		for(String num : nums) {
+			System.out.println(num);
+		}
+		String message = "책을 반납하였습니다!";
+		String str = Script.back(message);
+		
+		return new ResponseEntity<String>(str, headers, HttpStatus.OK);
+	}
 }

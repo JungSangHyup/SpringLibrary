@@ -29,6 +29,11 @@ public class RentalService implements RentalMapper{
 		return rentalMapper.getRentalListbyId(userid);
 	}
 
+	@Override
+	public int returnBook(int num) {
+		return rentalMapper.returnBook(num);
+	}
+
 
 
 }

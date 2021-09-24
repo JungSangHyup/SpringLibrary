@@ -63,7 +63,7 @@
         <div class="col-sm-9">
             <!-- Contents area -->
           <div class="border border p-4" style="background: #ECE6CC;">
-            <form action="/member/myWishlist" method="POST">
+           <form name="rental_form" method="post" action="/book/rental">
             <h3>대여도서관리</h3>
               <hr>
             <table class="table table-hover table-borderless">
@@ -82,8 +82,7 @@
 						 <tr>
 		                    <td class="align-middle" style="width: 10%;">
 		                        <div class="custom-control custom-checkbox">
-		                            <input type="checkbox" class="custom-control-input" id="customCheck1">
-		                            <label class="custom-control-label" for="customCheck1"></label>
+		                            <input type="checkbox" class="rental_num" name="num" value="${rental.rentalTitle}">
 		                          </div>
 		                    </td>
 		                    <td class="align-middle" style="max-width: 15%;"><img src="/display?sign=${ rental.bookImg }" alt="..." class="img-thumbnail"></td>
@@ -97,7 +96,7 @@
               </table>
               <div class="my-3 text-right">
                 <button type="submit" class="btn btn-secondary">연장신청</button>
-                <button type="reset" class="btn btn-secondary ml-3">반납하기</button>
+                <button type="submit" class="btn btn-secondary ml-3 return_book" name="state" value="return_book">반납하기</button>
               </div>
             </form>
           </div>
@@ -116,4 +115,7 @@
     
 
 </body>
+<script>
+	
+</script>
 </html>
