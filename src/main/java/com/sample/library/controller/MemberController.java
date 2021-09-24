@@ -132,6 +132,11 @@ public class MemberController {
 		}
 		return "member/logout";
 	}
+	@GetMapping("/findUser")
+	public String findUser() {
+		System.out.println("findUser...");
+		return "member/findUser";
+	}
 	
 	@GetMapping("/beforeModify")
 	public String beforeModify() {
