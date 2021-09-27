@@ -25,6 +25,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ctc.wstx.util.StringUtil;
@@ -33,6 +34,7 @@ import com.sample.library.domain.RentalVO;
 import com.sample.library.domain.UserProfileVO;
 import com.sample.library.service.MemberService;
 import com.sample.library.service.RentalService;
+import com.sample.library.service.UserProfileService;
 import com.sample.library.util.Script;
 
 import net.coobird.thumbnailator.Thumbnailator;
@@ -49,6 +51,8 @@ public class MemberController {
 	
 	@Autowired
 	private RentalService rentalService;
+	@Autowired
+	private UserProfileService userProfileService;
 	
 	@GetMapping("/join") // /member/join
 	public String join() {
@@ -56,7 +60,9 @@ public class MemberController {
 		return "member/join";
 	}
 	@PostMapping("/join")
-	public ResponseEntity<String> join(List<MultipartFile> files, HttpSession session, MemberVO memberVO) throws IllegalStateException, IOException {
+	public ResponseEntity<String> join(@RequestParam("profileimg") MultipartFile profileimg, MemberVO memberVO) throws IllegalStateException, IOException {
+		
+		String id = memberVO.getUserid();
 		
 		// 비밀번호 암호화 하기
 		String passwd = memberVO.getUserpass();
@@ -75,27 +81,69 @@ public class MemberController {
 		memberVO.setRegdate(new Date());
 		
 		//프로필 등록(업로드)
-		session.setAttribute("userid", memberVO.getUserid());
-		List<UserProfileVO> profileList = uploadProfileAndGetProfileList(files, memberVO.getUserid(), memberVO);
+		String uploadFolder = "C:/upload/profile";  // 업로드 기준경로
 		
+		File uploadPath = new File(uploadFolder, getFolder(id)); // C:/upload/profile/userid
+		System.out.println("uploadPath : " + uploadPath.getPath());
 		
+		if (uploadPath.exists() == false) {  // !uploadPath.exists()
+			uploadPath.mkdirs();
+		}
+		
+		if(!profileimg.isEmpty()) {
+			String originalFilename = profileimg.getOriginalFilename();
+			UUID uuid = UUID.randomUUID();
+			String uploadFilename = uuid.toString() + "_" + originalFilename;
+			
+			File file = new File(uploadPath, uploadFilename); // 생성할 파일이름 정보
+			
+			
+			// ======================================================
+			
+			// 현재 업로드한 파일이 이미지 파일이면 썸네일 이미지를 추가로 생성하기
+			boolean isImage = checkImageType(file); // 이미지 파일여부 확인 
+			
+			if (isImage == true) {
+				// 파일1개 업로드(파일 생성) 완료
+				profileimg.transferTo(file);
+				File outFile = new File(uploadPath, "p_" + uploadFilename);
+				
+				Thumbnailator.createThumbnail(file, outFile, 200, 200);  // 썸네일 이미지 파일 생성하기
+			}
+			
+			
+			//===== insert할 userProfileVO 객체 데이터 생성 ======
+			UserProfileVO userProfileVO = new UserProfileVO();
+			userProfileVO.setUuid(uuid.toString());
+			userProfileVO.setUploadpath(getFolder(id));
+			userProfileVO.setFilename(originalFilename);
+			userProfileVO.setFiletype( (isImage == true) ? "I" : "O" );
+			userProfileVO.setMid(id);
+			
+			memberVO.setProfile(getFolder(id) + "/p_" + uploadFilename);
+			userProfileService.insertProfile(userProfileVO);
+			
+		}else {
+			memberVO.setProfile("default");
+		}
+//		session.setAttribute("userid", memberVO.getUserid());
+//		List<UserProfileVO> profileList = uploadProfileAndGetProfileList(files, memberVO.getUserid(), memberVO);
 		
 		System.out.println(memberVO);
-		//memberService.register(memberVO); // 회원등록 처리
-		memberService.registerAndProfile(memberVO, profileList);	//회원등록&프로필등록 처리
+		memberService.register(memberVO); // 회원등록 처리
+		//memberService.registerAndProfile(memberVO, userProfileVO);	//회원등록&프로필등록 처리
 		
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Type", "text/html; charset=UTF-8");
 		
 		String str = Script.href("회원가입 성공!", "/member/login");
-		session.invalidate();
 		
 		return new ResponseEntity<String>(str, headers, HttpStatus.OK);
 	}
 	
 	// userid 폴더명을 리턴하는 메소드
 	private String getFolder(String id) {
-		String str = "profile/" + id;
+		String str = id;
 		return str;
 	}
 	
@@ -109,74 +157,6 @@ public class MemberController {
 		isImage = contentType.startsWith("image");
 		return isImage;
 	}
-	
-	// 프로필 업로드(썸네일 생성) 후 profileList 리턴하는 메소드
-	private List<UserProfileVO> uploadProfileAndGetProfileList(List<MultipartFile> files, String mid, MemberVO memberVO) throws IllegalStateException, IOException {
-		
-		String id = memberVO.getUserid();
-		
-		List<UserProfileVO> profileList = new ArrayList<UserProfileVO>();
-		
-		// 생성할 파일정보가 없으면 종료
-		if (files == null || files.size() == 0) {
-			System.out.println("업로드한 첨부파일 개수 : " + files.size());
-			return profileList;
-		}
-		
-		
-		String uploadFolder = "C:/upload";  // 업로드 기준경로
-		
-		File uploadPath = new File(uploadFolder, getFolder(id)); // C:/upload/profile/userid
-		System.out.println("uploadPath : " + uploadPath.getPath());
-		
-		if (uploadPath.exists() == false) {  // !uploadPath.exists()
-			uploadPath.mkdirs();
-		}
-		
-		for (MultipartFile multipartFile : files) {
-			// 업로드 시 file type의 input 태그가 총 5개 사용되었는데
-			// 그중에 3개만 파일을 선택하고 2개는 파일선택안하고 비워두면
-			// files.size()는 5가 되므로, 실제 선택한 파일정보만 가져오려면  isEmpty()로 걸러야됨
-			if (multipartFile.isEmpty()) {
-				continue;
-			}
-			
-			String originalFilename = multipartFile.getOriginalFilename();
-			UUID uuid = UUID.randomUUID();
-			String uploadFilename = uuid.toString() + "_" + originalFilename;
-			
-			File file = new File(uploadPath, uploadFilename); // 생성할 파일이름 정보
-			
-			// 파일1개 업로드(파일 생성) 완료
-			multipartFile.transferTo(file);
-			// ======================================================
-			
-			// 현재 업로드한 파일이 이미지 파일이면 썸네일 이미지를 추가로 생성하기
-			boolean isImage = checkImageType(file); // 이미지 파일여부 확인 
-			
-			if (isImage == true) {
-				File outFile = new File(uploadPath, "p_" + uploadFilename);
-				
-				Thumbnailator.createThumbnail(file, outFile, 200, 200);  // 썸네일 이미지 파일 생성하기
-			}
-			
-			
-			//===== insert할 주글 AttachVO 객체 데이터 생성 ======
-			UserProfileVO userProfileVO = new UserProfileVO();
-			userProfileVO.setUuid(uuid.toString());
-			userProfileVO.setUploadpath(getFolder(id));
-			userProfileVO.setFilename(originalFilename);
-			userProfileVO.setFiletype( (isImage == true) ? "I" : "O" );
-			userProfileVO.setMid(mid);
-			
-			profileList.add(userProfileVO); // 리스트에 추가
-		} // for
-		
-		return profileList;
-	} // uploadFilesAndGetAttachList
-	
-	
-	
 	
 	
 	
@@ -319,6 +299,10 @@ public class MemberController {
 		String birthdayBar = birthday.substring(0, 4) + "-" + birthday.substring(4, 6) + "-" + birthday.substring(6);
 		
 		session.setAttribute("birthday", birthdayBar);
+		
+		
+		//프로필 불러오기
+		session.setAttribute("profile", memberVO.getProfile());
 	
 		System.out.println(memberVO);
 		
@@ -329,7 +313,7 @@ public class MemberController {
 	
 	
 	@PostMapping("/modify")
-	public ResponseEntity<String> modify(MemberVO memberVO, HttpSession session){
+	public ResponseEntity<String> modify(@RequestParam("profileimg") MultipartFile profileimg, MemberVO memberVO, HttpSession session) throws IOException{
 		
 		String id = (String) session.getAttribute("userid");
 		memberVO.setUserid(id);
@@ -341,7 +325,55 @@ public class MemberController {
 		// 전화번호 등록
 		String userphone = memberVO.getUserphone1()+"-"+memberVO.getUserphone2()+"-"+memberVO.getUserphone3();
 		memberVO.setUserphone(userphone);
+		
+		//프로필 업데이트(삭제&업로드)
+		String uploadFolder = "C:/upload/profile";  // 업로드 기준경로
+		
+		File uploadPath = new File(uploadFolder, getFolder(id)); // C:/upload/profile/userid
+		System.out.println("uploadPath : " + uploadPath.getPath());
+		
+		if (uploadPath.exists() == false) {  // !uploadPath.exists()
+			uploadPath.mkdirs();
+		}
+		
+		if(!profileimg.isEmpty()) {
+			userProfileService.deleteProfileByMid(id);		//기존 프로필 파일 삭제
 			
+			String originalFilename = profileimg.getOriginalFilename();
+			UUID uuid = UUID.randomUUID();
+			String uploadFilename = uuid.toString() + "_" + originalFilename;
+			
+			File file = new File(uploadPath, uploadFilename); // 생성할 파일이름 정보
+			
+			
+			// ======================================================
+			
+			// 현재 업로드한 파일이 이미지 파일이면 썸네일 이미지를 추가로 생성하기
+			boolean isImage = checkImageType(file); // 이미지 파일여부 확인 
+			
+			if (isImage == true) {
+				// 파일1개 업로드(파일 생성) 완료
+				profileimg.transferTo(file);
+				File outFile = new File(uploadPath, "p_" + uploadFilename);
+				
+				Thumbnailator.createThumbnail(file, outFile, 200, 200);  // 썸네일 이미지 파일 생성하기
+			}
+			
+			
+			//===== insert할 userProfileVO 객체 데이터 생성 ======
+			UserProfileVO userProfileVO = new UserProfileVO();
+			userProfileVO.setUuid(uuid.toString());
+			userProfileVO.setUploadpath(getFolder(id));
+			userProfileVO.setFilename(originalFilename);
+			userProfileVO.setFiletype( (isImage == true) ? "I" : "O" );
+			userProfileVO.setMid(id);
+			
+			memberVO.setProfile(getFolder(id) + "/p_" + uploadFilename);
+			userProfileService.insertProfile(userProfileVO);
+			
+		}
+		
+		
 		memberService.updateMember(memberVO); // 회원정보 update 처리
 		System.out.println(memberVO);
 		

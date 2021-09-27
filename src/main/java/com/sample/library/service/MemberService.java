@@ -36,12 +36,10 @@ public class MemberService {
 	}
 	
 	@Transactional
-	public void registerAndProfile(MemberVO memberVO, List<UserProfileVO> profileList) {
+	public void registerAndProfile(MemberVO memberVO, UserProfileVO userProfileVO) {
 		memberMapper.insert(memberVO);
+		userProfileMapper.insertProfile(userProfileVO);
 		
-		if(profileList != null && profileList.size() > 0) {
-			userProfileMapper.insertProfile(profileList);
-		}
 	}
 	
 
