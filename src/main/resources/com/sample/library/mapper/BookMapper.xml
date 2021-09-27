@@ -44,6 +44,17 @@
         ORDER BY book_id DESC
         ]]>
 	</select>
+
+
+    <select id="getBookbyCategoryAndborrow" resultType="bookVO">
+	<![CDATA[
+        SELECT book_id, book_name, book_price, book_des, book_img, book_pages, book_isbn, book_writer, book_regdate, category_code
+        FROM book_list
+        WHERE category_code = #{category}
+        AND book_isbn = #{isbn}
+        ORDER BY book_id DESC
+        ]]>
+	</select>
 	
 	
 	<insert id="save">

@@ -24,15 +24,32 @@ public class BookRestController {
 	
 	@Autowired
 	private BookAttachService bookAttachService;
-	
+
 	@GetMapping(value = "/list/{category}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
 	public ResponseEntity<List<BookVO>> list(@PathVariable("category") String category) {
 		List<BookVO> bookList = null;
 		if(category != null)
 			bookList = bookService.getBookbyCategory(category);
-		else 
+		else
 			bookList = bookService.getAllbook();
-		
+
+		return new ResponseEntity<List<BookVO>>(bookList, HttpStatus.OK);
+	}
+	
+	@GetMapping(value = "/list/{category}/{rental}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+	public ResponseEntity<List<BookVO>> list(@PathVariable("category") String category, @PathVariable("rental") String rental) {
+		List<BookVO> bookList = null;
+		System.out.println(rental);
+		if(rental.equals("rental")){
+			rental = "Y";
+			bookList = bookService.getBookbyCategoryAndborrow(category, rental);
+		}else {
+			if(category != null)
+				bookList = bookService.getBookbyCategory(category);
+			else
+				bookList = bookService.getAllbook();
+		}
+
 		return new ResponseEntity<List<BookVO>>(bookList, HttpStatus.OK);
 	}
 }

@@ -32,12 +32,8 @@
       <div class="col-9 bg_color">
         <div class="row">
           <div class="custom-control custom-switch col-3">
-            <input type="checkbox" class="custom-control-input" id="rental_btn">
-            <label class="custom-control-label m-2 " for="rental_btn">대여 가능만</label>
-          </div>
-          <div class="custom-control custom-switch text-right col-3">
-            <input type="checkbox" class="custom-control-input" id="image_btn">
-            <label class="custom-control-label m-2 " for="image_btn">펼쳐보기</label>
+            <input type="checkbox" class="custom-control-input rental_btn" id="rental_btn" data-value="all">
+            <label class="custom-control-label m-2 " for="rental_btn">대여</label>
           </div>
           <!-- // 관리자만 보임 -->
           <button class="btn-primary text-right mt-3 mb-3 rounded" onclick="location.href='/book/write'">책 추가</button>
@@ -75,60 +71,22 @@
 </div>
   <jsp:include page="/WEB-INF/views/include/bottomFooter.jsp"/>
   <script>
-	  fetch('/api/book/list/new')
-		.then((response) => {
-			return response.json();
-		})
-		.then((data) => {
-			let content = document.querySelector('#book_content');
-			let newcon = document.createElement('div');
+      let category = 'new';
+      let is_rental = document.querySelector('.rental_btn').dataset.value;
 
-            fetch('/api/book/list/new')
-                .then((response) => {
-                    return response.json();
-                })
-                .then((data) => {
-                    let content = document.querySelector('#book_content');
-                    let newcon = document.createElement('div');
-                    data.forEach((value) => {
-                        newcon.innerHTML += `
-				  <div class="card mb-3">
-	               <div class="row no-gutters">
-	                 <div class="col-md-4">
-	                   <a href="/book/content?num=${ value.bookId }">
-	                     <img src="/display?sign=${ value.bookImg }" alt="..." style="max-width: 180px;">
-	                   </a>
-	                 </div>
-	                 <div class="col-md-8">
-	                   <div class="card-body">
-	                     <h5 class="card-title">${ value.bookName }</h5>
-	                     <p class="card-text">${value.bookDes}</p>
-	                   </div>
-	                 </div>
-	               </div>
-	             </div>
-				`;
-                    })
-                    content.innerHTML = newcon.innerHTML;
-                })
-        })
-  
-  	document.querySelectorAll('#v-pills-tab a').forEach((e) => {
-  		e.addEventListener('click', (a) => {
-  			let category = a.target.dataset.value;
+      function fetching(category, is_rental){
+          fetch('/api/book/list/' + category + '/' + is_rental)
+              .then((response) => {
+                  return response.json();
+              })
+              .then((data) => {
+                  let content = document.querySelector('#book_content');
+                  let newcon = document.createElement('div');
 
-  			fetch('/api/book/list/' + category)
-  			.then((response) => {
-  				return response.json();
-  			})
-  			.then((data) => {
-				let content = document.querySelector('#book_content');
-				let newcon = document.createElement('div');
-
-				if(data.length != 0){
-	  				data.forEach((value) => {
-					newcon.innerHTML +=
-						`
+                  if(data.length != 0){
+                      data.forEach((value) => {
+                          newcon.innerHTML +=
+                              `
 						  <div class="card mb-3">
 			               <div class="row no-gutters">
 			                 <div class="col-md-4">
@@ -142,8 +100,8 @@
 								 <p class="card-text">${value.bookDes}</p>
 
 						`;
-						if(value.bookIsbn === 'N'){
-							newcon.innerHTML += `
+                          if(value.bookIsbn === 'N'){
+                              newcon.innerHTML += `
 									<a class="btn btn-danger disabled">
 			                     		대여 불가능
 			                   		</a>
@@ -151,8 +109,8 @@
 				               </div>
 				             </div>
 							</div>`
-						}else {
-							newcon.innerHTML += `
+                          }else {
+                              newcon.innerHTML += `
 									<a href="/book/content?num=${ value.bookId}" class="btn btn-primary">
 		                     			대여 가능
 		                   			</a>
@@ -160,10 +118,10 @@
 								  </div>
 							    </div>
 						      </div>`
-						}
-					})
-				}else {
-					newcon.innerHTML = `
+                          }
+                      })
+                  }else {
+                      newcon.innerHTML = `
 					    <div class="card mb-3">
 	                     <div class="row no-gutters">
 	                       <div class="col-md-4">
@@ -178,9 +136,35 @@
 	                     </div>
 	                   </div>
 					`;
-				}
-				content.innerHTML = newcon.innerHTML;
-  			})
+                  }
+                  content.innerHTML = newcon.innerHTML;
+              })
+      }
+
+
+      // 첫 페이지 불러올 때 뿌려질 데이터
+      document.addEventListener('DOMContentLoaded', fetching('new', is_rental));
+
+
+      // 버튼을 누를 때 마다 불러옴
+      document.querySelector('.rental_btn').addEventListener('change', (e) => {
+
+
+          if(e.target.checked){
+              e.target.dataset.value = 'rental'
+          }else {
+              e.target.dataset.value = 'all'
+          }
+          is_rental = e.target.dataset.value;
+          fetching(category, is_rental);
+      })
+
+
+      // 탭을 누를 때 마다 바뀜
+  	document.querySelectorAll('#v-pills-tab a').forEach((e) => {
+  		e.addEventListener('click', (a) => {
+  			category = a.target.dataset.value;
+            fetching(category, is_rental);
   		})
   	})
 
