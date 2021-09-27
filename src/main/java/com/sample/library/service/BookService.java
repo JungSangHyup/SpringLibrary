@@ -9,7 +9,7 @@ import com.sample.library.domain.BookVO;
 import com.sample.library.mapper.BookMapper;
 
 @Service
-public class BookService implements BookMapper{
+public class BookService{
 	@Autowired
 	private BookMapper bookMapper;
 	
@@ -33,12 +33,10 @@ public class BookService implements BookMapper{
 		return bookMapper.deleteAll();
 	}
 
-	@Override
 	public BookVO getBookAndAttaches(int num) {
 		return bookMapper.getBookAndAttaches(num);
 	}
 
-	@Override
 	public List<BookVO> getBookbyCategory(String category) {
 		return bookMapper.getBookbyCategory(category);
 	}

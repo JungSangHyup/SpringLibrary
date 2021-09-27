@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -208,19 +209,19 @@ public class BookController {
 	}
 	
 	@PostMapping("/rental")
-	public ResponseEntity<String> returnBook(String state, HttpSession session, HttpServletResponse response, HttpServletRequest request) {
+	public ResponseEntity<String> retBook(String state, HttpSession session, HttpServletResponse response, HttpServletRequest request) {
 		
-		String[] nums = request.getParameterValues("num");
+		String[] strnums = request.getParameterValues("num");
+		int[] nums = Arrays.asList(strnums).stream().mapToInt(Integer::parseInt).toArray();
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Type", "text/html; charset=UTF-8");
 		
 		System.out.println(state);
-		
-		for(String num : nums) {
-			System.out.println(num);
-		}
+
+		rentalService.retBook(nums);
+
 		String message = "책을 반납하였습니다!";
-		String str = Script.back(message);
+		String str = Script.href(message, "/member/rental");
 		
 		return new ResponseEntity<String>(str, headers, HttpStatus.OK);
 	}

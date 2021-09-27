@@ -88,7 +88,7 @@
 				data.forEach((value) => {
 					newcon.innerHTML += `
 					  <div class="col-lg-3 col-md-4 col-6">
-			            <a href="#">
+			            <a href="/book/content?num=${ value.bookId }">
 						  <img class="img-fluid img-thumbnail" src="/display?sign=${ value.bookImg }" alt="">
 			            </a>
 			          </div>
@@ -125,7 +125,7 @@
 						newcon.innerHTML = 
 						`
 							  <div class="col-lg-3 col-md-4 col-6">
-					            <a href="#" class="d-block mb-4 h-100">
+					            <a href="/book/content?num=${ value.bookId } class="d-block mb-4 h-100">
 					              <img class="img-fluid" src="/resources/images/default_book.jpg" alt="">
 					            </a>
 					          </div>
