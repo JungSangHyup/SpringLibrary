@@ -63,7 +63,7 @@
         <div class="col-sm-9">
             <!-- Contents area -->
           <div class="border border p-4" style="background: #ECE6CC;">
-            <form action="/member/modify" method="POST">
+            <form action="/member/modify" method="POST" enctype="multipart/form-data">
             <h3>회원정보수정</h3>
               <hr>
               <div class="form-group row mb-2">
@@ -258,10 +258,10 @@
                   <span class="align-middle">프로필 사진</span>
                 </label>
                 <div class="col-auto mt-2">
-                  <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="customFileLangHTML">
-                    <label class="custom-file-label" for="customFileLangHTML" data-browse="찾아보기">기존 프로필 불러오기</label>
+                  <div class="img_wrap">
+                  	<img id="img" src="C:/upload/profile/${sessionScope.profile}" />
                   </div>
+                  <input type="file" name="profileimg" id="profileimg" accept="image/*">
                 </div>
               </div>
 
@@ -284,7 +284,34 @@
 	<jsp:include page="/WEB-INF/views/include/bottomFooter.jsp" />
 
     
-
+<script>
+	//이미지 업로드 미리보기
+	var sel_file;
+	
+	$(document).ready(function(){
+		$("#profileimg").on("change", handleImgFileSelect);
+	});
+	
+	function handleImgFileSelect(e){
+		var files = e.target.files;
+		var filesArr = Array.prototype.slice.call(files);
+		
+		filesArr.forEach(function(f){
+			if(!f.type.match("image.*")){
+				alert("프로필은 이미피 파일만 가능합니다.");
+				return;
+			}
+			
+			sel_file = f;
+			
+			var reader = new FileReader();
+			reader.onload = function(e){
+				$("#img").attr("src", e.target.result);
+			}
+			reader.readAsDataURL(f);
+		});
+	}
+</script>
     
 
 </body>

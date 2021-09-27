@@ -25,4 +25,16 @@
 		AND userid = #{userid};
 	]]>
 	</select>
+	
+	
+	<delete id="retBook">
+	<![CDATA[
+        DELETE
+        FROM rental_list
+        WHERE rental_title IN
+        ]]>
+		<foreach collection="array" item="num" index="i" open="(" separator="," close=")">
+			#{num}
+		</foreach>
+	</delete>
 </mapper>

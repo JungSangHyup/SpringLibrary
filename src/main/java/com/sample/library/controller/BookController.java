@@ -4,16 +4,17 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -21,19 +22,17 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.sample.library.domain.BoardVO;
 import com.sample.library.domain.BookAttachVO;
 import com.sample.library.domain.BookVO;
 import com.sample.library.domain.MemberVO;
 import com.sample.library.domain.RentalVO;
+import com.sample.library.domain.ReviewVO;
 import com.sample.library.service.BookAttachService;
 import com.sample.library.service.BookService;
 import com.sample.library.service.MemberService;
@@ -87,9 +86,72 @@ public class BookController {
 	@GetMapping("/content")
 	public String content(int num, Model model) {
 		BookVO bookVO = bookService.getBookAndAttaches(num);
+		List<ReviewVO> reviewList = bookService.getReviewsByBook(num);
+		
+		// 선언과 초기화
+		Map<Integer, Integer> starBoard = new HashMap<>(){
+			{
+				for(int i=1; i <= 5; i++){
+					put(i, 0);
+				}
+			}
+		};
+
+		double sum = 0;
+
+		for(ReviewVO review : reviewList){
+			sum += review.getScore();
+			starBoard.put(review.getScore(), starBoard.get(review.getScore()) + 1);
+		}
+
+		starBoard.forEach((K, V) -> {
+			System.out.println(K + " : " + V);
+		});
+
+		sum /= reviewList.size();
+
+		sum = Double.parseDouble(String.format("%.1f", sum));
+
+		model.addAttribute("sum", sum);
+		model.addAttribute("starBoard", starBoard);
 		model.addAttribute("bookVO", bookVO);
+		model.addAttribute("reviewList", reviewList);
 		
 		return "booklist/bookContent";
+	}
+
+	@PostMapping("/review")
+	public ResponseEntity<String> review(int num, Model model, ReviewVO reviewVO, HttpSession session) {
+		System.out.println(num);
+		System.out.println(reviewVO.toString());
+
+
+		String message = "";
+
+		String id = (String) session.getAttribute("userid");
+
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Type", "text/html; charset=UTF-8");
+		String str = null;
+
+		if (id == null) { // 비밀번호 일치하지 않을때
+			message = "로그인 정보가 없습니다.";
+
+			str = Script.back(message);
+			return new ResponseEntity<String>(str, headers, HttpStatus.OK);
+		}
+
+		int nextnum = bookService.nextReviewNum();
+		reviewVO.setId(nextnum);
+		reviewVO.setBookId(num);
+		reviewVO.setRegdate(new Date());
+		reviewVO.setUserId(id);
+
+		bookService.setReview(reviewVO);
+
+		message = "평가해주셔서 감사합니다.";
+		str = Script.href(message, "/book/content?num=" + num);
+		return new ResponseEntity<String>(str, headers, HttpStatus.OK);
 	}
 	
 	@GetMapping("/gallery")
@@ -164,7 +226,7 @@ public class BookController {
 	}
 	
 	
-	@GetMapping("rental")
+	@GetMapping("/rental")
 	public ResponseEntity<String> rental(int num, HttpSession session, HttpServletResponse response) {
 		RentalVO rentalVO = new RentalVO();
 		
@@ -212,4 +274,21 @@ public class BookController {
 		return new ResponseEntity<String>(str, headers, HttpStatus.OK);
 	}
 	
+	@PostMapping("/rental")
+	public ResponseEntity<String> retBook(String state, HttpSession session, HttpServletResponse response, HttpServletRequest request) {
+		
+		String[] strnums = request.getParameterValues("num");
+		int[] nums = Arrays.asList(strnums).stream().mapToInt(Integer::parseInt).toArray();
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Type", "text/html; charset=UTF-8");
+		
+		System.out.println(state);
+
+		rentalService.retBook(nums);
+
+		String message = "책을 반납하였습니다!";
+		String str = Script.href(message, "/member/rental");
+		
+		return new ResponseEntity<String>(str, headers, HttpStatus.OK);
+	}
 }

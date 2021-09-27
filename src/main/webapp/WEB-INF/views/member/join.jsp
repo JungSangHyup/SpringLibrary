@@ -30,7 +30,7 @@
 
             <hr class="featurette-divider">
 
-            <form action="/member/join" method="POST">
+            <form action="/member/join" method="POST" enctype="multipart/form-data">
               <div class="form-group row mb-2">
                 <label for="id" class="col-sm-3 col-form-label" style="white-space:nowrap;">
                   <i class="material-icons align-middle">account_box</i>
@@ -167,10 +167,10 @@
                   <span class="align-middle">프로필 사진</span>
                 </label>
                 <div class="col-auto mt-2">
-                  <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="customFileLangHTML">
-                    <label class="custom-file-label" for="customFileLangHTML" data-browse="찾아보기">프로필 사진 등록</label>
+                  <div class="img_wrap">
+                  	<img id="img" style="max-width: 200px; max-height: 200px;" />
                   </div>
+                  <input type="file" name="profileimg" id="profileimg" accept="image/*">
                 </div>
               </div>
 
@@ -223,6 +223,38 @@
 		
 		
 	});
+	
+	//이미지 업로드 미리보기
+	var sel_file;
+	
+	$(document).ready(function(){
+		$("#profileimg").on("change", handleImgFileSelect);
+	});
+	
+	function handleImgFileSelect(e){
+		var files = e.target.files;
+		var filesArr = Array.prototype.slice.call(files);
+		
+		filesArr.forEach(function(f){
+			if(!f.type.match("image.*")){
+				alert("프로필은 이미피 파일만 가능합니다.");
+				return;
+			}
+			
+			sel_file = f;
+			
+			var reader = new FileReader();
+			reader.onload = function(e){
+				$("#img").attr("src", e.target.result);
+			}
+			reader.readAsDataURL(f);
+		});
+	}
+	
+	
+	
+	
+	
 
 
 </script>

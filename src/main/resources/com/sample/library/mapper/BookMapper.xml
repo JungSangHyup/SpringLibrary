@@ -10,8 +10,15 @@
         FROM book_list
         ]]>
 	</select>
-	
-	
+
+    <select id="nextReviewNum" resultType="int">
+	<![CDATA[
+        SELECT IFNULL(MAX(id), 0) + 1 as id
+        FROM book_review
+        ]]>
+	</select>
+
+
 	<select id="getAllbook" resultType="bookVO">
 	<![CDATA[
         SELECT book_id, book_name, book_price, book_des, book_img, book_pages, book_isbn, book_writer, book_regdate, category_code
@@ -37,12 +44,31 @@
         ORDER BY book_id DESC
         ]]>
 	</select>
+
+
+    <select id="getBookbyCategoryAndborrow" resultType="bookVO">
+	<![CDATA[
+        SELECT book_id, book_name, book_price, book_des, book_img, book_pages, book_isbn, book_writer, book_regdate, category_code
+        FROM book_list
+        WHERE category_code = #{category}
+        AND book_isbn = #{isbn}
+        ORDER BY book_id DESC
+        ]]>
+	</select>
 	
 	
 	<insert id="save">
 	<![CDATA[
             INSERT INTO book_list (book_id, book_name, book_price, book_des, book_img, book_pages, book_isbn, book_writer, book_regdate, category_code)
     		VALUES(#{bookId}, #{bookName}, #{bookPrice}, #{bookDes}, #{bookImg}, #{bookPages}, "N", #{bookWriter}, #{bookRegdate}, #{categoryCode})
+        ]]>
+	</insert>
+
+
+    <insert id="setReview">
+	<![CDATA[
+        INSERT INTO book_review (id, content, regdate, book_id, user_id, score)
+        VALUES(#{id}, #{content}, #{regdate}, #{bookId}, #{userId}, #{score})
         ]]>
 	</insert>
 	
@@ -53,6 +79,9 @@
         FROM book_list
         ]]>
 	</delete>
+
+
+
 	
 
 	<select id="getBookAndAttaches" resultMap="bookAndAttaches">
@@ -79,6 +108,8 @@
         WHERE book_id = #{book_id}
         ]]>
 	</select>
+
+
     <resultMap type="bookVO" id="bookAndAttaches">
         <id column="book_id" property="bookId"/>
         <result column="book_name" property="bookName"/>
@@ -99,4 +130,34 @@
             <result column="bno" property="bno"/>
         </collection>
     </resultMap>
+
+
+    <update id="rentalBook">
+        <![CDATA[
+        UPDATE book_list
+        SET book_isbn = 'N'
+        WHERE book_id = #{num};
+        ]]>
+    </update>
+
+
+    <update id="retBook">
+        <![CDATA[
+        UPDATE book_list
+        SET book_isbn = 'Y'
+        WHERE book_id IN
+        ]]>
+        <foreach collection="array" item="num" index="i" open="(" separator="," close=")">
+            #{num}
+        </foreach>
+    </update>
+
+
+    <select id="getReviewsByBook" resultType="ReviewVO">
+	<![CDATA[
+        SELECT *
+        FROM book_review
+        WHERE book_id = #{num}
+        ]]>
+	</select>
 </mapper>
