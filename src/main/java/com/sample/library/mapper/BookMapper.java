@@ -9,9 +9,11 @@ import com.sample.library.domain.BookVO;
 import com.sample.library.domain.ReviewVO;
 
 public interface BookMapper {
-	int nextNum(); 
-	
-	int save(BookVO bookVO); 
+	int nextNum();
+
+	int save(BookVO bookVO);
+
+	int nextReviewNum();
 	
 	int deleteAll();
 	
@@ -32,4 +34,8 @@ public interface BookMapper {
 	int rentalBook(int num);
 
 	int retBook(int[] nums);
+
+
+
+	int setReview(ReviewVO reviewVO);
 }

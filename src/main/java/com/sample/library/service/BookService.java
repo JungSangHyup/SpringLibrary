@@ -17,6 +17,14 @@ public class BookService{
     public int nextNum() {
         return bookMapper.nextNum();
     }
+
+    public int nextReviewNum() {
+    	return bookMapper.nextReviewNum();
+	}
+
+	public int setReview(ReviewVO reviewVO){
+    	return bookMapper.setReview(reviewVO);
+	}
     
     public List<BookVO> getAllbook() {
     	return bookMapper.getAllbook();

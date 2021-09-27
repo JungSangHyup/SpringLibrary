@@ -19,4 +19,5 @@ public class ReviewVO {
     private Date regdate;
     private int bookId;
     private String userId;
+    private int score;
 }
