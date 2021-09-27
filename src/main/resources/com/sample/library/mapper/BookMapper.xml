@@ -10,8 +10,15 @@
         FROM book_list
         ]]>
 	</select>
-	
-	
+
+    <select id="nextReviewNum" resultType="int">
+	<![CDATA[
+        SELECT IFNULL(MAX(id), 0) + 1 as id
+        FROM book_review
+        ]]>
+	</select>
+
+
 	<select id="getAllbook" resultType="bookVO">
 	<![CDATA[
         SELECT book_id, book_name, book_price, book_des, book_img, book_pages, book_isbn, book_writer, book_regdate, category_code
@@ -43,6 +50,14 @@
 	<![CDATA[
             INSERT INTO book_list (book_id, book_name, book_price, book_des, book_img, book_pages, book_isbn, book_writer, book_regdate, category_code)
     		VALUES(#{bookId}, #{bookName}, #{bookPrice}, #{bookDes}, #{bookImg}, #{bookPages}, "N", #{bookWriter}, #{bookRegdate}, #{categoryCode})
+        ]]>
+	</insert>
+
+
+    <insert id="setReview">
+	<![CDATA[
+        INSERT INTO book_review (id, content, regdate, book_id, user_id, score)
+        VALUES(#{id}, #{content}, #{regdate}, #{bookId}, #{userId}, #{score})
         ]]>
 	</insert>
 	

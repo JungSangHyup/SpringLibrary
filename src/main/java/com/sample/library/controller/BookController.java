@@ -86,10 +86,45 @@ public class BookController {
 		BookVO bookVO = bookService.getBookAndAttaches(num);
 		List<ReviewVO> reviewList = bookService.getReviewsByBook(num);
 
+		System.out.println(reviewList);
+
 		model.addAttribute("bookVO", bookVO);
 		model.addAttribute("reviewList", reviewList);
 		
 		return "booklist/bookContent";
+	}
+
+	@PostMapping("/review")
+	public ResponseEntity<String> review(int num, Model model, ReviewVO reviewVO, HttpSession session) {
+		System.out.println(num);
+		System.out.println(reviewVO.toString());
+
+		String message = "";
+
+		String id = (String) session.getAttribute("userid");
+
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Type", "text/html; charset=UTF-8");
+		String str = null;
+
+		if (id == null) { // 비밀번호 일치하지 않을때
+			message = "로그인 정보가 없습니다.";
+
+			str = Script.back(message);
+			return new ResponseEntity<String>(str, headers, HttpStatus.OK);
+		}
+
+		int nextnum = bookService.nextReviewNum();
+		reviewVO.setId(nextnum);
+		reviewVO.setBookId(num);
+		reviewVO.setRegdate(new Date());
+		reviewVO.setUserId(id);
+
+		bookService.setReview(reviewVO);
+
+		message = "평가해주셔서 감사합니다.";
+		str = Script.href(message, "/book/content?num=" + num);
+		return new ResponseEntity<String>(str, headers, HttpStatus.OK);
 	}
 	
 	@GetMapping("/gallery")
