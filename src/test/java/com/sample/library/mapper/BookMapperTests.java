@@ -51,7 +51,7 @@ public class BookMapperTests {
 	
 	@Test
 	public void getBookAndAttaches() {
-		BookVO bookVO = bookService.getBookAndAttaches(22);
+		BookVO bookVO = bookService.getBookAndAttaches(3);
 		System.out.println(bookVO.toString());
 	}
 	
