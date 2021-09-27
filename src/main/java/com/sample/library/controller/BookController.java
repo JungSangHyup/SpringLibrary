@@ -6,7 +6,9 @@ import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -85,9 +87,33 @@ public class BookController {
 	public String content(int num, Model model) {
 		BookVO bookVO = bookService.getBookAndAttaches(num);
 		List<ReviewVO> reviewList = bookService.getReviewsByBook(num);
+		
+		// 선언과 초기화
+		Map<Integer, Integer> starBoard = new HashMap<>(){
+			{
+				for(int i=1; i <= 5; i++){
+					put(i, 0);
+				}
+			}
+		};
 
-		System.out.println(reviewList);
+		double sum = 0;
 
+		for(ReviewVO review : reviewList){
+			sum += review.getScore();
+			starBoard.put(review.getScore(), starBoard.get(review.getScore()) + 1);
+		}
+
+		starBoard.forEach((K, V) -> {
+			System.out.println(K + " : " + V);
+		});
+
+		sum /= reviewList.size();
+
+		sum = Double.parseDouble(String.format("%.1f", sum));
+
+		model.addAttribute("sum", sum);
+		model.addAttribute("starBoard", starBoard);
 		model.addAttribute("bookVO", bookVO);
 		model.addAttribute("reviewList", reviewList);
 		
@@ -98,6 +124,7 @@ public class BookController {
 	public ResponseEntity<String> review(int num, Model model, ReviewVO reviewVO, HttpSession session) {
 		System.out.println(num);
 		System.out.println(reviewVO.toString());
+
 
 		String message = "";
 
