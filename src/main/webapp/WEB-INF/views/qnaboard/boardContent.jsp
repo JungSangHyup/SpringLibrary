@@ -86,7 +86,7 @@
 		<i class="fa fa-user fa-5x"
 			style="margin: 10px; line-height: 90px; font-size: 80px;"></i>
 		<div class="media-body">
-			<h4 class="mt-0">${boardVO.userid}</h4>
+			<h4 class="mt-0">댓글 작성</h4>
 			<input class="comment" placeholder="댓글 작성하기" id="content" name="content">
 		</div>
 	</div>
