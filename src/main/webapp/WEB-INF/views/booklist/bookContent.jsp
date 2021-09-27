@@ -52,78 +52,30 @@
               <div class="row">
                 <div class="col-xs-6 col-md-6 text-center">
                   <h1 class="rating-num">
-                    4.0</h1>
+                    ${sum}</h1>
                   <div class="rating">
                     <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star">
                     </span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star">
                     </span><span class="glyphicon glyphicon-star-empty"></span>
                   </div>
                   <div>
-                    <span class="glyphicon glyphicon-user"></span>1,001 평가
+                    <span class="glyphicon glyphicon-user">${reviewList.size()} 개 평가</span>
                   </div>
                 </div>
                 <div class="col-xs-6 col-md-6">
                   <div class="row rating-desc">
-                    <div class="col-xs-3 col-md-3 text-right">
-                      <span class="glyphicon glyphicon-star"></span>5
-                    </div>
-                    <div class="col-xs-8 col-md-9">
-                      <div class="progress progress-striped">
-                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20" aria-valuemin="0"
-                          aria-valuemax="100" style="width: 80%">
-                          <span class="sr-only">80%</span>
+                    <c:forEach var="star" items="${starBoard}">
+                      <div class="col-xs-3 col-md-3 text-right">
+                        <span class="glyphicon glyphicon-star"></span>${star.key}
+                      </div>
+                      <div class="col-xs-8 col-md-9">
+                        <div class="progress progress-striped">
+                          <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow=${star.value} aria-valuemin="0"
+                               aria-valuemax="5" style="width: ${star.value / reviewList.size() * 100}%">
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <!-- end 5 -->
-                    <div class="col-xs-3 col-md-3 text-right">
-                      <span class="glyphicon glyphicon-star"></span>4
-                    </div>
-                    <div class="col-xs-8 col-md-9">
-                      <div class="progress">
-                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20" aria-valuemin="0"
-                          aria-valuemax="100" style="width: 60%">
-                          <span class="sr-only">60%</span>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- end 4 -->
-                    <div class="col-xs-3 col-md-3 text-right">
-                      <span class="glyphicon glyphicon-star"></span>3
-                    </div>
-                    <div class="col-xs-8 col-md-9">
-                      <div class="progress">
-                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0"
-                          aria-valuemax="100" style="width: 40%">
-                          <span class="sr-only">40%</span>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- end 3 -->
-                    <div class="col-xs-3 col-md-3 text-right">
-                      <span class="glyphicon glyphicon-star"></span>2
-                    </div>
-                    <div class="col-xs-8 col-md-9">
-                      <div class="progress">
-                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="20" aria-valuemin="0"
-                          aria-valuemax="100" style="width: 20%">
-                          <span class="sr-only">20%</span>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- end 2 -->
-                    <div class="col-xs-3 col-md-3 text-right">
-                      <span class="glyphicon glyphicon-star"></span>1
-                    </div>
-                    <div class="col-xs-8 col-md-9">
-                      <div class="progress">
-                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0"
-                          aria-valuemax="100" style="width: 15%">
-                          <span class="sr-only">15%</span>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- end 1 -->
+                    </c:forEach>
                   </div>
                   <!-- end row -->
                 </div>
@@ -155,9 +107,6 @@
 
                       </p>
                       <p>${ review.content }</p>
-                      <p>
-                        <a class="float-right btn text-white btn-primary"> <i class="fa fa-heart"></i>좋아요</a>
-                      </p>
                     </div>
                   </div>
                 </div>
@@ -219,6 +168,7 @@
 	<script src="/resources/js/bootstrap.js"></script>
     <script src="/resources/js/jquery-3.6.0.js"></script>
 	<script>
+
       $(document).ready(function() {
         $('#rateMe2').mdbRate();
       });
