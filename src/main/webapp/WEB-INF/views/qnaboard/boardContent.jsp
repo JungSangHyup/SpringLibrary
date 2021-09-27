@@ -93,7 +93,7 @@
 	<div class="btn_box">
 		<input type="submit" class="com_btn" value="댓글달기">
 	</div>
-</form>
+	</form>
 
 	<ol class="commentList">
 	<c:forEach var="commentList" items="${ commentList }">

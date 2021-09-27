@@ -30,6 +30,7 @@ import com.sample.library.domain.BookAttachVO;
 import com.sample.library.domain.BookVO;
 import com.sample.library.domain.MemberVO;
 import com.sample.library.domain.RentalVO;
+import com.sample.library.domain.ReviewVO;
 import com.sample.library.service.BookAttachService;
 import com.sample.library.service.BookService;
 import com.sample.library.service.MemberService;
@@ -83,7 +84,10 @@ public class BookController {
 	@GetMapping("/content")
 	public String content(int num, Model model) {
 		BookVO bookVO = bookService.getBookAndAttaches(num);
+		List<ReviewVO> reviewList = bookService.getReviewsByBook(num);
+
 		model.addAttribute("bookVO", bookVO);
+		model.addAttribute("reviewList", reviewList);
 		
 		return "booklist/bookContent";
 	}

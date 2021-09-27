@@ -5,7 +5,13 @@
 <head>
   <jsp:include page="/WEB-INF/views/include/head.jsp"/>
   <title>Document</title>
-  </head>
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+        integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="/resources/css/star.css" />
+
+</head>
 <body class="wrap">
 	<jsp:include page="/WEB-INF/views/include/navbar.jsp"/>
   <div class="container bg_color" style="max-width: 720px;" >
@@ -127,64 +133,93 @@
       </div>
       <!-- 리뷰 -->
         <h2 class="text-left">사용자 평가</h2>
-    
-        <div class="card">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-md-2">
-                <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid" />
-                <p class="text-secondary text-center">user1</p>
+
+        <c:choose>
+          <c:when test="${reviewList.size() > 0}">
+            <c:forEach var="review" items="${reviewList}">
+              <div class="card rounded m-2">
+                <div class="card-body ">
+                  <div class="row">
+                    <div class="col-md-2">
+                      <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid" />
+                    </div>
+                    <div class="col-md-10">
+                      <p>
+                        <a class="float-left" href=""><strong>${userId}</strong></a>
+                        <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+                        <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+                        <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+                        <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+                      </p>
+                      <p>${ review.content }</p>
+                      <p>
+                        <a class="float-right btn text-white btn-primary"> <i class="fa fa-heart"></i>좋아요</a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="col-md-10">
-                <p>
-                  <a class="float-left" href=""><strong>Maniruzzaman
-                      Akash</strong></a>
-                  <span class="float-right"><i class="text-warning fa fa-star"></i></span>
-                  <span class="float-right"><i class="text-warning fa fa-star"></i></span>
-                  <span class="float-right"><i class="text-warning fa fa-star"></i></span>
-                  <span class="float-right"><i class="text-warning fa fa-star"></i></span>
-                </p>
-                <div class="clearfix"></div>
-                <p>책이 정말 유익해요</p>
-                <p>
-                  <a class="float-right btn text-white btn-danger"> <i class="fa fa-heart"></i>좋아요</a>
-                </p>
+            </c:forEach>
+          </c:when>
+          <c:when test="${reviewList.size() == 0}">
+            <div class="card rounded">
+              <div class="card-body ">
+                <div class="row">
+                  <div class="col-md-12">
+                    <p>아직 리뷰가 없습니다.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </c:when>
+        </c:choose>
+      <form name="commentForm" method="post" action="/comment/write">
+        <div class="card mb-3 rounded">
+          <div class="no-gutters row">
+            <div class="col-md-2 align-content-center">
+              <img src="/resources/images/default_book.jpg" alt="..." class="w-100">
+            </div>
+            <div class="col-md-10">
+              <div class="card-body">
+                <h5 class="card-title">책 평가하기</h5>
+                <div class="stars">
+                  <input class="star star-5" id="star-5" type="radio" name="star" value="5"/>
+                  <label class="star star-5" for="star-5"></label>
+                  <input class="star star-4" id="star-4" type="radio" name="star" value="4"/>
+                  <label class="star star-4" for="star-4"></label>
+                  <input class="star star-3" id="star-3" type="radio" name="star" value="3"/>
+                  <label class="star star-3" for="star-3"></label>
+                  <input class="star star-2" id="star-2" type="radio" name="star" value="2"/>
+                  <label class="star star-2" for="star-2"></label>
+                  <input class="star star-1" id="star-1" type="radio" name="star" value="1"/>
+                  <label class="star star-1" for="star-1"></label>
+                </div>
+                <textarea id="textarea" class="form-control card-text"> </textarea>
+                <div class="mt-3 d-flex justify-content-between">
+                  <button class="btn btn-sm btn-primary card-">등록</button>
+                </div>
               </div>
             </div>
           </div>
         </div>
-
-        <div class="card">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-md-2">
-                <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid" />
-                <p class="text-secondary text-center">user2</p>
-              </div>
-              <div class="col-md-10">
-                <p>
-                  <a class="float-left" href=""><strong>Maniruzzaman
-                      Akash</strong></a>
-                  <span class="float-right"><i class="text-warning fa fa-star"></i></span>
-                  <span class="float-right"><i class="text-warning fa fa-star"></i></span>
-                  <span class="float-right"><i class="text-warning fa fa-star"></i></span>
-                  <span class="float-right"><i class="text-warning fa fa-star"></i></span>
-                </p>
-                <div class="clearfix"></div>
-                <p>책이 정말 유익해요</p>
-                <p>
-                  <a class="float-right btn text-white btn-danger"> <i class="fa fa-heart"></i>좋아요</a>
-                </p>
-              </div>
-            </div>
-          </div>
-      </div>
+      </form>
     </div>
+
+
+
+
+
+
+
   </div>
 	<jsp:include page="/WEB-INF/views/include/bottomFooter.jsp"/>
 	<script src="/resources/js/bootstrap.js"></script>
     <script src="/resources/js/jquery-3.6.0.js"></script>
 	<script>
+      $(document).ready(function() {
+        $('#rateMe2').mdbRate();
+      });
+
 		document.querySelector('.rental').addEventListener('click', (e) => {
 		  e.preventDefault();
 		  let rent = confirm(`대여하시겠습니까?`);

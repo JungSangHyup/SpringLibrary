@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
 import com.sample.library.domain.BookVO;
+import com.sample.library.domain.ReviewVO;
 
 public interface BookMapper {
 	int nextNum(); 
@@ -21,6 +22,12 @@ public interface BookMapper {
 	BookVO getBookAndAttaches(int num); // 글번호에 해당하는 글 한개와 첨부파일 모두 가져오기
 	
 	List<BookVO> getBookbyCategory(String category);
+
+	// 코멘트 들고오기
+
+	List<ReviewVO> getReviewsByBook(int num);
+
+	// 책 대여 반납
 
 	int rentalBook(int num);
 

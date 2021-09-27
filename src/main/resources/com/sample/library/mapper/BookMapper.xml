@@ -53,6 +53,9 @@
         FROM book_list
         ]]>
 	</delete>
+
+
+
 	
 
 	<select id="getBookAndAttaches" resultMap="bookAndAttaches">
@@ -122,4 +125,13 @@
             #{num}
         </foreach>
     </update>
+
+
+    <select id="getReviewsByBook" resultType="ReviewVO">
+	<![CDATA[
+        SELECT *
+        FROM book_review
+        WHERE book_id = #{num}
+        ]]>
+	</select>
 </mapper>
