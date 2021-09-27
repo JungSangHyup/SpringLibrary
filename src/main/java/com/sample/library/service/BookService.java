@@ -50,7 +50,14 @@ public class BookService{
     	return bookMapper.getReviewsByBook(num);
 	}
 
+
+
+
 	public List<BookVO> getBookbyCategory(String category) {
 		return bookMapper.getBookbyCategory(category);
+	}
+
+	public List<BookVO> getBookbyCategoryAndborrow(String category, String isbn) {
+		return bookMapper.getBookbyCategoryAndborrow(category, isbn);
 	}
 }
