@@ -79,6 +79,8 @@
         WHERE book_id = #{book_id}
         ]]>
 	</select>
+
+
     <resultMap type="bookVO" id="bookAndAttaches">
         <id column="book_id" property="bookId"/>
         <result column="book_name" property="bookName"/>
@@ -99,4 +101,25 @@
             <result column="bno" property="bno"/>
         </collection>
     </resultMap>
+
+
+    <update id="rentalBook">
+        <![CDATA[
+        UPDATE book_list
+        SET book_isbn = 'N'
+        WHERE book_id = #{num};
+        ]]>
+    </update>
+
+
+    <update id="retBook">
+        <![CDATA[
+        UPDATE book_list
+        SET book_isbn = 'Y'
+        WHERE book_id IN
+        ]]>
+        <foreach collection="array" item="num" index="i" open="(" separator="," close=")">
+            #{num}
+        </foreach>
+    </update>
 </mapper>

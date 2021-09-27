@@ -10,10 +10,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8d490fe2-dc98-4575-bfe9-754d69752f62" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.factorypath" beforeDir="false" afterPath="$PROJECT_DIR$/.factorypath" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sample/library/controller/BookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sample/library/controller/BookController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sample/library/mapper/BookMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sample/library/mapper/BookMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sample/library/mapper/RentalMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sample/library/mapper/RentalMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sample/library/service/BookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sample/library/service/BookService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sample/library/service/RentalService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sample/library/service/RentalService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/sample/library/mapper/BookMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/sample/library/mapper/BookMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/sample/library/mapper/RentalMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/sample/library/mapper/RentalMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/booklist/bookContent.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/booklist/bookContent.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/booklist/bookGallery.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/booklist/bookGallery.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/member/myRental.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/member/myRental.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,6 +154,7 @@
       <workItem from="1632572818112" duration="479000" />
       <workItem from="1632573327439" duration="84000" />
       <workItem from="1632573422132" duration="1023000" />
+      <workItem from="1632701826929" duration="4312000" />
     </task>
     <servers />
   </component>
@@ -163,5 +171,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

@@ -27,11 +27,14 @@
 	</select>
 	
 	
-	<delete id="returnBook">
+	<delete id="retBook">
 	<![CDATA[
         DELETE
-        FROM book_list
-        WHERE rental_title IN #{num}
+        FROM rental_list
+        WHERE rental_title IN
         ]]>
+		<foreach collection="array" item="num" index="i" open="(" separator="," close=")">
+			#{num}
+		</foreach>
 	</delete>
 </mapper>

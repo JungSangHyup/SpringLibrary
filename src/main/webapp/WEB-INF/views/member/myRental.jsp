@@ -85,7 +85,11 @@
 		                            <input type="checkbox" class="rental_num" name="num" value="${rental.rentalTitle}">
 		                          </div>
 		                    </td>
-		                    <td class="align-middle" style="max-width: 15%;"><img src="/display?sign=${ rental.bookImg }" alt="..." class="img-thumbnail"></td>
+		                    <td class="align-middle" style="max-width: 15%;">
+                                <a href="/book/content?num=${ rental.rentalTitle }">
+                                    <img src="/display?sign=${ rental.bookImg }" alt="..." class="img-thumbnail">
+                                </a>
+                            </td>
 		                    <td class="align-middle">${rental.rentalName}</td>
 		                    <td class="align-middle" style="width: 15%;">${rental.rentalDate}</td>
 		                    <td class="align-middle" style="width: 15%;">0일</td>
