@@ -95,7 +95,6 @@
 .logout {
 	width: 85%;
 	padding: 10px 30px;
-	left: 100px;
 	cursor: pointer;
 	display: block;
 	margin: auto;
@@ -112,7 +111,7 @@
 	padding: 10px 30px;
 	cursor: pointer;
 	display: block;
-	margin: 10px 75px;
+	margin: 5px 75px;
 	background: linear-gradient(to right, #ec1b0c, #e47a33);
 	border: 0;
 	outline: none;

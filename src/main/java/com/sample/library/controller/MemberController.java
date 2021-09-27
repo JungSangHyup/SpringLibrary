@@ -247,10 +247,15 @@ public class MemberController {
 		}
 		return "member/logout";
 	}
-	@GetMapping("/findUser")
-	public String findUser() {
-		System.out.println("findUser...");
-		return "member/findUser";
+	@GetMapping("/findId")
+	public String findId() {
+		System.out.println("findId...");
+		return "member/findId";
+	}
+	@GetMapping("/findPw")
+	public String findPw() {
+		System.out.println("findPw...");
+		return "member/findPw";
 	}
 	
 	@GetMapping("/beforeModify")
