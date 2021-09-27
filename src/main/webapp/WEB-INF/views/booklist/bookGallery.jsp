@@ -33,14 +33,10 @@
 
     <div class="col-9 bg_color" >
       <div class="row">
-        <div class="custom-control custom-switch col-3">
-          <input type="checkbox" class="custom-control-input" id="rental_btn">
-          <label class="custom-control-label m-2 " for="rental_btn">대여 가능만</label>
-        </div>
-        <div class="custom-control custom-switch text-right">
-          <input type="checkbox" class="custom-control-input" id="image_btn">
-          <label class="custom-control-label m-2 " for="image_btn">펼쳐보기</label>
-        </div>
+          <div class="custom-control custom-switch col-3">
+              <input type="checkbox" class="custom-control-input rental_btn" id="rental_btn" data-value="all">
+              <label class="custom-control-label m-2 " for="rental_btn">대여</label>
+          </div>
         <!-- // 관리자만 보임 -->
           <button class="btn-primary text-right mt-3 mb-3 rounded" onclick="location.href='/book/write'">책 추가</button>
       </div>
@@ -78,61 +74,48 @@
 </div>
 	<jsp:include page="/WEB-INF/views/include/bottomFooter.jsp"/>
 	<script>
-		  fetch('/api/book/list/new')
-			.then((response) => {
-				return response.json();
-			})
-			.then((data) => {
-				let content = document.querySelector('.gallery');
-				let newcon = document.createElement('div');
-				data.forEach((value) => {
-					newcon.innerHTML += `
+        let category = 'new';
+        let is_rental = document.querySelector('.rental_btn').dataset.value;
+        function fetching(category, is_rental){
+            fetch('/api/book/list/' + category + '/' + is_rental)
+                .then((response) => {
+                    return response.json();
+                })
+                .then((data) => {
+                    let content = document.querySelector('.gallery');
+                    let newcon = document.createElement('div');
+                    data.forEach((value) => {
+                        newcon.innerHTML += `
 					  <div class="col-lg-3 col-md-4 col-6">
 			            <a href="/book/content?num=${ value.bookId }">
 						  <img class="img-fluid img-thumbnail" src="/display?sign=${ value.bookImg }" alt="">
 			            </a>
 			          </div>
 					`;
-				})
-				content.innerHTML = newcon.innerHTML;
-			})
+                    })
+                    content.innerHTML = newcon.innerHTML;
+                })
+        }
+
+        // 첫 페이지 불러올 때 뿌려질 데이터
+        document.addEventListener('DOMContentLoaded', fetching('new'));
+
+        document.querySelector('.rental_btn').addEventListener('change', (e) => {
+            is_rental = e.target.dataset.value;
+
+            if(e.target.checked){
+                e.target.dataset.value = 'rental'
+            }else {
+                e.target.dataset.value = 'all'
+            }
+            fetching(category, is_rental);
+        })
 	  
 	  	document.querySelectorAll('#v-pills-tab a').forEach((e) => {
 	  		e.addEventListener('click', (a) => {
-	  			let category = a.target.dataset.value;
+	  			category = a.target.dataset.value;
 	  			
-	  			fetch('/api/book/list/' + category)
-	  			.then((response) => {
-	  				return response.json();
-	  			})
-	  			.then((data) => {
-					let content = document.querySelector('.gallery');
-					let newcon = document.createElement('div');
-					
-					console.log(data);
-					if(data.length != 0){
-		  				data.forEach((value) => {
-							newcon.innerHTML += 
-							`
-							  <div class="col-lg-3 col-md-4 col-6">
-					            <a href="#" class="d-block mb-4 h-100">
-					              <img class="img-fluid" src="/display?sign=${ value.bookImg }" alt="">
-					            </a>
-					          </div>
-							`;
-		  				})
-					}else {
-						newcon.innerHTML = 
-						`
-							  <div class="col-lg-3 col-md-4 col-6">
-					            <a href="/book/content?num=${ value.bookId } class="d-block mb-4 h-100">
-					              <img class="img-fluid" src="/resources/images/default_book.jpg" alt="">
-					            </a>
-					          </div>
-						`;            
-					}
-					content.innerHTML = newcon.innerHTML;
-	  			})
+	  			fetching(category);
 	
 	  		})
 	  	})

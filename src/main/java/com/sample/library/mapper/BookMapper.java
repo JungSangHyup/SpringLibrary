@@ -3,6 +3,7 @@ package com.sample.library.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import com.sample.library.domain.BookVO;
@@ -25,9 +26,14 @@ public interface BookMapper {
 	
 	List<BookVO> getBookbyCategory(String category);
 
+	List<BookVO> getBookbyCategoryAndborrow(@Param("category") String category, @Param("isbn") String isbn);
+
 	// 코멘트 들고오기
 
 	List<ReviewVO> getReviewsByBook(int num);
+
+
+
 
 	// 책 대여 반납
 
