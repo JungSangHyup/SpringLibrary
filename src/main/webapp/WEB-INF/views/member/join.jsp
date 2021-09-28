@@ -166,10 +166,13 @@
                   <i class="material-icons align-middle">account_circle</i>
                   <span class="align-middle">프로필 사진</span>
                 </label>
-                <div class="col-auto mt-2">
-                  <div class="img_wrap">
-                  	<img id="img" style="max-width: 200px; max-height: 200px;" />
+                <div class="col-auto mt-2" id="imgGoup">
+                <input type="hidden" id="hdn" name="checkDelProfile" value="">
+                  <div class="img_wrap" id="imgBox">
+                  	<img id="img" src="/resources/images/default_profile.jpg"style="max-width: 200px; max-height: 200px;" />
+                  	<button type="button" class="btn btn-danger delete-profile">삭제</button>
                   </div>
+                  <div class="img_wrap" id="newimgBox"></div>
                   <input type="file" name="profileimg" id="profileimg" accept="image/*">
                 </div>
               </div>
@@ -246,10 +249,19 @@
 			var reader = new FileReader();
 			reader.onload = function(e){
 				$("#img").attr("src", e.target.result);
+				$('#hdn').attr('name', 'nonedel');
 			}
 			reader.readAsDataURL(f);
 		});
 	}
+	
+	//프로필 삭제 (현재 프로필을 default_profile로 변경)
+	$('button.delete-profile').on('click', function(event){
+		$(this).parent().prev().prop('name', 'delfile');
+		var str = '/resources/images/default_profile.jpg';
+		
+		$('#img').attr("src", str);
+	});
 	
 	
 	

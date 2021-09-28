@@ -251,20 +251,46 @@
                 </div>
               </div>
 
-              <!--프로필변경-->
+              
+
+			<c:choose>
+			<c:when test="${sessionScope.profile eq 'default'}">
+			<!--프로필변경-->
               <div class="form-group row">
                 <label for="profile" class="col-sm-3 col-form-label" style="white-space:nowrap;">
                   <i class="material-icons align-middle">account_circle</i>
                   <span class="align-middle">프로필 사진</span>
                 </label>
-                <div class="col-auto mt-2">
-                  <div class="img_wrap">
-                  	<img id="img" src="C:/upload/profile/${sessionScope.profile}" />
+                <div class="col-auto mt-2" id="imgGroup">
+                <input type="hidden" id="hdn" name="oldProfile" value="${sessionScope.profile}">
+                  <div class="img_wrap" id="imgBox">
+                  	<img id="img" src="/resources/images/default_profile.jpg" style="max-width: 200px; max-height: 200px;" />
+                  	<button type="button" class="btn btn-danger delete-oldprofile">삭제</button>
                   </div>
-                  <input type="file" name="profileimg" id="profileimg" accept="image/*">
+                  <div id="newProfileBox"></div>
+                  <input type="file" name="profileimg" id="profileimg" accept="image/*" value="${sessionScope.profile}">
                 </div>
               </div>
-
+			</c:when>
+			<c:otherwise>
+			<!--프로필변경-->
+              <div class="form-group row">
+                <label for="profile" class="col-sm-3 col-form-label" style="white-space:nowrap;">
+                  <i class="material-icons align-middle">account_circle</i>
+                  <span class="align-middle">프로필 사진</span>
+                </label>
+                <div class="col-auto mt-2" id="imgGroup">
+                <input type="hidden" id="hdn" name="oldProfile" value="${sessionScope.profile}">
+                  <div class="img_wrap" id="imgBox">
+                  	<img id="img" src="/view?sign=${sessionScope.profile}" style="max-width: 200px; max-height: 200px;" />
+                  	<button type="button" class="btn btn-danger delete-oldprofile">삭제</button>
+                  </div>
+                  <div id="newProfileBox"></div>
+                  <input type="file" name="profileimg" id="profileimg" accept="image/*" value="${sessionScope.profile}">
+                </div>
+              </div>
+			</c:otherwise>
+			</c:choose>
               
               <div class="my-3 text-right">
                 <button type="submit" class="btn btn-secondary">변경하기</button>
@@ -307,10 +333,20 @@
 			var reader = new FileReader();
 			reader.onload = function(e){
 				$("#img").attr("src", e.target.result);
+				$('#hdn').attr('name', 'nonedel');
 			}
 			reader.readAsDataURL(f);
 		});
 	}
+	
+	//프로필 삭제 (현재 프로필을 default_profile로 변경)
+	$('button.delete-oldprofile').on('click', function(event){
+		$(this).parent().prev().prop('name', 'delfile');
+		var str = '/resources/images/default_profile.jpg';
+		
+		$('#img').attr("src", str);
+	});
+	
 </script>
     
 
