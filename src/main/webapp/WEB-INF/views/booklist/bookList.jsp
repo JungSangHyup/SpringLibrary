@@ -74,14 +74,29 @@
       let category = 'new';
       let is_rental = document.querySelector('.rental_btn').dataset.value;
 
+
+      function get_query(){
+          var url = document.location.href;
+          var qs = url.substring(url.indexOf('?') + 1).split('&');
+          for(var i = 0, result = {}; i < qs.length; i++)
+          {
+              qs[i] = qs[i].split('='); result[qs[i][0]] = decodeURIComponent(qs[i][1]);
+          }
+          return result;
+      }
+
+
       function fetching(category, is_rental){
-          fetch('/api/book/list/' + category + '/' + is_rental)
+          var result = get_query();
+          fetch('/api/book/list/' + category + '/' + is_rental + '/' + result["page"])
+
               .then((response) => {
                   return response.json();
               })
               .then((data) => {
                   let content = document.querySelector('#book_content');
                   let newcon = document.createElement('div');
+
 
                   if(data.length != 0){
                       data.forEach((value) => {
@@ -90,7 +105,7 @@
 						  <div class="card mb-3">
 			               <div class="row no-gutters">
 			                 <div class="col-md-4">
-			                   <a href="/book/content?num=${ value.bookId }">
+			                   <a href="/book/content?num=${ value.bookId }&page=${ result["page"] }">
 			                     <img src="/display?sign=${ value.bookImg }" alt="..." style="max-width: 180px;">
 			                   </a>
 			                 </div>

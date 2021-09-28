@@ -2,6 +2,8 @@ package com.sample.library.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -19,6 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -78,13 +81,14 @@ public class BookController {
    
     
 	@GetMapping(value = {"/", "/list"})
-	public String list(String category, RedirectAttributes rttr) {
+	public String list(String category, int page, RedirectAttributes rttr) {
 		rttr.addAttribute(category);
+		rttr.addAttribute(page);
 		return "booklist/bookList";
 	}
 	
 	@GetMapping("/content")
-	public String content(int num, Model model) {
+	public String content(int num, int page, Model model, RedirectAttributes rttr) {
 		BookVO bookVO = bookService.getBookAndAttaches(num);
 		List<ReviewVO> reviewList = bookService.getReviewsByBook(num);
 		
@@ -116,6 +120,9 @@ public class BookController {
 		model.addAttribute("starBoard", starBoard);
 		model.addAttribute("bookVO", bookVO);
 		model.addAttribute("reviewList", reviewList);
+
+		rttr.addAttribute(num);
+		rttr.addAttribute(page);
 		
 		return "booklist/bookContent";
 	}
@@ -155,7 +162,11 @@ public class BookController {
 	}
 	
 	@GetMapping("/gallery")
-	public String gallery() {
+	public String gallery(int num, int page, Model model, RedirectAttributes rttr)
+	{
+		rttr.addAttribute(num);
+		rttr.addAttribute(page);
+
 		return "booklist/bookGallery";
 	}
 	
