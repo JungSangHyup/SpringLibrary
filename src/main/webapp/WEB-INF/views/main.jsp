@@ -55,9 +55,18 @@
 					<c:choose>
 						<c:when test="${ not empty sessionScope.userid }">
 							<!-- 로그인 했을때 -->
-							<div id="profileBox"></div>
+							<div id="profileBox">
+							<c:choose>
+								<c:when test="${sessionScope.profile eq 'default'}">
+									<img id="profileimg" src="/resources/images/default_profile.jpg">
+								</c:when>
+								<c:otherwise>
+									<img id="profileimg" src="/view?sign=${sessionScope.profile}">
+								</c:otherwise>
+							</c:choose>
+							</div>
+							<h4><span>${ sessionScope.userid } 님</span></h4>
 							<span>LIBRARY에 오신걸 환영합니다!</span><br/>
-							<span>${ sessionScope.userid } 님</span><br/>
 							<button type="submit" class="btn btn-link btn-sm pt-1"
 								onclick="location.href='/member/beforeModify'">내정보수정</button><br/>
 							<button type="submit" class="btn btn-danger btn-sm mt-1"
