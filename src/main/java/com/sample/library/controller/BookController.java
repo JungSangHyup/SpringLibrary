@@ -33,6 +33,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sample.library.domain.BookAttachVO;
 import com.sample.library.domain.BookVO;
+import com.sample.library.domain.DocDTO;
 import com.sample.library.domain.MemberVO;
 import com.sample.library.domain.RentalVO;
 import com.sample.library.domain.ReviewVO;
@@ -294,7 +295,6 @@ public class BookController {
 	
 	@PostMapping("/rental")
 	public ResponseEntity<String> retBook(String state, HttpSession session, HttpServletResponse response, HttpServletRequest request) {
-		
 		String[] strnums = request.getParameterValues("num");
 		int[] nums = Arrays.asList(strnums).stream().mapToInt(Integer::parseInt).toArray();
 		HttpHeaders headers = new HttpHeaders();
@@ -303,6 +303,7 @@ public class BookController {
 		System.out.println(state);
 
 		rentalService.retBook(nums);
+
 
 		String message = "책을 반납하였습니다!";
 		String str = Script.href(message, "/member/rental");

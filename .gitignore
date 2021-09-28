@@ -118,3 +118,6 @@ target/m2e-wtp/web-resources/META-INF/maven/com.example/myapp/pom.properties
 myapp.iml
 .factorypath
 .idea/workspace.xml
+target/classes/com/sample/library/controller/BoardController.class
+target/classes/com/sample/library/controller/BoardController.class
+target/classes/com/sample/library/controller/BoardController.class

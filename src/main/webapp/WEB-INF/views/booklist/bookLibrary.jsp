@@ -101,7 +101,6 @@
 
               if(docs.length != 0){
                 docs.forEach((value) => {
-                  console.log(value.title_URL);
                   if(value.title_URL)
                   newcon.innerHTML +=
                           `

@@ -18,11 +18,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.google.gson.ExclusionStrategy;
-import com.google.gson.FieldAttributes;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.sample.library.domain.BooksResponseDto;
+import com.sample.library.domain.BooksResponseDTO;
+import com.sample.library.domain.DocDTO;
 
 @Service
 public class BookApiService {
@@ -72,7 +70,7 @@ public class BookApiService {
 
 
 
-    public BooksResponseDto requestBookByKeyword(String keyword){
+    public BooksResponseDTO requestBookByKeyword(String keyword){
         UriComponents uriComponents = UriComponentsBuilder.newInstance()
                 .scheme("http")
                 .host("seoji.nl.go.kr")
@@ -88,11 +86,11 @@ public class BookApiService {
         String jsonString = callURL(uriComponents.toString());
 
         Gson gson = new Gson();
-        BooksResponseDto booksResponseDto = gson.fromJson(jsonString, BooksResponseDto.class);
+        BooksResponseDTO booksResponseDto = gson.fromJson(jsonString, BooksResponseDTO.class);
         return booksResponseDto;
     }
 
-    public BooksResponseDto requestCurrentBook(){
+    public BooksResponseDTO requestCurrentBook(){
         DateFormat format = new SimpleDateFormat("yyyyMMdd");
         String datestr = format.format(Calendar.getInstance().getTime());
         datestr = format.format(new Date());
@@ -104,21 +102,20 @@ public class BookApiService {
                 .queryParam("cert_key", CERTKEY)
                 .queryParam("result_style", "json")
                 .queryParam("page_no", 1)
-                .queryParam("page_size", 30)
+                .queryParam("page_size", 50)
                 .queryParam("start_publish_date", datestr)
                 .queryParam("end_publish_date", datestr)
                 .build()
                 .encode(StandardCharsets.UTF_8);
 
+
+
         String jsonString = callURL(uriComponents.toString());
 
         Gson gson = new Gson();
-        BooksResponseDto booksResponseDto = gson.fromJson(jsonString, BooksResponseDto.class);
+        BooksResponseDTO booksResponseDto = gson.fromJson(jsonString, BooksResponseDTO.class);
 
-
-
-        System.out.println(booksResponseDto);
-
+        DocDTO[] docDTO = booksResponseDto.getDocs();
         return booksResponseDto;
     }
 
