@@ -39,7 +39,7 @@
 	<update id="updateComment">
 	<![CDATA[
 		UPDATE qna_comment
-		SET content = #{content}, regdate = #{regdate}, board_id = #{boardId}
+		SET content = #{content}, board_id = #{boardId}
 		WHERE comment_id = #{commentId}
 	]]>
 	</update>

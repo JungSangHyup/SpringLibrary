@@ -103,5 +103,22 @@
 	]]>
 	</update>
 	
+	<update id="updateChk">
+	<![CDATA[
+		UPDATE qnaboard
+		SET status = '답변 완료'
+		WHERE board_id = #{boardId}
+	]]>
+	</update>
+	
+	<update id="updateCommentCnt" parameterType="int">
+	<![CDATA[
+		UPDATE qnaboard b
+		SET b.commentCnt = (SELECT count(comment_id)
+							FROM qna_comment
+            	    	    WHERE board_id = #{boardId})
+		WHERE b.board_id = #{boardId};
+	]]>
+	</update>
 
 </mapper>

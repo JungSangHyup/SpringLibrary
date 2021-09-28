@@ -2,6 +2,7 @@ package com.sample.library.controller;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,8 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sample.library.domain.BoardVO;
@@ -52,10 +55,12 @@ public class BoardController {
 	}
 
 	@GetMapping("/content")
-	public String content(int boardId, @ModelAttribute("pageNum") String pageNum, Model model) {
+	public String content(@RequestParam("boardId") int boardId, @ModelAttribute("pageNum") String pageNum, Model model) {
 		System.out.println("content");
 
 		BoardVO boardVO = boardService.getBoard(boardId);
+		
+		boardService.updateCommentCnt(boardId);
 	
 		List<CommentVO> commentList = commentService.getComments(boardId);
 		
@@ -153,7 +158,7 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="/commentUpdate", method = RequestMethod.POST)
-	public String replyUpdate(CommentVO commentVO, String pageNum, RedirectAttributes ra) throws Exception {
+	public String commentUpdate(CommentVO commentVO, String pageNum, RedirectAttributes ra) throws Exception {
 		
 		commentService.updateComment(commentVO);
 		
@@ -182,5 +187,24 @@ public class BoardController {
 		
 		return "redirect:/qnaboard/content?boardId=" + commentVO.getBoardId() + "&pageNum=" + pageNum;
 	}
+
+	
+	@RequestMapping(value = "/check")
+	public String check(HttpServletRequest request) throws Exception {
+	
+		String[] chkbox = request.getParameterValues("valueArr");
+		int size = chkbox.length;
+		for(int i = 0; i < size; i++) {
+			boardService.updateChk(chkbox[i]);
+		}
+
+		// attach 와 board 테이블 내용 삭제 - 트랜잭션 단위로 처리 적용
+		
+		
+		// 글목록으로 리다이렉트 이동
+		return "redirect:/qnaboard/list";
+	} // remove
+	
+	
 	
 }
