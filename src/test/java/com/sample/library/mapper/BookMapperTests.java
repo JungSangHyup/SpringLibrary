@@ -60,14 +60,6 @@ public class BookMapperTests {
 //		System.out.println(bookVO.toString());
 //	}
 
-
-
-	@Test
-	public void getBookbyCategoryAndborrow() throws ParseException {
-
-
-
-
 	}
 
 }

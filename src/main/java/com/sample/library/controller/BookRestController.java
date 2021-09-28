@@ -39,12 +39,14 @@ public class BookRestController {
 	@Autowired
 	private BookAttachService bookAttachService;
 
+
 	@Autowired
 	private BookApiService bookApiService;
 
 	@GetMapping(value = "/list/{category}/{rental}/{page}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
 	public ResponseEntity<List<BookVO>> list(@PathVariable("category") String category, @PathVariable("rental") String rental, @PathVariable("page") int page) {
 		List<BookVO> bookList = null;
+
 		System.out.println(rental);
 		if(rental.equals("rental")){
 			rental = "Y";

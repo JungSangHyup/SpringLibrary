@@ -74,6 +74,7 @@
       let category = 'new';
       let is_rental = document.querySelector('.rental_btn').dataset.value;
 
+
       function get_query(){
           var url = document.location.href;
           var qs = url.substring(url.indexOf('?') + 1).split('&');
@@ -88,13 +89,13 @@
       function fetching(category, is_rental){
           var result = get_query();
           fetch('/api/book/list/' + category + '/' + is_rental + '/' + result["page"])
+
               .then((response) => {
                   return response.json();
               })
               .then((data) => {
                   let content = document.querySelector('#book_content');
                   let newcon = document.createElement('div');
-
 
 
                   if(data.length != 0){
