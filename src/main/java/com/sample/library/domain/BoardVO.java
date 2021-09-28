@@ -21,4 +21,6 @@ public class BoardVO {
 	private String content;
 	private Date regdate;
 	private String status;
+	
+	private int commentCnt;
 }

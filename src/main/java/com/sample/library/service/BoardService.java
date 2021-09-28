@@ -68,4 +68,12 @@ public class BoardService {
 		boardMapper.updateBoard(boardVO);
 	}
 	
+	public void updateChk(String boardId) {
+		boardMapper.updateChk(boardId);
+	}
+
+	public void updateCommentCnt(int boardId) {
+		boardMapper.updateCommentCnt(boardId);
+	}
+	
 }
