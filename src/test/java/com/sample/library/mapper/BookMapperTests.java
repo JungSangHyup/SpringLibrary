@@ -1,18 +1,23 @@
 package com.sample.library.mapper;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import com.sample.library.domain.BookVO;
 import com.sample.library.service.BookService;
+
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
@@ -55,16 +60,14 @@ public class BookMapperTests {
 //		System.out.println(bookVO.toString());
 //	}
 
-	@Test
-	public void getBookbyCategory(){
-		List<BookVO> bookVOList = bookService.getBookbyCategory("new");
-		System.out.println(bookVOList);
-	}
+
 
 	@Test
-	public void getBookbyCategoryAndborrow(){
-		List<BookVO> bookVOList = bookService.getBookbyCategoryAndborrow("new", "Y");
-		System.out.println(bookVOList);
+	public void getBookbyCategoryAndborrow() throws ParseException {
+
+
+
+
 	}
 
 }

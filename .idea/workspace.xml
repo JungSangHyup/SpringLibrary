@@ -10,14 +10,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8d490fe2-dc98-4575-bfe9-754d69752f62" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sample/library/domain/BooksResponseDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sample/library/service/BookApiService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sample/library/controller/BookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sample/library/controller/BookController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sample/library/controller/BookRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sample/library/controller/BookRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sample/library/mapper/BookMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sample/library/mapper/BookMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sample/library/service/BookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sample/library/service/BookService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/sample/library/mapper/BookMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/sample/library/mapper/BookMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/booklist/bookGallery.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/booklist/bookGallery.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/booklist/bookList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/booklist/bookList.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/include/navbar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/include/navbar.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/sample/library/mapper/BookMapperTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/sample/library/mapper/BookMapperTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sample/library/controller/BoardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sample/library/controller/BoardController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sample/library/controller/HomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sample/library/controller/HomeController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,8 +30,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="CSS File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -62,7 +65,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/IdeaProjects/SpringClass" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
@@ -192,6 +195,7 @@
       <workItem from="1632573327439" duration="84000" />
       <workItem from="1632573422132" duration="1023000" />
       <workItem from="1632701826929" duration="4312000" />
+      <workItem from="1632791110064" duration="6321000" />
     </task>
     <servers />
   </component>

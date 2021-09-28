@@ -27,8 +27,8 @@
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
            도서목록 </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="/book/list?category=new">책장</a>
-            <a class="dropdown-item" href="/book/gallery">갤러리</a>
+            <a class="dropdown-item" href="/book/list?category=new&rental=all&page=1">책장</a>
+            <a class="dropdown-item" href="/book/gallery?category=new&rental=all&page=1">갤러리</a>
           </div>
         </li>
 
