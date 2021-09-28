@@ -86,6 +86,20 @@ public class BookController {
 		rttr.addAttribute(page);
 		return "booklist/bookList";
 	}
+
+	@GetMapping("/gallery")
+	public String gallery(String category, int page, RedirectAttributes rttr)
+	{
+		rttr.addAttribute(category);
+		rttr.addAttribute(page);
+		return "booklist/bookGallery";
+	}
+
+
+	@GetMapping(value = {"/library"})
+	public String apilibrary() {
+		return "booklist/bookLibrary";
+	}
 	
 	@GetMapping("/content")
 	public String content(int num, int page, Model model, RedirectAttributes rttr) {
@@ -161,14 +175,7 @@ public class BookController {
 		return new ResponseEntity<String>(str, headers, HttpStatus.OK);
 	}
 	
-	@GetMapping("/gallery")
-	public String gallery(int num, int page, Model model, RedirectAttributes rttr)
-	{
-		rttr.addAttribute(num);
-		rttr.addAttribute(page);
 
-		return "booklist/bookGallery";
-	}
 	
 	@GetMapping("/write")
 	public String write() {
