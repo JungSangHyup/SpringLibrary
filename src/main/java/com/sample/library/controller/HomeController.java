@@ -41,4 +41,25 @@ public class HomeController {
 
         return responseEntity;
     }
+    
+    @GetMapping("/view")
+    @ResponseBody
+    public ResponseEntity<byte[]> getProfile(String sign) throws IOException {
+        System.out.println("fileName : " + sign);
+
+        File file = new File("C:/upload/profile", sign);
+
+        System.out.println("filePath : " + file.getPath());
+
+        HttpHeaders headers = new HttpHeaders();
+
+        String contentType = Files.probeContentType(file.toPath());
+        headers.add("Content-Type", contentType);
+
+        byte[] imageData = FileCopyUtils.copyToByteArray(file);
+
+        ResponseEntity<byte[]> responseEntity = new ResponseEntity<>(imageData, headers, HttpStatus.OK);
+
+        return responseEntity;
+    }
 }

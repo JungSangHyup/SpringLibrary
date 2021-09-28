@@ -13,7 +13,7 @@ public interface UserProfileMapper {
 			+ "(#{uuid}, #{uploadpath}, #{filename}, #{filetype}, #{mid})")
 	int insertProfile(UserProfileVO userProfileVO);
 	
-	@Select("SELECT FROM user_profile WHERE mid = #{mid}")
+	@Select("SELECT * FROM user_profile WHERE mid = #{mid}")
 	List<UserProfileVO> getProfileByMid(String mid);
 	
 	@Delete("DELETE FROM user_profile WHERE mid = #{mid}")

@@ -60,7 +60,8 @@ public class MemberController {
 		return "member/join";
 	}
 	@PostMapping("/join")
-	public ResponseEntity<String> join(@RequestParam("profileimg") MultipartFile profileimg, MemberVO memberVO) throws IllegalStateException, IOException {
+	public ResponseEntity<String> join(@RequestParam("profileimg") MultipartFile profileimg, MemberVO memberVO,
+			@RequestParam(name="delfile", required = false) List<String> delProfile) throws IllegalStateException, IOException {
 		
 		String id = memberVO.getUserid();
 		
@@ -90,7 +91,9 @@ public class MemberController {
 			uploadPath.mkdirs();
 		}
 		
-		if(!profileimg.isEmpty()) {
+		if(delProfile != null) {	//join.jsp에서 프로필 삭제버튼을 눌렀을시
+			memberVO.setProfile("default");	//프로필을 설정하지 않음
+		} else if(!profileimg.isEmpty()) {
 			String originalFilename = profileimg.getOriginalFilename();
 			UUID uuid = UUID.randomUUID();
 			String uploadFilename = uuid.toString() + "_" + originalFilename;
@@ -157,6 +160,36 @@ public class MemberController {
 		isImage = contentType.startsWith("image");
 		return isImage;
 	}
+	
+	private void deleteProfileFiles(List<UserProfileVO> userProfileList) {
+		// 삭제할 파일정보가 없으면 메소드 종료
+		if (userProfileList == null || userProfileList.size() == 0) {
+			return;
+		}
+		
+		
+		String basePath = "C:/upload/profile";
+		
+		for(UserProfileVO userProfileVO : userProfileList) {
+			String uploadpath = basePath + "/" + userProfileVO.getUploadpath();
+			String filename = userProfileVO.getUuid() + "_" + userProfileVO.getFilename();
+			
+			File file = new File(uploadpath, filename);
+			
+			if (file.exists() == true) { // 해당 경로에 첨부파일이 존재하면
+				file.delete(); // 첨부파일 삭제하기
+			}
+			
+			// 첨부파일이 이미지 파일이면 썸네일 이미지파일도 삭제하기
+			if (userProfileVO.getFiletype().equals("I")) { // "Image" 타입이면
+				// 섬네일 이미지 존재여부 확인 후 삭제하기
+				File thumbnailFile = new File(uploadpath, "p_" + filename);
+				if (thumbnailFile.exists() == true) {
+					thumbnailFile.delete();
+				}
+			}
+		} // for
+	} // deleteProfileFiles
 	
 	
 	
@@ -269,7 +302,7 @@ public class MemberController {
 	
 	
 	@GetMapping("/modify")
-	public String modify(HttpSession session) {
+	public String modify(HttpSession session, Model model) {
 		String id = (String) session.getAttribute("userid");
 		MemberVO memberVO = memberService.getMemberById(id);
 		
@@ -301,9 +334,19 @@ public class MemberController {
 		session.setAttribute("birthday", birthdayBar);
 		
 		
-		//프로필 불러오기
-		session.setAttribute("profile", memberVO.getProfile());
-	
+		//기존 프로필 불러오기
+		String onlyProfile =memberVO.getProfile();
+		String vProfile = null;
+		if(onlyProfile == "default" || onlyProfile == null) {
+			vProfile = "default";
+		} else {
+			vProfile = onlyProfile;
+		}
+		
+		session.setAttribute("profile", vProfile);
+		
+		
+		
 		System.out.println(memberVO);
 		
 		System.out.println("modify 호둘됨...");
@@ -313,7 +356,8 @@ public class MemberController {
 	
 	
 	@PostMapping("/modify")
-	public ResponseEntity<String> modify(@RequestParam("profileimg") MultipartFile profileimg, MemberVO memberVO, HttpSession session) throws IOException{
+	public ResponseEntity<String> modify(@RequestParam("profileimg") MultipartFile profileimg, MemberVO memberVO, HttpSession session,
+			@RequestParam(name="delfile", required = false) List<String> delProfile) throws IOException{
 		
 		String id = (String) session.getAttribute("userid");
 		memberVO.setUserid(id);
@@ -336,8 +380,13 @@ public class MemberController {
 			uploadPath.mkdirs();
 		}
 		
-		if(!profileimg.isEmpty()) {
+		if(delProfile != null) {	//modify.jsp에서 프로필 삭제버튼을 눌렀을시
+			List<UserProfileVO> userProfileList = userProfileService.getProfileByMid(id);
+			deleteProfileFiles(userProfileList);
 			userProfileService.deleteProfileByMid(id);		//기존 프로필 파일 삭제
+			memberVO.setProfile("default");
+		} else if(!profileimg.isEmpty()) {	//새로운 프로필 이미지 업로드시
+			
 			
 			String originalFilename = profileimg.getOriginalFilename();
 			UUID uuid = UUID.randomUUID();
@@ -476,6 +525,22 @@ public class MemberController {
 			return new ResponseEntity<String>(str, headers, HttpStatus.OK);
 		}
 		
+		//프로필 삭제
+		if(memberVO.getProfile() != "default" || memberVO.getProfile() == null) {	//modify.jsp에서 프로필 삭제버튼을 눌렀을시
+			List<UserProfileVO> userProfileList = userProfileService.getProfileByMid(id);
+			deleteProfileFiles(userProfileList);
+			userProfileService.deleteProfileByMid(id);		//프로필 파일 삭제
+			
+			String uploadFolder = "C:/upload/profile";  // 업로드 기준경로
+			
+			File uploadPath = new File(uploadFolder, getFolder(id)); // C:/upload/profile/userid
+			System.out.println("uploadPath : " + uploadPath.getPath());
+			
+			if (uploadPath.exists() == true) {  // uploadPath.exists()
+				uploadPath.delete();	//폴더 삭제
+			}
+		}
+		//멤버 삭제
 		memberService.deleteMemberById(id);
 		
 		
@@ -484,7 +549,6 @@ public class MemberController {
 		
 		return new ResponseEntity<String>(str, headers, HttpStatus.OK);
 	}
-	
 }
 
 

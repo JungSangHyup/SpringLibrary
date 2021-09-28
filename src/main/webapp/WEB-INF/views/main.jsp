@@ -55,6 +55,7 @@
 					<c:choose>
 						<c:when test="${ not empty sessionScope.userid }">
 							<!-- 로그인 했을때 -->
+							<div id="profileBox"></div>
 							<span>LIBRARY에 오신걸 환영합니다!</span><br/>
 							<span>${ sessionScope.userid } 님</span><br/>
 							<button type="submit" class="btn btn-link btn-sm pt-1"
