@@ -5,6 +5,10 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
@@ -14,7 +18,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import com.google.gson.ExclusionStrategy;
+import com.google.gson.FieldAttributes;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.sample.library.domain.BooksResponseDto;
 
 @Service
@@ -63,7 +70,9 @@ public class BookApiService {
         return sb.toString();
     }
 
-    public BooksResponseDto requestBook(String keyword){
+
+
+    public BooksResponseDto requestBookByKeyword(String keyword){
         UriComponents uriComponents = UriComponentsBuilder.newInstance()
                 .scheme("http")
                 .host("seoji.nl.go.kr")
@@ -80,6 +89,36 @@ public class BookApiService {
 
         Gson gson = new Gson();
         BooksResponseDto booksResponseDto = gson.fromJson(jsonString, BooksResponseDto.class);
+        return booksResponseDto;
+    }
+
+    public BooksResponseDto requestCurrentBook(){
+        DateFormat format = new SimpleDateFormat("yyyyMMdd");
+        String datestr = format.format(Calendar.getInstance().getTime());
+        datestr = format.format(new Date());
+
+        UriComponents uriComponents = UriComponentsBuilder.newInstance()
+                .scheme("http")
+                .host("seoji.nl.go.kr")
+                .path("/landingPage/SearchApi.do")
+                .queryParam("cert_key", CERTKEY)
+                .queryParam("result_style", "json")
+                .queryParam("page_no", 1)
+                .queryParam("page_size", 30)
+                .queryParam("start_publish_date", datestr)
+                .queryParam("end_publish_date", datestr)
+                .build()
+                .encode(StandardCharsets.UTF_8);
+
+        String jsonString = callURL(uriComponents.toString());
+
+        Gson gson = new Gson();
+        BooksResponseDto booksResponseDto = gson.fromJson(jsonString, BooksResponseDto.class);
+
+
+
+        System.out.println(booksResponseDto);
+
         return booksResponseDto;
     }
 

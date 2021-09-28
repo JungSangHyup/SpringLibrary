@@ -63,7 +63,12 @@ public class BookRestController {
 
 	@GetMapping(value = "/{keyword}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
 	public ResponseEntity<BooksResponseDto> goBookPage(@PathVariable("keyword") String keyword){
-		BooksResponseDto booksResponseDto = bookApiService.requestBook(keyword);
+		BooksResponseDto booksResponseDto = bookApiService.requestBookByKeyword(keyword);
 		return new ResponseEntity<BooksResponseDto>(booksResponseDto, HttpStatus.OK);
+	}
+
+	@GetMapping(value = "/library", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+	public ResponseEntity<BooksResponseDto> bookList(){
+		return new ResponseEntity<BooksResponseDto>(bookApiService.requestCurrentBook(), HttpStatus.OK);
 	}
 }
