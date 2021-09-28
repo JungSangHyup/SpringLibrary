@@ -1,16 +1,6 @@
 package com.sample.library.controller;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.net.URLConnection;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
 import java.util.List;
-
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,12 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.util.UriComponents;
-import org.springframework.web.util.UriComponentsBuilder;
 
-import com.google.gson.Gson;
 import com.sample.library.domain.BookVO;
-import com.sample.library.domain.BooksResponseDto;
+import com.sample.library.domain.BooksResponseDTO;
 import com.sample.library.service.BookApiService;
 import com.sample.library.service.BookAttachService;
 import com.sample.library.service.BookService;
@@ -38,7 +25,6 @@ public class BookRestController {
 	
 	@Autowired
 	private BookAttachService bookAttachService;
-
 
 	@Autowired
 	private BookApiService bookApiService;
@@ -62,13 +48,13 @@ public class BookRestController {
 	}
 
 	@GetMapping(value = "/{keyword}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-	public ResponseEntity<BooksResponseDto> goBookPage(@PathVariable("keyword") String keyword){
-		BooksResponseDto booksResponseDto = bookApiService.requestBookByKeyword(keyword);
-		return new ResponseEntity<BooksResponseDto>(booksResponseDto, HttpStatus.OK);
+	public ResponseEntity<BooksResponseDTO> goBookPage(@PathVariable("keyword") String keyword){
+		BooksResponseDTO booksResponseDto = bookApiService.requestBookByKeyword(keyword);
+		return new ResponseEntity<BooksResponseDTO>(booksResponseDto, HttpStatus.OK);
 	}
 
 	@GetMapping(value = "/library", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-	public ResponseEntity<BooksResponseDto> bookList(){
-		return new ResponseEntity<BooksResponseDto>(bookApiService.requestCurrentBook(), HttpStatus.OK);
+	public ResponseEntity<BooksResponseDTO> bookList(){
+		return new ResponseEntity<BooksResponseDTO>(bookApiService.requestCurrentBook(), HttpStatus.OK);
 	}
 }
