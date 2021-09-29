@@ -120,5 +120,32 @@
 		WHERE b.board_id = #{boardId};
 	]]>
 	</update>
+	
+	<select id="getBoardAndAttaches" resultMap="boardAndAttaches">
+	<![CDATA[
+		SELECT b.board_id, b.userid, b.subject, b.content, b.regdate,
+		       b.status, b.commentCnt,
+		       a.uuid, a.uploadpath, a.filename, a.filetype, a.bno
+		FROM qnaboard b LEFT OUTER JOIN qnaattach a
+		ON b.board_id = a.bno
+		WHERE board_id = #{boardId}
+	]]>
+	</select>
+	<resultMap type="boardVO" id="boardAndAttaches">
+		<id column="board_id" property="boardId"/>
+		<result column="userid" property="userid"/>
+		<result column="subject" property="subject"/>
+		<result column="content" property="content"/>
+		<result column="regdate" property="regdate"/>
+		<result column="status" property="status"/>
+		<result column="commentCnt" property="commentCnt"/>
+		<collection property="boardattachList" javaType="list" ofType="boardattachVO">
+			<id column="uuid" property="uuid"/>
+			<result column="uploadpath" property="uploadpath"/>
+			<result column="filename" property="filename"/>
+			<result column="filetype" property="filetype"/>
+			<result column="bno" property="bno"/>
+		</collection>
+	</resultMap>
 
 </mapper>

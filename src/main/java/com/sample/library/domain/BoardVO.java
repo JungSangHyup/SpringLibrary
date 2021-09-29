@@ -1,6 +1,7 @@
 package com.sample.library.domain;
 
 import java.util.Date;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,4 +24,5 @@ public class BoardVO {
 	private String status;
 	
 	private int commentCnt;
+	private List<BoardAttachVO> boardattachList;
 }
