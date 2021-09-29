@@ -140,39 +140,16 @@
 
 						<div class="card-group new-book">
 							<div class="row row-cols-1 row-cols-md-5 w-100 m-2">
-								<div class="card">
-									<a href="#" class="">
-										<img class="card-img-top"
-											 src="/resources/images/l9791191360196.jpg" alt="Card image cap" style="max-width: 170px;">
-									</a>
-									<div class="card-body">
-										<h5 class="card-title">미래의부</h5>
-										<p class="card-text">이 책을 읽게 되면 당장 해외 주식 앱을 다운로드중인 자신을 발견하게
-											될 것이다.</p>
+								<c:forEach var="recommend" items="${recommendList}">
+									<div class="card">
+											<img class="card-img-top"
+												 src="${recommend.recomfilepath}" alt="Card image cap" style="max-width: 170px;">
+										<div class="card-body">
+											<h5 class="card-title">${recommend.recomtitle}</h5>
+											<p class="card-text">${recommend.recomauthor}</p>
+										</div>
 									</div>
-								</div>
-								<div class="card">
-									<a href="#" class="">
-										<img class="card-img-top"
-											 src="/resources/images/l9791191360196.jpg" alt="Card image cap" style="max-width: 170px;">
-									</a>
-									<div class="card-body">
-										<h5 class="card-title">미래의부</h5>
-										<p class="card-text">이 책을 읽게 되면 당장 해외 주식 앱을 다운로드중인 자신을 발견하게
-											될 것이다.</p>
-									</div>
-								</div>
-								<div class="card">
-									<a href="#" class="">
-										<img class="card-img-top"
-											 src="/resources/images/l9791191360196.jpg" alt="Card image cap" style="max-width: 170px;">
-									</a>
-									<div class="card-body">
-										<h5 class="card-title">미래의부</h5>
-										<p class="card-text">이 책을 읽게 되면 당장 해외 주식 앱을 다운로드중인 자신을 발견하게
-											될 것이다.</p>
-									</div>
-								</div>
+								</c:forEach>
 							</div>
 						</div>
 					</div>

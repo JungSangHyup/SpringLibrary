@@ -9,13 +9,5 @@ import lombok.ToString;
 @Data
 public class RecommendDTO {
     private int totalCount;
-    private RecList[] list;
-
-    @NoArgsConstructor
-    @Getter
-    @Setter
-    @ToString
-    class RecList{
-        private RecommendItemDTO item;
-    }
+    private RecommendItemDTO[] list;
 }
