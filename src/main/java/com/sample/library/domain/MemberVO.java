@@ -32,6 +32,8 @@ public class MemberVO {
 	private Date regdate;
 	private String grade;
 	private Integer mileage;
+
+
 }
 
 

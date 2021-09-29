@@ -33,15 +33,15 @@ public class HomeController {
 	@Autowired
 	private MemberService memberService;
   
-  @Autowired
-    BookApiService bookApiService;
+    @Autowired
+    private BookApiService bookApiService;
 	
     @GetMapping("/")
     public String home(HttpSession session, Model model) {
     	
     	String id = (String) session.getAttribute("userid");
       
-      BooksResponseDTO booksResponseDto = bookApiService.requestCurrentBook(1);
+        BooksResponseDTO booksResponseDto = bookApiService.requestCurrentBook(1);
 
         DocDTO[] docs = booksResponseDto.getDocs();
         List<DocDTO> docList = Arrays.asList(docs);
@@ -66,16 +66,7 @@ public class HomeController {
     	}
       return "main";
     }
-    	
-    	
 
-
-
-    
-
-
-    
-  
     @GetMapping("/display")
     @ResponseBody
     public ResponseEntity<byte[]> getImageFile(String sign) throws IOException {
