@@ -36,7 +36,6 @@ public class BookApiService {
     private final String CERTKEY =  "340b9ec4f3156a95aac8ffcc340c6d2f737f50e38c4773ffa3cd206f6232fb59";
 
     public static String callURL(String myURL) {
-        System.out.println("Requeted URL:" + myURL);
         StringBuilder sb = new StringBuilder();
         URLConnection urlConn = null;
         InputStreamReader in = null;
@@ -146,6 +145,8 @@ public class BookApiService {
                 .encode(StandardCharsets.UTF_8);
 
         String xmlString = callURL(uriComponents.toString());
+        xmlString = xmlString.replace("<item>", "");
+        xmlString = xmlString.replace("</item>", "");
 
         XmlMapper xmlMapper = new XmlMapper();
         JsonNode node = xmlMapper.readTree(xmlString);
@@ -156,7 +157,6 @@ public class BookApiService {
         Gson gson = new Gson();
         RecommendDTO recommendDTO = gson.fromJson(jsonString, RecommendDTO.class);
 
-        System.out.println(jsonString);
         return recommendDTO;
     }
 }
