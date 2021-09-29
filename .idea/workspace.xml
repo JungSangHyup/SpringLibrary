@@ -10,17 +10,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8d490fe2-dc98-4575-bfe9-754d69752f62" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sample/library/domain/RecommendDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sample/library/domain/RecommendItemDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/sample/library/mapper/RecommendBookTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/.classpath" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.factorypath" beforeDir="false" afterPath="$PROJECT_DIR$/.factorypath" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sample/library/controller/BookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sample/library/controller/BookController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sample/library/controller/BookRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sample/library/controller/BookRestController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sample/library/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sample/library/controller/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sample/library/domain/DocDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sample/library/domain/DocDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sample/library/domain/BooksResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sample/library/domain/BooksResponseDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sample/library/domain/MemberVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sample/library/domain/MemberVO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sample/library/service/BookApiService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sample/library/service/BookApiService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/booklist/bookLibrary.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/booklist/bookLibrary.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/booklist/bookList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/booklist/bookList.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/include/navbar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/include/navbar.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sample/library/controller/BoardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sample/library/controller/BoardController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/sample/library/controller/HomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sample/library/controller/HomeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/m2e-wtp/web-resources/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/m2e-wtp/web-resources/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/m2e-wtp/web-resources/META-INF/maven/com.example/myapp/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/m2e-wtp/web-resources/META-INF/maven/com.example/myapp/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/m2e-wtp/web-resources/META-INF/maven/com.example/myapp/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/m2e-wtp/web-resources/META-INF/maven/com.example/myapp/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,14 +77,14 @@
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="EclipseFormatter" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\jsh17\eclipse-workspace\SampleSpring\src\main\webapp\WEB-INF\views\booklist" />
     </key>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.50">
+  <component name="RunManager" selected="JUnit.RecommendBookTest.recommendTest">
     <configuration name="BookMapperTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="myapp" />
       <extension name="coverage">
@@ -89,6 +96,53 @@
       <option name="PACKAGE_NAME" value="com.sample.library.mapper" />
       <option name="MAIN_CLASS_NAME" value="com.sample.library.mapper.BookMapperTests" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RecommendBookTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="myapp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.sample.library.mapper.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.sample.library.mapper" />
+      <option name="MAIN_CLASS_NAME" value="com.sample.library.mapper.RecommendBookTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RecommendBookTest.recommendTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="myapp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.sample.library.mapper.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.sample.library.mapper" />
+      <option name="MAIN_CLASS_NAME" value="com.sample.library.mapper.RecommendBookTest" />
+      <option name="METHOD_NAME" value="recommendTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RecommendBookTest.requestBookdTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="myapp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.sample.library.mapper.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.sample.library.mapper" />
+      <option name="MAIN_CLASS_NAME" value="com.sample.library.mapper.RecommendBookTest" />
+      <option name="METHOD_NAME" value="requestBookdTest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -175,14 +229,24 @@
         </SHUTDOWN>
       </ConfigurationWrapper>
       <method v="2">
-        <option name="Make" enabled="true" />
         <option name="BuildArtifacts" enabled="true">
           <artifact name="myapp:war exploded" />
         </option>
+        <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="JUnit.BookMapperTests" />
+      <item itemvalue="JUnit.RecommendBookTest" />
+      <item itemvalue="JUnit.RecommendBookTest.recommendTest" />
+      <item itemvalue="JUnit.RecommendBookTest.requestBookdTest" />
+      <item itemvalue="Tomcat Server.Tomcat 9.0.50" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.RecommendBookTest.recommendTest" />
+        <item itemvalue="JUnit.RecommendBookTest.requestBookdTest" />
+        <item itemvalue="JUnit.RecommendBookTest" />
         <item itemvalue="JUnit.BookMapperTests" />
       </list>
     </recent_temporary>
@@ -203,7 +267,14 @@
       <workItem from="1632791110064" duration="6321000" />
       <workItem from="1632805426594" duration="6336000" />
       <workItem from="1632811831008" duration="2227000" />
-      <workItem from="1632875721046" duration="2697000" />
+      <workItem from="1632875721046" duration="7922000" />
+      <workItem from="1632883903468" duration="937000" />
+      <workItem from="1632884861486" duration="28000" />
+      <workItem from="1632884903332" duration="2838000" />
+      <workItem from="1632887780195" duration="930000" />
+      <workItem from="1632888732846" duration="190000" />
+      <workItem from="1632888939351" duration="568000" />
+      <workItem from="1632889527245" duration="2308000" />
     </task>
     <servers />
   </component>
@@ -221,5 +292,19 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/test/java/com/sample/library/mapper/RecommendBookTest.java</url>
+          <line>25</line>
+          <properties class="com.sample.library.mapper.RecommendBookTest" method="requestBookdTest">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

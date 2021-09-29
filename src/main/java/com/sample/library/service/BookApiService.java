@@ -1,7 +1,9 @@
 package com.sample.library.service;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
@@ -9,18 +11,25 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLSession;
 
+import org.json.simple.JSONObject;
 import org.springframework.stereotype.Service;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.type.TypeFactory;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.google.gson.Gson;
 import com.sample.library.domain.BooksResponseDTO;
-import com.sample.library.domain.DocDTO;
+import com.sample.library.domain.RecommendDTO;
 
 @Service
 public class BookApiService {
@@ -115,7 +124,43 @@ public class BookApiService {
         Gson gson = new Gson();
         BooksResponseDTO booksResponseDto = gson.fromJson(jsonString, BooksResponseDTO.class);
 
+
+
+
         return booksResponseDto;
     }
 
+
+
+    public RecommendDTO recommendBook() throws IOException {
+        DateFormat format = new SimpleDateFormat("yyyyMMdd");
+        String datestr = format.format(Calendar.getInstance().getTime());
+        datestr = format.format(new Date());
+
+        UriComponents uriComponents = UriComponentsBuilder.newInstance()
+                .scheme("https")
+                .host("nl.go.kr")
+                .path("/NL/search/openApi/saseoApi.do")
+                .queryParam("key", CERTKEY)
+                .build()
+                .encode(StandardCharsets.UTF_8);
+
+        String xmlString = callURL(uriComponents.toString());
+
+        XmlMapper xmlMapper = new XmlMapper();
+        JsonNode node = xmlMapper.readTree(xmlString);
+
+        ObjectMapper jsonMapper = new ObjectMapper();
+        String jsonString = jsonMapper.writeValueAsString(node);
+
+        Gson gson = new Gson();
+        RecommendDTO recommendDTO = gson.fromJson(jsonString, RecommendDTO.class);
+
+        System.out.println(jsonString);
+        return recommendDTO;
+    }
 }
+
+
+
+
