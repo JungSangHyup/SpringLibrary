@@ -10,4 +10,5 @@ public class DocDTO {
     private String SERIES_NO;
     private String BOOK_INTRODUCTION_URL;
     private String BOOK_SUMMARY_URL;
+    private String SUBJECT;
 }

@@ -98,8 +98,9 @@ public class BookController {
 
 
 	@GetMapping(value = {"/library"})
-	public String apilibrary() {
-		return "booklist/bookLibrary";
+	public String apilibrary(int page, RedirectAttributes rttr) {
+		rttr.addAttribute(page);
+    	return "booklist/bookLibrary";
 	}
 	
 	@GetMapping("/content")

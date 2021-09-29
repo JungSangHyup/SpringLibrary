@@ -98,7 +98,7 @@
 						<h5 class="m-2">새로나온 책</h5>
 
 						<div class="card-group best-seller">
-							<div class="row row-cols-1 row-cols-md-5">
+							<div class="row row-cols-1 row-cols-md-5 w-100 m-2">
 							<c:forEach var="doc" items="${docList}">
 								<c:if test="${doc.TITLE_URL != ''}">
 									<div class="card">
@@ -106,7 +106,7 @@
 											<img class="card-img-top mt-2" src="${ doc.TITLE_URL }" alt="Card image cap" style="max-width: 150px;">
 										</a>
 										<div class="card-body">
-											<h5 class="card-title">${ doc.TITLE }</h5>
+											<h6 class="card-title">${ doc.TITLE }</h6>
 											<p class="card-text">${ doc.AUTHOR }</p>
 										</div>
 									</div>
@@ -125,48 +125,39 @@
 						<h5 class="m-2">요즘 이 책</h5>
 
 						<div class="card-group new-book">
-							<div class="card col-lg-3 col-md-4 col-6">
-								<a href="#" class=""> <img class="card-img-top"
-									src="/resources/images/l9791191360196.jpg" alt="Card image cap"
-									style="max-width: 170px;">
-								</a>
-								<div class="card-body">
-									<h5 class="card-title">미래의부</h5>
-									<p class="card-text">이 책을 읽게 되면 당장 해외 주식 앱을 다운로드중인 자신을 발견하게
-										될 것이다.</p>
+							<div class="row row-cols-1 row-cols-md-5 w-100 m-2">
+								<div class="card">
+									<a href="#" class="">
+										<img class="card-img-top"
+											 src="/resources/images/l9791191360196.jpg" alt="Card image cap" style="max-width: 170px;">
+									</a>
+									<div class="card-body">
+										<h5 class="card-title">미래의부</h5>
+										<p class="card-text">이 책을 읽게 되면 당장 해외 주식 앱을 다운로드중인 자신을 발견하게
+											될 것이다.</p>
+									</div>
 								</div>
-							</div>
-							<div class="card col-lg-3 col-md-4 col-6">
-								<a href="#" class=""> <img class="card-img-top"
-									src="/resources/images/l9791166815782.jpg" alt="Card image cap"
-									style="max-width: 170px;">
-								</a>
-								<div class="card-body">
-									<h5 class="card-title">미래의부</h5>
-									<p class="card-text">이 책을 읽게 되면 당장 해외 주식 앱을 다운로드중인 자신을 발견하게
-										될 것이다.</p>
+								<div class="card">
+									<a href="#" class="">
+										<img class="card-img-top"
+											 src="/resources/images/l9791191360196.jpg" alt="Card image cap" style="max-width: 170px;">
+									</a>
+									<div class="card-body">
+										<h5 class="card-title">미래의부</h5>
+										<p class="card-text">이 책을 읽게 되면 당장 해외 주식 앱을 다운로드중인 자신을 발견하게
+											될 것이다.</p>
+									</div>
 								</div>
-							</div>
-							<div class="card col-lg-3 col-md-4 col-6">
-								<a href="#" class=""> <img class="card-img-top"
-									src="/resources/images/l9791197413025.jpg" alt="Card image cap"
-									style="max-width: 170px;">
-								</a>
-								<div class="card-body">
-									<h5 class="card-title">미래의부</h5>
-									<p class="card-text">이 책을 읽게 되면 당장 해외 주식 앱을 다운로드중인 자신을 발견하게
-										될 것이다.</p>
-								</div>
-							</div>
-							<div class="card col-lg-3 col-md-4 col-6">
-								<a href="#" class=""> <img class="card-img-top"
-									src="/resources/images/l9791197413025.jpg" alt="Card image cap"
-									style="max-width: 170px;">
-								</a>
-								<div class="card-body">
-									<h5 class="card-title">미래의부</h5>
-									<p class="card-text">이 책을 읽게 되면 당장 해외 주식 앱을 다운로드중인 자신을 발견하게
-										될 것이다.</p>
+								<div class="card">
+									<a href="#" class="">
+										<img class="card-img-top"
+											 src="/resources/images/l9791191360196.jpg" alt="Card image cap" style="max-width: 170px;">
+									</a>
+									<div class="card-body">
+										<h5 class="card-title">미래의부</h5>
+										<p class="card-text">이 책을 읽게 되면 당장 해외 주식 앱을 다운로드중인 자신을 발견하게
+											될 것이다.</p>
+									</div>
 								</div>
 							</div>
 						</div>
