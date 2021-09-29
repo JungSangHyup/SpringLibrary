@@ -18,8 +18,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sample.library.domain.BoardVO;
+import com.sample.library.domain.BooksResponseDTO;
 import com.sample.library.domain.CommentVO;
 import com.sample.library.domain.Criteria;
+import com.sample.library.domain.DocDTO;
 import com.sample.library.domain.PageDTO;
 import com.sample.library.service.BoardService;
 import com.sample.library.service.CommentService;
@@ -31,7 +33,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 @RequestMapping("/qnaboard/*")
 public class BoardController {
-
 	@Autowired
 	private BoardService boardService;
 	

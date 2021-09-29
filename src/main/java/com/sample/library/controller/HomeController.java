@@ -3,31 +3,46 @@ package com.sample.library.controller;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.Arrays;
+import java.util.List;
+
 
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import com.sample.library.domain.MemberVO;
 import com.sample.library.service.MemberService;
+import com.sample.library.domain.BooksResponseDTO;
+import com.sample.library.domain.DocDTO;
+import com.sample.library.service.BookApiService;
 
 @Controller
 public class HomeController {
 	
 	@Autowired
 	private MemberService memberService;
+  
+  @Autowired
+    BookApiService bookApiService;
 	
     @GetMapping("/")
-    public String home(HttpSession session) {
+    public String home(HttpSession session, Model model) {
     	
     	String id = (String) session.getAttribute("userid");
+      
+      BooksResponseDTO booksResponseDto = bookApiService.requestCurrentBook();
+
+        DocDTO[] docs = booksResponseDto.getDocs();
+        List<DocDTO> docList = Arrays.asList(docs);
+        System.out.println(docList.toString());
+        model.addAttribute("docList", docList);
     	
     	if(id!=null) {
     		
@@ -45,13 +60,18 @@ public class HomeController {
         	
         	session.setAttribute("profile", profileSrc);
     	}
-    	
-    	
-        System.out.println("home");
-        return "main";
+      return "main";
     }
+    	
+    	
+
+
+
     
+
+
     
+  
     @GetMapping("/display")
     @ResponseBody
     public ResponseEntity<byte[]> getImageFile(String sign) throws IOException {
