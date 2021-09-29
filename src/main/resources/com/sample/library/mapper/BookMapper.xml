@@ -21,7 +21,7 @@
 
 	<select id="getAllbook" resultType="bookVO">
 	<![CDATA[
-        SELECT book_id, book_name, book_price, book_des, book_img, book_pages, book_isbn, book_writer, book_regdate, category_code
+        SELECT book_id, book_name, book_price, book_des, book_img, book_pages, book_isbn, book_writer, book_regdate, category_code, book_author
         FROM book_list
         ORDER BY book_id DESC
         ]]>
@@ -30,7 +30,7 @@
 	
 	<select id="getBook" resultType="bookVO">
 	<![CDATA[
-        SELECT book_id, book_name, book_price, book_des, book_img, book_pages, book_isbn, book_writer, book_regdate, category_code
+        SELECT book_id, book_name, book_price, book_des, book_img, book_pages, book_isbn, book_writer, book_regdate, category_code, book_author
         FROM book_list
         WHERE book_id = #{num}
         ]]>
@@ -38,7 +38,7 @@
 	
 	<select id="getBookbyCategory" resultType="bookVO">
 	<![CDATA[
-        SELECT book_id, book_name, book_price, book_des, book_img, book_pages, book_isbn, book_writer, book_regdate, category_code
+        SELECT book_id, book_name, book_price, book_des, book_img, book_pages, book_isbn, book_writer, book_regdate, category_code, book_author
         FROM book_list
         WHERE category_code = #{category}
         ORDER BY book_id DESC
@@ -48,7 +48,7 @@
 
     <select id="getBookbyCategoryAndborrow" resultType="bookVO">
 	<![CDATA[
-        SELECT book_id, book_name, book_price, book_des, book_img, book_pages, book_isbn, book_writer, book_regdate, category_code
+        SELECT book_id, book_name, book_price, book_des, book_img, book_pages, book_isbn, book_writer, book_regdate, category_code, book_author
         FROM book_list
         WHERE category_code = #{category}
         AND book_isbn = #{isbn}
@@ -59,8 +59,8 @@
 	
 	<insert id="save">
 	<![CDATA[
-            INSERT INTO book_list (book_id, book_name, book_price, book_des, book_img, book_pages, book_isbn, book_writer, book_regdate, category_code)
-    		VALUES(#{bookId}, #{bookName}, #{bookPrice}, #{bookDes}, #{bookImg}, #{bookPages}, "N", #{bookWriter}, #{bookRegdate}, #{categoryCode})
+            INSERT INTO book_list (book_id, book_name, book_price, book_des, book_img, book_pages, book_isbn, book_writer, book_regdate, category_code, book_detail, book_author)
+    		VALUES(#{bookId}, #{bookName}, #{bookPrice}, #{bookDes}, #{bookImg}, #{bookPages}, #{bookIsbn}, #{bookWriter}, #{bookRegdate}, #{categoryCode}, #{bookDetail}, #{bookAuthor})
         ]]>
 	</insert>
 

@@ -25,6 +25,7 @@ public class BookVO {
 	private String bookRegdate;
 	private String categoryCode;
 	private String bookDetail;
+	private String bookAuthor;
 	
 	private List<BookAttachVO> bookAttachList;
 }

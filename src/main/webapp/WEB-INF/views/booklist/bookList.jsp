@@ -102,14 +102,13 @@
 			               <div class="row no-gutters">
 			                 <div class="col-md-4">
 			                   <a href="/book/content?num=${ value.bookId }&page=${ result["page"] }">
-			                     <img src="/display?sign=${ value.bookImg }" alt="..." style="max-width: 180px;">
+			                     <img src="${ value.bookImg }" alt="..." style="max-width: 180px;">
 			                   </a>
 			                 </div>
 			                 <div class="col-md-8">
 			                   <div class="card-body">
 			                     <h5 class="card-title">${ value.bookName }</h5>
-								 <p class="card-text">${value.bookDes}</p>
-
+								 <p class="card-text">${ value.bookAuthor }</p>
 						`;
                           if(value.bookIsbn === 'N'){
                               newcon.innerHTML += `

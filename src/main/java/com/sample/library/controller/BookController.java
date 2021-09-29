@@ -74,7 +74,6 @@ public class BookController {
         boolean isImage = false;
 
         String contentType = Files.probeContentType(file.toPath()); // "image/jpg"
-        System.out.println("contentType : " + contentType);
 
         isImage = contentType.startsWith("image");
         return isImage;
@@ -124,10 +123,6 @@ public class BookController {
 			starBoard.put(review.getScore(), starBoard.get(review.getScore()) + 1);
 		}
 
-		starBoard.forEach((K, V) -> {
-			System.out.println(K + " : " + V);
-		});
-
 		sum /= reviewList.size();
 
 		sum = Double.parseDouble(String.format("%.1f", sum));
@@ -145,8 +140,6 @@ public class BookController {
 
 	@PostMapping("/review")
 	public ResponseEntity<String> review(int num, Model model, ReviewVO reviewVO, HttpSession session) {
-		System.out.println(num);
-		System.out.println(reviewVO.toString());
 
 
 		String message = "";
