@@ -26,6 +26,8 @@ public interface BoardMapper {
 	
 	BoardVO getBoard(int boardId); // 글번호에 해당하는 글 한개 가져오기
 	
+	BoardVO getBoardAndAttaches(int boardId);  // 글번호에 해당하는 글 한개와 첨부파일 모두 가져오기
+	
 	void updateBoard(BoardVO boardVO); // 글번호에 해당하는 글의 글제목, 글내용, 날짜, IP주소 수정하기
 	
 	void updateChk(String boardId);

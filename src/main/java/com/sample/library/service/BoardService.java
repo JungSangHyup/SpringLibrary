@@ -4,9 +4,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.sample.library.domain.BoardAttachVO;
 import com.sample.library.domain.BoardVO;
 import com.sample.library.domain.Criteria;
+import com.sample.library.mapper.BoardAttachMapper;
 import com.sample.library.mapper.BoardMapper;
 
 @Service
@@ -14,6 +17,9 @@ public class BoardService {
 
 	@Autowired
 	private BoardMapper boardMapper;
+	
+	@Autowired
+	private BoardAttachMapper boardattachMapper;
 
 	public int register(BoardVO boardVO) {
 		return boardMapper.insert(boardVO);
@@ -75,5 +81,43 @@ public class BoardService {
 	public void updateCommentCnt(int boardId) {
 		boardMapper.updateCommentCnt(boardId);
 	}
+	
+
+	public BoardVO getBoardAndAttaches(int boardId) {
+
+		return boardMapper.getBoardAndAttaches(boardId); // join 쿼리로 데이터 가져오기
+	}
+	
+	@Transactional
+	public void deleteBoardAndAttaches(int num) {
+		boardattachMapper.deleteAttachesByBno(num);
+		boardMapper.deleteBoardByNum(num);
+	}
+	
+	@Transactional
+	public void updateBoardAndInsertAttachesAndDeleteAttaches(BoardVO boardVO, List<BoardAttachVO> newAttachList, List<String> delUuidList) {
+		
+		if (newAttachList != null && newAttachList.size() > 0) {
+			boardattachMapper.insertAttaches(newAttachList);
+		}
+		
+		if (delUuidList != null && delUuidList.size() > 0) {
+			boardattachMapper.deleteAttachesByUuids(delUuidList);
+		}
+		
+		boardMapper.updateBoard(boardVO);
+	} // updateBoardAndInsertAttachesAndDeleteAttaches
+	
+	@Transactional
+	public void registerBoardAndAttaches(BoardVO boardVO, List<BoardAttachVO> attachList) {
+		// attach 테이블의 bno 컬럼이 외래키로서
+		// board 테이블의 num 컬럼을 참조하므로
+		// board 레코드가 먼저 insert된 후 attach 레코드가 insert되야 함.
+		boardMapper.insert(boardVO);
+		
+		if (attachList != null && attachList.size() > 0) {
+			boardattachMapper.insertAttaches(attachList);
+		}
+	} // registerBoardAndAttaches
 	
 }

@@ -55,6 +55,41 @@
 			<div class="content">
 				<div class="form-content">${boardVO.content}</div>
 			</div>
+			
+			<!--  첨부파일 -->
+			<div style="text-align: center; margin-top: 20px;"><p>첨부파일</p>
+			<c:choose>
+                	<c:when test="${ fn:length(attachList) > 0 }"><%-- 첨부파일 있으면 --%>
+                		<ul style="text-align: center; margin-top: 20px;">
+                		
+                		<c:forEach var="attach" items="${ attachList }">
+                			<c:if test="${ attach.filetype eq 'O' }">
+                				<li>
+                					<c:set var="fileCallPath" value="${ attach.uploadpath }/${ attach.uuid }_${ attach.filename }" />
+                					<a href="/boardDownload?fileName=${ fileCallPath }">
+                						${ attach.filename }
+                					</a>
+                				</li>
+                			</c:if>
+                			<c:if test="${ attach.filetype eq 'I' }">
+                				<c:set var="fileCallPath" value="${ attach.uploadpath }/s_${ attach.uuid }_${ attach.filename }" />
+                				<c:set var="originPath" value="${ attach.uploadpath }/${ attach.uuid }_${ attach.filename }" />
+                				<li>
+                					<a href="/boardDisplay?fileName=${ originPath }">
+                						<img src="/boardDisplay?fileName=${ fileCallPath }">
+                					</a>
+                				</li>
+                			</c:if>
+                		</c:forEach>
+                		
+                		</ul>
+                	</c:when>
+                	<c:otherwise><%-- 첨부파일 없으면 --%>
+                		<span style="text-align: center;">첨부파일 없음</span>
+                	</c:otherwise>
+                </c:choose>
+			</div>
+
 
 			<!-- 글목록 버튼 생성 -->
 			<div class="btn_box">
@@ -148,10 +183,8 @@
 	<script>
 	
 	
-		//글삭제 버튼을 클릭했을 때 호출되는 함수
 		function remove(event) {
-			// 이벤트 소스(이벤트가 발생한 오브젝트)의 기본동작을 못하게 만듬
-			// 기본동작을 가진 대표적인 두 태그 : a 태그(클릭 못하게), form 태그(submit 못하게) 
+			
 			event.preventDefault();
 
 			let isRemove = confirm('이 글을 정말 삭제하시겠습니까?');
