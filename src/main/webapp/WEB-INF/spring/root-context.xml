@@ -39,4 +39,10 @@
 
 
     <context:component-scan base-package="com.sample.library.service"/>
+
+    <!--    @Aspect 어노테이션 기능 활성화-->
+    <aop:aspectj-autoproxy/>
+
+    <context:component-scan base-package="com.sample.library.task"/>
+    <task:annotation-driven/>
 </beans>

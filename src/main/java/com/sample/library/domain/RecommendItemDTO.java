@@ -7,6 +7,7 @@ public class RecommendItemDTO {
     private String recomtitle;
     private String recomauthor;
     private String recomfilepath;
-    private String recomcontents;
+    private String recomcontens;
     private String mokchFilePath;
+    private String recommokcha;
 }
