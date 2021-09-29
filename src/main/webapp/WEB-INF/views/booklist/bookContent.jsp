@@ -18,7 +18,7 @@
       <div class="card mb-3">
         <div class="row no-gutters">
           <div class="col-md-4">
-            <img src="/display?sign=${ bookVO.bookImg }" alt="..." class="m-2">
+            <img src="${ bookVO.bookImg }" alt="..." class="m-2">
           </div>
           <div class="col-md-8">
             <div class="card-body">

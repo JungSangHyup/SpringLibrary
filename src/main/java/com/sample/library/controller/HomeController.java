@@ -53,7 +53,6 @@ public class HomeController {
         RecommendDTO recommendDTO = bookApiService.recommendBook();
         RecommendItemDTO[] recommends = recommendDTO.getList();
         List<RecommendItemDTO> recommendList = Arrays.asList(recommends);
-        System.out.println(recommendList);
         model.addAttribute("recommendList", recommendList);
 
     	
