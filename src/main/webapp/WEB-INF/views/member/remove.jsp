@@ -33,7 +33,7 @@
             </nav>
             <ul class="nav flex-column nav-pills" style="background: #ECE6CC; white-space:nowrap;">
               <li class="nav-item">
-                <a class="nav-link" href="/member/myRental" style="color: black;">
+                <a class="nav-link" href="/member/rental" style="color: black;">
                   <i class="material-icons align-middle">menu_book</i> 대여도서관리</a>
               </li>
             <li class="nav-item">
