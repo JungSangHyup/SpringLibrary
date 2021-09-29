@@ -54,7 +54,7 @@ public class BookRestController {
 	}
 
 	@GetMapping(value = "/library", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-	public ResponseEntity<BooksResponseDTO> bookList(){
-		return new ResponseEntity<BooksResponseDTO>(bookApiService.requestCurrentBook(), HttpStatus.OK);
+	public ResponseEntity<BooksResponseDTO> bookList(int page){
+		return new ResponseEntity<BooksResponseDTO>(bookApiService.requestCurrentBook(page), HttpStatus.OK);
 	}
 }

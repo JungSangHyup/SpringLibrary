@@ -112,7 +112,7 @@
 						<h5 class="m-2">새로나온 책</h5>
 
 						<div class="card-group best-seller">
-							<div class="row row-cols-1 row-cols-md-5">
+							<div class="row row-cols-1 row-cols-md-5 w-100">
 							<c:forEach var="doc" items="${docList}">
 								<c:if test="${doc.TITLE_URL != ''}">
 									<div class="card">
@@ -120,7 +120,7 @@
 											<img class="card-img-top mt-2" src="${ doc.TITLE_URL }" alt="Card image cap" style="max-width: 150px;">
 										</a>
 										<div class="card-body">
-											<h5 class="card-title">${ doc.TITLE }</h5>
+											<h6 class="card-title">${ doc.TITLE }</h6>
 											<p class="card-text">${ doc.AUTHOR }</p>
 										</div>
 									</div>

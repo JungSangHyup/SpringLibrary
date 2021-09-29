@@ -90,7 +90,7 @@ public class BookApiService {
         return booksResponseDto;
     }
 
-    public BooksResponseDTO requestCurrentBook(){
+    public BooksResponseDTO requestCurrentBook(int page){
         DateFormat format = new SimpleDateFormat("yyyyMMdd");
         String datestr = format.format(Calendar.getInstance().getTime());
         datestr = format.format(new Date());
@@ -101,8 +101,8 @@ public class BookApiService {
                 .path("/landingPage/SearchApi.do")
                 .queryParam("cert_key", CERTKEY)
                 .queryParam("result_style", "json")
-                .queryParam("page_no", 1)
-                .queryParam("page_size", 50)
+                .queryParam("page_no", String.valueOf(page))
+                .queryParam("page_size", 20)
                 .queryParam("start_publish_date", datestr)
                 .queryParam("end_publish_date", datestr)
                 .build()
@@ -115,7 +115,6 @@ public class BookApiService {
         Gson gson = new Gson();
         BooksResponseDTO booksResponseDto = gson.fromJson(jsonString, BooksResponseDTO.class);
 
-        DocDTO[] docDTO = booksResponseDto.getDocs();
         return booksResponseDto;
     }
 

@@ -88,7 +88,7 @@
 
   function fetching(category, is_rental){
     var result = get_query();
-    fetch('/api/book/library')
+    fetch('/api/book/library?page=' + result["page"])
 
             .then((response) => {
               return response.json();
