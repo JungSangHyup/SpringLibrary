@@ -22,6 +22,8 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.sample.library.domain.MemberVO;
+import com.sample.library.domain.RecommendDTO;
+import com.sample.library.domain.RecommendItemDTO;
 import com.sample.library.service.MemberService;
 import com.sample.library.domain.BooksResponseDTO;
 import com.sample.library.domain.DocDTO;
@@ -37,16 +39,23 @@ public class HomeController {
     private BookApiService bookApiService;
 	
     @GetMapping("/")
-    public String home(HttpSession session, Model model) {
+    public String home(HttpSession session, Model model) throws IOException {
     	
     	String id = (String) session.getAttribute("userid");
       
+    	// 오늘 등록된 신간
         BooksResponseDTO booksResponseDto = bookApiService.requestCurrentBook(1);
-
         DocDTO[] docs = booksResponseDto.getDocs();
         List<DocDTO> docList = Arrays.asList(docs);
-        System.out.println(docList.toString());
         model.addAttribute("docList", docList);
+        
+        // 추천 목록
+        RecommendDTO recommendDTO = bookApiService.recommendBook();
+        RecommendItemDTO[] recommends = recommendDTO.getList();
+        List<RecommendItemDTO> recommendList = Arrays.asList(recommends);
+        System.out.println(recommendList);
+        model.addAttribute("recommendList", recommendList);
+
     	
     	if(id!=null) {
     		
