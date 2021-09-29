@@ -29,6 +29,7 @@
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="/book/list?category=new&rental=all&page=1">책장</a>
             <a class="dropdown-item" href="/book/gallery?category=new&rental=all&page=1">갤러리</a>
+              <a class="dropdown-item" href="/book/library?page=1">국립중앙도서관</a>
           </div>
         </li>
 

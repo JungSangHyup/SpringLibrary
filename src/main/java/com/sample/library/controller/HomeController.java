@@ -37,7 +37,7 @@ public class HomeController {
     	
     	String id = (String) session.getAttribute("userid");
       
-      BooksResponseDTO booksResponseDto = bookApiService.requestCurrentBook();
+      BooksResponseDTO booksResponseDto = bookApiService.requestCurrentBook(1);
 
         DocDTO[] docs = booksResponseDto.getDocs();
         List<DocDTO> docList = Arrays.asList(docs);
