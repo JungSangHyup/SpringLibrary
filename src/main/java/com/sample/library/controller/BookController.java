@@ -103,7 +103,7 @@ public class BookController {
 	}
 	
 	@GetMapping("/content")
-	public String content(int num, int page, Model model, RedirectAttributes rttr) {
+	public String content(int num, Model model, RedirectAttributes rttr) {
 		BookVO bookVO = bookService.getBookAndAttaches(num);
 		List<ReviewVO> reviewList = bookService.getReviewsByBook(num);
 		
@@ -133,7 +133,6 @@ public class BookController {
 		model.addAttribute("reviewList", reviewList);
 
 		rttr.addAttribute(num);
-		rttr.addAttribute(page);
 		
 		return "booklist/bookContent";
 	}
