@@ -30,6 +30,8 @@ public class MemberVO {
 	private String recvemail;
 	private String profile;
 	private Date regdate;
+	private String approval_status;
+	private String approval_key;
 	private String grade;
 	private Integer mileage;
 

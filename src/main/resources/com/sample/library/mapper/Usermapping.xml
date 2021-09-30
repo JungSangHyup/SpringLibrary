@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MemverVO">
+
+	
+	<!-- 회원 가입 -->
+	<insert id="join_member" parameterType="member">
+		insert into users values(#{userid}, #{userpass}, #{useremail}, #{recvemail}, #{profile}, now(), now(), 'false', #{approval_key})
+	</insert>
+	<!-- 이메일 인증 -->
+	<update id="approval_member" parameterType="member">
+		update users set approval_status = 'true' where useremail = #{useremail} and approval_key = #{approval_key}
+	</update>
+
+	
+	<!-- 로그인 접속일자 수정 -->
+	<update id="update_log" parameterType="String">
+		update users set logdate = now() where id = #{id}
+	</update>
+	
+	<select id="find_id" parameterType="String" resultType="String">
+		select id from users where username=#{username} and useremail=#{useremail}
+	</select>
+	
+	<select id="findPassword" resultType="user">
+		select * from users where userid=#{userid} and username=#{username} and useremail=#{useremail}
+	</select>
+	
+</mapper>
