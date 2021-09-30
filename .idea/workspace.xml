@@ -11,9 +11,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8d490fe2-dc98-4575-bfe9-754d69752f62" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sample/library/controller/BookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sample/library/controller/BookController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/booklist/bookGallery.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/booklist/bookGallery.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/member/myRental.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/member/myRental.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/sample/library/mapper/RecommendBookTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/sample/library/mapper/RecommendBookTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +53,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -70,7 +69,7 @@
       <recent name="C:\Users\jsh17\eclipse-workspace\SampleSpring\src\main\webapp\WEB-INF\views\booklist" />
     </key>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.50">
+  <component name="RunManager" selected="JUnit.RecommendBookTest.apiToDB">
     <configuration name="BookMapperTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="myapp" />
       <extension name="coverage">
@@ -242,8 +241,8 @@
       <item itemvalue="JUnit.RecommendBookTest" />
       <item itemvalue="JUnit.RecommendBookTest.recommendTest" />
       <item itemvalue="JUnit.RecommendBookTest.requestBookdTest" />
-      <item itemvalue="Tomcat Server.Tomcat 9.0.50" />
       <item itemvalue="JUnit.RecommendBookTest.apiToDB" />
+      <item itemvalue="Tomcat Server.Tomcat 9.0.50" />
     </list>
     <recent_temporary>
       <list>
@@ -279,7 +278,8 @@
       <workItem from="1632888732846" duration="190000" />
       <workItem from="1632888939351" duration="568000" />
       <workItem from="1632889527245" duration="3050000" />
-      <workItem from="1632892766196" duration="12578000" />
+      <workItem from="1632892766196" duration="13272000" />
+      <workItem from="1632961055309" duration="3409000" />
     </task>
     <servers />
   </component>
@@ -298,12 +298,15 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/test/java/com/sample/library/mapper/RecommendBookTest.java</url>
-          <line>58</line>
+          <line>57</line>
           <properties class="com.sample.library.mapper.RecommendBookTest" method="requestBookdTest">
             <option name="EMULATED" value="true" />
           </properties>
