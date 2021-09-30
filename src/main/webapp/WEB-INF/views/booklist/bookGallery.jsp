@@ -98,7 +98,7 @@
                         newcon.innerHTML += `
 					  <div class="col-lg-3 col-md-4 col-6">
 			            <a href="/book/content?num=${ value.bookId }">
-						  <img class="img-fluid img-thumbnail" src="${ value.bookImg }" alt="">
+						  <img class="img-fluid img-thumbnail" src="/display?sign=${ value.bookImg }" alt="">
 			            </a>
 			          </div>
 					`;

@@ -18,12 +18,12 @@
       <div class="card mb-3">
         <div class="row no-gutters">
           <div class="col-md-4">
-            <img src="${ bookVO.bookImg }" alt="..." class="m-2">
+            <img src="/display?sign=${ bookVO.bookImg }" alt="..." class="m-2">
           </div>
           <div class="col-md-8">
             <div class="card-body">
               <h5 class="card-title">${bookVO.bookName}</h5>
-              <p class="card-text">${bookVO.bookWriter}</p>
+              <p class="card-text">${bookVO.bookAuthor}</p>
               <p class="card-text">${bookVO.bookDes}</p>
 				<c:if test="${bookVO.bookIsbn eq 'Y'}"><button type="button" class="btn btn-primary rental">대여</button></c:if>
 				<c:if test="${bookVO.bookIsbn eq 'N'}"><button type="button" class="btn btn-danger rental" disabled=”disabled”>대여 중</button></c:if>
