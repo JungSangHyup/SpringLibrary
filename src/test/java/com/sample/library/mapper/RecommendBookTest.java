@@ -2,22 +2,22 @@ package com.sample.library.mapper;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
-import java.nio.channels.Channels;
-import java.nio.channels.ReadableByteChannel;
 import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
 import javax.imageio.ImageIO;
 
-import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.sample.library.domain.BookAttachVO;
 import com.sample.library.domain.BookVO;
 import com.sample.library.domain.RecommendDTO;
 import com.sample.library.domain.RecommendItemDTO;
@@ -56,13 +55,21 @@ public class RecommendBookTest {
         System.out.println(bookApiService.recommendBook());
     }
     @Test
-    public void requestBookdTest() throws IOException {
+    public void requestBookdTest() {
         bookApiService.requestCurrentBook(1);
     }
     @Test
+    @Transactional
     public void apiToDB() throws IOException {
         RecommendDTO recommendDTO = bookApiService.recommendBook();
         RecommendItemDTO[] items = recommendDTO.getList();
+
+        String uploadFolder = "C:/upload/books";  // 업로드 기준경로
+        File uploadPath = new File(uploadFolder, getFolder()); // C:/upload/2021/08/31
+
+        if (uploadPath.exists() == false) {  // !uploadPath.exists()
+            uploadPath.mkdirs();
+        }
 
         for(RecommendItemDTO item : items){
             BookVO bookVO = new BookVO();
@@ -80,6 +87,32 @@ public class RecommendBookTest {
             bookVO.setCategoryCode("new");
             bookVO.setBookIsbn("Y");
             bookVO.setBookAuthor(item.getRecomauthor());
+
+
+            UUID uuid = UUID.randomUUID();
+
+            String originalFilename = item.getRecomtitle();
+            String uploadFilename = uuid.toString() + "_" + originalFilename;
+            File outFile = new File(uploadPath, "s_" + uploadFilename + ".jpg");
+
+
+            String imgUrl = item.getRecomfilepath();
+            imgUrl = imgUrl.replace("http", "https");
+
+            try {
+                // if you want to get png or jpg ... you can do it
+                URL url = new URL(imgUrl);
+                String extension = imgUrl.substring(imgUrl.indexOf('.') + 1);
+
+                BufferedImage image = ImageIO.read(url);
+
+                System.out.println(image);
+
+
+                System.out.println(ImageIO.write(image, "jpg", outFile));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
             System.out.println("upload: " + item.getRecomtitle());
             bookService.save(bookVO);
