@@ -87,7 +87,7 @@
 		                    </td>
 		                    <td class="align-middle" style="max-width: 15%;">
                                 <a href="/book/content?num=${ rental.rentalTitle }">
-                                    <img src="${ rental.bookImg }" alt="..." class="img-thumbnail">
+                                    <img src="/display?sign=${ rental.bookImg }" alt="..." class="img-thumbnail">
                                 </a>
                             </td>
 		                    <td class="align-middle">${rental.rentalName}</td>

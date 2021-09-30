@@ -102,12 +102,10 @@
 							<c:forEach var="doc" items="${docList}">
 								<c:if test="${doc.TITLE_URL != ''}">
 									<div class="card">
-										<a href="#" class="">
 											<img class="card-img-top mt-2" src="${ doc.TITLE_URL }" alt="Card image cap" style="max-width: 150px;">
-										</a>
-										<div class="card-body">
+										<div class="card-body overflow-hidden">
 											<h6 class="card-title">${ doc.TITLE }</h6>
-											<p class="card-text">${ doc.AUTHOR }</p>
+											<p class="card-text " style="max-height: 100px">${ doc.AUTHOR }</p>
 										</div>
 									</div>
 								</c:if>
@@ -131,8 +129,8 @@
 											<img class="card-img-top"
 												 src="${recommend.recomfilepath}" alt="Card image cap" style="max-width: 170px;">
 										<div class="card-body">
-											<h5 class="card-title">${recommend.recomtitle}</h5>
-											<p class="card-text">${recommend.recomauthor}</p>
+											<h6 class="card-title ">${recommend.recomtitle}</h6>
+											<p class="card-text " style="max-height: 100px">${recommend.recomauthor}</p>
 										</div>
 									</div>
 								</c:forEach>
