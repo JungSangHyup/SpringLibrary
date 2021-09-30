@@ -1,59 +1,36 @@
 package com.sample.library.domain;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.core.simple.*;
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-public class MemberDAO implements TWMemberDao{
-	private JdbcTemplate template;
+@Repository
+public class MemberDAO {
+	@Autowired
+	SqlSession sqlsession = null;
+
+	// 회원가입
+	@Transactional
+	public int join_member(MemberVO member) throws Exception{
+		return sqlsession.insert("member.join_member", member);
+	}
+	// 이메일 인증
+	@Transactional
+	public int approval_member(MemberVO member) throws Exception{
+		return sqlsession.update("member.approval_member", member);
+	}
+
+	// 로그인 접속일자 변경
+	@Transactional
+	public int update_log(String userid) throws Exception{
+		return sqlsession.update("member.update_log", userid);
+	}
+	// 아이디 찾기
+	public String find_id(String useremail) throws Exception{
+		return sqlsession.selectOne("member.find_id", useremail);
+	}
 	
-	public void setTemplate(JdbcTemplate template) {
-		this.template = template;
-	}
-	
-	@Override
-	public MemberVO getID(String useremail, String username) {
-		String sql ="select*from users where useremail=? and username=?";
-		try {
-			return template.queryForObject(sql,new Object[] {useremail,username},new RowMapper<MemberVO>() {
-				@Override
-				public MemberVO mapRow(ResultSet rs,int rowNum)throws SQLException{
-					MemberVO m = new MemberVO();
-					m.setUserid(rs.getString("userid"));
-					m.setUserpass(rs.getString("userpass"));
-					m.setUsername(rs.getString("username"));
-					m.setGender(rs.getString("gender"));
-					m.setBirthday(rs.getString("birthday"));
-					m.setUserphone(rs.getString("userphone"));
-					return m;
-				}
-			});
-		}catch(Exception e) {
-			return null;
-		}
-	}
-	@Override
-	public boolean FindId(String useremail,String username) {
-		MemberVO m = getID(useremail,username);
-		
-		if(m!=null) {
-			String id = m.getUserid();
-			return true;
-		}return false;
-	}
-
-	@Override
-	public MemberVO getPW(String userid, String username, String useremail) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean FindPW(String userid, String username, String useremail) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 }

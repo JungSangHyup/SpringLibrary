@@ -17,4 +17,7 @@
     <typeAliases>
         <package name="com.sample.library.domain"/>
     </typeAliases>
+    <!-- <typeAliases>
+		<typeAlias type="com.sample.library.domain.MemberVO" alias="member"/>
+	</typeAliases> -->
 </configuration>
