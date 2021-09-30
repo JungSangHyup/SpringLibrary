@@ -97,6 +97,7 @@
                b.book_regdate,
                b.category_code,
                b.book_detail,
+               b.book_author,
                a.uuid,
                a.uploadpath,
                a.filename,

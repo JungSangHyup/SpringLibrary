@@ -25,6 +25,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.sample.library.domain.BookAttachVO;
 import com.sample.library.domain.BookVO;
 import com.sample.library.domain.RecommendDTO;
 import com.sample.library.domain.RecommendItemDTO;
@@ -59,7 +60,6 @@ public class RecommendBookTest {
         bookApiService.requestCurrentBook(1);
     }
     @Test
-    @Transactional
     public void apiToDB() throws IOException {
         RecommendDTO recommendDTO = bookApiService.recommendBook();
         RecommendItemDTO[] items = recommendDTO.getList();
@@ -80,7 +80,6 @@ public class RecommendBookTest {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
             String curr_time = sdf.format(new Date());
             bookVO.setBookId(num);
-            bookVO.setBookImg(item.getRecomfilepath());
             bookVO.setBookDetail(item.getRecomcontens());
             bookVO.setBookName(item.getRecomtitle());
             bookVO.setBookRegdate(curr_time);
@@ -102,14 +101,21 @@ public class RecommendBookTest {
             try {
                 // if you want to get png or jpg ... you can do it
                 URL url = new URL(imgUrl);
-                String extension = imgUrl.substring(imgUrl.indexOf('.') + 1);
 
                 BufferedImage image = ImageIO.read(url);
 
-                System.out.println(image);
+                ImageIO.write(image, "jpg", outFile);
 
+                BookAttachVO attachVO = new BookAttachVO();
+                attachVO.setUuid(uuid.toString());
+                attachVO.setUploadpath(getFolder());
+                attachVO.setFilename(originalFilename);
+                attachVO.setFiletype("I");
+                attachVO.setBno(num);
 
-                System.out.println(ImageIO.write(image, "jpg", outFile));
+                ImageIO.write(image, "jpg", outFile);
+                bookVO.setBookImg(getFolder() + "/s_" + uploadFilename + ".jpg");
+                bookAttachService.insertAttach(attachVO);
             } catch (IOException e) {
                 e.printStackTrace();
             }

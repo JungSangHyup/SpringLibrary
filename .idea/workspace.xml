@@ -11,7 +11,12 @@
   <component name="ChangeListManager">
     <list default="true" id="8d490fe2-dc98-4575-bfe9-754d69752f62" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/sample/library/mapper/RecommendBookTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/sample/library/mapper/RecommendBookTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/sample/library/mapper/BookMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/sample/library/mapper/BookMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/booklist/bookContent.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/booklist/bookContent.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/booklist/bookGallery.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/booklist/bookGallery.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/booklist/bookList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/booklist/bookList.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/member/myRental.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/member/myRental.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +74,7 @@
       <recent name="C:\Users\jsh17\eclipse-workspace\SampleSpring\src\main\webapp\WEB-INF\views\booklist" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.RecommendBookTest.apiToDB">
+  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.50">
     <configuration name="BookMapperTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="myapp" />
       <extension name="coverage">
@@ -279,7 +284,7 @@
       <workItem from="1632888939351" duration="568000" />
       <workItem from="1632889527245" duration="3050000" />
       <workItem from="1632892766196" duration="13272000" />
-      <workItem from="1632961055309" duration="3409000" />
+      <workItem from="1632961055309" duration="4732000" />
     </task>
     <servers />
   </component>
@@ -306,7 +311,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/test/java/com/sample/library/mapper/RecommendBookTest.java</url>
-          <line>57</line>
+          <line>58</line>
           <properties class="com.sample.library.mapper.RecommendBookTest" method="requestBookdTest">
             <option name="EMULATED" value="true" />
           </properties>
