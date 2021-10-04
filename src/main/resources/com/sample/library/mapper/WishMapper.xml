@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sample.library.mapper.WishMapper">
+	<insert id="wishBookbyId">
+	<![CDATA[
+		INSERT INTO mywish(cart_id, userid, book_id)
+		VALUES(#{cartId}, #{userid}, #{bookId})
+	]]>
+	</insert>
+	
+	<select id="nextNum" resultType="int">
+	<![CDATA[
+		SELECT IFNULL(MAX(cart_id), 0) + 1 AS book_id 
+		FROM mywish
+	]]>
+	</select>
+	
+	<select id="getWishListbyId" resultType="wishVO">
+	<![CDATA[
+		SELECT a.*, b.book_img, b.book_name, b.book_isbn
+		FROM mywish a, book_list b
+		WHERE a.book_id = b.book_id
+		AND userid = #{userid};
+	]]>
+	</select>
+	
+	<select id="getWishBookbyBookId" resultType="wishVO">
+	<![CDATA[
+		SELECT *
+		FROM mywish
+		WHERE book_id = #{bookId}
+		AND userid = #{userid};
+	]]>
+	</select>
+	
+	
+	<delete id="cancleBook">
+	<![CDATA[
+        DELETE
+        FROM mywish
+        WHERE cart_id IN
+        ]]>
+		<foreach collection="array" item="num" index="i" open="(" separator="," close=")">
+			#{num}
+		</foreach>
+	</delete>
+</mapper>

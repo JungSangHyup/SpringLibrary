@@ -5,8 +5,10 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.file.Files;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -37,10 +39,12 @@ import com.sample.library.domain.DocDTO;
 import com.sample.library.domain.MemberVO;
 import com.sample.library.domain.RentalVO;
 import com.sample.library.domain.ReviewVO;
+import com.sample.library.domain.WishVO;
 import com.sample.library.service.BookAttachService;
 import com.sample.library.service.BookService;
 import com.sample.library.service.MemberService;
 import com.sample.library.service.RentalService;
+import com.sample.library.service.WishService;
 import com.sample.library.util.Script;
 
 import net.coobird.thumbnailator.Thumbnailator;
@@ -60,6 +64,8 @@ public class BookController {
 	@Autowired
 	private RentalService rentalService;
 
+	@Autowired
+	private WishService wishService;
 	
     // 년/월/일 형식의 폴더명 리턴하는 메소드
     private String getFolder() {
@@ -103,9 +109,15 @@ public class BookController {
 	}
 	
 	@GetMapping("/content")
-	public String content(int num, Model model, RedirectAttributes rttr) {
+	public String content(int num, Model model, HttpSession session ,RedirectAttributes rttr) {
 		BookVO bookVO = bookService.getBookAndAttaches(num);
 		List<ReviewVO> reviewList = bookService.getReviewsByBook(num);
+		
+		String id = (String) session.getAttribute("userid");
+		
+		if(id != null) {
+			
+		}
 		
 		// 선언과 초기화
 		Map<Integer, Integer> starBoard = new HashMap<>(){
@@ -303,4 +315,97 @@ public class BookController {
 		
 		return new ResponseEntity<String>(str, headers, HttpStatus.OK);
 	}
+	
+	@GetMapping("/wish")
+	public ResponseEntity<String> wish(int num, HttpSession session, HttpServletResponse response) throws ParseException{
+		WishVO wishVO = new WishVO();
+		BookVO bookVO = bookService.getBook(num);
+		
+		int bookId = bookVO.getBookId();
+		
+		String message = "";
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Type", "text/html; charset=UTF-8");
+		String str = null;
+		
+
+		String wishName = bookVO.getBookName();
+		String bookIsbn = bookVO.getBookIsbn();
+		
+		
+		String id = (String) session.getAttribute("userid");
+		MemberVO memberVO = memberService.getMemberById(id);
+//		if(wishService.getWishBookbyBookId(bookId, id) != null) {
+//			message = "이미 찜한 책입니다.";
+//		
+//			str = Script.back(message);
+//			return new ResponseEntity<String>(str, headers, HttpStatus.OK);
+//		}
+		if(bookIsbn == "N") {
+			RentalVO rentalVO = rentalService.getRentalBookbyBookId(bookId);
+			
+			//posiDate = rentalDate + 7;
+			String rentalDate = rentalVO.getRentalDate();
+			SimpleDateFormat fm = new SimpleDateFormat("yyyy/MM/dd");
+			Date to = fm.parse(rentalDate);
+			
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(to);
+			cal.add(Calendar.DATE, 7);
+			
+			String posiDate = fm.format(cal.getTime());
+			
+			wishVO.setPosiDate(posiDate);
+		}
+		
+		
+		
+		
+		
+		if (id == null) { // 비밀번호 일치하지 않을때
+			message = "로그인 정보가 없습니다.";
+			
+			str = Script.back(message);
+			return new ResponseEntity<String>(str, headers, HttpStatus.OK);
+		}
+		
+
+
+		
+		
+		
+		
+		wishVO.setUserid(id);
+		wishVO.setBookId(bookId);
+		wishVO.setBookName(wishName);
+		wishVO.setBookIsbn(bookIsbn);
+		
+		wishService.wishBookbyId(wishVO);
+		
+		message = "찜목록에 추가하였습니다!";
+		str = Script.href(message, "/member/myWish");
+		
+		
+		return new ResponseEntity<String>(str, headers, HttpStatus.OK);
+	}
+	
+	@PostMapping("/wish")
+	public ResponseEntity<String> cancleBook(String state, HttpSession session, HttpServletResponse response, HttpServletRequest request){
+		String[] strnums = request.getParameterValues("num");
+		int[] nums = Arrays.asList(strnums).stream().mapToInt(Integer::parseInt).toArray();
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Type", "text/html; charset=UTF-8");
+		
+		System.out.println(state);
+
+		wishService.cancleBook(nums);
+
+
+		String message = "찜목록에서 제거하였습니다";
+		String str = Script.href(message, "/member/myWish");
+		
+		return new ResponseEntity<String>(str, headers, HttpStatus.OK);
+	}
+	
 }

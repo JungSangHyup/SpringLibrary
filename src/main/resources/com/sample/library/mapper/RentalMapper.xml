@@ -26,6 +26,14 @@
 	]]>
 	</select>
 	
+	<select id="getRentalBookbyBookId" resultType="rentalVO">
+	<![CDATA[
+		SELECT *
+		FROM rental_list
+		WHERE rental_title = #{bookId};
+	]]>
+	</select>
+	
 	
 	<delete id="retBook">
 	<![CDATA[

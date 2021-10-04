@@ -180,6 +180,14 @@
             location.href='/book/rental?num=${ bookVO.bookId }';
           }
         })
+        
+        document.querySelector('.wish').addEventListener('click', (e) =>{
+        	e.preventDefault();
+        	let wish = confirm(`찜목록에 추가하시겠습니까?`);
+        	if(wish){
+        		location.href='/book/wish?num=${ bookVO.bookId }';
+        	}
+        })
 	</script>
 </body>
 </html>

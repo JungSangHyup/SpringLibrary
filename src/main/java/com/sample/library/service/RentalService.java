@@ -39,6 +39,9 @@ public class RentalService {
 		return rentalMapper.getRentalListbyId(userid);
 	}
 
+	public RentalVO getRentalBookbyBookId(int bookId) {
+		return rentalMapper.getRentalBookbyBookId(bookId);
+	}
 
 
 
