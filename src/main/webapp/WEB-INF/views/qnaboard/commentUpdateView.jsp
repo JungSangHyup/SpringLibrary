@@ -51,7 +51,7 @@
 		<i class="fa fa-user fa-5x"
 			style="margin: 10px; line-height: 90px; font-size: 80px;"></i>
 		<div class="media-body">
-			<h4 class="mt-0">${commentUpdate.commentId}</h4>
+			<h4 class="mt-0">관리자</h4>
 			<input type="text" class="comment" id="content" name="content" value="${commentUpdate.content }"/>
 			</div>
 		</div>

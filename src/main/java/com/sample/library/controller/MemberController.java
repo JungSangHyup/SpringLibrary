@@ -23,12 +23,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ctc.wstx.util.StringUtil;
+import com.sample.library.domain.MemberDAO;
 import com.sample.library.domain.MemberVO;
 import com.sample.library.domain.RentalVO;
 import com.sample.library.domain.UserProfileVO;
@@ -37,6 +40,7 @@ import com.sample.library.service.MemberService;
 import com.sample.library.service.RentalService;
 import com.sample.library.service.UserProfileService;
 import com.sample.library.service.WishService;
+import com.sample.library.service.UserServiceImpl;
 import com.sample.library.util.Script;
 
 import net.coobird.thumbnailator.Thumbnailator;
@@ -57,6 +61,8 @@ public class MemberController {
 	private WishService wishService;
 	@Autowired
 	private UserProfileService userProfileService;
+	@Autowired
+	private UserServiceImpl service;
 	
 	@GetMapping("/join") // /member/join
 	public String join() {
@@ -264,16 +270,48 @@ public class MemberController {
 		}
 		return "member/logout";
 	}
-	@GetMapping("/findId")
-	public String findId() {
+	
+	// 회원 인증
+	@RequestMapping(value = "/approval_member", method = RequestMethod.POST)
+	public void approval_member(@ModelAttribute MemberVO member, HttpServletResponse response) throws Exception{
+		service.approval_member(member, response);
+	}
+	@RequestMapping(value = "/findId")
+	public String findId() throws Exception{
 		System.out.println("findId...");
 		return "member/findId";
 	}
-	@GetMapping("/findPw")
-	public String findPw() {
-		System.out.println("findPw...");
-		return "member/findPw";
+	// 아이디 찾기
+	@RequestMapping(value = "/find_id", method = RequestMethod.POST)
+	public String find_id(HttpServletResponse response, @RequestParam("useremail") String email, Model md) throws Exception{
+		md.addAttribute("id", service.find_id(response, email));
+		return "/member/find_id";
 	}
+//	@GetMapping("/findPw")
+//	public String findPw() {
+//		System.out.println("findPw...");
+//		return "member/findPw";
+//	}
+//	@PostMapping("/findPw")
+//	public ResponseEntity<String> findPW(String userid, String username,String useremail,HttpSession session,HttpServletResponse response){
+//		HttpHeaders headers = new HttpHeaders();
+//		headers.add("Content-Type", "text/html; charset=UTF-8");
+//		
+//		String str = null;
+//		String message ="";
+//		
+//		if(memberDAO.FindPW(userid, username, useremail)==true) {
+//			MemberVO m = memberDAO.getUserpass(userid, username, useremail);
+//			String userpass = m.getUserpass();
+//			message = "입력하신 정보와 일치하는 비밀번호는 "+userpass+"입니다.";
+//			str = Script.href(message,"/member/login");
+//			return new ResponseEntity<String>(str, headers, HttpStatus.OK);
+//		}else {
+//			message = "입력하신 정보로 찾을 수 없습니다.";
+//			str = Script.back(message);
+//		}
+//		return new ResponseEntity<String>(str, headers, HttpStatus.OK);
+//	}
 	
 	@GetMapping("/beforeModify")
 	public String beforeModify() {

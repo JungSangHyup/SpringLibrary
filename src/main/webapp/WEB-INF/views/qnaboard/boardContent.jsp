@@ -136,15 +136,19 @@
 				<i class="fa fa-user fa-5x"
 					style="margin: 10px; line-height: 90px; font-size: 80px;"></i>
 				<div class="media-body">
-				<h4 class="mt-0">${commentList.commentId}</h4>
+				<h4 class="mt-0">관리자</h4>
 				<input type="hidden" id="${commentList.commentId }">
 					<p>${ commentList.content }</p>
 				</div>
 			</div>
+			<c:if test="${ not empty sessionScope.userid }">
+			<c:if test="${ sessionScope.userid eq 'admin' }">
 			<div class="btn_box">
 				<button type="button" class="commentUpdateBtn" data-commentId="${commentList.commentId}">수정</button> 
 				<button type="button" class="commentDeleteBtn" data-commentId="${commentList.commentId}">삭제</button>
 			</div>
+			</c:if>
+			</c:if>
 	</c:forEach>
 	</ol>
 	

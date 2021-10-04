@@ -12,8 +12,8 @@ import com.sample.library.domain.MemberVO;
 
 public interface MemberMapper {
 
-	@Insert("INSERT INTO users (userid, userpass, username,gender,birthday, userphone, useraddr1, useraddr2, useremail, recvemail, profile, regdate, grade, mileage) "
-			+ " VALUES (#{userid}, #{userpass}, #{username},#{gender}, #{birthday}, #{userphone}, #{useraddr1}, #{useraddr2}, #{useremail}, #{recvemail}, #{profile}, #{regdate}, #{grade}, #{mileage}) ")
+	@Insert("INSERT INTO users (userid, userpass, username,gender,birthday, userphone, useraddr1, useraddr2, useremail, recvemail, profile, regdate,logdate, grade, mileage) "
+			+ " VALUES (#{userid}, #{userpass}, #{username},#{gender}, #{birthday}, #{userphone}, #{useraddr1}, #{useraddr2}, #{useremail}, #{recvemail}, #{profile}, #{regdate},#{logdate}, #{grade}, #{mileage}) ")
 	int insert(MemberVO memberVO);
 	
 	@Select("SELECT * FROM users WHERE userid = #{userid}")
