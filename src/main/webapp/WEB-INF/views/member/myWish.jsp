@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -61,7 +62,7 @@
         <div class="col-sm-9">
             <!-- Contents area -->
           <div class="border border p-4" style="background: #ECE6CC;">
-            <form action="/member/myWishlist" method="POST">
+            <form action="/book/wish" method="POST">
             <h3>찜목록</h3>
               <hr>
             <table class="table table-hover table-borderless">
@@ -75,72 +76,34 @@
                   </tr>
                 </thead>
                 <tbody class="text-center">
-                  <tr>
-                    <td class="align-middle" style="width: 10%;">
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customCheck1">
-                            <label class="custom-control-label" for="customCheck1"></label>
-                          </div>
-                    </td>
-                    <td class="align-middle" style="width: 15%;"><img src="/resources/images/s_l9791166815782.jpg" alt="썸네일"></td>
-                    <td class="align-middle">책제목1</td>
-                    <td class="align-middle" style="width: 15%; color: red;">대여불가</td>
-                    <td class="align-middle" style="width: 15%;">2019.09.30</td>
-                  </tr>
-                  <tr>
-                    <td class="align-middle" style="width: 10%;">
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customCheck2">
-                            <label class="custom-control-label" for="customCheck2"></label>
-                          </div>
-                    </td>
-                    <td class="align-middle" style="width: 15%;"><img src="/resources/images/s_l9791166815782.jpg" alt="썸네일"></td>
-                    <td class="align-middle">책제목2</td>
-                    <td class="align-middle" style="width: 15%; color: blue;">대여가능</td>
-                    <td class="align-middle" style="width: 15%;">-</td>
-                  </tr>
-                  <tr>
-                    <td class="align-middle" style="width: 10%;">
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customCheck3">
-                            <label class="custom-control-label" for="customCheck3"></label>
-                          </div>
-                    </td>
-                    <td class="align-middle" style="width: 15%;"><img src="/resources/images/s_l9791166815782.jpg" alt="썸네일"></td>
-                    <td class="align-middle">책제목3</td>
-                    <td class="align-middle" style="width: 15%; color: blue;">대여가능</td>
-                    <td class="align-middle" style="width: 15%;">-</td>
-                  </tr>
-                  <tr>
-                    <td class="align-middle" style="width: 10%;">
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customCheck4">
-                            <label class="custom-control-label" for="customCheck4"></label>
-                          </div>
-                    </td>
-                    <td class="align-middle" style="width: 15%;"><img src="/resources/images/s_l9791166815782.jpg" alt="썸네일"></td>
-                    <td class="align-middle">책제목4</td>
-                    <td class="align-middle" style="width: 15%; color: blue;">대여가능</td>
-                    <td class="align-middle" style="width: 15%;">-</td>
-                  </tr>
-                  <tr>
-                    <td class="align-middle" style="width: 10%;">
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customCheck5">
-                            <label class="custom-control-label" for="customCheck5"></label>
-                          </div>
-                    </td>
-                    <td class="align-middle" style="width: 15%;"><img src="/resources/images/s_l9791166815782.jpg" alt="썸네일"></td>
-                    <td class="align-middle">책제목5</td>
-                    <td class="align-middle" style="width: 15%; color: blue;">대여가능</td>
-                    <td class="align-middle" style="width: 15%;">-</td>
-                  </tr>
-
+                	<c:forEach var="wish" items="${wishList}">
+                		<tr>
+		                    <td class="align-middle" style="width: 10%;">
+		                        <div class="custom-control custom-checkbox">
+		                            <input type="checkbox" class="wish_num" name="num" value="${wish.cartId}">
+		                          </div>
+		                    </td>
+		                    <td class="align-middle" style="width: 15%;">
+		                    	<a href="/book/content?num=${wish.bookId}">
+		                    		<img src="/display?sign=${wish.bookImg}" alt="썸네일" class="img-thumbnail">
+		                    	</a>
+		                    </td>
+		                    <td class="align-middle">${wish.bookName}</td>
+		                    <c:if test="${wish.bookIsbn eq 'Y'}">
+			                    <td class="align-middle" style="width: 15%; color: blue;">대여가능</td>
+			                    <td class="align-middle" style="width: 15%;">-</td>
+		                    </c:if>
+		                    <c:if test="${wish.bookIsbn eq 'N'}">
+			                    <td class="align-middle" style="width: 15%; color: red;">대여불가</td>
+			                    <td class="align-middle" style="width: 15%;">${wish.posiDate}</td>
+		                    </c:if>
+		                  </tr>
+                	</c:forEach>
                 </tbody>
               </table>
               <div class="my-3 text-right">
                 <button type="submit" class="btn btn-secondary">대여신청</button>
-                <button type="reset" class="btn btn-secondary ml-3">삭제</button>
+                <button type="submit" class="btn btn-secondary ml-3 cancle_book" name="state" value="cancle_book">삭제</button>
               </div>
             </form>
           </div>

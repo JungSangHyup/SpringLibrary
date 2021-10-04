@@ -32,9 +32,11 @@ import com.ctc.wstx.util.StringUtil;
 import com.sample.library.domain.MemberVO;
 import com.sample.library.domain.RentalVO;
 import com.sample.library.domain.UserProfileVO;
+import com.sample.library.domain.WishVO;
 import com.sample.library.service.MemberService;
 import com.sample.library.service.RentalService;
 import com.sample.library.service.UserProfileService;
+import com.sample.library.service.WishService;
 import com.sample.library.util.Script;
 
 import net.coobird.thumbnailator.Thumbnailator;
@@ -51,6 +53,8 @@ public class MemberController {
 	
 	@Autowired
 	private RentalService rentalService;
+	@Autowired
+	private WishService wishService;
 	@Autowired
 	private UserProfileService userProfileService;
 	
@@ -486,7 +490,12 @@ public class MemberController {
 	}
 	
 	@GetMapping("/myWish")
-	public String myWish() {
+	public String myWish(HttpSession session, Model model) {
+		String userid = (String) session.getAttribute("userid");
+		
+		List<WishVO> wishList = wishService.getWishListbyId(userid);
+		model.addAttribute("wishList", wishList);
+		
 		System.out.println("myWish 호둘됨...");
 		return "member/myWish";
 	}
