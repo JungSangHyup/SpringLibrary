@@ -1,14 +1,14 @@
-# Spring 도서관리
+# Spring Library
 
  도서를 등록, 관리 할 수 있고 회원가입과 게시판 댓글 구성 등을 할 수 있는 웹사이트
 
-### 기여자
+### producer
 
 류재현 남윤이 정상협 김경준
 
-### 사용 기술
+### Skills
 
-###### 스프링 레거시
+###### Spring legacy
 
 
 ```
@@ -19,7 +19,7 @@ spring-jdbc
 spring-tx
 ```
 
-###### 디비
+###### Db
 
 MySQL 사용
 
@@ -30,7 +30,7 @@ mysql-connector-java
 HikariCP
 ```
 
-###### 서블릿
+###### Servlet
 
 ```
 javax.servlet-api
@@ -38,7 +38,7 @@ jsp-api
 jstl // JSP 내 템플릿 엔진
 ```
 
-###### 유틸
+###### Util
 
 ```
 lombok // Getter, Setter 관련 편리한 기능 제공
@@ -47,6 +47,7 @@ quartz // 배치 프로그램
 quartz-jobs
 ```
 
+## Introduce
 
 ### Main Page
 
@@ -61,7 +62,7 @@ quartz-jobs
 
 ![image](https://user-images.githubusercontent.com/51068026/136132632-9947f32f-24dc-447f-8b67-21ee55b06477.png)
 
-### 도서 목록
+### Library List
 
 - 책 목록 보기 
 
@@ -80,7 +81,7 @@ quartz-jobs
  XML로 받아온 데이터를 Jackson을 통해 JSON 으로 변환 후 GSON으로 모델과 ORM 매칭함
 
 
-### 도서 콘텐츠
+### Library Contents
 
 - 대여/ 찜하기로 책을 대여
 
@@ -92,7 +93,7 @@ quartz-jobs
 
 ![image](https://user-images.githubusercontent.com/51068026/136133056-514fc964-b978-4a60-977c-a99e6ef601c1.png)
 
-### 사용자 평가
+### Review
 
 -  총합 리뷰 개수와 평균을 볼 수 있다.
 
@@ -102,29 +103,29 @@ quartz-jobs
 
  ![image](https://user-images.githubusercontent.com/51068026/136133087-2d9215d7-f061-414b-b830-e05948b1e23a.png)
  
- ### 대여도서 관리
+ ### Rental service
  
  - 대여중인 도서가 보여지며 반납하기를 통해 체크표시된 도서를 반납 할 수 있다.
 
 ![image](https://user-images.githubusercontent.com/51068026/136133292-c9397b50-4369-4689-b1fc-e245d45b43ed.png)
 
-### 로그인 && 로그아웃
+### Login && Logout
 
 ![image](https://user-images.githubusercontent.com/51068026/136133320-fad12730-05b8-4c8d-9e76-21b4ef9da6ed.png)
 ![image](https://user-images.githubusercontent.com/51068026/136133322-b9229bbc-a7cb-4450-b0a9-14c349fbc8a1.png)
 
-### ID && Password 찾기
+### ID && Password
 
 ![image](https://user-images.githubusercontent.com/51068026/136133385-50372dbe-2a66-42e7-9685-79c152ab4bd1.png)
 ![image](https://user-images.githubusercontent.com/51068026/136133390-7d8d5b91-3b80-4778-a65d-17f6d7974399.png)
 
-### 회원가입
+### Join
 
 - - 사용자가 회원가입을 하게 되면 보여지는 회원가입 페이지이다.
 
 ![image](https://user-images.githubusercontent.com/51068026/136133415-1fa893f3-8512-482a-b0cb-3b23ab0f0712.png)
 
-### 회원 정보 수정 && 비밀번호 변경
+### Modify && Password
 
 ![image](https://user-images.githubusercontent.com/51068026/136133477-18f4bf36-6da4-4402-bd2a-1929475fed5c.png)
 ![image](https://user-images.githubusercontent.com/51068026/136133483-16f8e87b-f7bc-4923-b8fc-29d0de6186a7.png)
