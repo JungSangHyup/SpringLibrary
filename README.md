@@ -21,15 +21,12 @@ spring-tx
 
 ###### 디비
 
+MySQL 사용
+
 ```
 mybatis
 mybatis-spring
 mysql-connector-java
-```
-
-###### 디비 커넥션 풀
-
-```
 HikariCP
 ```
 
