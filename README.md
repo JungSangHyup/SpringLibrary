@@ -2,6 +2,7 @@
 
 ![image](https://user-images.githubusercontent.com/51068026/149612967-dae32303-0bda-4abb-b5d6-6145a1819688.png)
 
+  * [개요](#개요)
   * [주제 선정 배경](#주제-선정-배경)
   * [구현 목표](#구현-목표)
   * [개발 환경](#개발-환경)
@@ -20,6 +21,8 @@
     + [Join](#join)
     + [Modify Password](#Modify-Password)
   * [팀원 후기](#팀원-후기)
+
+## 개요
 
  도서를 등록, 관리 할 수 있고 회원가입과 게시판 댓글 구성 등을 할 수 있는 웹사이트
 
