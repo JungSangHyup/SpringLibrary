@@ -2,6 +2,25 @@
 
 ![image](https://user-images.githubusercontent.com/51068026/149612967-dae32303-0bda-4abb-b5d6-6145a1819688.png)
 
+  * [주제 선정 배경](#주제-선정-배경)
+  * [구현 목표](#구현-목표)
+  * [개발 환경](#개발-환경)
+          + [Spring legacy](#spring-legacy)
+          + [Db](#db)
+          + [Servlet](#servlet)
+          + [Util](#util)
+  * [UseCase](#usecase)
+  * [ERD](#erd)
+  * [구현](#구현)
+    + [Main Page](#main-page)
+    + [Library List](#library-list)
+    + [Library Contents](#library-contents)
+    + [Review](#review)
+    + [Rental service](#rental-service)
+    + [Join](#join)
+    + [Modify Password](#Modify-Password)
+  * [팀원 후기](#팀원-후기)
+
  도서를 등록, 관리 할 수 있고 회원가입과 게시판 댓글 구성 등을 할 수 있는 웹사이트
 
 ## 주제 선정 배경
@@ -10,7 +29,7 @@
 
 ## 구현 목표
 - 회원 가입 및 로그인 DB이용
-- 관리자/회원/비회원 권한설정
+- 관리자/회원/비회원 권한설정9
 	관리자 - 도서관리, 회원관리, 게시판 이용
 	회원 – 도서 대여, 리뷰, 게시판 이용, 회원정보 수정
 	공통 – 도서 검색
@@ -66,6 +85,8 @@ quartz-jobs
 ## ERD
 
 ![image](https://user-images.githubusercontent.com/51068026/149613067-d92f060f-0cf1-45ec-a465-89a6f216f571.png)
+
+## 구현
 
 ### Main Page
 
@@ -125,7 +146,7 @@ quartz-jobs
 
 ![image](https://user-images.githubusercontent.com/51068026/136133415-1fa893f3-8512-482a-b0cb-3b23ab0f0712.png)
 
-### Modify && Password
+### Modify Password
 
 ![image](https://user-images.githubusercontent.com/51068026/136133477-18f4bf36-6da4-4402-bd2a-1929475fed5c.png)
 ![image](https://user-images.githubusercontent.com/51068026/136133483-16f8e87b-f7bc-4923-b8fc-29d0de6186a7.png)
