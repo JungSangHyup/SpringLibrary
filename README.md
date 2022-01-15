@@ -1,13 +1,23 @@
 # Spring Library
 
+![image](https://user-images.githubusercontent.com/51068026/149612967-dae32303-0bda-4abb-b5d6-6145a1819688.png)
+
  도서를 등록, 관리 할 수 있고 회원가입과 게시판 댓글 구성 등을 할 수 있는 웹사이트
 
-### producer
+## 주제 선정 배경
+- 지금까지 배워온 지식들을 바탕으로 인터넷 도서 대여관리시스템을 만들기로 선정함
+- 사람들이 편리하게 오프라인에서 도서 대여시스템을 이용할 수 있는 인터넷 도서 대여관리시스템 구현에 중점을 둠
 
-류재현 남윤이 정상협 김경준
+## 구현 목표
+- 회원 가입 및 로그인 DB이용
+- 관리자/회원/비회원 권한설정
+	관리자 - 도서관리, 회원관리, 게시판 이용
+	회원 – 도서 대여, 리뷰, 게시판 이용, 회원정보 수정
+	공통 – 도서 검색
+- 도서 검색, 대여, 평점 등록
+- 질문 게시판
 
-### Skills
-
+## 개발 환경
 ###### Spring legacy
 
 
@@ -47,20 +57,23 @@ quartz // 배치 프로그램
 quartz-jobs
 ```
 
-## Introduce
+## UseCase
+
+- 회원 : 도서대여, 정보 수정, 리뷰 작성, 검색, 회원가입, 도서 조회, 게시판, 로그인
+- 비회원 : 검색, 회원가입, 도서 조회
+- 관리자 : 회원관리, 도서관리, 게시판 관리
+
+## ERD
+
+![image](https://user-images.githubusercontent.com/51068026/149613067-d92f060f-0cf1-45ec-a465-89a6f216f571.png)
 
 ### Main Page
 
 - 메인 화면은 사용자의 프로필과 신간, 추천 책 목록을 보여주는 페이지이다.
 
-
-![image](https://user-images.githubusercontent.com/51068026/136132557-c2d0fcea-0901-42e4-80f1-3b3812cbd65b.png)
-
 ![image](https://user-images.githubusercontent.com/51068026/136132576-d2b19e23-3b01-4ae0-9f0f-01ac330492af.png)
 
 ![image](https://user-images.githubusercontent.com/51068026/136132606-d5f11c04-ab24-4b37-b7d4-e326710f1fac.png)
-
-![image](https://user-images.githubusercontent.com/51068026/136132632-9947f32f-24dc-447f-8b67-21ee55b06477.png)
 
 ### Library List
 
@@ -74,12 +87,9 @@ quartz-jobs
 
 ![image](https://user-images.githubusercontent.com/51068026/136132681-48d60083-0066-4162-beea-702c33bb5725.png)
 
-#### 국립중앙도서관 api 활용
-
 ![image](https://user-images.githubusercontent.com/51068026/136132960-9614bbf8-fce2-415c-b099-7541e1261535.png)
 
  XML로 받아온 데이터를 Jackson을 통해 JSON 으로 변환 후 GSON으로 모델과 ORM 매칭함
-
 
 ### Library Contents
 
@@ -109,16 +119,6 @@ quartz-jobs
 
 ![image](https://user-images.githubusercontent.com/51068026/136133292-c9397b50-4369-4689-b1fc-e245d45b43ed.png)
 
-### Login && Logout
-
-![image](https://user-images.githubusercontent.com/51068026/136133320-fad12730-05b8-4c8d-9e76-21b4ef9da6ed.png)
-![image](https://user-images.githubusercontent.com/51068026/136133322-b9229bbc-a7cb-4450-b0a9-14c349fbc8a1.png)
-
-### ID && Password
-
-![image](https://user-images.githubusercontent.com/51068026/136133385-50372dbe-2a66-42e7-9685-79c152ab4bd1.png)
-![image](https://user-images.githubusercontent.com/51068026/136133390-7d8d5b91-3b80-4778-a65d-17f6d7974399.png)
-
 ### Join
 
 - - 사용자가 회원가입을 하게 되면 보여지는 회원가입 페이지이다.
@@ -129,5 +129,19 @@ quartz-jobs
 
 ![image](https://user-images.githubusercontent.com/51068026/136133477-18f4bf36-6da4-4402-bd2a-1929475fed5c.png)
 ![image](https://user-images.githubusercontent.com/51068026/136133483-16f8e87b-f7bc-4923-b8fc-29d0de6186a7.png)
+
+## 팀원 후기
+
+### - 맡은 부분 (정상협) – 메인, 도서 페이지
+ 국립중앙도서관과 API를 통한 JSON을 모델 데이터로 변환 방법을 공부 할 수 있는 기회였습니다. 팀원과 형상관리를 한 경험도 잊혀지지 않는 경험이었습니다.
+
+### - 맡은 부분 (류재현) – 로그인, ID찾기
+한줄평 – 아직 Security를 제대로 공부하지 않아 Security를 적용하는 과정에서 이것저것 건들다 보니 코드가 날아가는 경험도 있었고 향후 보완사항으로 Security를 적용하여 기능을 구현하도록 노력하겠습니다.
+
+### - 맡은 부분 (김경준) – 회원 가입 및 마이페이지
+-한줄평 – 강의로만 들었던 부분을 실제로 구현하려 하니 막히는 부분이 많았고 그로인해 더 열심히 공부하게 되었습니다.
+
+### - 맡은 부분 (남윤이) – 게시판 및 댓글
+한줄평 - 댓글 기능 만들다 코드 꼬여서 하루 날리고, 백업을 해 두지 않아 롤백 했을 때 코드 다 날린 경험이 잊혀지지 않습니다. 백업의 소중함을 깨닫게 되었습니다.
 
 
